@@ -1,0 +1,17 @@
+{
+  "assertion_sha256": "d390ad4f8d114a491cc62b4f9a3b48295deb69cedcf58aa507674fee15746c80",
+  "case_id": "n5-loss1000-seed000105",
+  "contiki_ng_commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+  "cooja_commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4",
+  "docker_image": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+  "experiment": "RANGER-COOJA-CONTROLLED-FRAGMENT-LOSS",
+  "loss_scope": "RANGER coded-fragment application sends only",
+  "radio_loss": false,
+  "result": "COMPLETE",
+  "scenario_sha256": "e7301fc09ccdf770b5cfb4bc31132f95bd406f7c772e89cd8a6f87a2f86eb014",
+  "schema_version": 1,
+  "source_sha256": "86e3daf7883145080f42a143d808d16d1290723ae8c19aee8404fb49e7cb8254",
+  "toolchain_lock_sha256": "9584e924c1a5e47b1150a951c8fd1a599bcd51b42601f24178b3bb8318b9a9b1",
+  "validation_contract": "Cooja compares planned, reported, and observed reconstruction masks before TEST OK.",
+  "validation_source": "cooja-script-runner"
+}

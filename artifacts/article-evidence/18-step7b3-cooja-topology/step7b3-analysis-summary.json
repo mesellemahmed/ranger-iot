@@ -1,0 +1,57 @@
+{
+  "analysis": "RANGER-STEP7B3-COOJA-TOPOLOGY-EXTERNAL-VALIDITY",
+  "bootstrap_resamples": 10000,
+  "confirmatory_rows": 480,
+  "grouped_rows": 24,
+  "guardrails": [
+    "Cooja inference is limited to the current fixed 8-mote embedded implementation.",
+    "compact-onehop is a dense radio-layout regime, not claimed to be identical to Python star.",
+    "SUCCESS_RATIO_TX is a Cooja radio parameter and is not equated with Python packet_loss.",
+    "The pilot was used only as a bootstrap/harness validity gate, not for statistical selection.",
+    "No additional confirmatory seeds are added after observing outcomes.",
+    "No universal protocol winner is assumed."
+  ],
+  "layouts": [
+    "line",
+    "balanced-tree",
+    "grid",
+    "compact-onehop"
+  ],
+  "multiple_testing": "Holm correction across all 24 layout \u00d7 TX \u00d7 pair comparisons, separately for reconstruction and completion.",
+  "next_step": "STEP7C_CODING_REALISM_AUDIT_AND_VALIDATION",
+  "paired_stat_rows": 24,
+  "protocols": [
+    "static",
+    "recovery",
+    "adaptive-v2"
+  ],
+  "schema_version": 1,
+  "scientific_state": "COOJA_TOPOLOGY_EXTERNAL_VALIDITY_COMPLETE",
+  "seed_count": 20,
+  "seeds": [
+    1901,
+    2117,
+    6212,
+    8530,
+    5326,
+    4518,
+    6021,
+    1381,
+    2579,
+    6704,
+    5024,
+    3694,
+    8703,
+    2176,
+    6594,
+    8303,
+    8470,
+    2146,
+    1108,
+    5659
+  ],
+  "tx_values": [
+    0.3,
+    0.2
+  ]
+}

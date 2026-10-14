@@ -1,0 +1,186 @@
+{
+  "bottom_up_plan_documented": true,
+  "classes": {
+    "LkhKeyRef": {
+      "docstring": "Symbolic reference to one LKH key version.",
+      "end_lineno": 18,
+      "lineno": 8,
+      "methods": {
+        "__post_init__": {
+          "args": [
+            "self"
+          ],
+          "end_lineno": 18,
+          "lineno": 14
+        }
+      }
+    },
+    "LkhKeyTree": {
+      "docstring": "Balanced binary Logical Key Hierarchy with symbolic key versions.\n\nLeaves are individual member keys. Internal nodes are key-encryption keys,\nwith node 1 representing the group key. Cryptographic operations are modeled\nsymbolically; this class plans which key versions must be replaced and under\nwhich child keys the replacements are protected.",
+      "end_lineno": 226,
+      "lineno": 52,
+      "methods": {
+        "__init__": {
+          "args": [
+            "self",
+            "member_ids"
+          ],
+          "end_lineno": 77,
+          "lineno": 63
+        },
+        "_affected_internal_nodes": {
+          "args": [
+            "self",
+            "revoked_members",
+            "active_after"
+          ],
+          "end_lineno": 189,
+          "lineno": 171
+        },
+        "_children": {
+          "args": [
+            "self",
+            "node_id"
+          ],
+          "end_lineno": 218,
+          "lineno": 215
+        },
+        "_depth": {
+          "args": [
+            "node_id"
+          ],
+          "end_lineno": 222,
+          "lineno": 221
+        },
+        "_members_under_node": {
+          "args": [
+            "self",
+            "node_id"
+          ],
+          "end_lineno": 213,
+          "lineno": 191
+        },
+        "_require_tree_node": {
+          "args": [
+            "self",
+            "node_id"
+          ],
+          "end_lineno": 226,
+          "lineno": 224
+        },
+        "_validate_revocations": {
+          "args": [
+            "self",
+            "revoked_members"
+          ],
+          "end_lineno": 169,
+          "lineno": 163
+        },
+        "active_member_ids": {
+          "args": [
+            "self"
+          ],
+          "end_lineno": 85,
+          "lineno": 84
+        },
+        "key_ref": {
+          "args": [
+            "self",
+            "node_id"
+          ],
+          "end_lineno": 103,
+          "lineno": 101
+        },
+        "leaf_base": {
+          "args": [
+            "self"
+          ],
+          "end_lineno": 89,
+          "lineno": 88
+        },
+        "leaf_node": {
+          "args": [
+            "self",
+            "member_id"
+          ],
+          "end_lineno": 99,
+          "lineno": 95
+        },
+        "member_ids": {
+          "args": [
+            "self"
+          ],
+          "end_lineno": 81,
+          "lineno": 80
+        },
+        "member_key_path": {
+          "args": [
+            "self",
+            "member_id"
+          ],
+          "end_lineno": 113,
+          "lineno": 105
+        },
+        "members_under": {
+          "args": [
+            "self",
+            "node_id",
+            "active_only"
+          ],
+          "end_lineno": 120,
+          "lineno": 115
+        },
+        "rekey": {
+          "args": [
+            "self",
+            "revoked_members"
+          ],
+          "end_lineno": 161,
+          "lineno": 122
+        },
+        "root_key": {
+          "args": [
+            "self"
+          ],
+          "end_lineno": 93,
+          "lineno": 92
+        }
+      }
+    },
+    "LkhKeyUpdate": {
+      "docstring": "One logical LKH ciphertext carrying a replacement key.",
+      "end_lineno": 35,
+      "lineno": 22,
+      "methods": {
+        "__post_init__": {
+          "args": [
+            "self"
+          ],
+          "end_lineno": 35,
+          "lineno": 29
+        }
+      }
+    },
+    "LkhRekeyPlan": {
+      "docstring": "Deterministic bottom-up key-update plan for one LKH rekey operation.",
+      "end_lineno": 49,
+      "lineno": 39,
+      "methods": {
+        "logical_ciphertexts": {
+          "args": [
+            "self"
+          ],
+          "end_lineno": 49,
+          "lineno": 48
+        }
+      }
+    }
+  },
+  "rekey_end_lineno": 161,
+  "rekey_lineno": 122,
+  "rekey_method_present": true,
+  "required_classes_present": true,
+  "schema_version": 1,
+  "source": "src/ranger_iot/protocols/lkh.py",
+  "symbolic_key_version_model": true
+}

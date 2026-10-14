@@ -1,0 +1,11 @@
+sha256sum: 'analysis-summary.json'$'\r': No such file or directory
+analysis-summary.json: FAILED open or read
+sha256sum: 'manifest.json'$'\r': No such file or directory
+manifest.json: FAILED open or read
+sha256sum: 'paired-completion-stats.csv'$'\r': No such file or directory
+paired-completion-stats.csv: FAILED open or read
+sha256sum: 'paired-reconstruction-stats.csv'$'\r': No such file or directory
+paired-reconstruction-stats.csv: FAILED open or read
+sha256sum: 'regime-summary.csv'$'\r': No such file or directory
+regime-summary.csv: FAILED open or read
+sha256sum: WARNING: 5 listed files could not be read

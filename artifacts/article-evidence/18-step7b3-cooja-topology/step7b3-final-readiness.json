@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "confirmatory_campaign": true,
+    "confirmatory_rows_480": true,
+    "core_ci": true,
+    "grouped_rows_24": true,
+    "layout_contract": true,
+    "paired_stat_rows_24": true,
+    "pilot_harness": true,
+    "result_hashes": true,
+    "tracked_source_unchanged": true
+  },
+  "embedded_scale_scope": "Current validated fixed 8-mote Cooja implementation only.",
+  "layouts": [
+    "line",
+    "balanced-tree",
+    "grid",
+    "compact-onehop"
+  ],
+  "next_step": "STEP7C_CODING_REALISM_AUDIT_AND_VALIDATION",
+  "schema_version": 1,
+  "scientific_state": "COOJA_TOPOLOGY_EXTERNAL_VALIDITY_COMPLETE",
+  "step": "STEP7B3_COOJA_TOPOLOGY_EXTERNAL_VALIDITY",
+  "step7b3_pass": true
+}

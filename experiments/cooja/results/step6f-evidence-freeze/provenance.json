@@ -1,0 +1,23 @@
+{
+  "adaptive_v2": {
+    "campaign_root": "experiments\\cooja\\results\\step6e2-adaptive-radio\\campaign-20261001T215912Z-calibration",
+    "case_count": 30,
+    "source_commits": [
+      "366d1f995f68414639a4d5934ce733f81c89ded9"
+    ]
+  },
+  "recovery": {
+    "campaign_root": "experiments\\cooja\\results\\step6d2-recovery-radio\\campaign-20260930T150343Z-calibration",
+    "case_count": 30,
+    "source_commits": [
+      "bfe73efc5322bcd98f555618574b86a37a72d539"
+    ]
+  },
+  "static": {
+    "campaign_root": "experiments\\cooja\\results\\step6c3f-post-bootstrap-tx-stress\\campaign-20260928T151522Z-calibration",
+    "case_count": 80,
+    "source_commits": [
+      "64a0890d6659bab31001c2b1fae284993197cb3a"
+    ]
+  }
+}

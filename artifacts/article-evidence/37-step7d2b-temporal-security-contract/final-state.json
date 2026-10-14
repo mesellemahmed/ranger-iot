@@ -1,0 +1,12 @@
+{
+  "all_17_verified": true,
+  "arbitrary_n_generalization": false,
+  "full_ranger_formally_verified": false,
+  "historical_key_exposure_boundary_demonstrated": true,
+  "negative_control_pass": true,
+  "next_step_if_closed": "STEP7D2C_STRUCTURAL_GENERALIZATION_AND_RS_BRIDGE",
+  "original_diagnostic_counterexamples_preserved": true,
+  "reference_instance_closed": true,
+  "schema_version": 1,
+  "scientific_state": "STEP7D2B_TEMPORAL_SECURITY_REFERENCE_INSTANCE_CLOSED"
+}

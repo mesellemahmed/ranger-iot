@@ -1,0 +1,42 @@
+================================================================
+SCRIPT: experiments/cooja/scripts/run_step6c3_radio_loss.py
+usage: run_step6c3_radio_loss.py [-h]
+                                 [--mode {pilot,calibration,confirmatory}]
+
+options:
+  -h, --help            show this help message and exit
+  --mode {pilot,calibration,confirmatory}
+
+================================================================
+SCRIPT: experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py
+usage: run_step6c3e_post_bootstrap_stress.py [-h] [--mode {smoke,pilot}]
+
+options:
+  -h, --help            show this help message and exit
+  --mode {smoke,pilot}
+
+================================================================
+SCRIPT: experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py
+usage: run_step6c3f_post_bootstrap_tx_stress.py [-h]
+                                                [--mode {smoke,pilot,calibration}]
+
+options:
+  -h, --help            show this help message and exit
+  --mode {smoke,pilot,calibration}
+
+================================================================
+SCRIPT: experiments/cooja/scripts/run_step6d2_recovery_radio.py
+usage: run_step6d2_recovery_radio.py [-h] [--mode {smoke,pilot,calibration}]
+
+options:
+  -h, --help            show this help message and exit
+  --mode {smoke,pilot,calibration}
+
+================================================================
+SCRIPT: experiments/cooja/scripts/run_step6e2_adaptive_radio.py
+usage: run_step6e2_adaptive_radio.py [-h] [--mode {smoke,pilot,calibration}]
+
+options:
+  -h, --help            show this help message and exit
+  --mode {smoke,pilot,calibration}
+

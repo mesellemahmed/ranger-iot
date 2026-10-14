@@ -1,0 +1,97 @@
+================================================================================
+LEMMA=new_epoch_key_secret_without_relevant_compromise
+================================================================================
+GRAPH=1
+PATTERNS={"contains_manager_compromise": false, "contains_member_compromise": false, "contains_multiple_secret_sids": false, "contains_old_key_leak": true, "historical_secret_revealed_by_other_epoch_leak_candidate": true, "learned_secret_count": 1, "multiple_setup_rules": false, "same_epoch_old_key_direct_disclosure_candidate": false, "secret_sid_count": 1, "setup_rule_count": 1}
+
+LEARNED_SECRET
+  SID=~sid
+  EPOCH='e1'
+  VERSION='v1'
+  ROOT=~root1
+  SAME_EPOCH_LEAK_DIRECT_ROOT=False
+  OTHER_EPOCH_LEAK_ROOT=True
+  OLD_KEY_LEAKS:
+    OldKeyLeak( ~sid, 'm3', 'e2' )
+  MEMBER_COMPROMISES:
+  MANAGER_COMPROMISES:
+  ROOT_OCCURRENCES:
+    [0] Send :: actions :: K( ~root1 )
+    [0] Send :: premises :: !KU( ~root1 )
+    [0] Send :: conclusions :: In( ~root1 )
+    [1] Start_Epoch1 :: actions :: EpochRoot( ~sid, 'e1', 'v1', ~root1 )
+    [1] Start_Epoch1 :: actions :: SecretEpoch( ~sid, 'e1', 'v1', ~root1 )
+    [1] Start_Epoch1 :: premises :: Fr( ~root1 )
+    [1] Start_Epoch1 :: conclusions :: !EpochRootKey( ~sid, 'e1', 'v1', ~root1 )
+    [1] Start_Epoch1 :: conclusions :: !EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n2', 'v0', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0))
+    [1] Start_Epoch1 :: conclusions :: !EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n3', 'v1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))
+    [1] Start_Epoch1 :: conclusions :: !ManagerEpoch1( ~sid, ~k3v1, ~root1 )
+    [1] Start_Epoch1 :: conclusions :: Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0) )
+    [1] Start_Epoch1 :: conclusions :: Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [2] Coerce :: actions :: !KU( ~root1 )
+    [2] Coerce :: premises :: !KD( ~root1 )
+    [2] Coerce :: conclusions :: !KU( ~root1 )
+    [5] Leak_M3_Old_Keys_After_E2 :: premises :: !Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )
+    [5] Leak_M3_Old_Keys_After_E2 :: conclusions :: Out( ~root1 )
+    [6] Coerce :: actions :: !KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [6] Coerce :: premises :: !KD( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [6] Coerce :: conclusions :: !KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [9] Accept_E1_M3 :: actions :: Accept( ~sid, 'm3', 'e1', 'v1', ~root1 )
+    [9] Accept_E1_M3 :: actions :: AcceptCipher( ~sid, 'm3', 'e1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))
+    [9] Accept_E1_M3 :: premises :: !EpochRootKey( ~sid, 'e1', 'v1', ~root1 )
+    [9] Accept_E1_M3 :: premises :: In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [9] Accept_E1_M3 :: conclusions :: !Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )
+    [9] Accept_E1_M3 :: conclusions :: !OwnsKey( ~sid, 'm3', 'n1', 'v1', ~root1 )
+    [12] Send :: actions :: K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [12] Send :: premises :: !KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [12] Send :: conclusions :: In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+
+================================================================================
+LEMMA=revoked_old_key_does_not_reveal_new_root_key
+================================================================================
+GRAPH=1
+PATTERNS={"contains_manager_compromise": false, "contains_member_compromise": false, "contains_multiple_secret_sids": false, "contains_old_key_leak": true, "historical_secret_revealed_by_other_epoch_leak_candidate": true, "learned_secret_count": 1, "multiple_setup_rules": false, "same_epoch_old_key_direct_disclosure_candidate": false, "secret_sid_count": 1, "setup_rule_count": 1}
+
+LEARNED_SECRET
+  SID=~sid
+  EPOCH='e1'
+  VERSION='v1'
+  ROOT=~root1
+  SAME_EPOCH_LEAK_DIRECT_ROOT=False
+  OTHER_EPOCH_LEAK_ROOT=True
+  OLD_KEY_LEAKS:
+    OldKeyLeak( ~sid, 'm4', 'e1' )
+    OldKeyLeak( ~sid, 'm3', 'e2' )
+  MEMBER_COMPROMISES:
+  MANAGER_COMPROMISES:
+  ROOT_OCCURRENCES:
+    [0] Send :: actions :: K( ~root1 )
+    [0] Send :: premises :: !KU( ~root1 )
+    [0] Send :: conclusions :: In( ~root1 )
+    [2] Start_Epoch1 :: actions :: EpochRoot( ~sid, 'e1', 'v1', ~root1 )
+    [2] Start_Epoch1 :: actions :: SecretEpoch( ~sid, 'e1', 'v1', ~root1 )
+    [2] Start_Epoch1 :: premises :: Fr( ~root1 )
+    [2] Start_Epoch1 :: conclusions :: !EpochRootKey( ~sid, 'e1', 'v1', ~root1 )
+    [2] Start_Epoch1 :: conclusions :: !EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n2', 'v0', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0))
+    [2] Start_Epoch1 :: conclusions :: !EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n3', 'v1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))
+    [2] Start_Epoch1 :: conclusions :: !ManagerEpoch1( ~sid, ~k3v1, ~root1 )
+    [2] Start_Epoch1 :: conclusions :: Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0) )
+    [2] Start_Epoch1 :: conclusions :: Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [3] Coerce :: actions :: !KU( ~root1 )
+    [3] Coerce :: premises :: !KD( ~root1 )
+    [3] Coerce :: conclusions :: !KU( ~root1 )
+    [6] Leak_M3_Old_Keys_After_E2 :: premises :: !Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )
+    [6] Leak_M3_Old_Keys_After_E2 :: conclusions :: Out( ~root1 )
+    [7] Coerce :: actions :: !KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [7] Coerce :: premises :: !KD( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [7] Coerce :: conclusions :: !KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [10] Accept_E1_M3 :: actions :: Accept( ~sid, 'm3', 'e1', 'v1', ~root1 )
+    [10] Accept_E1_M3 :: actions :: AcceptCipher( ~sid, 'm3', 'e1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))
+    [10] Accept_E1_M3 :: premises :: !EpochRootKey( ~sid, 'e1', 'v1', ~root1 )
+    [10] Accept_E1_M3 :: premises :: In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [10] Accept_E1_M3 :: conclusions :: !Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )
+    [10] Accept_E1_M3 :: conclusions :: !OwnsKey( ~sid, 'm3', 'n1', 'v1', ~root1 )
+    [13] Send :: actions :: K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [13] Send :: premises :: !KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+    [13] Send :: conclusions :: In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+

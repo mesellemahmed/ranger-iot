@@ -1,0 +1,65 @@
+{
+  "all_python_3of5_subsets": 10,
+  "canonical_step7c2_codec_modified": false,
+  "codec": {
+    "field": "GF(256)",
+    "k": 3,
+    "n": 5,
+    "primitive_polynomial": "0x11D",
+    "systematic": true
+  },
+  "controlled_fragment_omission": {
+    "below_k_mask": 3,
+    "below_k_node": 7,
+    "c_reconstruction_count": 5,
+    "canonical_receive_bytes": true,
+    "canonical_send_bytes": true,
+    "python_below_k_rejected": true,
+    "python_reconstruction_count": 5,
+    "python_reconstruction_from_rx": true,
+    "receive_count": 18,
+    "reconstruction_masks": {
+      "2": 7,
+      "3": 11,
+      "4": 19,
+      "5": 13,
+      "6": 26
+    },
+    "revoked_rejected": true,
+    "send_count": 18
+  },
+  "controlled_omission_is_radio_loss": false,
+  "historical_7a_7b_modified": false,
+  "next_step": "STEP7D_FORMAL_SECURITY_EXECUTABILITY_AUDIT",
+  "no_loss": {
+    "below_k": false,
+    "c_reconstruction_count": 6,
+    "canonical_receive_bytes": true,
+    "canonical_send_bytes": true,
+    "python_reconstruction_count": 6,
+    "python_reconstruction_from_rx": true,
+    "receive_count": 19,
+    "reconstruction_masks": {
+      "2": 7,
+      "3": 7,
+      "4": 7,
+      "5": 7,
+      "6": 7,
+      "7": 7
+    },
+    "revoked_rejected": true,
+    "send_count": 35
+  },
+  "payload": {
+    "bytes": 16,
+    "hex": "52414e4745522d52532d45504f434831"
+  },
+  "schema_version": 2,
+  "scientific_state": "REAL_RS_BYTES_VALIDATED_ON_COOJA_RPL_WIRE",
+  "step": "STEP7C3_COOJA_REAL_RS_WIRE_INTEGRATION",
+  "step7c3_pass": true,
+  "wire": {
+    "packet_bytes": 18,
+    "shard_bytes": 6
+  }
+}

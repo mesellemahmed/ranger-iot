@@ -1,0 +1,13 @@
+{
+  "bootstrap_fail": 0,
+  "campaign_id": "campaign-20261004T162013Z-infra-repaired-calibration",
+  "case_count": 40,
+  "derivation": "INFRA_RETRY_REPAIR",
+  "infra_fail": 0,
+  "mode": "calibration",
+  "rekey_complete": 33,
+  "rekey_incomplete": 7,
+  "safety_fail": 0,
+  "schema_version": 1,
+  "validated": 40
+}

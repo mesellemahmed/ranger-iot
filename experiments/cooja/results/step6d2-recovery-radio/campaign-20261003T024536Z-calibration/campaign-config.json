@@ -1,0 +1,50 @@
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "description": "RANGER-Recovery 3-of-5 under transmission-side degradation applied only after successful bootstrap.",
+  "experiment": "RANGER-COOJA-RECOVERY-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "Bootstrap runs with healthy UDGM TX/RX. SUCCESS_RATIO_TX is changed only after RANGER_CODED_READY. Recovery smoke modes remain disabled.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Does one-hop two-round RANGER-Recovery improve 3-of-5 rekey completion and reconstructed membership under post-bootstrap transmission loss, and at what request/repair cost?",
+  "recovery_fragment_bytes": 9,
+  "recovery_max_rounds": 2,
+  "recovery_request_bytes": 24,
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.3,
+    0.2
+  ]
+}

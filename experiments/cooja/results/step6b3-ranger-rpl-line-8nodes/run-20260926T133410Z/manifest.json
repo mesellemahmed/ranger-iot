@@ -1,0 +1,22 @@
+{
+  "contiki_ng_commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+  "cooja_commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4",
+  "docker_image": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+  "experiment": "RANGER-COOJA-RPL-LINE-8",
+  "metrics": "experiments/cooja/results/step6b3-ranger-rpl-line-8nodes/run-20260926T133410Z/metrics.json",
+  "metrics_sha256": "481cb43954edfeb542f6ae7318d43e927827911d3ee6c2f7dc6843a164f93a0d",
+  "mote_count": 8,
+  "random_seed": 20260926,
+  "raw_log": "experiments/cooja/results/step6b3-ranger-rpl-line-8nodes/run-20260926T133410Z/raw.log",
+  "raw_log_sha256": "a0c5ddc40ca6350dacced67521bf3ef50556c800c72dc6db9b703355dc9fea22",
+  "result": "FAIL",
+  "run_id": "run-20260926T133410Z",
+  "scenario": "experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.csc",
+  "scenario_manifest": "experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.manifest.json",
+  "scenario_manifest_sha256": "70438f9f6e0db78d30db4b6b22486a9c8d5bfc36cb65b541ef9a4a90c7f76b6e",
+  "scenario_sha256": "7de7ab96d5565866abb2167b5fd8d9270f44d43e3d443dff42c0a7b789e0a170",
+  "schema_version": 1,
+  "scientific_scope": "multi-hop RPL transport and functional epoch/revocation semantics; no coded dissemination or cryptographic post-revocation claim",
+  "toolchain_lock_sha256": "9584e924c1a5e47b1150a951c8fd1a599bcd51b42601f24178b3bb8318b9a9b1",
+  "topology": "line"
+}

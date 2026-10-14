@@ -1,0 +1,16 @@
+executable_first_lkh_rekey	exists-trace	120	BFS	s	0
+executable_second_lkh_rekey	exists-trace	180	BFS	s	0
+executable_same_epoch_recovery_after_lkh_rekey	exists-trace	300	DFS	C	0
+executable_old_cipher_replay	exists-trace	180	BFS	s	0
+second_epoch_follows_first	all-traces	180	DFS	s	0
+revoked_member_excluded_from_new_epoch	all-traces	180	DFS	s	0
+survivor_acceptance_has_lkh_update_chain	all-traces	240	DFS	s	0
+m3_acceptance_requires_branch_update	all-traces	240	DFS	s	0
+acceptance_matches_current_root_version	all-traces	180	DFS	s	0
+replay_old_capsule_cannot_accept_new_epoch	all-traces	240	DFS	s	0
+replay_old_recovery_response_cannot_accept_new_epoch	all-traces	240	DFS	s	0
+root_keys_fresh_across_epochs	all-traces	180	DFS	s	0
+new_epoch_key_secret_without_relevant_compromise	all-traces	420	DFS	s	0
+revoked_old_key_does_not_reveal_new_root_key	all-traces	420	DFS	s	0
+recovery_requester_authorized_in_same_epoch	all-traces	180	DFS	s	0
+recovery_helper_authorized_in_same_epoch	all-traces	240	DFS	s	0

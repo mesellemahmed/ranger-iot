@@ -1,0 +1,43 @@
+{
+  "adaptive-v2": {
+    "n5_rows": 30,
+    "n5_tx_distribution": {
+      "0.2": 10,
+      "0.3": 10,
+      "0.5": 10
+    },
+    "n5_unique_seeds": 10,
+    "n_distribution": {
+      "5": 30
+    },
+    "raw_rows": 30
+  },
+  "recovery": {
+    "n5_rows": 30,
+    "n5_tx_distribution": {
+      "0.2": 10,
+      "0.3": 10,
+      "0.5": 10
+    },
+    "n5_unique_seeds": 10,
+    "n_distribution": {
+      "5": 30
+    },
+    "raw_rows": 30
+  },
+  "static": {
+    "n5_rows": 40,
+    "n5_tx_distribution": {
+      "0.2": 10,
+      "0.3": 10,
+      "0.4": 10,
+      "0.5": 10
+    },
+    "n5_unique_seeds": 10,
+    "n_distribution": {
+      "3": 40,
+      "5": 40
+    },
+    "raw_rows": 80
+  }
+}

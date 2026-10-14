@@ -1,0 +1,21 @@
+{
+  "article_state": "NOT_STARTED",
+  "audit_corrections": [
+    "STATIC_FILTER_n_EQ_5",
+    "STATIC_FILTER_TX_IN_050_030_020"
+  ],
+  "checks": {
+    "checksum_integrity": true,
+    "core_ci": true,
+    "hardening_plan_generated": true,
+    "independent_recomputation": true,
+    "input_preflight": true,
+    "manifest_audit_context": true,
+    "scientific_worktree_clean": true,
+    "tag_matches_head": true
+  },
+  "hard_reproducibility_gate_pass": true,
+  "next_step": "STEP7A_TARGETED_STATISTICAL_HARDENING",
+  "schema_version": 5,
+  "scientific_state": "READY_FOR_STEP7_A_PLUS_HARDENING"
+}

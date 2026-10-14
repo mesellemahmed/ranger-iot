@@ -1,0 +1,15 @@
+15bafed731fbca27c412be5f29b3611fab8ce771047db50b7f1b6bdeb45c8115 *artifacts/article-evidence/22-step7c2-c-differential/c-o0-build-run.log
+15bafed731fbca27c412be5f29b3611fab8ce771047db50b7f1b6bdeb45c8115 *artifacts/article-evidence/22-step7c2-c-differential/c-o2-build-run.log
+c1bf04645c9a8fe7148aaf046abd5a088010d5671e4dc09b9ae7cd71c293dbce *artifacts/article-evidence/22-step7c2-c-differential/core-ci.log
+a13db0ae1d3fa2796c996f08215c23d75dd77dae076d80b43472c65667d7e145 *artifacts/article-evidence/22-step7c2-c-differential/c-results.sha256
+15818610905c549f30c9c1322c8672b3681acc1038f9e6e3965ef559e85c3758 *artifacts/article-evidence/22-step7c2-c-differential/c-results-o0.tsv
+15818610905c549f30c9c1322c8672b3681acc1038f9e6e3965ef559e85c3758 *artifacts/article-evidence/22-step7c2-c-differential/c-results-o2.tsv
+41910587a8fd362c8698c41356f81e172c38a49f22d0d538d6d04417bb257547 *artifacts/article-evidence/22-step7c2-c-differential/c-toolchain.txt
+0d6be3239c562d530353a9683c9fcecc00a96704815054cf724286cef33b3ca2 *artifacts/article-evidence/22-step7c2-c-differential/frozen-source-before.sha256
+d8457cabfae09f21e915dc7dd30d8c4fda054691441e4e4a3f5f899d4e1472de *artifacts/article-evidence/22-step7c2-c-differential/gitbash-docker-preflight.log
+2861f9b16064e136d96f2f2c6dc531f7c303acbe06b4b127c7b56c27be7fb7fa *artifacts/article-evidence/22-step7c2-c-differential/python-vectors.sha256
+0e5a550b24696959328b026fe98f38370466bac6af7ef8cbb3f9ace6da2c55b6 *artifacts/article-evidence/22-step7c2-c-differential/python-vectors.tsv
+2861f9b16064e136d96f2f2c6dc531f7c303acbe06b4b127c7b56c27be7fb7fa *artifacts/article-evidence/22-step7c2-c-differential/python-vectors-pre-resume.sha256
+a0e71fb18dd7e28ad2890658c2742e49de51d9f64a4c3e9224dd2b7f1331e6eb *artifacts/article-evidence/22-step7c2-c-differential/step7c2-differential-report.json
+238ebe5cd555ef660b78074feb9af958ad3d61e139b42f8019451297138437a4 *artifacts/article-evidence/22-step7c2-c-differential/step7c2-final-readiness.json
+a38b801cae71154dfde9b672fc7faf46cdee912e9bbf9767db32ec9c9535fdff *artifacts/article-evidence/22-step7c2-c-differential/step7c2-source.sha256

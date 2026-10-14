@@ -1,0 +1,133 @@
+{
+  "all_11_verified": false,
+  "execution_anomalies": [],
+  "execution_anomaly_count": 0,
+  "falsified_count": 0,
+  "falsified_lemmas": [],
+  "full_ranger_formally_verified": false,
+  "implementation_modified": false,
+  "incomplete_count": 0,
+  "model": "formal/tamarin/ranger_authorization_transport_v2.spthy",
+  "model_class": "LKH_AUTHORIZATION_TRANSPORT_ABSTRACTION_V2",
+  "rows": [
+    {
+      "budget_seconds": 120,
+      "classification": "verified",
+      "kind": "exists-trace",
+      "lemma": "executable_initial_accept",
+      "return_code": 0,
+      "search": "bfs",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 180,
+      "classification": "timeout",
+      "kind": "exists-trace",
+      "lemma": "executable_same_epoch_recovery",
+      "return_code": 124,
+      "search": "bfs",
+      "status": null
+    },
+    {
+      "budget_seconds": 120,
+      "classification": "verified",
+      "kind": "exists-trace",
+      "lemma": "revocation_reachable",
+      "return_code": 0,
+      "search": "bfs",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 180,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "accept_has_rekey_origin",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 180,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "accept_requires_authorization",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 180,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "revoked_never_accepts",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 180,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "recovery_requester_authorized",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 300,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "recovery_helper_authorized",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 180,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "recovery_same_epoch",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 240,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "recovery_accept_has_rekey_origin",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    },
+    {
+      "budget_seconds": 300,
+      "classification": "verified",
+      "kind": "all-traces",
+      "lemma": "epoch_key_secrecy_unless_compromised",
+      "return_code": 0,
+      "search": "default",
+      "status": "verified"
+    }
+  ],
+  "schema_version": 1,
+  "scientific_state": "V2_PARTIAL_PROOF_WITH_TIMEOUTS",
+  "timeout_count": 1,
+  "timeout_lemmas": [
+    "executable_same_epoch_recovery"
+  ],
+  "v1_preserved": true,
+  "verified_count": 10,
+  "verified_lemmas": [
+    "executable_initial_accept",
+    "revocation_reachable",
+    "accept_has_rekey_origin",
+    "accept_requires_authorization",
+    "revoked_never_accepts",
+    "recovery_requester_authorized",
+    "recovery_helper_authorized",
+    "recovery_same_epoch",
+    "recovery_accept_has_rekey_origin",
+    "epoch_key_secrecy_unless_compromised"
+  ]
+}

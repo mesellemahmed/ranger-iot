@@ -1,0 +1,24 @@
+{
+  "checks": {
+    "14_previous_nonsecrecy_properties_preserved": true,
+    "new_temporal_present": true,
+    "old_diagnostic_removed_from_contract": true,
+    "protocol_rules_identical": true,
+    "v2_has_16": true,
+    "v3_has_17": true
+  },
+  "implementation_modified": false,
+  "new_temporal_lemmas": [
+    "epoch1_root_confidential_against_m4_revoked_state",
+    "epoch2_root_confidential_against_m3_revoked_state",
+    "historical_e1_root_exposure_after_later_holder_leak"
+  ],
+  "old_diagnostic_lemmas": [
+    "new_epoch_key_secret_without_relevant_compromise",
+    "revoked_old_key_does_not_reveal_new_root_key"
+  ],
+  "protocol_rules_identical": true,
+  "schema_version": 1,
+  "v2_lemma_count": 16,
+  "v3_lemma_count": 17
+}

@@ -1,0 +1,3 @@
+[submodule "third_party/contiki-ng"]
+	path = third_party/contiki-ng
+	url = https://github.com/contiki-ng/contiki-ng.git

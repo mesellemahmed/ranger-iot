@@ -1,0 +1,98 @@
+[run] Running CI checks in Docker
+[ci] Python
+Python 3.12.14
+[ci] Ruff lint
+All checks passed!
+[ci] Ruff format
+71 files already formatted
+[ci] MyPy
+Success: no issues found in 39 source files
+[ci] Pytest + branch coverage
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.2, pluggy-1.6.0
+rootdir: /workspace
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-5.0.0
+collected 177 items
+
+tests/analysis/test_publication.py ....                                  [  2%]
+tests/analysis/test_publication_edge_cases.py ...........                [  8%]
+tests/experiments/test_campaign.py .........                             [ 13%]
+tests/experiments/test_experiment_config.py .........                    [ 18%]
+tests/experiments/test_radio_accounting_integration.py ..                [ 19%]
+tests/experiments/test_ranger_adaptive_integration.py ....               [ 22%]
+tests/experiments/test_ranger_adaptive_v2_integration.py .               [ 22%]
+tests/experiments/test_ranger_static_integration.py .....                [ 25%]
+tests/experiments/test_runner.py ........                                [ 29%]
+tests/experiments/test_trace_artifacts.py ..                             [ 31%]
+tests/protocols/test_lkh.py .........                                    [ 36%]
+tests/protocols/test_lkh_flood.py ....                                   [ 38%]
+tests/protocols/test_lkh_transport.py .....                              [ 41%]
+tests/protocols/test_skdc.py ....                                        [ 43%]
+tests/ranger/test_adaptive_protocol.py ...                               [ 45%]
+tests/ranger/test_adaptive_v2_protocol.py ...                            [ 46%]
+tests/ranger/test_capsule.py ......                                      [ 50%]
+tests/ranger/test_coding.py .......................                      [ 63%]
+tests/ranger/test_recovery_protocol.py ....                              [ 65%]
+tests/ranger/test_static_protocol.py ......                              [ 68%]
+tests/sim/test_core.py .....                                             [ 71%]
+tests/sim/test_flooding.py ......                                        [ 75%]
+tests/sim/test_models_metrics.py ...                                     [ 76%]
+tests/sim/test_network.py .......                                        [ 80%]
+tests/sim/test_packet_topology_node.py ..........                        [ 86%]
+tests/sim/test_radio_accounting.py ...                                   [ 88%]
+tests/sim/test_randomness.py ...                                         [ 89%]
+tests/sim/test_routing.py .....                                          [ 92%]
+tests/sim/test_topology_factory.py ......                                [ 96%]
+tests/test_group_rekey.py .......                                        [100%]
+
+---------- coverage: platform linux, python 3.12.14-final-0 ----------
+Name                                            Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------------------------
+src/ranger_iot/__init__.py                          0      0      0      0   100%
+src/ranger_iot/analysis/__init__.py                 2      0      0      0   100%
+src/ranger_iot/analysis/publication.py            190     17     56      5    91%   89, 103, 113, 170, 450-465, 469-479, 483
+src/ranger_iot/config.py                            0      0      0      0   100%
+src/ranger_iot/experiments/__init__.py              3      0      0      0   100%
+src/ranger_iot/experiments/artifacts.py            18      0      0      0   100%
+src/ranger_iot/experiments/campaign.py            143     29     48     15    76%   105, 107, 109, 111, 113, 116, 118, 120, 122, 124, 129, 131, 135, 143-146, 315->312, 351-354, 358-364, 368
+src/ranger_iot/experiments/config.py               62      2     18      2    95%   60, 71
+src/ranger_iot/experiments/run.py                  18     18      2      0     0%   1-25
+src/ranger_iot/experiments/runner.py              157      9     30      5    91%   116->127, 119-121, 326, 385, 445, 459, 470, 474
+src/ranger_iot/experiments/trace.py                31      1      0      0    97%   30
+src/ranger_iot/group.py                            73      0     26      0   100%
+src/ranger_iot/protocols/__init__.py                6      0      0      0   100%
+src/ranger_iot/protocols/base.py                    4      0      0      0   100%
+src/ranger_iot/protocols/lkh.py                   143      1     52      3    98%   108->113, 182->180, 217
+src/ranger_iot/protocols/lkh_flood.py             129     14     48     14    84%   71, 73, 86, 92, 111, 150, 154, 156, 158, 164, 166, 169, 179->exit, 192, 203->202, 208
+src/ranger_iot/protocols/lkh_transport.py         135     16     54     17    83%   73, 86, 111, 127, 155, 159, 161, 163, 165, 167, 171, 173, 176, 178, 186->exit, 199, 210->209, 215
+src/ranger_iot/protocols/skdc.py                   68      8     24      8    83%   50, 92, 95, 97, 99, 101, 103, 107, 110->exit
+src/ranger_iot/ranger/__init__.py                   6      0      0      0   100%
+src/ranger_iot/ranger/adaptive_protocol.py        180     26     64     17    81%   33, 35, 37, 169-180, 188, 197, 234, 236, 241, 243, 245, 249, 255, 271, 273, 306-307
+src/ranger_iot/ranger/adaptive_v2_protocol.py      52      0      8      0   100%
+src/ranger_iot/ranger/capsule.py                   20      0     10      0   100%
+src/ranger_iot/ranger/coding.py                    91      0     36      0   100%
+src/ranger_iot/ranger/recovery_protocol.py        160     14     68     14    88%   155, 211->exit, 213, 219, 221, 223, 225, 227, 229, 233, 239, 271, 273, 274->exit, 293-294
+src/ranger_iot/ranger/static_protocol.py          131     17     38     12    83%   30, 32, 84, 97, 100, 103, 133, 194, 198, 200, 211, 217, 221, 234, 240, 245-246
+src/ranger_iot/rekey.py                            59      0     22      0   100%
+src/ranger_iot/sim/__init__.py                     13      0      0      0   100%
+src/ranger_iot/sim/core.py                         84      1     28      1    98%   106
+src/ranger_iot/sim/delay.py                        15      0      2      0   100%
+src/ranger_iot/sim/flooding.py                    102      2     38      3    96%   152, 177->179, 183
+src/ranger_iot/sim/loss.py                         24      0      6      0   100%
+src/ranger_iot/sim/metrics.py                      54      0      0      0   100%
+src/ranger_iot/sim/network.py                     108      4     50      4    95%   86, 88, 90, 92
+src/ranger_iot/sim/node.py                         35      0      6      0   100%
+src/ranger_iot/sim/packet.py                       30      0     12      0   100%
+src/ranger_iot/sim/randomness.py                   41      0     10      0   100%
+src/ranger_iot/sim/routing.py                     108      2     38      3    97%   108, 113, 117->119
+src/ranger_iot/sim/topology.py                     37      0     12      0   100%
+src/ranger_iot/sim/topology_factory.py             42      1     20      1    97%   32
+-------------------------------------------------------------------------------------------
+TOTAL                                            2574    182    826    124    91%
+
+Required test coverage of 90.0% reached. Total coverage: 90.71%
+
+============================= 177 passed in 11.01s =============================
+[ci] PASS

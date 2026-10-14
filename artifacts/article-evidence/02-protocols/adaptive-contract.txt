@@ -1,0 +1,232 @@
+src/ranger_iot/ranger/adaptive_protocol.py:19:class AdaptiveRedundancyRequest:
+src/ranger_iot/ranger/adaptive_protocol.py:26:    round_id: int
+src/ranger_iot/ranger/adaptive_protocol.py:38:        if self.round_id < 1:
+src/ranger_iot/ranger/adaptive_protocol.py:39:            raise ValueError("round_id must be at least 1")
+src/ranger_iot/ranger/adaptive_protocol.py:45:class RangerAdaptiveParameters(RangerRecoveryParameters):
+src/ranger_iot/ranger/adaptive_protocol.py:46:    """Incremental-redundancy controls for feedback-driven RANGER."""
+src/ranger_iot/ranger/adaptive_protocol.py:48:    adaptive_nack_bytes: int = 16
+src/ranger_iot/ranger/adaptive_protocol.py:49:    adaptive_recovery_rounds: int = 2
+src/ranger_iot/ranger/adaptive_protocol.py:53:        if self.adaptive_nack_bytes <= 0:
+src/ranger_iot/ranger/adaptive_protocol.py:54:            raise ValueError("adaptive_nack_bytes must be positive")
+src/ranger_iot/ranger/adaptive_protocol.py:55:        if self.adaptive_recovery_rounds < 0:
+src/ranger_iot/ranger/adaptive_protocol.py:56:            raise ValueError("adaptive_recovery_rounds must be non-negative")
+src/ranger_iot/ranger/adaptive_protocol.py:60:class RangerAdaptiveStats(RangerRecoveryStats):
+src/ranger_iot/ranger/adaptive_protocol.py:61:    """Protocol counters for incremental redundancy and explicit feedback."""
+src/ranger_iot/ranger/adaptive_protocol.py:64:    adaptive_parity_injections: int
+src/ranger_iot/ranger/adaptive_protocol.py:65:    adaptive_nack_rounds: int
+src/ranger_iot/ranger/adaptive_protocol.py:66:    adaptive_nacks: int
+src/ranger_iot/ranger/adaptive_protocol.py:67:    adaptive_nack_hop_attempts: int
+src/ranger_iot/ranger/adaptive_protocol.py:68:    adaptive_actions: int
+src/ranger_iot/ranger/adaptive_protocol.py:69:    unused_redundancy_fragments: int
+src/ranger_iot/ranger/adaptive_protocol.py:73:class _AdaptiveCounters:
+src/ranger_iot/ranger/adaptive_protocol.py:75:    next_phase: str = "nack"
+src/ranger_iot/ranger/adaptive_protocol.py:76:    nack_rounds: int = 0
+src/ranger_iot/ranger/adaptive_protocol.py:77:    nacks: int = 0
+src/ranger_iot/ranger/adaptive_protocol.py:78:    nack_hop_attempts: int = 0
+src/ranger_iot/ranger/adaptive_protocol.py:81:    released_round_ids: set[int] = field(default_factory=set)
+src/ranger_iot/ranger/adaptive_protocol.py:84:class RangerAdaptiveProtocol(RangerRecoveryProtocol):
+src/ranger_iot/ranger/adaptive_protocol.py:85:    """RANGER with feedback-driven incremental redundancy.
+src/ranger_iot/ranger/adaptive_protocol.py:89:    adaptive NACK toward the Group Manager over a deterministic BFS control
+src/ranger_iot/ranger/adaptive_protocol.py:91:    NACK round. Local same-epoch recovery is then allowed before another
+src/ranger_iot/ranger/adaptive_protocol.py:92:    redundancy-request round.
+src/ranger_iot/ranger/adaptive_protocol.py:95:    protocol. Redundancy is therefore demand-driven rather than oracle-driven.
+src/ranger_iot/ranger/adaptive_protocol.py:98:    MESSAGE_KIND = "ranger.adaptive.fragment"
+src/ranger_iot/ranger/adaptive_protocol.py:99:    ADAPTIVE_NACK_KIND = "ranger.adaptive.nack"
+src/ranger_iot/ranger/adaptive_protocol.py:107:        parameters: RangerAdaptiveParameters | None = None,
+src/ranger_iot/ranger/adaptive_protocol.py:109:        adaptive_parameters = parameters or RangerAdaptiveParameters()
+src/ranger_iot/ranger/adaptive_protocol.py:110:        self._adaptive_parameters = adaptive_parameters
+src/ranger_iot/ranger/adaptive_protocol.py:111:        self._adaptive: dict[int, _AdaptiveCounters] = {}
+src/ranger_iot/ranger/adaptive_protocol.py:116:            parameters=adaptive_parameters,
+src/ranger_iot/ranger/adaptive_protocol.py:122:        initial = self._adaptive_parameters.coding.data_fragments
+src/ranger_iot/ranger/adaptive_protocol.py:123:        self._adaptive[session.epoch] = _AdaptiveCounters(next_fragment_index=initial)
+src/ranger_iot/ranger/adaptive_protocol.py:126:    def transport_stats(self, epoch: int) -> RangerAdaptiveStats:
+src/ranger_iot/ranger/adaptive_protocol.py:129:        counters = self._require_adaptive(epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:130:        initial = self._adaptive_parameters.coding.data_fragments
+src/ranger_iot/ranger/adaptive_protocol.py:131:        return RangerAdaptiveStats(
+src/ranger_iot/ranger/adaptive_protocol.py:139:            recovery_rounds=recovery.recovery_rounds,
+src/ranger_iot/ranger/adaptive_protocol.py:146:            adaptive_parity_injections=counters.parity_injections,
+src/ranger_iot/ranger/adaptive_protocol.py:147:            adaptive_nack_rounds=counters.nack_rounds,
+src/ranger_iot/ranger/adaptive_protocol.py:148:            adaptive_nacks=counters.nacks,
+src/ranger_iot/ranger/adaptive_protocol.py:149:            adaptive_nack_hop_attempts=counters.nack_hop_attempts,
+src/ranger_iot/ranger/adaptive_protocol.py:150:            adaptive_actions=counters.actions,
+src/ranger_iot/ranger/adaptive_protocol.py:151:            unused_redundancy_fragments=len(state.fragments) - state.flood_injections,
+src/ranger_iot/ranger/adaptive_protocol.py:155:        """Start the next useful adaptive action, or return zero when quiescent."""
+src/ranger_iot/ranger/adaptive_protocol.py:161:        counters = self._require_adaptive(epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:163:            if counters.next_phase == "nack":
+src/ranger_iot/ranger/adaptive_protocol.py:165:                count = self.start_redundancy_request_round(epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:171:            counters.next_phase = "nack"
+src/ranger_iot/ranger/adaptive_protocol.py:173:            if recovery.rounds >= self._adaptive_parameters.adaptive_recovery_rounds:
+src/ranger_iot/ranger/adaptive_protocol.py:175:            count = self.start_recovery_round(epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:182:    def start_redundancy_request_round(self, epoch: int) -> int:
+src/ranger_iot/ranger/adaptive_protocol.py:186:        counters = self._require_adaptive(epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:199:        round_id = counters.nack_rounds + 1
+src/ranger_iot/ranger/adaptive_protocol.py:202:            request = AdaptiveRedundancyRequest(
+src/ranger_iot/ranger/adaptive_protocol.py:207:                round_id=round_id,
+src/ranger_iot/ranger/adaptive_protocol.py:210:            self._send_nack_hop(node_id=member_id, request=request)
+src/ranger_iot/ranger/adaptive_protocol.py:211:            counters.nacks += 1
+src/ranger_iot/ranger/adaptive_protocol.py:213:        counters.nack_rounds += 1
+src/ranger_iot/ranger/adaptive_protocol.py:217:        return fragments[: self._adaptive_parameters.coding.data_fragments]
+src/ranger_iot/ranger/adaptive_protocol.py:226:        if message.kind == self.ADAPTIVE_NACK_KIND:
+src/ranger_iot/ranger/adaptive_protocol.py:227:            self._handle_adaptive_nack(node_id=node_id, message=message)
+src/ranger_iot/ranger/adaptive_protocol.py:231:    def _handle_adaptive_nack(self, *, node_id: int, message: FloodMessage) -> None:
+src/ranger_iot/ranger/adaptive_protocol.py:233:        if not isinstance(request, AdaptiveRedundancyRequest):
+src/ranger_iot/ranger/adaptive_protocol.py:234:            raise TypeError("invalid RANGER adaptive-NACK payload")
+src/ranger_iot/ranger/adaptive_protocol.py:236:            raise ValueError("adaptive NACK epoch mismatch")
+src/ranger_iot/ranger/adaptive_protocol.py:238:            self._send_nack_hop(node_id=node_id, request=request)
+src/ranger_iot/ranger/adaptive_protocol.py:251:        counters = self._require_adaptive(request.epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:252:        if request.round_id in counters.released_round_ids:
+src/ranger_iot/ranger/adaptive_protocol.py:259:        counters.released_round_ids.add(request.round_id)
+src/ranger_iot/ranger/adaptive_protocol.py:263:    def _send_nack_hop(
+src/ranger_iot/ranger/adaptive_protocol.py:267:        request: AdaptiveRedundancyRequest,
+src/ranger_iot/ranger/adaptive_protocol.py:273:            raise RuntimeError("manager cannot forward an adaptive NACK to itself")
+src/ranger_iot/ranger/adaptive_protocol.py:277:            kind=self.ADAPTIVE_NACK_KIND,
+src/ranger_iot/ranger/adaptive_protocol.py:278:            payload_bytes=self._adaptive_parameters.adaptive_nack_bytes,
+src/ranger_iot/ranger/adaptive_protocol.py:282:        self._require_adaptive(request.epoch).nack_hop_attempts += 1
+src/ranger_iot/ranger/adaptive_protocol.py:303:    def _require_adaptive(self, epoch: int) -> _AdaptiveCounters:
+src/ranger_iot/ranger/adaptive_protocol.py:305:            return self._adaptive[epoch]
+src/ranger_iot/ranger/adaptive_protocol.py:307:            raise KeyError(f"unknown adaptive epoch: {epoch}") from exc
+src/ranger_iot/ranger/adaptive_v2_protocol.py:7:from ranger_iot.ranger.adaptive_protocol import (
+src/ranger_iot/ranger/adaptive_v2_protocol.py:8:    AdaptiveRedundancyRequest,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:9:    RangerAdaptiveParameters,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:10:    RangerAdaptiveProtocol,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:11:    RangerAdaptiveStats,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:18:class RangerAdaptiveV2Stats(RangerAdaptiveStats):
+src/ranger_iot/ranger/adaptive_v2_protocol.py:19:    """Adaptive-V2 counters for branch-local NACK suppression."""
+src/ranger_iot/ranger/adaptive_v2_protocol.py:21:    adaptive_nack_forwarded: int
+src/ranger_iot/ranger/adaptive_v2_protocol.py:22:    adaptive_nack_suppressed: int
+src/ranger_iot/ranger/adaptive_v2_protocol.py:26:class _SuppressionCounters:
+src/ranger_iot/ranger/adaptive_v2_protocol.py:27:    forwarded_node_rounds: set[tuple[int, int]] = field(default_factory=set)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:32:class RangerAdaptiveV2Protocol(RangerAdaptiveProtocol):
+src/ranger_iot/ranger/adaptive_v2_protocol.py:33:    """RANGER Adaptive-V2 with branch-local duplicate NACK suppression.
+src/ranger_iot/ranger/adaptive_v2_protocol.py:37:    ``(epoch, round_id)`` is forwarded toward the Group Manager. Later reports
+src/ranger_iot/ranger/adaptive_v2_protocol.py:38:    received at the same relay in the same round are suppressed.
+src/ranger_iot/ranger/adaptive_v2_protocol.py:40:    A relay's own source report is deliberately not entered in the suppression
+src/ranger_iot/ranger/adaptive_v2_protocol.py:43:    redundancy under loss while changing long-chain feedback growth from
+src/ranger_iot/ranger/adaptive_v2_protocol.py:49:    MESSAGE_KIND = "ranger.adaptive-v2.fragment"
+src/ranger_iot/ranger/adaptive_v2_protocol.py:50:    ADAPTIVE_NACK_KIND = "ranger.adaptive-v2.nack"
+src/ranger_iot/ranger/adaptive_v2_protocol.py:58:        parameters: RangerAdaptiveParameters | None = None,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:60:        self._suppression: dict[int, _SuppressionCounters] = {}
+src/ranger_iot/ranger/adaptive_v2_protocol.py:70:        self._suppression[session.epoch] = _SuppressionCounters()
+src/ranger_iot/ranger/adaptive_v2_protocol.py:73:    def transport_stats(self, epoch: int) -> RangerAdaptiveV2Stats:
+src/ranger_iot/ranger/adaptive_v2_protocol.py:75:        suppression = self._require_suppression(epoch)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:76:        return RangerAdaptiveV2Stats(
+src/ranger_iot/ranger/adaptive_v2_protocol.py:84:            recovery_rounds=base.recovery_rounds,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:91:            adaptive_parity_injections=base.adaptive_parity_injections,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:92:            adaptive_nack_rounds=base.adaptive_nack_rounds,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:93:            adaptive_nacks=base.adaptive_nacks,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:94:            adaptive_nack_hop_attempts=base.adaptive_nack_hop_attempts,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:95:            adaptive_actions=base.adaptive_actions,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:96:            unused_redundancy_fragments=base.unused_redundancy_fragments,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:97:            adaptive_nack_forwarded=suppression.forwarded,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:98:            adaptive_nack_suppressed=suppression.suppressed,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:101:    def _handle_adaptive_nack(
+src/ranger_iot/ranger/adaptive_v2_protocol.py:108:        if not isinstance(request, AdaptiveRedundancyRequest):
+src/ranger_iot/ranger/adaptive_v2_protocol.py:109:            raise TypeError("invalid RANGER adaptive-NACK payload")
+src/ranger_iot/ranger/adaptive_v2_protocol.py:111:            raise ValueError("adaptive NACK epoch mismatch")
+src/ranger_iot/ranger/adaptive_v2_protocol.py:114:            super()._handle_adaptive_nack(node_id=node_id, message=message)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:117:        suppression = self._require_suppression(request.epoch)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:118:        key = (node_id, request.round_id)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:119:        if key in suppression.forwarded_node_rounds:
+src/ranger_iot/ranger/adaptive_v2_protocol.py:120:            suppression.suppressed += 1
+src/ranger_iot/ranger/adaptive_v2_protocol.py:123:        suppression.forwarded_node_rounds.add(key)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:124:        suppression.forwarded += 1
+src/ranger_iot/ranger/adaptive_v2_protocol.py:125:        self._send_nack_hop(node_id=node_id, request=request)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:127:    def _require_suppression(self, epoch: int) -> _SuppressionCounters:
+src/ranger_iot/ranger/adaptive_v2_protocol.py:129:            return self._suppression[epoch]
+src/ranger_iot/ranger/adaptive_v2_protocol.py:131:            raise KeyError(f"unknown adaptive-v2 epoch: {epoch}") from exc
+src/ranger_iot/ranger/coding.py:23:    def redundancy_fragments(self) -> int:
+src/ranger_iot/ranger/recovery_protocol.py:61:    recovery_rounds: int
+src/ranger_iot/ranger/recovery_protocol.py:71:    rounds: int = 0
+src/ranger_iot/ranger/recovery_protocol.py:83:    more recovery rounds. Each stale member asks all directly connected
+src/ranger_iot/ranger/recovery_protocol.py:132:            recovery_rounds=counters.rounds,
+src/ranger_iot/ranger/recovery_protocol.py:142:    def start_recovery_round(self, epoch: int) -> int:
+src/ranger_iot/ranger/recovery_protocol.py:143:        """Issue one deterministic recovery request round for stale targets."""
+src/ranger_iot/ranger/recovery_protocol.py:178:            counters.rounds += 1
+src/ranger_iot/ranger/static_protocol.py:67:    adaptive coding.  Revoked nodes may still relay fragments at the network
+src/ranger_iot/ranger/__init__.py:1:from ranger_iot.ranger.adaptive_protocol import (
+src/ranger_iot/ranger/__init__.py:2:    AdaptiveRedundancyRequest,
+src/ranger_iot/ranger/__init__.py:3:    RangerAdaptiveParameters,
+src/ranger_iot/ranger/__init__.py:4:    RangerAdaptiveProtocol,
+src/ranger_iot/ranger/__init__.py:5:    RangerAdaptiveStats,
+src/ranger_iot/ranger/__init__.py:7:from ranger_iot.ranger.adaptive_v2_protocol import (
+src/ranger_iot/ranger/__init__.py:8:    RangerAdaptiveV2Protocol,
+src/ranger_iot/ranger/__init__.py:9:    RangerAdaptiveV2Stats,
+src/ranger_iot/ranger/__init__.py:26:    "AdaptiveRedundancyRequest",
+src/ranger_iot/ranger/__init__.py:30:    "RangerAdaptiveParameters",
+src/ranger_iot/ranger/__init__.py:31:    "RangerAdaptiveProtocol",
+src/ranger_iot/ranger/__init__.py:32:    "RangerAdaptiveStats",
+src/ranger_iot/ranger/__init__.py:33:    "RangerAdaptiveV2Protocol",
+src/ranger_iot/ranger/__init__.py:34:    "RangerAdaptiveV2Stats",
+tests/ranger/test_adaptive_protocol.py:7:from ranger_iot.ranger.adaptive_protocol import (
+tests/ranger/test_adaptive_protocol.py:8:    AdaptiveRedundancyRequest,
+tests/ranger/test_adaptive_protocol.py:9:    RangerAdaptiveParameters,
+tests/ranger/test_adaptive_protocol.py:10:    RangerAdaptiveProtocol,
+tests/ranger/test_adaptive_protocol.py:49:    adaptive_recovery_rounds: int = 2,
+tests/ranger/test_adaptive_protocol.py:50:) -> tuple[SimulationEngine, GroupState, NetworkMetrics, RangerAdaptiveProtocol]:
+tests/ranger/test_adaptive_protocol.py:65:        rng=RandomStream(73, "ranger-adaptive-test"),
+tests/ranger/test_adaptive_protocol.py:74:    protocol = RangerAdaptiveProtocol(
+tests/ranger/test_adaptive_protocol.py:78:        parameters=RangerAdaptiveParameters(
+tests/ranger/test_adaptive_protocol.py:82:            adaptive_nack_bytes=16,
+tests/ranger/test_adaptive_protocol.py:83:            adaptive_recovery_rounds=adaptive_recovery_rounds,
+tests/ranger/test_adaptive_protocol.py:103:    assert stats.adaptive_parity_injections == 0
+tests/ranger/test_adaptive_protocol.py:104:    assert stats.adaptive_nacks == 0
+tests/ranger/test_adaptive_protocol.py:105:    assert stats.unused_redundancy_fragments == 2
+tests/ranger/test_adaptive_protocol.py:109:def test_explicit_nack_releases_only_one_parity_per_round() -> None:
+tests/ranger/test_adaptive_protocol.py:112:        adaptive_recovery_rounds=0,
+tests/ranger/test_adaptive_protocol.py:120:    nack_count = protocol.advance(session.epoch)
+tests/ranger/test_adaptive_protocol.py:121:    assert nack_count == 2
+tests/ranger/test_adaptive_protocol.py:126:    assert stats.adaptive_nack_rounds == 1
+tests/ranger/test_adaptive_protocol.py:127:    assert stats.adaptive_nacks == 2
+tests/ranger/test_adaptive_protocol.py:128:    assert stats.adaptive_nack_hop_attempts == 5
+tests/ranger/test_adaptive_protocol.py:129:    assert stats.adaptive_parity_injections == 1
+tests/ranger/test_adaptive_protocol.py:131:    assert stats.unused_redundancy_fragments == 1
+tests/ranger/test_adaptive_protocol.py:134:def test_adaptive_request_and_parameter_validation() -> None:
+tests/ranger/test_adaptive_protocol.py:136:        AdaptiveRedundancyRequest("", 1, 1, 1, 1, 0)
+tests/ranger/test_adaptive_protocol.py:137:    with pytest.raises(ValueError, match="round_id"):
+tests/ranger/test_adaptive_protocol.py:138:        AdaptiveRedundancyRequest("c", 1, 1, 1, 0, 0)
+tests/ranger/test_adaptive_protocol.py:140:        AdaptiveRedundancyRequest("c", 1, 1, 1, 1, -1)
+tests/ranger/test_adaptive_protocol.py:141:    with pytest.raises(ValueError, match="adaptive_nack_bytes"):
+tests/ranger/test_adaptive_protocol.py:142:        RangerAdaptiveParameters(adaptive_nack_bytes=0)
+tests/ranger/test_adaptive_protocol.py:143:    with pytest.raises(ValueError, match="adaptive_recovery_rounds"):
+tests/ranger/test_adaptive_protocol.py:144:        RangerAdaptiveParameters(adaptive_recovery_rounds=-1)
+tests/ranger/test_adaptive_v2_protocol.py:5:from ranger_iot.ranger.adaptive_protocol import (
+tests/ranger/test_adaptive_v2_protocol.py:6:    AdaptiveRedundancyRequest,
+tests/ranger/test_adaptive_v2_protocol.py:7:    RangerAdaptiveParameters,
+tests/ranger/test_adaptive_v2_protocol.py:9:from ranger_iot.ranger.adaptive_v2_protocol import RangerAdaptiveV2Protocol
+tests/ranger/test_adaptive_v2_protocol.py:51:    adaptive_recovery_rounds: int = 0,
+tests/ranger/test_adaptive_v2_protocol.py:56:    RangerAdaptiveV2Protocol,
+tests/ranger/test_adaptive_v2_protocol.py:72:        rng=RandomStream(91, "ranger-adaptive-v2-test"),
+tests/ranger/test_adaptive_v2_protocol.py:85:    protocol = RangerAdaptiveV2Protocol(
+tests/ranger/test_adaptive_v2_protocol.py:89:        parameters=RangerAdaptiveParameters(
+tests/ranger/test_adaptive_v2_protocol.py:96:            adaptive_nack_bytes=16,
+tests/ranger/test_adaptive_v2_protocol.py:97:            adaptive_recovery_rounds=adaptive_recovery_rounds,
+tests/ranger/test_adaptive_v2_protocol.py:103:def test_no_loss_matches_incremental_redundancy_without_feedback() -> None:
+tests/ranger/test_adaptive_v2_protocol.py:116:    assert stats.adaptive_parity_injections == 0
+tests/ranger/test_adaptive_v2_protocol.py:117:    assert stats.adaptive_nacks == 0
+tests/ranger/test_adaptive_v2_protocol.py:118:    assert stats.adaptive_nack_forwarded == 0
+tests/ranger/test_adaptive_v2_protocol.py:119:    assert stats.adaptive_nack_suppressed == 0
+tests/ranger/test_adaptive_v2_protocol.py:120:    assert stats.unused_redundancy_fragments == 2
+tests/ranger/test_adaptive_v2_protocol.py:124:def test_branch_local_suppression_reduces_line_nack_hops() -> None:
+tests/ranger/test_adaptive_v2_protocol.py:139:    assert stats.adaptive_nacks == 2
+tests/ranger/test_adaptive_v2_protocol.py:140:    assert stats.adaptive_nack_hop_attempts == 4
+tests/ranger/test_adaptive_v2_protocol.py:141:    assert stats.adaptive_nack_forwarded == 2
+tests/ranger/test_adaptive_v2_protocol.py:142:    assert stats.adaptive_nack_suppressed == 1
+tests/ranger/test_adaptive_v2_protocol.py:143:    assert stats.adaptive_parity_injections == 1
+tests/ranger/test_adaptive_v2_protocol.py:155:        kind=protocol.ADAPTIVE_NACK_KIND,
+tests/ranger/test_adaptive_v2_protocol.py:161:    with pytest.raises(TypeError, match="invalid RANGER adaptive-NACK"):
+tests/ranger/test_adaptive_v2_protocol.py:162:        protocol._handle_adaptive_nack(node_id=1, message=invalid)
+tests/ranger/test_adaptive_v2_protocol.py:164:    request = AdaptiveRedundancyRequest(
+tests/ranger/test_adaptive_v2_protocol.py:169:        round_id=1,
+tests/ranger/test_adaptive_v2_protocol.py:175:        kind=protocol.ADAPTIVE_NACK_KIND,
+tests/ranger/test_adaptive_v2_protocol.py:182:        protocol._handle_adaptive_nack(node_id=1, message=mismatch)
+tests/ranger/test_adaptive_v2_protocol.py:184:    with pytest.raises(KeyError, match="unknown adaptive-v2 epoch"):
+tests/ranger/test_adaptive_v2_protocol.py:185:        protocol._require_suppression(999)
+tests/ranger/test_coding.py:28:def test_coding_parameters_report_redundancy_and_fragment_size() -> None:
+tests/ranger/test_coding.py:31:    assert parameters.redundancy_fragments == 2
+tests/ranger/test_recovery_protocol.py:93:    assert protocol.start_recovery_round(session.epoch) == 0
+tests/ranger/test_recovery_protocol.py:95:    assert stats.recovery_rounds == 0
+tests/ranger/test_recovery_protocol.py:100:def test_two_recovery_rounds_cascade_missing_fragment_along_line() -> None:
+tests/ranger/test_recovery_protocol.py:113:    assert protocol.start_recovery_round(session.epoch) == 3
+tests/ranger/test_recovery_protocol.py:119:    assert protocol.start_recovery_round(session.epoch) == 1
+tests/ranger/test_recovery_protocol.py:126:    assert stats.recovery_rounds == 2
+tests/ranger/test_recovery_protocol.py:144:    assert protocol.start_recovery_round(session.epoch) == 5

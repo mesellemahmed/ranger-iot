@@ -1,0 +1,37 @@
+{
+  "adaptive_v2_state": {
+    "initial_k_foundation": true,
+    "nack_implemented": false,
+    "recovery_expected": false
+  },
+  "coding": {
+    "k": 3,
+    "n": 5
+  },
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-INITIAL-K-NO-LOSS",
+  "hashes": {
+    "assertion_sha256": "83925b568004d6659a1379f7d1af963b22fca8d55e1b789a4bd653efda4b15df",
+    "makefile_sha256": "b8400caa4f3b79960b46a81f81799afd0f3351a38db6f6eef2df7d3da67f17c5",
+    "project_conf_sha256": "1a91232b22144adb510bef57b56ccdc32a2db874a77c49c92336ded4d142e702",
+    "raw_log_sha256": "45f9a50701bb17aa8ac5bf5d08f56ade02a5c2b8cc8b23ec88953b4fd3c9e57c",
+    "result_sha256": "f71d2fbc66b513c090ccc9334185815cb4ac99b23aabe49b9630439264dd303a",
+    "scenario_sha256": "ef66cacd2b1c902d6089160ad476f46b77459fd3be1983238ae9d4d3ee29173b",
+    "source_sha256": "919e30e985774bfc60bf20b29a716fd084c8115f489a01f919e207f721dc2164"
+  },
+  "initial_dissemination": {
+    "authorized_targets": 6,
+    "expected_total_sends": 18,
+    "fragments_per_target": 3
+  },
+  "radio": {
+    "success_ratio_rx": 1.0,
+    "success_ratio_tx": 1.0
+  },
+  "safety": {
+    "revoked_initial_sends": 0,
+    "revoked_node": 8
+  },
+  "schema_version": 1,
+  "simulation_seed": 20260930,
+  "source_commit": "7ea10e864108bd72c3ca352431c618788e70b722"
+}

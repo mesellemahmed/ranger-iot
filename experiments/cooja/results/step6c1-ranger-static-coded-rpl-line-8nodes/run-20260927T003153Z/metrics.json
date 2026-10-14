@@ -1,0 +1,29 @@
+{
+  "coding": {
+    "data_fragments": 3,
+    "group_id": 1,
+    "model": "ideal-k-of-n",
+    "real_codec_bytes": false,
+    "redundancy_fragments": 2,
+    "total_fragments": 5
+  },
+  "direct_root_to_farthest": false,
+  "exit_code": 1,
+  "experiment": "RANGER-COOJA-STATIC-CODED-RPL-LINE-8",
+  "marker_counts": {
+    "all_sent": 0,
+    "assert_pass": 0,
+    "core_pass": 0,
+    "ready": 0,
+    "root_start": 0,
+    "test_ok": 0
+  },
+  "reconstructed_nodes": [],
+  "registered_nodes": [],
+  "rejected_nodes": [],
+  "result": "FAIL",
+  "root_to_farthest_distance": 245.0,
+  "run_id": "run-20260927T003153Z",
+  "schema_version": 1,
+  "transmitting_range": 45.0
+}

@@ -1,0 +1,47 @@
+{
+  "canonical_step7c2_codec": "UNCHANGED",
+  "checks": {
+    "below_k_rejected": true,
+    "canonical_7c2_codec_unchanged": true,
+    "cooja_controlled_subsets": true,
+    "cooja_no_loss": true,
+    "core_ci": true,
+    "historical_sources_unchanged": true,
+    "python_reconstructs_actual_rx": true,
+    "revocation": true,
+    "wire_receive_byte_exact": true,
+    "wire_send_byte_exact": true
+  },
+  "claim_guardrail": "STEP7C3 validates actual Reed-Solomon shard bytes over an isolated Cooja/RPL application. Historical STEP7A/STEP7B comparative measurements remain measurements of the frozen idealized k-of-n protocol implementations.",
+  "codec": {
+    "field": "GF(256)",
+    "k": 3,
+    "n": 5,
+    "primitive_polynomial": "0x11D",
+    "systematic": true
+  },
+  "controlled_fragment_omission": {
+    "below_k_node": 7,
+    "below_k_python_rejected": true,
+    "c_reconstructions": 5,
+    "python_reconstructions_from_actual_rx": 5,
+    "receive_events": 18,
+    "send_events": 18
+  },
+  "controlled_fragment_omission_is_radio_loss": false,
+  "historical_7a_7b_applications": "UNCHANGED",
+  "next_step": "STEP7D_FORMAL_SECURITY_EXECUTABILITY_AUDIT",
+  "no_loss": {
+    "c_reconstructions": 6,
+    "python_reconstructions_from_actual_rx": 6,
+    "receive_events": 19,
+    "send_events": 35
+  },
+  "payload_bytes": 16,
+  "schema_version": 2,
+  "scientific_state": "REAL_RS_BYTES_VALIDATED_ON_COOJA_RPL_WIRE",
+  "shard_bytes": 6,
+  "step": "STEP7C3_COOJA_REAL_RS_WIRE_INTEGRATION",
+  "step7c3_pass": true,
+  "wire_packet_bytes": 18
+}

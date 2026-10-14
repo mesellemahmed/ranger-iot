@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ranger-iot"
+version = "0.1.0"
+description = "Research framework for resilient group rekeying in constrained IoT networks"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+  { name = "RANGER-IoT Research Team" }
+]
+dependencies = [
+  "networkx>=3.3,<4",
+  "numpy>=2.0,<3",
+  "pydantic>=2.8,<3",
+  "PyYAML>=6.0,<7"
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.11,<2",
+    "pytest>=8.3,<9",
+    "pytest-cov>=5.0,<6",
+    "ruff>=0.6,<1",
+    "types-PyYAML>=6.0,<7",
+]
+analysis = [
+  "pandas>=2.2,<3",
+  "scipy>=1.14,<2",
+  "matplotlib>=3.9,<4",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ranger_iot"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["ranger_iot"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 90
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+  "E",
+  "F",
+  "I",
+  "UP",
+  "B",
+  "SIM",
+  "RUF"
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unreachable = true
+show_error_codes = true
+mypy_path = "src"
+packages = ["ranger_iot"]

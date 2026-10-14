@@ -1,0 +1,16 @@
+services:
+  tamarin:
+    image: ranger-tamarin:1.12.0-repro
+
+    build:
+      context: .
+      dockerfile: docker/tamarin/Dockerfile
+
+    platform: linux/amd64
+
+    working_dir: /workspace
+
+    volumes:
+      - .:/workspace
+
+    network_mode: none

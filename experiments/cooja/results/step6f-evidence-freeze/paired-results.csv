@@ -1,0 +1,10 @@
+left_protocol,right_protocol,tx,pairs,mean_delta_reconstructed,median_delta_reconstructed,left_better,right_better,equal,reconstruction_sign_p,both_complete,left_only_complete,right_only_complete,neither_complete,completion_mcnemar_exact_p
+recovery,static,0.5,10,0,0.0,0,0,10,1.0,10,0,0,0,1.0
+recovery,static,0.3,10,0.6,1.0,7,1,2,0.0703125,1,7,1,1,0.0703125
+recovery,static,0.2,10,1.5,2.0,6,0,4,0.03125,0,4,0,6,0.125
+adaptive_v2,static,0.5,10,0,0.0,0,0,10,1.0,10,0,0,0,1.0
+adaptive_v2,static,0.3,10,0.8,1.0,8,0,2,0.0078125,2,8,0,0,0.0078125
+adaptive_v2,static,0.2,10,1.3,1.0,8,1,1,0.0390625,0,3,0,7,0.25
+adaptive_v2,recovery,0.5,10,0,0.0,0,0,10,1.0,10,0,0,0,1.0
+adaptive_v2,recovery,0.3,10,0.2,0.0,2,0,8,0.5,8,2,0,0,0.5
+adaptive_v2,recovery,0.2,10,-0.2,0.0,4,4,2,1.0,1,2,3,4,1.0

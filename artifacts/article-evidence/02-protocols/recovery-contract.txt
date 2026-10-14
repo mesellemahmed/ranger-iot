@@ -1,0 +1,283 @@
+src/ranger_iot/ranger/adaptive_protocol.py:9:from ranger_iot.ranger.recovery_protocol import (
+src/ranger_iot/ranger/adaptive_protocol.py:10:    RangerRecoveryParameters,
+src/ranger_iot/ranger/adaptive_protocol.py:11:    RangerRecoveryProtocol,
+src/ranger_iot/ranger/adaptive_protocol.py:12:    RangerRecoveryStats,
+src/ranger_iot/ranger/adaptive_protocol.py:45:class RangerAdaptiveParameters(RangerRecoveryParameters):
+src/ranger_iot/ranger/adaptive_protocol.py:49:    adaptive_recovery_rounds: int = 2
+src/ranger_iot/ranger/adaptive_protocol.py:52:        RangerRecoveryParameters.__post_init__(self)
+src/ranger_iot/ranger/adaptive_protocol.py:55:        if self.adaptive_recovery_rounds < 0:
+src/ranger_iot/ranger/adaptive_protocol.py:56:            raise ValueError("adaptive_recovery_rounds must be non-negative")
+src/ranger_iot/ranger/adaptive_protocol.py:60:class RangerAdaptiveStats(RangerRecoveryStats):
+src/ranger_iot/ranger/adaptive_protocol.py:84:class RangerAdaptiveProtocol(RangerRecoveryProtocol):
+src/ranger_iot/ranger/adaptive_protocol.py:91:    NACK round. Local same-epoch recovery is then allowed before another
+src/ranger_iot/ranger/adaptive_protocol.py:127:        recovery = super().transport_stats(epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:132:            epoch=recovery.epoch,
+src/ranger_iot/ranger/adaptive_protocol.py:133:            logical_ciphertexts=recovery.logical_ciphertexts,
+src/ranger_iot/ranger/adaptive_protocol.py:134:            capsule_payload_bytes=recovery.capsule_payload_bytes,
+src/ranger_iot/ranger/adaptive_protocol.py:135:            data_fragments=recovery.data_fragments,
+src/ranger_iot/ranger/adaptive_protocol.py:136:            total_fragments=recovery.total_fragments,
+src/ranger_iot/ranger/adaptive_protocol.py:137:            fragment_payload_bytes=recovery.fragment_payload_bytes,
+src/ranger_iot/ranger/adaptive_protocol.py:138:            flood_injections=recovery.flood_injections,
+src/ranger_iot/ranger/adaptive_protocol.py:139:            recovery_rounds=recovery.recovery_rounds,
+src/ranger_iot/ranger/adaptive_protocol.py:140:            recovery_requests=recovery.recovery_requests,
+src/ranger_iot/ranger/adaptive_protocol.py:141:            recovery_fragment_attempts=recovery.recovery_fragment_attempts,
+src/ranger_iot/ranger/adaptive_protocol.py:142:            peer_recovery_fragment_attempts=recovery.peer_recovery_fragment_attempts,
+src/ranger_iot/ranger/adaptive_protocol.py:143:            manager_recovery_fragment_attempts=recovery.manager_recovery_fragment_attempts,
+src/ranger_iot/ranger/adaptive_protocol.py:144:            recovered_members=recovery.recovered_members,
+src/ranger_iot/ranger/adaptive_protocol.py:164:                counters.next_phase = "recovery"
+src/ranger_iot/ranger/adaptive_protocol.py:172:            recovery = self._require_recovery(epoch)
+src/ranger_iot/ranger/adaptive_protocol.py:173:            if recovery.rounds >= self._adaptive_parameters.adaptive_recovery_rounds:
+src/ranger_iot/ranger/adaptive_protocol.py:175:            count = self.start_recovery_round(epoch)
+src/ranger_iot/ranger/adaptive_v2_protocol.py:84:            recovery_rounds=base.recovery_rounds,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:85:            recovery_requests=base.recovery_requests,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:86:            recovery_fragment_attempts=base.recovery_fragment_attempts,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:87:            peer_recovery_fragment_attempts=base.peer_recovery_fragment_attempts,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:88:            manager_recovery_fragment_attempts=base.manager_recovery_fragment_attempts,
+src/ranger_iot/ranger/recovery_protocol.py:18:class RecoveryRequest:
+src/ranger_iot/ranger/recovery_protocol.py:46:class RangerRecoveryParameters(RangerStaticParameters):
+src/ranger_iot/ranger/recovery_protocol.py:47:    """Static coding parameters plus local recovery control-message cost."""
+src/ranger_iot/ranger/recovery_protocol.py:49:    recovery_request_bytes: int = 24
+src/ranger_iot/ranger/recovery_protocol.py:53:        if self.recovery_request_bytes <= 0:
+src/ranger_iot/ranger/recovery_protocol.py:54:            raise ValueError("recovery_request_bytes must be positive")
+src/ranger_iot/ranger/recovery_protocol.py:58:class RangerRecoveryStats(RangerStaticStats):
+src/ranger_iot/ranger/recovery_protocol.py:61:    recovery_rounds: int
+src/ranger_iot/ranger/recovery_protocol.py:62:    recovery_requests: int
+src/ranger_iot/ranger/recovery_protocol.py:63:    recovery_fragment_attempts: int
+src/ranger_iot/ranger/recovery_protocol.py:64:    peer_recovery_fragment_attempts: int
+src/ranger_iot/ranger/recovery_protocol.py:65:    manager_recovery_fragment_attempts: int
+src/ranger_iot/ranger/recovery_protocol.py:70:class _RecoveryCounters:
+src/ranger_iot/ranger/recovery_protocol.py:78:class RangerRecoveryProtocol(RangerStaticProtocol):
+src/ranger_iot/ranger/recovery_protocol.py:83:    more recovery rounds. Each stale member asks all directly connected
+src/ranger_iot/ranger/recovery_protocol.py:89:    Recovery is intentionally same-epoch only. Catch-up across multiple missed
+src/ranger_iot/ranger/recovery_protocol.py:94:    RECOVERY_REQUEST_KIND = "ranger.recovery.request"
+src/ranger_iot/ranger/recovery_protocol.py:95:    RECOVERY_FRAGMENT_KIND = "ranger.recovery.fragment"
+src/ranger_iot/ranger/recovery_protocol.py:103:        parameters: RangerRecoveryParameters | None = None,
+src/ranger_iot/ranger/recovery_protocol.py:105:        recovery_parameters = parameters or RangerRecoveryParameters()
+src/ranger_iot/ranger/recovery_protocol.py:110:            parameters=recovery_parameters,
+src/ranger_iot/ranger/recovery_protocol.py:112:        self._recovery_parameters = recovery_parameters
+src/ranger_iot/ranger/recovery_protocol.py:113:        self._recovery: dict[int, _RecoveryCounters] = {}
+src/ranger_iot/ranger/recovery_protocol.py:118:        self._recovery[session.epoch] = _RecoveryCounters()
+src/ranger_iot/ranger/recovery_protocol.py:121:    def transport_stats(self, epoch: int) -> RangerRecoveryStats:
+src/ranger_iot/ranger/recovery_protocol.py:123:        counters = self._require_recovery(epoch)
+src/ranger_iot/ranger/recovery_protocol.py:124:        return RangerRecoveryStats(
+src/ranger_iot/ranger/recovery_protocol.py:132:            recovery_rounds=counters.rounds,
+src/ranger_iot/ranger/recovery_protocol.py:133:            recovery_requests=counters.requests,
+src/ranger_iot/ranger/recovery_protocol.py:134:            recovery_fragment_attempts=counters.fragment_attempts,
+src/ranger_iot/ranger/recovery_protocol.py:135:            peer_recovery_fragment_attempts=(
+src/ranger_iot/ranger/recovery_protocol.py:138:            manager_recovery_fragment_attempts=counters.manager_fragment_attempts,
+src/ranger_iot/ranger/recovery_protocol.py:142:    def start_recovery_round(self, epoch: int) -> int:
+src/ranger_iot/ranger/recovery_protocol.py:143:        """Issue one deterministic recovery request round for stale targets."""
+src/ranger_iot/ranger/recovery_protocol.py:146:        counters = self._require_recovery(epoch)
+src/ranger_iot/ranger/recovery_protocol.py:157:            request = RecoveryRequest(
+src/ranger_iot/ranger/recovery_protocol.py:165:            for neighbor_id in self._eligible_recovery_neighbors(member_id):
+src/ranger_iot/ranger/recovery_protocol.py:169:                    kind=self.RECOVERY_REQUEST_KIND,
+src/ranger_iot/ranger/recovery_protocol.py:170:                    payload_bytes=self._recovery_parameters.recovery_request_bytes,
+src/ranger_iot/ranger/recovery_protocol.py:207:        if message.kind == self.RECOVERY_REQUEST_KIND:
+src/ranger_iot/ranger/recovery_protocol.py:208:            self._handle_recovery_request(node_id=node_id, message=message)
+src/ranger_iot/ranger/recovery_protocol.py:211:        if message.kind == self.RECOVERY_FRAGMENT_KIND:
+src/ranger_iot/ranger/recovery_protocol.py:214:            self._handle_recovery_fragment(member_id=node_id, message=message, at_us=at_us)
+src/ranger_iot/ranger/recovery_protocol.py:216:    def _handle_recovery_request(self, *, node_id: int, message: FloodMessage) -> None:
+src/ranger_iot/ranger/recovery_protocol.py:218:        if not isinstance(request, RecoveryRequest):
+src/ranger_iot/ranger/recovery_protocol.py:219:            raise TypeError("invalid RANGER recovery-request payload")
+src/ranger_iot/ranger/recovery_protocol.py:221:            raise ValueError("recovery request epoch mismatch")
+src/ranger_iot/ranger/recovery_protocol.py:223:            raise ValueError("recovery requester does not match message origin")
+src/ranger_iot/ranger/recovery_protocol.py:246:        counters = self._require_recovery(request.epoch)
+src/ranger_iot/ranger/recovery_protocol.py:253:                kind=self.RECOVERY_FRAGMENT_KIND,
+src/ranger_iot/ranger/recovery_protocol.py:262:    def _handle_recovery_fragment(
+src/ranger_iot/ranger/recovery_protocol.py:271:            raise TypeError("invalid RANGER recovery-fragment payload")
+src/ranger_iot/ranger/recovery_protocol.py:273:            raise ValueError("recovery fragment epoch mismatch")
+src/ranger_iot/ranger/recovery_protocol.py:275:            self._require_recovery(fragment.epoch).recovered_members.add(member_id)
+src/ranger_iot/ranger/recovery_protocol.py:277:    def _eligible_recovery_neighbors(self, member_id: int) -> tuple[int, ...]:
+src/ranger_iot/ranger/recovery_protocol.py:290:    def _require_recovery(self, epoch: int) -> _RecoveryCounters:
+src/ranger_iot/ranger/recovery_protocol.py:292:            return self._recovery[epoch]
+src/ranger_iot/ranger/recovery_protocol.py:294:            raise KeyError(f"unknown recovery epoch: {epoch}") from exc
+src/ranger_iot/ranger/static_protocol.py:66:    This stage intentionally has no retry, neighbor recovery, self-healing, or
+src/ranger_iot/ranger/__init__.py:18:from ranger_iot.ranger.recovery_protocol import (
+src/ranger_iot/ranger/__init__.py:19:    RangerRecoveryParameters,
+src/ranger_iot/ranger/__init__.py:20:    RangerRecoveryProtocol,
+src/ranger_iot/ranger/__init__.py:21:    RangerRecoveryStats,
+src/ranger_iot/ranger/__init__.py:22:    RecoveryRequest,
+src/ranger_iot/ranger/__init__.py:35:    "RangerRecoveryParameters",
+src/ranger_iot/ranger/__init__.py:36:    "RangerRecoveryProtocol",
+src/ranger_iot/ranger/__init__.py:37:    "RangerRecoveryStats",
+src/ranger_iot/ranger/__init__.py:38:    "RecoveryRequest",
+Binary file experiments/cooja/apps/ranger-recovery-rpl/build/cooja/mtype641372629.cooja matches
+experiments/cooja/apps/ranger-recovery-rpl/build/cooja/obj/.deps/ranger-recovery-rpl.c.d:1:build/cooja/obj/ranger-recovery-rpl.o: ranger-recovery-rpl.c \
+Binary file experiments/cooja/apps/ranger-recovery-rpl/build/cooja/obj/ranger-recovery-rpl.o matches
+Binary file experiments/cooja/apps/ranger-recovery-rpl/build/cooja/ranger-recovery-rpl.cooja matches
+experiments/cooja/apps/ranger-recovery-rpl/Makefile:1:CONTIKI_PROJECT = ranger-recovery-rpl
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:11: * epoch. No Reed-Solomon byte arithmetic, recovery, or adaptation is modeled.
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:42:#define MSG_RECOVERY_REQUEST 4
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:43:#define MSG_RECOVERY_FRAGMENT 5
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:44:#define MSG_RECOVERY_EPOCH_PRIME 6
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:91:#ifndef RANGER_RECOVERY_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:92:#define RANGER_RECOVERY_SMOKE 0
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:95:#ifndef RANGER_RECOVERY_CASCADE_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:96:#define RANGER_RECOVERY_CASCADE_SMOKE 0
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:99:#define RANGER_RECOVERY_REQUEST_BYTES 24
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:100:#define RANGER_RECOVERY_INITIAL_DELAY (40 * CLOCK_SECOND)
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:101:#define RANGER_RECOVERY_ROUND_GAP (8 * CLOCK_SECOND)
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:102:#define RANGER_RECOVERY_MAX_ROUNDS 2
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:104:#define RANGER_RECOVERY_EPOCH_PRIME_BYTES 6
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:113:#define RANGER_RECOVERY_EPOCH_PRIME_SETTLE     (5 * CLOCK_SECOND)
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:116: * Recovery starts only after the initial 3-of-5
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:119: * This mirrors the Python Recovery model, where
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:120: * recovery rounds begin after the initial flood.
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:122:#define RANGER_RECOVERY_PRIMED_DELAY     (48 * CLOCK_SECOND)
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:144:static uint8_t recovery_epoch_primed;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:146:static uint8_t recovery_arm_requested;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:147:static uint8_t recovery_timer_armed;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:148:static uint8_t recovery_round;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:161: * One-hop Recovery peers learned while the
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:164: * Recovery packets still traverse the normal
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:169:recovery_neighbor_addr[
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:173:static uint16_t recovery_neighbor_mask;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:247:ranger_recovery_smoke_should_drop(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:251:#if RANGER_RECOVERY_CASCADE_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:266:#elif RANGER_RECOVERY_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:268:   * Controlled one-hop Recovery oracle:
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:283:ranger_recovery_initial_delay(void)
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:285:#if RANGER_RECOVERY_CASCADE_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:307:  return RANGER_RECOVERY_INITIAL_DELAY;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:312:ranger_recovery_arm_delay(void)
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:314:  if(recovery_epoch_primed) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:316:        RANGER_RECOVERY_PRIMED_DELAY;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:319:  return ranger_recovery_initial_delay();
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:350:ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:362:ranger_cache_recovery_neighbors(void)
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:385:        !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:405:        &recovery_neighbor_addr[
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:413:          recovery_neighbor_mask &
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:417:      recovery_neighbor_mask |=
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:421:          "RANGER_RECOVERY_CACHE_ADD "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:425:          recovery_neighbor_mask
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:433:ranger_recovery_cached_peer_matches(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:443:      !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:457:        recovery_neighbor_mask &
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:465:      &recovery_neighbor_addr[
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:518:#if !RANGER_RECOVERY_SMOKE && !RANGER_RECOVERY_CASCADE_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:520:ranger_send_recovery_epoch_prime(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:526:      RANGER_RECOVERY_EPOCH_PRIME_BYTES
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:530:      MSG_RECOVERY_EPOCH_PRIME;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:560:        "RANGER_RECOVERY_EPOCH_SEND "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:569:      "RANGER_RECOVERY_EPOCH_ALL_SENT "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:585:#endif /* normal Recovery only */
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:604:  ranger_cache_recovery_neighbors();
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:648:        "RANGER_RECOVERY_REPORT_SKIP "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:665:ranger_start_recovery_round(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:671:      RANGER_RECOVERY_REQUEST_BYTES
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:683:     recovery_round >=
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:684:         RANGER_RECOVERY_MAX_ROUNDS) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:692:  recovery_round++;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:694:  packet[0] = MSG_RECOVERY_REQUEST;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:717:          recovery_neighbor_mask &
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:728:        &recovery_neighbor_addr[
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:736:        "RANGER_RECOVERY_REQUEST "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:742:        recovery_round,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:751:      "RANGER_RECOVERY_CACHE_USE "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:755:      recovery_round,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:756:      recovery_neighbor_mask,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:761:      "RANGER_RECOVERY_ROUND "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:765:      recovery_round,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:775:handle_recovery_epoch_prime(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:789:          RANGER_RECOVERY_EPOCH_PRIME_BYTES
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:823:  recovery_epoch_primed = 1;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:826:      "RANGER_RECOVERY_EPOCH "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:836:      !recovery_arm_requested &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:837:      !recovery_timer_armed
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:839:    recovery_arm_requested = 1;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:849:handle_recovery_request(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:867:     RANGER_RECOVERY_REQUEST_BYTES) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:885:     !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:890:     !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:900:   * the Recovery peer interface.
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:903:      !ranger_recovery_cached_peer_matches(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:951:        MSG_RECOVERY_FRAGMENT;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:987:        "RANGER_RECOVERY_FRAGMENT_SEND "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1002:handle_recovery_fragment(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1035:      !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1055:      !ranger_recovery_cached_peer_matches(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1090:      "RANGER_RECOVERY_FRAGMENT "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1112:      "RANGER_RECOVERY_RECONSTRUCT "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1120:      recovery_round
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1239:  if(!recovery_arm_requested &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1240:     !recovery_timer_armed) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1241:    recovery_arm_requested = 1;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1421:  case MSG_RECOVERY_EPOCH_PRIME:
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1422:    handle_recovery_epoch_prime(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1429:  case MSG_RECOVERY_REQUEST:
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1430:    handle_recovery_request(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1437:  case MSG_RECOVERY_FRAGMENT:
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1438:    handle_recovery_fragment(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1455:  #if !RANGER_RECOVERY_SMOKE && !RANGER_RECOVERY_CASCADE_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1456:  static struct etimer recovery_epoch_prime_timer;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1457:  #endif /* normal Recovery only */
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1458:  static struct etimer recovery_timer;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1516:        ranger_cache_recovery_neighbors();
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1518:#if RANGER_RECOVERY_SMOKE || \
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1519:    RANGER_RECOVERY_CASCADE_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1547:        ranger_send_recovery_epoch_prime(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1552:            &recovery_epoch_prime_timer,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1553:            RANGER_RECOVERY_EPOCH_PRIME_SETTLE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1560:#if !RANGER_RECOVERY_SMOKE && \
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1561:    !RANGER_RECOVERY_CASCADE_SMOKE
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1566:              &recovery_epoch_prime_timer &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1612:        if(ranger_recovery_smoke_should_drop(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1616:              "RANGER_RECOVERY_SMOKE_DROP "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1719:         recovery_arm_requested &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1720:         !recovery_timer_armed &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1724:        recovery_timer_armed = 1;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1727:            &recovery_timer,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1728:            ranger_recovery_arm_delay()
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1732:            "RANGER_RECOVERY_ARM "
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1742:         data == &recovery_timer &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1743:         recovery_timer_armed) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1747:           recovery_round <
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1748:               RANGER_RECOVERY_MAX_ROUNDS) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1750:          ranger_start_recovery_round(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1755:             recovery_round <
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1756:                 RANGER_RECOVERY_MAX_ROUNDS) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1759:                &recovery_timer,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1760:                RANGER_RECOVERY_ROUND_GAP
+tests/ranger/test_adaptive_protocol.py:49:    adaptive_recovery_rounds: int = 2,
+tests/ranger/test_adaptive_protocol.py:81:            recovery_request_bytes=24,
+tests/ranger/test_adaptive_protocol.py:83:            adaptive_recovery_rounds=adaptive_recovery_rounds,
+tests/ranger/test_adaptive_protocol.py:112:        adaptive_recovery_rounds=0,
+tests/ranger/test_adaptive_protocol.py:143:    with pytest.raises(ValueError, match="adaptive_recovery_rounds"):
+tests/ranger/test_adaptive_protocol.py:144:        RangerAdaptiveParameters(adaptive_recovery_rounds=-1)
+tests/ranger/test_adaptive_v2_protocol.py:51:    adaptive_recovery_rounds: int = 0,
+tests/ranger/test_adaptive_v2_protocol.py:95:            recovery_request_bytes=24,
+tests/ranger/test_adaptive_v2_protocol.py:97:            adaptive_recovery_rounds=adaptive_recovery_rounds,
+tests/ranger/test_recovery_protocol.py:8:from ranger_iot.ranger.recovery_protocol import (
+tests/ranger/test_recovery_protocol.py:9:    RangerRecoveryParameters,
+tests/ranger/test_recovery_protocol.py:10:    RangerRecoveryProtocol,
+tests/ranger/test_recovery_protocol.py:11:    RecoveryRequest,
+tests/ranger/test_recovery_protocol.py:49:) -> tuple[SimulationEngine, GroupState, NetworkMetrics, RangerRecoveryProtocol]:
+tests/ranger/test_recovery_protocol.py:64:        rng=RandomStream(42, "ranger-recovery-test"),
+tests/ranger/test_recovery_protocol.py:73:    protocol = RangerRecoveryProtocol(
+tests/ranger/test_recovery_protocol.py:77:        parameters=RangerRecoveryParameters(
+tests/ranger/test_recovery_protocol.py:80:            recovery_request_bytes=24,
+tests/ranger/test_recovery_protocol.py:86:def test_recovery_is_idle_when_initial_dissemination_completes() -> None:
+tests/ranger/test_recovery_protocol.py:93:    assert protocol.start_recovery_round(session.epoch) == 0
+tests/ranger/test_recovery_protocol.py:95:    assert stats.recovery_rounds == 0
+tests/ranger/test_recovery_protocol.py:96:    assert stats.recovery_requests == 0
+tests/ranger/test_recovery_protocol.py:100:def test_two_recovery_rounds_cascade_missing_fragment_along_line() -> None:
+tests/ranger/test_recovery_protocol.py:113:    assert protocol.start_recovery_round(session.epoch) == 3
+tests/ranger/test_recovery_protocol.py:119:    assert protocol.start_recovery_round(session.epoch) == 1
+tests/ranger/test_recovery_protocol.py:126:    assert stats.recovery_rounds == 2
+tests/ranger/test_recovery_protocol.py:127:    assert stats.recovery_requests == 4
+tests/ranger/test_recovery_protocol.py:128:    assert stats.recovery_fragment_attempts == 2
+tests/ranger/test_recovery_protocol.py:129:    assert stats.peer_recovery_fragment_attempts == 2
+tests/ranger/test_recovery_protocol.py:130:    assert stats.manager_recovery_fragment_attempts == 0
+tests/ranger/test_recovery_protocol.py:144:    assert protocol.start_recovery_round(session.epoch) == 5
+tests/ranger/test_recovery_protocol.py:149:    assert stats.manager_recovery_fragment_attempts == 1
+tests/ranger/test_recovery_protocol.py:153:def test_recovery_request_and_parameters_validation() -> None:
+tests/ranger/test_recovery_protocol.py:155:        RecoveryRequest("", 1, 1, 1, (), 1)
+tests/ranger/test_recovery_protocol.py:157:        RecoveryRequest("c", -1, 1, 1, (), 1)
+tests/ranger/test_recovery_protocol.py:159:        RecoveryRequest("c", 1, 0, 1, (), 1)
+tests/ranger/test_recovery_protocol.py:161:        RecoveryRequest("c", 1, 1, -1, (), 1)
+tests/ranger/test_recovery_protocol.py:163:        RecoveryRequest("c", 1, 1, 1, (0, 0), 1)
+tests/ranger/test_recovery_protocol.py:165:        RecoveryRequest("c", 1, 1, 1, (2, 1), 1)
+tests/ranger/test_recovery_protocol.py:167:        RecoveryRequest("c", 1, 1, 1, (), 0)
+tests/ranger/test_recovery_protocol.py:168:    with pytest.raises(ValueError, match="recovery_request_bytes"):
+tests/ranger/test_recovery_protocol.py:169:        RangerRecoveryParameters(recovery_request_bytes=0)

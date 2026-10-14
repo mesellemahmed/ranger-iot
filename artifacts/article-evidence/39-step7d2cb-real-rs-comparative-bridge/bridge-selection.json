@@ -1,0 +1,149 @@
+{
+  "real_rs_results_used_for_selection": false,
+  "schema_version": 1,
+  "selected_cells": [
+    {
+      "historical": {
+        "ranger-adaptive-v2": {
+          "completion": 0.0,
+          "convergence": 0.588095238095238
+        },
+        "ranger-recovery": {
+          "completion": 0.0,
+          "convergence": 0.6476190476190476
+        },
+        "ranger-static": {
+          "completion": 0.0,
+          "convergence": 0.4111111111111111
+        }
+      },
+      "label": "recovery_vs_static_max_convergence_gain",
+      "member_count": 64,
+      "packet_loss": 0.2,
+      "topology": "balanced-tree"
+    },
+    {
+      "historical": {
+        "ranger-adaptive-v2": {
+          "completion": 0.05,
+          "convergence": 0.7435483870967742
+        },
+        "ranger-recovery": {
+          "completion": 0.15,
+          "convergence": 0.7967741935483871
+        },
+        "ranger-static": {
+          "completion": 0.0,
+          "convergence": 0.5774193548387097
+        }
+      },
+      "label": "adaptive_vs_static_max_convergence_gain",
+      "member_count": 32,
+      "packet_loss": 0.2,
+      "topology": "balanced-tree"
+    },
+    {
+      "historical": {
+        "ranger-adaptive-v2": {
+          "completion": 0.1,
+          "convergence": 0.4928571428571429
+        },
+        "ranger-recovery": {
+          "completion": 0.2,
+          "convergence": 0.6428571428571429
+        },
+        "ranger-static": {
+          "completion": 0.05,
+          "convergence": 0.45
+        }
+      },
+      "label": "recovery_over_adaptive_context",
+      "member_count": 8,
+      "packet_loss": 0.2,
+      "topology": "line"
+    },
+    {
+      "historical": {
+        "ranger-adaptive-v2": {
+          "completion": 0.85,
+          "convergence": 0.9951612903225806
+        },
+        "ranger-recovery": {
+          "completion": 0.7,
+          "convergence": 0.9903225806451612
+        },
+        "ranger-static": {
+          "completion": 0.25,
+          "convergence": 0.9419354838709678
+        }
+      },
+      "label": "adaptive_over_recovery_context",
+      "member_count": 32,
+      "packet_loss": 0.2,
+      "topology": "star"
+    },
+    {
+      "historical": {
+        "ranger-adaptive-v2": {
+          "completion": 1.0,
+          "convergence": 1.0
+        },
+        "ranger-recovery": {
+          "completion": 1.0,
+          "convergence": 1.0
+        },
+        "ranger-static": {
+          "completion": 1.0,
+          "convergence": 1.0
+        }
+      },
+      "label": "robust_high_loss_control",
+      "member_count": 16,
+      "packet_loss": 0.2,
+      "topology": "grid"
+    },
+    {
+      "historical": {
+        "ranger-adaptive-v2": {
+          "completion": 0.0,
+          "convergence": 0.06190476190476191
+        },
+        "ranger-recovery": {
+          "completion": 0.0,
+          "convergence": 0.06904761904761905
+        },
+        "ranger-static": {
+          "completion": 0.0,
+          "convergence": 0.05
+        }
+      },
+      "label": "harsh_high_loss_control",
+      "member_count": 64,
+      "packet_loss": 0.2,
+      "topology": "line"
+    },
+    {
+      "historical": {
+        "ranger-adaptive-v2": {
+          "completion": 1.0,
+          "convergence": 1.0
+        },
+        "ranger-recovery": {
+          "completion": 1.0,
+          "convergence": 1.0
+        },
+        "ranger-static": {
+          "completion": 1.0,
+          "convergence": 1.0
+        }
+      },
+      "label": "no_loss_high_scale_control",
+      "member_count": 64,
+      "packet_loss": 0.0,
+      "topology": "grid"
+    }
+  ],
+  "selection_policy": "algorithmic discriminant-context selection from the frozen historical matrix",
+  "selection_source": "frozen STEP7B1 idealized dataset",
+  "selection_timing": "before real-RS bridge execution"
+}

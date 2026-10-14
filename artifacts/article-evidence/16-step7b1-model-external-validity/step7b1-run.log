@@ -1,0 +1,338 @@
+
+============================================================
+2. BUILD STEP7B.1 CONFIG
+============================================================
+
+============================================================
+3. EXACT MATRIX VALIDATION
+============================================================
+SAMPLE[1] run_id=ranger_static__line__n0008__loss0000__seed001901 protocol=ranger-static topology=line N=8 loss=0.0 seed=1901
+SAMPLE[2] run_id=ranger_static__line__n0008__loss0000__seed002117 protocol=ranger-static topology=line N=8 loss=0.0 seed=2117
+SAMPLE[3] run_id=ranger_static__line__n0008__loss0000__seed006212 protocol=ranger-static topology=line N=8 loss=0.0 seed=6212
+SAMPLE[4] run_id=ranger_static__line__n0008__loss0000__seed008530 protocol=ranger-static topology=line N=8 loss=0.0 seed=8530
+SAMPLE[5] run_id=ranger_static__line__n0008__loss0000__seed005326 protocol=ranger-static topology=line N=8 loss=0.0 seed=5326
+three_protocols                  PASS
+four_topologies                  PASS
+four_member_scales               PASS
+twenty_frozen_seeds              PASS
+run_count                        PASS
+campaign_run_count_property      PASS
+
+PROTOCOLS     = ['ranger-adaptive-v2', 'ranger-recovery', 'ranger-static']
+TOPOLOGIES    = ['balanced-tree', 'grid', 'line', 'star']
+MEMBER_COUNTS = [8, 16, 32, 64]
+PACKET_LOSSES = [0.0, 0.1, 0.2]
+SEED_COUNT    = 20
+TOTAL_RUNS    = 2880
+
+============================================================
+4. EXECUTE FULL CAMPAIGN
+============================================================
+[0001/2880] P=ranger-static T=line N=8 loss=0.0 seed=1901
+[0002/2880] P=ranger-static T=line N=8 loss=0.0 seed=2117
+[0003/2880] P=ranger-static T=line N=8 loss=0.0 seed=6212
+[0004/2880] P=ranger-static T=line N=8 loss=0.0 seed=8530
+[0005/2880] P=ranger-static T=line N=8 loss=0.0 seed=5326
+[0006/2880] P=ranger-static T=line N=8 loss=0.0 seed=4518
+[0007/2880] P=ranger-static T=line N=8 loss=0.0 seed=6021
+[0008/2880] P=ranger-static T=line N=8 loss=0.0 seed=1381
+[0009/2880] P=ranger-static T=line N=8 loss=0.0 seed=2579
+[0010/2880] P=ranger-static T=line N=8 loss=0.0 seed=6704
+[0025/2880] P=ranger-static T=line N=8 loss=0.1 seed=5326
+[0050/2880] P=ranger-static T=line N=8 loss=0.2 seed=6704
+[0075/2880] P=ranger-static T=line N=16 loss=0.0 seed=6594
+[0100/2880] P=ranger-static T=line N=16 loss=0.1 seed=5659
+[0125/2880] P=ranger-static T=line N=32 loss=0.0 seed=5326
+[0150/2880] P=ranger-static T=line N=32 loss=0.1 seed=6704
+[0175/2880] P=ranger-static T=line N=32 loss=0.2 seed=6594
+[0200/2880] P=ranger-static T=line N=64 loss=0.0 seed=5659
+[0225/2880] P=ranger-static T=line N=64 loss=0.2 seed=5326
+[0250/2880] P=ranger-static T=star N=8 loss=0.0 seed=6704
+[0275/2880] P=ranger-static T=star N=8 loss=0.1 seed=6594
+[0300/2880] P=ranger-static T=star N=8 loss=0.2 seed=5659
+[0325/2880] P=ranger-static T=star N=16 loss=0.1 seed=5326
+[0350/2880] P=ranger-static T=star N=16 loss=0.2 seed=6704
+[0375/2880] P=ranger-static T=star N=32 loss=0.0 seed=6594
+[0400/2880] P=ranger-static T=star N=32 loss=0.1 seed=5659
+[0425/2880] P=ranger-static T=star N=64 loss=0.0 seed=5326
+[0450/2880] P=ranger-static T=star N=64 loss=0.1 seed=6704
+[0475/2880] P=ranger-static T=star N=64 loss=0.2 seed=6594
+[0500/2880] P=ranger-static T=balanced-tree N=8 loss=0.0 seed=5659
+[0525/2880] P=ranger-static T=balanced-tree N=8 loss=0.2 seed=5326
+[0550/2880] P=ranger-static T=balanced-tree N=16 loss=0.0 seed=6704
+[0575/2880] P=ranger-static T=balanced-tree N=16 loss=0.1 seed=6594
+[0600/2880] P=ranger-static T=balanced-tree N=16 loss=0.2 seed=5659
+[0625/2880] P=ranger-static T=balanced-tree N=32 loss=0.1 seed=5326
+[0650/2880] P=ranger-static T=balanced-tree N=32 loss=0.2 seed=6704
+[0675/2880] P=ranger-static T=balanced-tree N=64 loss=0.0 seed=6594
+[0700/2880] P=ranger-static T=balanced-tree N=64 loss=0.1 seed=5659
+[0725/2880] P=ranger-static T=grid N=8 loss=0.0 seed=5326
+[0750/2880] P=ranger-static T=grid N=8 loss=0.1 seed=6704
+[0775/2880] P=ranger-static T=grid N=8 loss=0.2 seed=6594
+[0800/2880] P=ranger-static T=grid N=16 loss=0.0 seed=5659
+[0825/2880] P=ranger-static T=grid N=16 loss=0.2 seed=5326
+[0850/2880] P=ranger-static T=grid N=32 loss=0.0 seed=6704
+[0875/2880] P=ranger-static T=grid N=32 loss=0.1 seed=6594
+[0900/2880] P=ranger-static T=grid N=32 loss=0.2 seed=5659
+[0925/2880] P=ranger-static T=grid N=64 loss=0.1 seed=5326
+[0950/2880] P=ranger-static T=grid N=64 loss=0.2 seed=6704
+[0975/2880] P=ranger-recovery T=line N=8 loss=0.0 seed=6594
+[1000/2880] P=ranger-recovery T=line N=8 loss=0.1 seed=5659
+[1025/2880] P=ranger-recovery T=line N=16 loss=0.0 seed=5326
+[1050/2880] P=ranger-recovery T=line N=16 loss=0.1 seed=6704
+[1075/2880] P=ranger-recovery T=line N=16 loss=0.2 seed=6594
+[1100/2880] P=ranger-recovery T=line N=32 loss=0.0 seed=5659
+[1125/2880] P=ranger-recovery T=line N=32 loss=0.2 seed=5326
+[1150/2880] P=ranger-recovery T=line N=64 loss=0.0 seed=6704
+[1175/2880] P=ranger-recovery T=line N=64 loss=0.1 seed=6594
+[1200/2880] P=ranger-recovery T=line N=64 loss=0.2 seed=5659
+[1225/2880] P=ranger-recovery T=star N=8 loss=0.1 seed=5326
+[1250/2880] P=ranger-recovery T=star N=8 loss=0.2 seed=6704
+[1275/2880] P=ranger-recovery T=star N=16 loss=0.0 seed=6594
+[1300/2880] P=ranger-recovery T=star N=16 loss=0.1 seed=5659
+[1325/2880] P=ranger-recovery T=star N=32 loss=0.0 seed=5326
+[1350/2880] P=ranger-recovery T=star N=32 loss=0.1 seed=6704
+[1375/2880] P=ranger-recovery T=star N=32 loss=0.2 seed=6594
+[1400/2880] P=ranger-recovery T=star N=64 loss=0.0 seed=5659
+[1425/2880] P=ranger-recovery T=star N=64 loss=0.2 seed=5326
+[1450/2880] P=ranger-recovery T=balanced-tree N=8 loss=0.0 seed=6704
+[1475/2880] P=ranger-recovery T=balanced-tree N=8 loss=0.1 seed=6594
+[1500/2880] P=ranger-recovery T=balanced-tree N=8 loss=0.2 seed=5659
+[1525/2880] P=ranger-recovery T=balanced-tree N=16 loss=0.1 seed=5326
+[1550/2880] P=ranger-recovery T=balanced-tree N=16 loss=0.2 seed=6704
+[1575/2880] P=ranger-recovery T=balanced-tree N=32 loss=0.0 seed=6594
+[1600/2880] P=ranger-recovery T=balanced-tree N=32 loss=0.1 seed=5659
+[1625/2880] P=ranger-recovery T=balanced-tree N=64 loss=0.0 seed=5326
+[1650/2880] P=ranger-recovery T=balanced-tree N=64 loss=0.1 seed=6704
+[1675/2880] P=ranger-recovery T=balanced-tree N=64 loss=0.2 seed=6594
+[1700/2880] P=ranger-recovery T=grid N=8 loss=0.0 seed=5659
+[1725/2880] P=ranger-recovery T=grid N=8 loss=0.2 seed=5326
+[1750/2880] P=ranger-recovery T=grid N=16 loss=0.0 seed=6704
+[1775/2880] P=ranger-recovery T=grid N=16 loss=0.1 seed=6594
+[1800/2880] P=ranger-recovery T=grid N=16 loss=0.2 seed=5659
+[1825/2880] P=ranger-recovery T=grid N=32 loss=0.1 seed=5326
+[1850/2880] P=ranger-recovery T=grid N=32 loss=0.2 seed=6704
+[1875/2880] P=ranger-recovery T=grid N=64 loss=0.0 seed=6594
+[1900/2880] P=ranger-recovery T=grid N=64 loss=0.1 seed=5659
+[1925/2880] P=ranger-adaptive-v2 T=line N=8 loss=0.0 seed=5326
+[1950/2880] P=ranger-adaptive-v2 T=line N=8 loss=0.1 seed=6704
+[1975/2880] P=ranger-adaptive-v2 T=line N=8 loss=0.2 seed=6594
+[2000/2880] P=ranger-adaptive-v2 T=line N=16 loss=0.0 seed=5659
+[2025/2880] P=ranger-adaptive-v2 T=line N=16 loss=0.2 seed=5326
+[2050/2880] P=ranger-adaptive-v2 T=line N=32 loss=0.0 seed=6704
+[2075/2880] P=ranger-adaptive-v2 T=line N=32 loss=0.1 seed=6594
+[2100/2880] P=ranger-adaptive-v2 T=line N=32 loss=0.2 seed=5659
+[2125/2880] P=ranger-adaptive-v2 T=line N=64 loss=0.1 seed=5326
+[2150/2880] P=ranger-adaptive-v2 T=line N=64 loss=0.2 seed=6704
+[2175/2880] P=ranger-adaptive-v2 T=star N=8 loss=0.0 seed=6594
+[2200/2880] P=ranger-adaptive-v2 T=star N=8 loss=0.1 seed=5659
+[2225/2880] P=ranger-adaptive-v2 T=star N=16 loss=0.0 seed=5326
+[2250/2880] P=ranger-adaptive-v2 T=star N=16 loss=0.1 seed=6704
+[2275/2880] P=ranger-adaptive-v2 T=star N=16 loss=0.2 seed=6594
+[2300/2880] P=ranger-adaptive-v2 T=star N=32 loss=0.0 seed=5659
+[2325/2880] P=ranger-adaptive-v2 T=star N=32 loss=0.2 seed=5326
+[2350/2880] P=ranger-adaptive-v2 T=star N=64 loss=0.0 seed=6704
+[2375/2880] P=ranger-adaptive-v2 T=star N=64 loss=0.1 seed=6594
+[2400/2880] P=ranger-adaptive-v2 T=star N=64 loss=0.2 seed=5659
+[2425/2880] P=ranger-adaptive-v2 T=balanced-tree N=8 loss=0.1 seed=5326
+[2450/2880] P=ranger-adaptive-v2 T=balanced-tree N=8 loss=0.2 seed=6704
+[2475/2880] P=ranger-adaptive-v2 T=balanced-tree N=16 loss=0.0 seed=6594
+[2500/2880] P=ranger-adaptive-v2 T=balanced-tree N=16 loss=0.1 seed=5659
+[2525/2880] P=ranger-adaptive-v2 T=balanced-tree N=32 loss=0.0 seed=5326
+[2550/2880] P=ranger-adaptive-v2 T=balanced-tree N=32 loss=0.1 seed=6704
+[2575/2880] P=ranger-adaptive-v2 T=balanced-tree N=32 loss=0.2 seed=6594
+[2600/2880] P=ranger-adaptive-v2 T=balanced-tree N=64 loss=0.0 seed=5659
+[2625/2880] P=ranger-adaptive-v2 T=balanced-tree N=64 loss=0.2 seed=5326
+[2650/2880] P=ranger-adaptive-v2 T=grid N=8 loss=0.0 seed=6704
+[2675/2880] P=ranger-adaptive-v2 T=grid N=8 loss=0.1 seed=6594
+[2700/2880] P=ranger-adaptive-v2 T=grid N=8 loss=0.2 seed=5659
+[2725/2880] P=ranger-adaptive-v2 T=grid N=16 loss=0.1 seed=5326
+[2750/2880] P=ranger-adaptive-v2 T=grid N=16 loss=0.2 seed=6704
+[2775/2880] P=ranger-adaptive-v2 T=grid N=32 loss=0.0 seed=6594
+[2800/2880] P=ranger-adaptive-v2 T=grid N=32 loss=0.1 seed=5659
+[2825/2880] P=ranger-adaptive-v2 T=grid N=64 loss=0.0 seed=5326
+[2850/2880] P=ranger-adaptive-v2 T=grid N=64 loss=0.1 seed=6704
+[2875/2880] P=ranger-adaptive-v2 T=grid N=64 loss=0.2 seed=6594
+[2880/2880] P=ranger-adaptive-v2 T=grid N=64 loss=0.2 seed=5659
+
+CAMPAIGN FINISHED
+campaign_id      = step7b1-model-external-validity
+run_count        = 2880
+completed_count  = 2078
+incomplete_count = 802
+
+============================================================
+5. VALIDATE RESULT MATRIX
+============================================================
+aggregate_row_count                PASS
+unique_run_keys                    PASS
+exact_three_protocol_pairing       PASS
+protocols                          PASS
+topologies                         PASS
+member_counts                      PASS
+packet_losses                      PASS
+seeds                              PASS
+
+AGGREGATE_ROWS = 2880
+PAIRED_SCENARIO_SEED_CELLS = 960
+EXACT THREE-PROTOCOL PAIRING = PASS
+
+============================================================
+6. GROUPED RESULTS
+============================================================
+GROUPED_CELLS = 144
+ranger-adaptive-v2   balanced-tree  N= 8 loss=0.00 complete=1.000 conv=1.000 tx=24.0 bytes=2568.0
+ranger-adaptive-v2   balanced-tree  N= 8 loss=0.10 complete=1.000 conv=1.000 tx=32.5 bytes=3099.7
+ranger-adaptive-v2   balanced-tree  N= 8 loss=0.20 complete=0.600 conv=0.929 tx=44.1 bytes=3515.9
+ranger-adaptive-v2   balanced-tree  N=16 loss=0.00 complete=1.000 conv=1.000 tx=48.0 bytes=7200.0
+ranger-adaptive-v2   balanced-tree  N=16 loss=0.10 complete=0.950 conv=0.997 tx=80.2 bytes=9742.2
+ranger-adaptive-v2   balanced-tree  N=16 loss=0.20 complete=0.300 conv=0.810 tx=109.2 bytes=10065.8
+ranger-adaptive-v2   balanced-tree  N=32 loss=0.00 complete=1.000 conv=1.000 tx=96.0 bytes=18432.0
+ranger-adaptive-v2   balanced-tree  N=32 loss=0.10 complete=0.600 conv=0.974 tx=183.4 bytes=25820.8
+ranger-adaptive-v2   balanced-tree  N=32 loss=0.20 complete=0.050 conv=0.744 tx=231.8 bytes=24217.2
+ranger-adaptive-v2   balanced-tree  N=64 loss=0.00 complete=1.000 conv=1.000 tx=192.0 bytes=45120.0
+ranger-adaptive-v2   balanced-tree  N=64 loss=0.10 complete=0.250 conv=0.910 tx=394.1 bytes=61682.1
+ranger-adaptive-v2   balanced-tree  N=64 loss=0.20 complete=0.000 conv=0.588 tx=495.8 bytes=53072.3
+ranger-adaptive-v2   grid           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=48.0 bytes=5136.0
+ranger-adaptive-v2   grid           N= 8 loss=0.10 complete=1.000 conv=1.000 tx=48.6 bytes=5150.1
+ranger-adaptive-v2   grid           N= 8 loss=0.20 complete=1.000 conv=1.000 tx=52.0 bytes=5392.6
+ranger-adaptive-v2   grid           N=16 loss=0.00 complete=1.000 conv=1.000 tx=102.0 bytes=15300.0
+ranger-adaptive-v2   grid           N=16 loss=0.10 complete=1.000 conv=1.000 tx=105.2 bytes=15572.3
+ranger-adaptive-v2   grid           N=16 loss=0.20 complete=1.000 conv=1.000 tx=116.7 bytes=16891.8
+ranger-adaptive-v2   grid           N=32 loss=0.00 complete=1.000 conv=1.000 tx=228.0 bytes=43776.0
+ranger-adaptive-v2   grid           N=32 loss=0.10 complete=1.000 conv=1.000 tx=234.9 bytes=44504.8
+ranger-adaptive-v2   grid           N=32 loss=0.20 complete=1.000 conv=1.000 tx=263.6 bytes=48596.4
+ranger-adaptive-v2   grid           N=64 loss=0.00 complete=1.000 conv=1.000 tx=486.0 bytes=114210.0
+ranger-adaptive-v2   grid           N=64 loss=0.10 complete=1.000 conv=1.000 tx=508.9 bytes=118040.2
+ranger-adaptive-v2   grid           N=64 loss=0.20 complete=1.000 conv=1.000 tx=530.8 bytes=121942.6
+ranger-adaptive-v2   line           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=24.0 bytes=2568.0
+ranger-adaptive-v2   line           N= 8 loss=0.10 complete=0.550 conv=0.871 tx=43.6 bytes=3066.9
+ranger-adaptive-v2   line           N= 8 loss=0.20 complete=0.100 conv=0.493 tx=59.8 bytes=3030.3
+ranger-adaptive-v2   line           N=16 loss=0.00 complete=1.000 conv=1.000 tx=48.0 bytes=7200.0
+ranger-adaptive-v2   line           N=16 loss=0.10 complete=0.050 conv=0.547 tx=122.6 bytes=8206.3
+ranger-adaptive-v2   line           N=16 loss=0.20 complete=0.000 conv=0.260 tx=128.0 bytes=6096.1
+ranger-adaptive-v2   line           N=32 loss=0.00 complete=1.000 conv=1.000 tx=96.0 bytes=18432.0
+ranger-adaptive-v2   line           N=32 loss=0.10 complete=0.000 conv=0.306 tx=257.6 bytes=15067.2
+ranger-adaptive-v2   line           N=32 loss=0.20 complete=0.000 conv=0.132 tx=254.8 bytes=9955.2
+ranger-adaptive-v2   line           N=64 loss=0.00 complete=1.000 conv=1.000 tx=192.0 bytes=45120.0
+ranger-adaptive-v2   line           N=64 loss=0.10 complete=0.000 conv=0.114 tx=519.0 bytes=22472.4
+ranger-adaptive-v2   line           N=64 loss=0.20 complete=0.000 conv=0.062 tx=503.7 bytes=15866.0
+ranger-adaptive-v2   star           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=24.0 bytes=2568.0
+ranger-adaptive-v2   star           N= 8 loss=0.10 complete=1.000 conv=1.000 tx=32.2 bytes=3301.4
+ranger-adaptive-v2   star           N= 8 loss=0.20 complete=0.900 conv=0.986 tx=39.6 bytes=3825.7
+ranger-adaptive-v2   star           N=16 loss=0.00 complete=1.000 conv=1.000 tx=48.0 bytes=7200.0
+ranger-adaptive-v2   star           N=16 loss=0.10 complete=1.000 conv=1.000 tx=68.7 bytes=9811.2
+ranger-adaptive-v2   star           N=16 loss=0.20 complete=0.950 conv=0.997 tx=84.0 bytes=11304.0
+ranger-adaptive-v2   star           N=32 loss=0.00 complete=1.000 conv=1.000 tx=96.0 bytes=18432.0
+ranger-adaptive-v2   star           N=32 loss=0.10 complete=1.000 conv=1.000 tx=141.1 bytes=25579.6
+ranger-adaptive-v2   star           N=32 loss=0.20 complete=0.850 conv=0.995 tx=183.0 bytes=31359.6
+ranger-adaptive-v2   star           N=64 loss=0.00 complete=1.000 conv=1.000 tx=192.0 bytes=45120.0
+ranger-adaptive-v2   star           N=64 loss=0.10 complete=1.000 conv=1.000 tx=301.4 bytes=66530.6
+ranger-adaptive-v2   star           N=64 loss=0.20 complete=0.650 conv=0.992 tx=375.8 bytes=78538.2
+ranger-recovery      balanced-tree  N= 8 loss=0.00 complete=1.000 conv=1.000 tx=40.0 bytes=4280.0
+ranger-recovery      balanced-tree  N= 8 loss=0.10 complete=1.000 conv=1.000 tx=38.0 bytes=4066.0
+ranger-recovery      balanced-tree  N= 8 loss=0.20 complete=0.750 conv=0.943 tx=36.7 bytes=3736.0
+ranger-recovery      balanced-tree  N=16 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=12000.0
+ranger-recovery      balanced-tree  N=16 loss=0.10 complete=0.950 conv=0.997 tx=73.2 bytes=10898.1
+ranger-recovery      balanced-tree  N=16 loss=0.20 complete=0.350 conv=0.903 tx=73.4 bytes=9926.4
+ranger-recovery      balanced-tree  N=32 loss=0.00 complete=1.000 conv=1.000 tx=160.0 bytes=30720.0
+ranger-recovery      balanced-tree  N=32 loss=0.10 complete=0.500 conv=0.973 tx=144.2 bytes=26670.0
+ranger-recovery      balanced-tree  N=32 loss=0.20 complete=0.150 conv=0.797 tx=153.2 bytes=23635.2
+ranger-recovery      balanced-tree  N=64 loss=0.00 complete=1.000 conv=1.000 tx=320.0 bytes=75200.0
+ranger-recovery      balanced-tree  N=64 loss=0.10 complete=0.200 conv=0.948 tx=285.8 bytes=61601.9
+ranger-recovery      balanced-tree  N=64 loss=0.20 complete=0.000 conv=0.648 tx=319.9 bytes=51859.8
+ranger-recovery      grid           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=8560.0
+ranger-recovery      grid           N= 8 loss=0.10 complete=1.000 conv=1.000 tx=78.6 bytes=8410.2
+ranger-recovery      grid           N= 8 loss=0.20 complete=1.000 conv=1.000 tx=78.0 bytes=8346.0
+ranger-recovery      grid           N=16 loss=0.00 complete=1.000 conv=1.000 tx=170.0 bytes=25500.0
+ranger-recovery      grid           N=16 loss=0.10 complete=1.000 conv=1.000 tx=167.2 bytes=25087.5
+ranger-recovery      grid           N=16 loss=0.20 complete=1.000 conv=1.000 tx=161.0 bytes=24150.0
+ranger-recovery      grid           N=32 loss=0.00 complete=1.000 conv=1.000 tx=380.0 bytes=72960.0
+ranger-recovery      grid           N=32 loss=0.10 complete=1.000 conv=1.000 tx=375.3 bytes=72057.6
+ranger-recovery      grid           N=32 loss=0.20 complete=1.000 conv=1.000 tx=363.4 bytes=69756.0
+ranger-recovery      grid           N=64 loss=0.00 complete=1.000 conv=1.000 tx=810.0 bytes=190350.0
+ranger-recovery      grid           N=64 loss=0.10 complete=1.000 conv=1.000 tx=800.6 bytes=188152.8
+ranger-recovery      grid           N=64 loss=0.20 complete=0.950 conv=0.999 tx=779.9 bytes=183148.7
+ranger-recovery      line           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=40.0 bytes=4280.0
+ranger-recovery      line           N= 8 loss=0.10 complete=0.900 conv=0.979 tx=33.0 bytes=3468.8
+ranger-recovery      line           N= 8 loss=0.20 complete=0.200 conv=0.643 tx=37.9 bytes=3029.1
+ranger-recovery      line           N=16 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=12000.0
+ranger-recovery      line           N=16 loss=0.10 complete=0.150 conv=0.717 tx=70.8 bytes=8105.1
+ranger-recovery      line           N=16 loss=0.20 complete=0.000 conv=0.283 tx=76.8 bytes=5950.8
+ranger-recovery      line           N=32 loss=0.00 complete=1.000 conv=1.000 tx=160.0 bytes=30720.0
+ranger-recovery      line           N=32 loss=0.10 complete=0.000 conv=0.353 tx=144.4 bytes=13915.2
+ranger-recovery      line           N=32 loss=0.20 complete=0.000 conv=0.142 tx=142.4 bytes=9180.0
+ranger-recovery      line           N=64 loss=0.00 complete=1.000 conv=1.000 tx=320.0 bytes=75200.0
+ranger-recovery      line           N=64 loss=0.10 complete=0.000 conv=0.175 tx=274.4 bytes=20056.8
+ranger-recovery      line           N=64 loss=0.20 complete=0.000 conv=0.069 tx=270.4 bytes=13696.5
+ranger-recovery      star           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=40.0 bytes=4280.0
+ranger-recovery      star           N= 8 loss=0.10 complete=1.000 conv=1.000 tx=40.1 bytes=4286.6
+ranger-recovery      star           N= 8 loss=0.20 complete=1.000 conv=1.000 tx=41.0 bytes=4344.3
+ranger-recovery      star           N=16 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=12000.0
+ranger-recovery      star           N=16 loss=0.10 complete=1.000 conv=1.000 tx=80.1 bytes=12008.7
+ranger-recovery      star           N=16 loss=0.20 complete=0.950 conv=0.997 tx=81.7 bytes=12141.6
+ranger-recovery      star           N=32 loss=0.00 complete=1.000 conv=1.000 tx=160.0 bytes=30720.0
+ranger-recovery      star           N=32 loss=0.10 complete=0.950 conv=0.998 tx=160.3 bytes=30752.4
+ranger-recovery      star           N=32 loss=0.20 complete=0.700 conv=0.990 tx=164.8 bytes=31206.0
+ranger-recovery      star           N=64 loss=0.00 complete=1.000 conv=1.000 tx=320.0 bytes=75200.0
+ranger-recovery      star           N=64 loss=0.10 complete=1.000 conv=1.000 tx=321.6 bytes=75397.9
+ranger-recovery      star           N=64 loss=0.20 complete=0.600 conv=0.992 tx=329.1 bytes=76261.2
+ranger-static        balanced-tree  N= 8 loss=0.00 complete=1.000 conv=1.000 tx=40.0 bytes=4280.0
+ranger-static        balanced-tree  N= 8 loss=0.10 complete=1.000 conv=1.000 tx=38.0 bytes=4066.0
+ranger-static        balanced-tree  N= 8 loss=0.20 complete=0.400 conv=0.850 tx=33.2 bytes=3552.4
+ranger-static        balanced-tree  N=16 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=12000.0
+ranger-static        balanced-tree  N=16 loss=0.10 complete=0.600 conv=0.970 tx=72.0 bytes=10800.0
+ranger-static        balanced-tree  N=16 loss=0.20 complete=0.000 conv=0.747 tx=60.2 bytes=9030.0
+ranger-static        balanced-tree  N=32 loss=0.00 complete=1.000 conv=1.000 tx=160.0 bytes=30720.0
+ranger-static        balanced-tree  N=32 loss=0.10 complete=0.150 conv=0.897 tx=134.7 bytes=25862.4
+ranger-static        balanced-tree  N=32 loss=0.20 complete=0.000 conv=0.577 tx=104.6 bytes=20083.2
+ranger-static        balanced-tree  N=64 loss=0.00 complete=1.000 conv=1.000 tx=320.0 bytes=75200.0
+ranger-static        balanced-tree  N=64 loss=0.10 complete=0.000 conv=0.820 tx=247.9 bytes=58256.5
+ranger-static        balanced-tree  N=64 loss=0.20 complete=0.000 conv=0.411 tx=175.5 bytes=41242.5
+ranger-static        grid           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=8560.0
+ranger-static        grid           N= 8 loss=0.10 complete=1.000 conv=1.000 tx=78.6 bytes=8410.2
+ranger-static        grid           N= 8 loss=0.20 complete=1.000 conv=1.000 tx=78.0 bytes=8346.0
+ranger-static        grid           N=16 loss=0.00 complete=1.000 conv=1.000 tx=170.0 bytes=25500.0
+ranger-static        grid           N=16 loss=0.10 complete=1.000 conv=1.000 tx=167.2 bytes=25087.5
+ranger-static        grid           N=16 loss=0.20 complete=1.000 conv=1.000 tx=161.0 bytes=24150.0
+ranger-static        grid           N=32 loss=0.00 complete=1.000 conv=1.000 tx=380.0 bytes=72960.0
+ranger-static        grid           N=32 loss=0.10 complete=1.000 conv=1.000 tx=375.3 bytes=72057.6
+ranger-static        grid           N=32 loss=0.20 complete=0.950 conv=0.998 tx=363.2 bytes=69734.4
+ranger-static        grid           N=64 loss=0.00 complete=1.000 conv=1.000 tx=810.0 bytes=190350.0
+ranger-static        grid           N=64 loss=0.10 complete=1.000 conv=1.000 tx=800.6 bytes=188152.8
+ranger-static        grid           N=64 loss=0.20 complete=0.950 conv=0.998 tx=779.1 bytes=183088.5
+ranger-static        line           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=40.0 bytes=4280.0
+ranger-static        line           N= 8 loss=0.10 complete=0.850 conv=0.957 tx=31.9 bytes=3418.7
+ranger-static        line           N= 8 loss=0.20 complete=0.050 conv=0.450 tx=22.8 bytes=2434.2
+ranger-static        line           N=16 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=12000.0
+ranger-static        line           N=16 loss=0.10 complete=0.050 conv=0.610 tx=47.5 bytes=7117.5
+ranger-static        line           N=16 loss=0.20 complete=0.000 conv=0.210 tx=28.2 bytes=4230.0
+ranger-static        line           N=32 loss=0.00 complete=1.000 conv=1.000 tx=160.0 bytes=30720.0
+ranger-static        line           N=32 loss=0.10 complete=0.000 conv=0.306 tx=57.0 bytes=10944.0
+ranger-static        line           N=32 loss=0.20 complete=0.000 conv=0.102 tx=29.4 bytes=5644.8
+ranger-static        line           N=64 loss=0.00 complete=1.000 conv=1.000 tx=320.0 bytes=75200.0
+ranger-static        line           N=64 loss=0.10 complete=0.000 conv=0.151 tx=58.2 bytes=13688.8
+ranger-static        line           N=64 loss=0.20 complete=0.000 conv=0.050 tx=29.4 bytes=6909.0
+ranger-static        star           N= 8 loss=0.00 complete=1.000 conv=1.000 tx=40.0 bytes=4280.0
+ranger-static        star           N= 8 loss=0.10 complete=0.950 conv=0.993 tx=40.0 bytes=4280.0
+ranger-static        star           N= 8 loss=0.20 complete=0.700 conv=0.950 tx=40.0 bytes=4280.0
+ranger-static        star           N=16 loss=0.00 complete=1.000 conv=1.000 tx=80.0 bytes=12000.0
+ranger-static        star           N=16 loss=0.10 complete=0.950 conv=0.997 tx=80.0 bytes=12000.0
+ranger-static        star           N=16 loss=0.20 complete=0.550 conv=0.953 tx=80.0 bytes=12000.0
+ranger-static        star           N=32 loss=0.00 complete=1.000 conv=1.000 tx=160.0 bytes=30720.0
+ranger-static        star           N=32 loss=0.10 complete=0.900 conv=0.997 tx=160.0 bytes=30720.0
+ranger-static        star           N=32 loss=0.20 complete=0.250 conv=0.942 tx=160.0 bytes=30720.0
+ranger-static        star           N=64 loss=0.00 complete=1.000 conv=1.000 tx=320.0 bytes=75200.0
+ranger-static        star           N=64 loss=0.10 complete=0.450 conv=0.988 tx=320.0 bytes=75200.0
+ranger-static        star           N=64 loss=0.20 complete=0.050 conv=0.944 tx=320.0 bytes=75200.0
+
+============================================================
+7. HASH EVIDENCE
+============================================================
+HASHED_FILES = 11523
+
+============================================================
+STEP 7B.1 MODEL CAMPAIGN: PASS
+MODEL EXTERNAL-VALIDITY DATASET: COMPLETE
+NEXT: STEP 7B.2 FULL STATISTICAL ANALYSIS
+============================================================

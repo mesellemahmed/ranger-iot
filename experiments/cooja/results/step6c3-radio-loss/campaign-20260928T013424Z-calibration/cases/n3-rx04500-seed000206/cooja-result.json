@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-UDGM-RADIO-LOSS",
+  "outcome": "REKEY_COMPLETE",
+  "trigger": "post_send_settle",
+  "expected_k": 3,
+  "expected_n": 3,
+  "expected_success_ratio_tx": 1,
+  "expected_success_ratio_rx": 0.45,
+  "expected_simulation_seed": 206,
+  "observed_simulation_seed": 206,
+  "first_event_time": 130000,
+  "finish_time": 259679000,
+  "bootstrap_complete": true,
+  "bootstrap_time": 178678696,
+  "registered_mask": 508,
+  "registered_count": 7,
+  "coded_all_sent": true,
+  "coded_all_sent_time": 199679000,
+  "authorized_reconstructed_mask": 252,
+  "authorized_reconstructed_count": 6,
+  "authorized_reconstruction_ratio": 1,
+  "revoked_reconstructed": false,
+  "revoked_reject_observed": true,
+  "report_mask": 252,
+  "report_count": 6,
+  "reconstructed_times": {
+    "2": 181717632,
+    "3": 184720176,
+    "4": 187943432,
+    "5": 190767688,
+    "6": 193829944,
+    "7": 196994200
+  },
+  "fragment_unique_max": {
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 3,
+    "6": 3,
+    "7": 3
+  }
+}

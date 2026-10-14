@@ -1,0 +1,19 @@
+{
+  "case_id": "n3-loss3000-seed000103",
+  "defines": "RANGER_CODING_K=3,RANGER_CODING_N=3,RANGER_LOSS_BP=3000,RANGER_LOSS_SEED=103,RANGER_CAMPAIGN_MODE=1",
+  "expected_mask": 132,
+  "expected_reconstructed_count": 2,
+  "expected_reconstructed_nodes": [
+    2,
+    7
+  ],
+  "fragment_send_opportunities": 21,
+  "k": 3,
+  "loss_bp": 3000,
+  "loss_rate": 0.3,
+  "loss_seed": 103,
+  "n": 3,
+  "planned_fragment_drops": 5,
+  "planned_fragment_sends": 16,
+  "schema_version": 1
+}

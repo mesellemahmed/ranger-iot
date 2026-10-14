@@ -1,0 +1,69 @@
+{
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "paired": {
+    "0.20": {
+      "adaptive_vs_recovery": {
+        "better": 4,
+        "equal": 2,
+        "mean_delta_reconstructed": -0.2,
+        "worse": 4
+      },
+      "adaptive_vs_static": {
+        "better": 8,
+        "equal": 1,
+        "mean_delta_reconstructed": 1.3,
+        "worse": 1
+      }
+    },
+    "0.30": {
+      "adaptive_vs_recovery": {
+        "better": 2,
+        "equal": 8,
+        "mean_delta_reconstructed": 0.2,
+        "worse": 0
+      },
+      "adaptive_vs_static": {
+        "better": 8,
+        "equal": 2,
+        "mean_delta_reconstructed": 0.8,
+        "worse": 0
+      }
+    },
+    "0.50": {
+      "adaptive_vs_recovery": {
+        "better": 0,
+        "equal": 10,
+        "mean_delta_reconstructed": 0.0,
+        "worse": 0
+      },
+      "adaptive_vs_static": {
+        "better": 0,
+        "equal": 10,
+        "mean_delta_reconstructed": 0.0,
+        "worse": 0
+      }
+    }
+  },
+  "paired_cases": 30,
+  "safety": {
+    "adaptive_revoked_reconstructed_cases": 0
+  },
+  "schema_version": 1,
+  "seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}

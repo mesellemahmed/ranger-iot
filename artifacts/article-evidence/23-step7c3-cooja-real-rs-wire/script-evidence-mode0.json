@@ -1,0 +1,467 @@
+{
+  "schema_version": 2,
+  "experiment": "RANGER-COOJA-REAL-RS-WIRE",
+  "mode": 0,
+  "simulation_seed": 20260926,
+  "finish_time": 153969000,
+  "registered_count": 7,
+  "sends": [
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 119969000
+    },
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 120969000
+    },
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 121969000
+    },
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 0,
+      "time": 122969000
+    },
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 0,
+      "time": 123969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 124969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 125969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 126969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 0,
+      "time": 127969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 0,
+      "time": 128969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 129969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 130969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 131969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 0,
+      "time": 132969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 0,
+      "time": 133969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 134969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 135969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 136969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 0,
+      "time": 137969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 0,
+      "time": 138969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 139969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 140969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 141969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 0,
+      "time": 142969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 0,
+      "time": 143969000
+    },
+    {
+      "emitter": 1,
+      "target": 7,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 144969000
+    },
+    {
+      "emitter": 1,
+      "target": 7,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 145969000
+    },
+    {
+      "emitter": 1,
+      "target": 7,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 146969000
+    },
+    {
+      "emitter": 1,
+      "target": 7,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 0,
+      "time": 147969000
+    },
+    {
+      "emitter": 1,
+      "target": 7,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 0,
+      "time": 148969000
+    },
+    {
+      "emitter": 1,
+      "target": 8,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 149969000
+    },
+    {
+      "emitter": 1,
+      "target": 8,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 150969000
+    },
+    {
+      "emitter": 1,
+      "target": 8,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 151969000
+    },
+    {
+      "emitter": 1,
+      "target": 8,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 0,
+      "time": 152969000
+    },
+    {
+      "emitter": 1,
+      "target": 8,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 0,
+      "time": 153969000
+    }
+  ],
+  "receives": [
+    {
+      "emitter": 2,
+      "node": 2,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 119999920
+    },
+    {
+      "emitter": 2,
+      "node": 2,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 120986920
+    },
+    {
+      "emitter": 2,
+      "node": 2,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 121981920
+    },
+    {
+      "emitter": 3,
+      "node": 3,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 125002464
+    },
+    {
+      "emitter": 3,
+      "node": 3,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 125982464
+    },
+    {
+      "emitter": 3,
+      "node": 3,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 126993464
+    },
+    {
+      "emitter": 4,
+      "node": 4,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 130052720
+    },
+    {
+      "emitter": 4,
+      "node": 4,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 131029720
+    },
+    {
+      "emitter": 4,
+      "node": 4,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 131993720
+    },
+    {
+      "emitter": 5,
+      "node": 5,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 135129976
+    },
+    {
+      "emitter": 5,
+      "node": 5,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 136045976
+    },
+    {
+      "emitter": 5,
+      "node": 5,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 137077976
+    },
+    {
+      "emitter": 6,
+      "node": 6,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 140080232
+    },
+    {
+      "emitter": 6,
+      "node": 6,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 141120232
+    },
+    {
+      "emitter": 6,
+      "node": 6,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 142158232
+    },
+    {
+      "emitter": 7,
+      "node": 7,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 145156488
+    },
+    {
+      "emitter": 7,
+      "node": 7,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 0,
+      "time": 146105488
+    },
+    {
+      "emitter": 7,
+      "node": 7,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 0,
+      "time": 147097488
+    },
+    {
+      "emitter": 8,
+      "node": 8,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 0,
+      "time": 150132744
+    }
+  ],
+  "reconstructed": {
+    "2": true,
+    "3": true,
+    "4": true,
+    "5": true,
+    "6": true,
+    "7": true
+  },
+  "reconstruct_mask": {
+    "2": 7,
+    "3": 7,
+    "4": 7,
+    "5": 7,
+    "6": 7,
+    "7": 7
+  },
+  "rejected": true,
+  "below_k": false,
+  "below_mask": -1,
+  "mask_pass": true,
+  "core_pass": true,
+  "all_shards_sent": true,
+  "success": true
+}

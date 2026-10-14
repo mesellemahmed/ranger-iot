@@ -1,0 +1,113 @@
++ docker compose -f compose.reproducibility.yaml run --rm -T --no-deps tamarin bash -lc '
+      set -euo pipefail
+
+      echo "===== ENVIRONMENT ====="
+
+      echo "architecture=$(uname -m)"
+
+      echo "brew=$(command -v brew)"
+      echo "tamarin=$(command -v tamarin-prover)"
+      echo "maude=$(command -v maude)"
+      echo "dot=$(command -v dot)"
+
+      echo
+      echo "===== VERSIONS ====="
+
+      brew --version
+
+      tamarin-prover --version
+
+      maude --version 2>&1 \
+        | head -n 5 \
+        || true
+
+      dot -V 2>&1
+
+      echo
+      echo "===== PINNED HOMEBREW CORE ====="
+
+      CORE="$(brew --repository homebrew/core)"
+
+      echo "core_repository=$CORE"
+
+      git \
+        -C "$CORE" \
+        rev-parse HEAD
+
+      echo
+      echo "===== INSTALLED FORMULAE ====="
+
+      brew list --versions \
+        tamarin-prover \
+        maude \
+        libbuddy \
+        graphviz
+
+      echo
+      echo "===== TAMARIN SELFTEST ====="
+
+      tamarin-prover test
+
+      echo
+      echo "OFFLINE_TAMARIN_RUNTIME_CONTRACT=PASS"
+    '
+===== ENVIRONMENT =====
+architecture=x86_64
+brew=/home/linuxbrew/.linuxbrew/bin/brew
+tamarin=/home/linuxbrew/.linuxbrew/bin/tamarin-prover
+maude=/home/linuxbrew/.linuxbrew/bin/maude
+dot=/home/linuxbrew/.linuxbrew/bin/dot
+
+===== VERSIONS =====
+Homebrew 7.0.6
+Homebrew/homebrew-core (git revision 2677aafea88; last commit 2026-09-21)
+maude tool: 'maude'
+ checking version: tamarin-prover 1.12.0, (C) David Basin, Cas Cremers, Jannik Dreier, Simon Meier, Ralf Sasse, Benedikt Schmidt, 2010-2023
+
+This program comes with ABSOLUTELY NO WARRANTY. It is free software, and you
+are welcome to redistribute it according to its LICENSE, see
+'https://github.com/tamarin-prover/tamarin-prover/blob/master/LICENSE'.
+
+3.5.1. OK.
+ checking installation: OK.
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: UNKNOWN, branch: UNKNOWN
+Compiled at: 2026-03-08 10:05:47.616272992 UTC
+3.5.1
+dot - graphviz version 16.1.0 (20260904.0139)
+
+===== PINNED HOMEBREW CORE =====
+core_repository=/home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core
+2677aafea883b1860e634dc90656439722069e0e
+
+===== INSTALLED FORMULAE =====
+graphviz 16.1.0
+libbuddy 2.4
+maude 3.5.1_1
+tamarin-prover 1.12.0
+
+===== TAMARIN SELFTEST =====
+maude tool: 'maude'
+ checking version: Self-testing the tamarin-prover installation.
+
+*** Testing the availability of the required tools ***
+3.5.1. OK.
+ checking installation: OK.
+
+GraphViz tool: 'dot'
+ checking version: dot - graphviz version 16.1.0 (20260904.0139). OK.
+ checking PNG support: OK.
+Cases: 55  Tried: 0  Errors: 0  Failures: 0Cases: 55  Tried: 1  Errors: 0  Failures: 0Cases: 55  Tried: 2  Errors: 0  Failures: 0Cases: 55  Tried: 3  Errors: 0  Failures: 0Cases: 55  Tried: 4  Errors: 0  Failures: 0Cases: 55  Tried: 5  Errors: 0  Failures: 0Cases: 55  Tried: 6  Errors: 0  Failures: 0Cases: 55  Tried: 7  Errors: 0  Failures: 0Cases: 55  Tried: 8  Errors: 0  Failures: 0Cases: 55  Tried: 9  Errors: 0  Failures: 0Cases: 55  Tried: 10  Errors: 0  Failures: 0Cases: 55  Tried: 11  Errors: 0  Failures: 0Cases: 55  Tried: 12  Errors: 0  Failures: 0Cases: 55  Tried: 13  Errors: 0  Failures: 0Cases: 55  Tried: 14  Errors: 0  Failures: 0Cases: 55  Tried: 15  Errors: 0  Failures: 0Cases: 55  Tried: 16  Errors: 0  Failures: 0Cases: 55  Tried: 17  Errors: 0  Failures: 0Cases: 55  Tried: 18  Errors: 0  Failures: 0Cases: 55  Tried: 19  Errors: 0  Failures: 0Cases: 55  Tried: 20  Errors: 0  Failures: 0Cases: 55  Tried: 21  Errors: 0  Failures: 0Cases: 55  Tried: 22  Errors: 0  Failures: 0Cases: 55  Tried: 23  Errors: 0  Failures: 0Cases: 55  Tried: 24  Errors: 0  Failures: 0Cases: 55  Tried: 25  Errors: 0  Failures: 0Cases: 55  Tried: 26  Errors: 0  Failures: 0Cases: 55  Tried: 27  Errors: 0  Failures: 0Cases: 55  Tried: 28  Errors: 0  Failures: 0Cases: 55  Tried: 29  Errors: 0  Failures: 0Cases: 55  Tried: 30  Errors: 0  Failures: 0Cases: 55  Tried: 31  Errors: 0  Failures: 0Cases: 55  Tried: 32  Errors: 0  Failures: 0Cases: 55  Tried: 33  Errors: 0  Failures: 0Cases: 55  Tried: 34  Errors: 0  Failures: 0Cases: 55  Tried: 35  Errors: 0  Failures: 0Cases: 55  Tried: 36  Errors: 0  Failures: 0Cases: 55  Tried: 37  Errors: 0  Failures: 0Cases: 55  Tried: 38  Errors: 0  Failures: 0Cases: 55  Tried: 39  Errors: 0  Failures: 0Cases: 55  Tried: 40  Errors: 0  Failures: 0Cases: 55  Tried: 41  Errors: 0  Failures: 0Cases: 55  Tried: 42  Errors: 0  Failures: 0Cases: 55  Tried: 43  Errors: 0  Failures: 0Cases: 55  Tried: 44  Errors: 0  Failures: 0Cases: 55  Tried: 45  Errors: 0  Failures: 0Cases: 55  Tried: 46  Errors: 0  Failures: 0Cases: 55  Tried: 47  Errors: 0  Failures: 0Cases: 55  Tried: 48  Errors: 0  Failures: 0Cases: 55  Tried: 49  Errors: 0  Failures: 0Cases: 55  Tried: 50  Errors: 0  Failures: 0Cases: 55  Tried: 51  Errors: 0  Failures: 0Cases: 55  Tried: 52  Errors: 0  Failures: 0Cases: 55  Tried: 53  Errors: 0  Failures: 0Cases: 55  Tried: 54  Errors: 0  Failures: 0                                            Cases: 55  Tried: 55  Errors: 0  Failures: 0
+
+*** Testing the unification infrastructure ***
+
+*** TEST SUMMARY ***
+All tests successful.
+The tamarin-prover should work as intended.
+
+           :-) happy proving (-:
+
+
+OFFLINE_TAMARIN_RUNTIME_CONTRACT=PASS

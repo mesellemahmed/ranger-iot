@@ -1,0 +1,77 @@
+{
+  "claim_if_future_passes": "The formal model captures the implemented symbolic LKH key-version/update-plan semantics across sequential epochs and satisfies the specified authorization, replay, freshness, and compromise-timing properties under its explicit symbolic assumptions.",
+  "counterexample_policy": "Any falsified lemma must be preserved and audited before model modification.",
+  "explicit_non_scope": [
+    "byte-level implementation of LKH encryption",
+    "Reed-Solomon algebra",
+    "wireless packet loss/liveness",
+    "computational cryptography",
+    "automatic implementation equivalence theorem"
+  ],
+  "explicit_scope": [
+    "balanced LKH tree structure used by LkhKeyTree",
+    "LkhKeyRef node/version state",
+    "LkhKeyUpdate target/wrapper logical ciphertext relation",
+    "deterministic bottom-up rekey-plan evolution",
+    "active-member removal",
+    "root-key version / RANGER epoch alignment",
+    "at least two sequential epochs",
+    "same-epoch recovery binding",
+    "old-capsule replay into a newer epoch",
+    "explicit compromise timing"
+  ],
+  "forbidden_claims": [
+    "RANGER-IoT is fully formally verified.",
+    "The deployed cryptographic LKH implementation is byte-for-byte verified.",
+    "Tamarin is formally equivalent to the Python/C/Cooja implementation.",
+    "Formal safety proves lossy-network liveness."
+  ],
+  "formal_model_target": "EXACT_IMPLEMENTED_SYMBOLIC_LKH_MULTI_EPOCH_ABSTRACTION",
+  "minimum_nonvacuity_lemmas": [
+    "executable_first_lkh_rekey",
+    "executable_second_lkh_rekey",
+    "executable_same_epoch_recovery_after_lkh_rekey"
+  ],
+  "multi_epoch_minimum": 2,
+  "proof_policy": {
+    "docker_only": true,
+    "exists_trace_portfolio": [
+      "BFS",
+      "DFS",
+      "SEQDFS",
+      "heuristic C"
+    ],
+    "network_during_proof": "none",
+    "separate_lemma_proofs": true,
+    "tamarin_version": "1.12.0"
+  },
+  "required_state_relations": [
+    "MemberLeaf(member,leaf)",
+    "Parent(child,parent)",
+    "OwnsKey(member,node,version)",
+    "Active(member,epoch)",
+    "Revoked(member,epoch)",
+    "KeyVersion(node,version,epoch)",
+    "LkhUpdate(target,newVersion,wrapper,wrapperVersion,epoch)",
+    "EpochRoot(epoch,rootVersion,groupKey)",
+    "NextEpoch(epoch1,epoch2)",
+    "Accepted(member,epoch)",
+    "CompromiseMember(member,time)",
+    "CompromiseManager(manager,time)"
+  ],
+  "schema_version": 1,
+  "security_lemmas": [
+    "revoked_member_excluded_from_new_epoch",
+    "survivor_acceptance_has_lkh_update_chain",
+    "acceptance_matches_current_root_version",
+    "replay_old_capsule_cannot_accept_new_epoch",
+    "replay_old_recovery_response_cannot_accept_new_epoch",
+    "revoked_old_key_does_not_reveal_new_root_key",
+    "new_epoch_key_secret_without_relevant_compromise",
+    "post_knowledge_compromise_does_not_explain_prior_knowledge",
+    "recovery_requester_authorized_in_same_epoch",
+    "recovery_helper_authorized_in_same_epoch"
+  ],
+  "source_semantics": "IMPLEMENTED_SYMBOLIC_LKH_PLAN_SEMANTICS",
+  "step": "STEP7D2_FORMALIZATION_BLUEPRINT"
+}

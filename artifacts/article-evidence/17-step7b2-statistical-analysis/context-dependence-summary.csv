@@ -1,0 +1,16 @@
+left_protocol,right_protocol,metric,cell_count,positive_mean_cells,zero_mean_cells,negative_mean_cells,holm_significant_positive_cells,holm_significant_negative_cells,direction_reversal_across_contexts,significant_direction_reversal
+ranger-recovery,ranger-static,completion,48,18,30,0,0,0,False,False
+ranger-recovery,ranger-static,convergence_fraction,48,25,23,0,13,0,False,False
+ranger-recovery,ranger-static,physical_transmissions,48,0,23,25,0,16,False,False
+ranger-recovery,ranger-static,bytes_sent,48,0,23,25,0,15,False,False
+ranger-recovery,ranger-static,manager_transmissions,48,0,32,16,0,2,False,False
+ranger-adaptive-v2,ranger-static,completion,48,17,30,1,0,0,True,False
+ranger-adaptive-v2,ranger-static,convergence_fraction,48,21,24,3,1,0,True,False
+ranger-adaptive-v2,ranger-static,physical_transmissions,48,30,0,18,27,15,True,True
+ranger-adaptive-v2,ranger-static,bytes_sent,48,35,0,13,28,10,True,True
+ranger-adaptive-v2,ranger-static,manager_transmissions,48,43,1,4,30,2,True,True
+ranger-adaptive-v2,ranger-recovery,completion,48,6,35,7,0,0,True,False
+ranger-adaptive-v2,ranger-recovery,convergence_fraction,48,4,30,14,0,0,True,False
+ranger-adaptive-v2,ranger-recovery,physical_transmissions,48,30,0,18,27,14,True,True
+ranger-adaptive-v2,ranger-recovery,bytes_sent,48,35,0,13,28,2,True,True
+ranger-adaptive-v2,ranger-recovery,manager_transmissions,48,45,0,3,30,1,True,True

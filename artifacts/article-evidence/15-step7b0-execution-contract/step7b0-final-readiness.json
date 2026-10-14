@@ -1,0 +1,23 @@
+{
+  "article_state": "NOT_STARTED",
+  "checks": {
+    "cooja_scale_constraints_documented": true,
+    "core_ci": true,
+    "experiment_interface_discovered": true,
+    "independent_seeds_frozen": true,
+    "prerequisites": true,
+    "python_api_extracted": true,
+    "scientific_matrix_preregistered": true,
+    "test_context_extracted": true,
+    "topology_scale_contract": true
+  },
+  "external_validity_strategy": {
+    "cooja": "topology robustness at validated 8-node embedded scale",
+    "python_model": "topology + scale 8/16/32/64"
+  },
+  "next_step": "STEP7B1_IMPLEMENT_AND_RUN_MODEL_EXTERNAL_VALIDITY",
+  "schema_version": 1,
+  "scientific_state": "READY_TO_IMPLEMENT_STEP7B_MODEL_RUNNER",
+  "step": "STEP7B0_EXTERNAL_VALIDITY_EXECUTION_CONTRACT",
+  "step7b0_pass": true
+}

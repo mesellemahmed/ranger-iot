@@ -1,0 +1,7 @@
+comparative-long.csv: OK
+grouped-results.csv: OK
+paired-results.csv: OK
+evidence-summary.json: OK
+provenance.json: OK
+scientific-claims.md: OK
+limitations.md: OK

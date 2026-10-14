@@ -1,0 +1,62 @@
+{
+  "expected": {
+    "accepted_nodes": [
+      2,
+      3,
+      4
+    ],
+    "epoch": 1,
+    "rejected_nodes": [
+      5
+    ],
+    "revoked_node": 5,
+    "terminal_marker": "RANGER_CORE_PASS epoch=1 accepted=3 rejected=1"
+  },
+  "firmware": {
+    "build_command": "$(MAKE) -j$(CPUS) ranger-core.cooja TARGET=cooja",
+    "source": "[CONFIG_DIR]/../../apps/ranger-core/ranger-core.c"
+  },
+  "motes": [
+    {
+      "id": 1,
+      "role": "group-manager",
+      "x": 50.0,
+      "y": 50.0
+    },
+    {
+      "id": 2,
+      "role": "authorized",
+      "x": 35.0,
+      "y": 50.0
+    },
+    {
+      "id": 3,
+      "role": "authorized",
+      "x": 65.0,
+      "y": 50.0
+    },
+    {
+      "id": 4,
+      "role": "authorized",
+      "x": 50.0,
+      "y": 35.0
+    },
+    {
+      "id": 5,
+      "role": "revoked",
+      "x": 50.0,
+      "y": 65.0
+    }
+  ],
+  "radio": {
+    "interference_range": 100.0,
+    "medium": "org.contikios.cooja.radiomediums.UDGM",
+    "success_ratio_rx": 1.0,
+    "success_ratio_tx": 1.0,
+    "transmitting_range": 50.0
+  },
+  "random_seed": 20260925,
+  "scenario_id": "ranger-core-5nodes-onehop",
+  "schema_version": 1,
+  "title": "RANGER Core \u2014 5 Nodes \u2014 One Hop"
+}

@@ -1,0 +1,59 @@
+{
+  "assertion_script": "experiments/cooja/tests/ranger-static-coded-rpl-line-assert.js",
+  "assertion_script_sha256": "f922017362efc5f71c6d3c4c954a86229210ed4360453acd2719fb7024703093",
+  "coding": {
+    "data_fragments": 3,
+    "group_id": 1,
+    "model": "ideal-k-of-n",
+    "real_codec_bytes": false,
+    "redundancy_fragments": 2,
+    "total_fragments": 5
+  },
+  "config_sha256": "8f8ce61f244a454fb8f051ca014ebd304d69c66d7ede53c45d3f55d8051f3d81",
+  "direct_root_to_farthest": false,
+  "expected": {
+    "epoch": 1,
+    "reconstructed_nodes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "registered_nodes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "rejected_nodes": [
+      8
+    ],
+    "terminal_marker": "RANGER_STATIC_CODED_CORE_PASS epoch=1 registered=7 reconstructed=6 rejected=1 k=3 n=5"
+  },
+  "generated_scenario": "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.csc",
+  "generation_policy": "generated from versioned code/config; no manual GUI creation",
+  "generator": "experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py",
+  "mote_count": 8,
+  "mote_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "random_seed": 20260926,
+  "root_to_farthest_distance": 245.0,
+  "scenario_id": "ranger-static-coded-rpl-line-8nodes",
+  "scenario_sha256": "552bec33669397b0add2ea26898f0a0b94c6004c72ca12c51250246234ebf14e",
+  "schema_version": 1,
+  "source_config": "experiments/cooja/scenarios/config/ranger-static-coded-rpl-line-8nodes.json",
+  "transmitting_range": 45.0
+}

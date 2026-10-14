@@ -1,0 +1,71 @@
+{
+  "analysis_commit": "980ce6727baa3a40faeceae0b3988db29af22f37",
+  "analysis_script": "experiments\\cooja\\scripts\\analyze_step6f1_three_protocols.py",
+  "analysis_script_sha256": "c130564c299f165cb22045602492b03c3850013cd9cb3486fc3d73fd349ea9fa",
+  "experiment": "RANGER-STEP6F1-THREE-PROTOCOL-STATISTICS",
+  "inputs": {
+    "adaptive_v2": {
+      "files": {
+        "aggregate.csv": {
+          "bytes": 4203,
+          "sha256": "62dfebc44217a499580345be8221d9b96a729e71f4e81626a2320c5cd91353c0"
+        },
+        "summary.json": {
+          "bytes": 259,
+          "sha256": "1f9073bd7d157e07b9baeb9b1c270449992f9cd4879a265b77c50310add5e4d2"
+        }
+      },
+      "path": "experiments\\cooja\\results\\step6e2-adaptive-radio\\campaign-20261001T215912Z-calibration"
+    },
+    "recovery": {
+      "files": {
+        "CHECKSUMS.sha256": {
+          "bytes": 24200,
+          "sha256": "d015633eaba38ef760a9b8e62790fdd1fcc2185993a05ddb2fdd0d386a3c2297"
+        },
+        "aggregate.csv": {
+          "bytes": 4187,
+          "sha256": "10587543dc4af5803dcbea20fc5713ec19194c3af8a5ebc51a028c6a0663cf84"
+        },
+        "summary.json": {
+          "bytes": 259,
+          "sha256": "0e02c52ff6a0fcb2b65982d320ab561789b82a9fa576074870fd74c0491ba9aa"
+        }
+      },
+      "path": "experiments\\cooja\\results\\step6d2-recovery-radio\\campaign-20260930T150343Z-calibration"
+    },
+    "static": {
+      "files": {
+        "aggregate.csv": {
+          "bytes": 10871,
+          "sha256": "2cbf1c5e21802f14993e0c3896283898053e4093b131506d8a916d4243bd2298"
+        },
+        "summary.json": {
+          "bytes": 260,
+          "sha256": "e3fb921add75753dca060ce6f40dd524bb5f50ef0cb19e4c8d63e5536e5c061b"
+        }
+      },
+      "path": "experiments\\cooja\\results\\step6c3f-post-bootstrap-tx-stress\\campaign-20260928T151522Z-calibration"
+    }
+  },
+  "notes": "Authoritative paired analysis over the frozen Static, Recovery, and Adaptive V2 real-radio calibration campaigns.",
+  "outputs": {
+    "analysis-summary.json": {
+      "bytes": 1060,
+      "sha256": "11b8fc445f606995dbe6ae3a4cb7ca19342a881db7ecc9e197884e593c9a2042"
+    },
+    "paired-completion-stats.csv": {
+      "bytes": 618,
+      "sha256": "0e77973c17097b90001a584e776d7ae320d377da8f63022395aceec24d9de20e"
+    },
+    "paired-reconstruction-stats.csv": {
+      "bytes": 703,
+      "sha256": "82a485d0f32da07c214c3646cff34a38d62a820e790cd0f08497b87bcfddce6b"
+    },
+    "regime-summary.csv": {
+      "bytes": 433,
+      "sha256": "68db0a5a46e309169964a89bfe3afebc4f4e87371fd1d5457454445ee4bade68"
+    }
+  },
+  "schema_version": 1
+}

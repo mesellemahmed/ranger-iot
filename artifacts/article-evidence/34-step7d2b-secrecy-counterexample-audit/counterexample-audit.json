@@ -1,0 +1,1827 @@
+{
+  "counterexamples_confirmed": true,
+  "implementation_modified": false,
+  "interpretation_guardrails": [
+    "Presence of CompromiseMember or CompromiseManager does not by itself invalidate the lemma; temporal ordering must be inspected.",
+    "Presence of OldKeyLeak without relevant compromise is evidence requiring exact LKH derivation analysis.",
+    "Multiple Setup or epoch-start instances may indicate cross-session mixing rather than an implementation vulnerability.",
+    "No formal-model modification is justified until the exact derivation path to K(root) is identified."
+  ],
+  "model_modified": false,
+  "results": {
+    "new_epoch_key_secret_without_relevant_compromise": {
+      "details": null,
+      "dot_present": true,
+      "graph_count": 1,
+      "graphs": [
+        {
+          "actions": {
+            "!KU": 4,
+            "Accept": 1,
+            "AuthorizedAt": 14,
+            "DerivedKey": 2,
+            "EpochRoot": 15,
+            "K": 4,
+            "KeyVersion": 9,
+            "LkhRecipient": 18,
+            "LkhUpdate": 13,
+            "NextEpoch": 5,
+            "OldKeyLeak": 1,
+            "RekeyStarted": 5,
+            "RevokedAt": 5,
+            "SecretEpoch": 5,
+            "Setup": 10
+          },
+          "adversary_knowledge_count": 4,
+          "epoch1_start_count": 4,
+          "epoch2_start_count": 1,
+          "interesting_nodes": [
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( ~root1 )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 0
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 1
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( ~root1 )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 2
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.1 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 3
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.1>, ~k6.2) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.1>, ~k6.2) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.1>, ~k6.2) )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 4
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 5
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 6
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "OldKeyLeak",
+                  "shown": "OldKeyLeak( 'm3', 'e2' )"
+                }
+              ],
+              "label": "Leak_M3_Old_Keys_After_E2",
+              "ordinal": 7
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 8
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e1', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm3', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v2', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e2', 'v2', ~root2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e2', 'v2', ~root2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e2', 'n1', 'v2', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e2', 'n1', 'v2', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e2', 'n1', 'v2', 'm2' )"
+                }
+              ],
+              "label": "Start_Epoch2",
+              "ordinal": 9
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.2 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 10
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "DerivedKey",
+                  "shown": "DerivedKey( 'm3', 'n3', 'v1', 'e1' )"
+                }
+              ],
+              "label": "M3_Derive_N3_V1",
+              "ordinal": 11
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Accept",
+                  "shown": "Accept( 'm3', 'e1', 'v1', ~root1 )"
+                }
+              ],
+              "label": "Accept_E1_M3",
+              "ordinal": 12
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1.1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1.1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 13
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.3 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 14
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.4 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 15
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1.2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1.2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 16
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1.3 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1.3 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 17
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "DerivedKey",
+                  "shown": "DerivedKey( 'm3', 'n3', 'v1', 'e1' )"
+                }
+              ],
+              "label": "M3_Derive_N3_V1",
+              "ordinal": 18
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.7 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 19
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.5 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 20
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.8 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 21
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.9 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 22
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.6 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 23
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.1>, ~k6.2) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.1>, ~k6.2) )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 24
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 25
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 26
+            }
+          ],
+          "label": "trace_RangerIoT_LKH_MultiEpoch_4Member_SL2-AS0-CL0-A1-C1-NB_new_epoch_key_secret_without_relevant_compromise-Start_Epoch1-Setup-Setup-Setup-Leak_M3_Old_Keys_After_E2-Start_Epoch1-Start_Epoch1-Start_Epoch1",
+          "manager_compromise_count": 0,
+          "member_compromise_count": 0,
+          "old_key_leak_count": 1,
+          "rules": {
+            "Accept_E1_M3": 1,
+            "Leak_M3_Old_Keys_After_E2": 1,
+            "M3_Derive_N3_V1": 2,
+            "Setup": 10,
+            "Start_Epoch1": 4,
+            "Start_Epoch2": 1
+          },
+          "setup_count": 10
+        }
+      ],
+      "indicators": {
+        "contains_manager_compromise": false,
+        "contains_member_compromise": false,
+        "contains_old_key_leak": true,
+        "has_multiple_epoch1_instances": true,
+        "has_multiple_epoch2_instances": false,
+        "has_multiple_setup_instances": true
+      },
+      "tamarin_status": "falsified"
+    },
+    "revoked_old_key_does_not_reveal_new_root_key": {
+      "details": null,
+      "dot_present": true,
+      "graph_count": 1,
+      "graphs": [
+        {
+          "actions": {
+            "!KU": 4,
+            "Accept": 1,
+            "AuthorizedAt": 17,
+            "DerivedKey": 2,
+            "EpochRoot": 19,
+            "K": 4,
+            "KeyVersion": 11,
+            "LkhRecipient": 22,
+            "LkhUpdate": 16,
+            "NextEpoch": 6,
+            "OldKeyLeak": 2,
+            "RekeyStarted": 6,
+            "RevokedAt": 6,
+            "SecretEpoch": 6,
+            "Setup": 13
+          },
+          "adversary_knowledge_count": 4,
+          "epoch1_start_count": 5,
+          "epoch2_start_count": 1,
+          "interesting_nodes": [
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( ~root1 )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 0
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "OldKeyLeak",
+                  "shown": "OldKeyLeak( 'm4', 'e1' )"
+                }
+              ],
+              "label": "Leak_M4_Old_Keys_After_E1",
+              "ordinal": 1
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 2
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( ~root1 )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 3
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1.1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1.1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 4
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.2>, ~k6.2) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.2>, ~k6.2) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.2>, ~k6.2) )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 5
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.3 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 6
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 7
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.2 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 8
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                }
+              ],
+              "label": "Coerce",
+              "ordinal": 9
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 10
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.4 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 11
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.1 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 12
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "OldKeyLeak",
+                  "shown": "OldKeyLeak( 'm3', 'e2' )"
+                }
+              ],
+              "label": "Leak_M3_Old_Keys_After_E2",
+              "ordinal": 13
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e1', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm3', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v2', 'e2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e2', 'v2', ~root2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e2', 'v2', ~root2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e2', 'n1', 'v2', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e2', 'n1', 'v2', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e2', 'n1', 'v2', 'm2' )"
+                }
+              ],
+              "label": "Start_Epoch2",
+              "ordinal": 14
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.5 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 15
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "DerivedKey",
+                  "shown": "DerivedKey( 'm3', 'n3', 'v1', 'e1' )"
+                }
+              ],
+              "label": "M3_Derive_N3_V1",
+              "ordinal": 16
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Accept",
+                  "shown": "Accept( 'm3', 'e1', 'v1', ~root1 )"
+                }
+              ],
+              "label": "Accept_E1_M3",
+              "ordinal": 17
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1.2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1.2 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 18
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.6 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 19
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.7 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 20
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1.3 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1.3 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 21
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "RekeyStarted",
+                  "shown": "RekeyStarted( 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "NextEpoch",
+                  "shown": "NextEpoch( 'e0', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm2', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AuthorizedAt",
+                  "shown": "AuthorizedAt( 'm3', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "RevokedAt",
+                  "shown": "RevokedAt( 'm4', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n3', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "KeyVersion",
+                  "shown": "KeyVersion( 'n1', 'v1', 'e1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e1', 'v1', ~root1.4 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "shown": "SecretEpoch( 'e1', 'v1', ~root1.4 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n3', 'v1', 'n6', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n3', 'v1', 'm3' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n2', 'v0' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm2' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhUpdate",
+                  "shown": "LkhUpdate( 'e1', 'n1', 'v1', 'n3', 'v1' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "LkhRecipient",
+                  "shown": "LkhRecipient( 'e1', 'n1', 'v1', 'm3' )"
+                }
+              ],
+              "label": "Start_Epoch1",
+              "ordinal": 22
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "DerivedKey",
+                  "shown": "DerivedKey( 'm3', 'n3', 'v1', 'e1' )"
+                }
+              ],
+              "label": "M3_Derive_N3_V1",
+              "ordinal": 23
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.10 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 24
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.8 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 25
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.11 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 26
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.12 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 27
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "Setup",
+                  "shown": "Setup( 'gm' )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "shown": "EpochRoot( 'e0', 'v0', ~root0.9 )"
+                }
+              ],
+              "label": "Setup",
+              "ordinal": 28
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.2>, ~k6.2) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1.2>, ~k6.2) )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 29
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 30
+            },
+            {
+              "facts": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )"
+                }
+              ],
+              "label": "Send",
+              "ordinal": 31
+            }
+          ],
+          "label": "trace_RangerIoT_LKH_MultiEpoch_4Member_SL2-AS0-CL0-A1-C1-NB_revoked_old_key_does_not_reveal_new_root_key-Leak_M4_Old_Keys_After_E1-Start_Epoch1-Setup-Start_Epoch1-Setup-Setup-Setup-Leak_M3_Old_Keys_After_E2-Start_Epoch1-Start_Epoch1-Start_Epoch1",
+          "manager_compromise_count": 0,
+          "member_compromise_count": 0,
+          "old_key_leak_count": 2,
+          "rules": {
+            "Accept_E1_M3": 1,
+            "Leak_M3_Old_Keys_After_E2": 1,
+            "Leak_M4_Old_Keys_After_E1": 1,
+            "M3_Derive_N3_V1": 2,
+            "Setup": 13,
+            "Start_Epoch1": 5,
+            "Start_Epoch2": 1
+          },
+          "setup_count": 13
+        }
+      ],
+      "indicators": {
+        "contains_manager_compromise": false,
+        "contains_member_compromise": false,
+        "contains_old_key_leak": true,
+        "has_multiple_epoch1_instances": true,
+        "has_multiple_epoch2_instances": false,
+        "has_multiple_setup_instances": true
+      },
+      "tamarin_status": "falsified"
+    }
+  },
+  "schema_version": 1,
+  "scientific_state": "SECRECY_COUNTEREXAMPLES_CAPTURED_SEMANTIC_INTERPRETATION_REQUIRED",
+  "step": "STEP7D2B_SECRECY_COUNTEREXAMPLE_AUDIT"
+}

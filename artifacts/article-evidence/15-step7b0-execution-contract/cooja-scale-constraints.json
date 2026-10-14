@@ -1,0 +1,46 @@
+{
+  "apps": {
+    "experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c": {
+      "constants": {
+        "first_member": 2,
+        "last_member": 8,
+        "member_count": 7,
+        "revoked": 8
+      },
+      "mask_signals": {
+        "id_shift_mask": true,
+        "uint16_mask": true,
+        "uint8_mask": true
+      }
+    },
+    "experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c": {
+      "constants": {
+        "first_member": 2,
+        "last_member": 8,
+        "member_count": 7,
+        "revoked": 8
+      },
+      "mask_signals": {
+        "id_shift_mask": true,
+        "uint16_mask": true,
+        "uint8_mask": true
+      }
+    },
+    "experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c": {
+      "constants": {
+        "first_member": 2,
+        "last_member": 8,
+        "member_count": 7,
+        "revoked": 8
+      },
+      "mask_signals": {
+        "id_shift_mask": true,
+        "uint16_mask": true,
+        "uint8_mask": true
+      }
+    }
+  },
+  "current_embedded_role_map_fixed_to_8": true,
+  "decision": "Do not claim Cooja scale beyond the current implementation until member-role and mask assumptions are explicitly generalized.",
+  "schema_version": 1
+}

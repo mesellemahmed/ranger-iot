@@ -1,0 +1,34 @@
+{
+  "architecture": "linux/amd64",
+  "docker_only_execution": true,
+  "falsified_lemma_count": 0,
+  "forbidden_claims": [
+    "RANGER-IoT is formally verified.",
+    "The complete LKH implementation is formally verified.",
+    "Multi-epoch replay resistance is formally verified.",
+    "Python/C/Cooja and Tamarin are formally equivalent."
+  ],
+  "formal_model": "formal/tamarin/ranger_authorization_transport.spthy",
+  "formal_security_claim_ready": false,
+  "full_ranger_formally_verified": false,
+  "host_scientific_execution": false,
+  "incomplete_lemma_count": 0,
+  "lemma_count": 11,
+  "model_class": "LKH_AUTHORIZATION_TRANSPORT_ABSTRACTION",
+  "next_step": "STEP7D1_ANALYZE_FORMAL_RESULT_BEFORE_MODEL_CHANGE",
+  "permitted_claim_if_pass": "The STEP7D1 abstract authorization/transport model was machine-checked using the pinned offline Docker Tamarin environment under the explicit symbolic assumptions.",
+  "proof_network_disabled": true,
+  "remaining_gaps": [
+    "Exact LKH tree semantics",
+    "Sequential multi-epoch replay/freshness",
+    "Tighter compromise timing",
+    "Implementation-to-action correspondence"
+  ],
+  "schema_version": 2,
+  "scientific_state": "TAMARIN_PROOF_TIMEOUT",
+  "step": "STEP7D1_DOCKER_REPRODUCIBLE_FORMAL_MODEL",
+  "step7d1_pass": false,
+  "tamarin_image_id": "sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0",
+  "tamarin_version": "1.12.0",
+  "verified_lemma_count": 0
+}

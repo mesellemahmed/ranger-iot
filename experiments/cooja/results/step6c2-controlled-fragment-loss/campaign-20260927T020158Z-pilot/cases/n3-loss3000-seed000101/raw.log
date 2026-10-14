@@ -1,0 +1,47 @@
+Fetching distribution (retrying 3 times, with an initial back off of 500 ms).
+Downloading https://services.gradle.org/distributions/gradle-9.6.1-bin.zip
+.............10%.............20%..............30%.............40%..............50%.............60%.............70%..............80%.............90%..............100%
+
+Welcome to Gradle 9.6.1!
+
+Here are the highlights of this release:
+ - Improved Configuration Cache hit rates
+ - Additional CLI rendering options
+ - Important project hierarchy lookup deprecations
+
+For more details see https://docs.gradle.org/9.6.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :run
+[32mINFO  [main] [Cooja.java:1147] - Loading /workspace/experiments/cooja/results/step6c2-controlled-fragment-loss/campaign-20260927T020158Z-pilot/cases/n3-loss3000-seed000101/scenario.csc random seed: null[0;39m
+> rm -f build/cooja/obj/ranger-static-coded-rpl.o build/cooja/ranger-static-coded-rpl.cooja && make -j20 ranger-static-coded-rpl.cooja TARGET=cooja DEFINES=RANGER_CODING_K=3,RANGER_CODING_N=3,RANGER_LOSS_BP=3000,RANGER_LOSS_SEED=101,RANGER_CAMPAIGN_MODE=1
+rm: invalid option -- 'j'
+Try 'rm --help' for more information.
+Compilation process returned error code 1
+[1;91mERROR [main] [Cooja.java:1154] - Failed to load simulation: Compilation failed[0;39m
+[1;91mERROR [main] [Cooja.java:1160] - TEST /workspace/experiments/cooja/results/step6c2-controlled-fragment-loss/campaign-20260927T020158Z-pilot/cases/n3-loss3000-seed000101/scenario.csc FAILED
+[0;39m
+[1;91mERROR [main] [Cooja.java:1183] - Failed tests:
+/workspace/experiments/cooja/results/step6c2-controlled-fragment-loss/campaign-20260927T020158Z-pilot/cases/n3-loss3000-seed000101/scenario.csc seed: null[0;39m
+
+> Task :run FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':run' (registered by plugin 'org.gradle.application').
+> Process 'command '/usr/local/bin/java'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 40s
+3 actionable tasks: 1 executed, 2 up-to-date
+

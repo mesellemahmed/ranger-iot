@@ -1,0 +1,14 @@
+artifacts/article-evidence/19-step7c0-coding-realism-audit/core-ci.log: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/embedded-coded-fragment-files.txt: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/embedded-coding-context.txt: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/git-status-before.txt: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/python-coding-source.txt: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/python-coding-tests.txt: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/python-protocol-coding-context.txt: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/source-after.sha256: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/source-before.diff: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/source-before.sha256: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/source-hash-diff.txt: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/step7c0-coding-realism-audit.json: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/step7c0-coding-realism-report.md: OK
+artifacts/article-evidence/19-step7c0-coding-realism-audit/step7c0-final-readiness.json: OK

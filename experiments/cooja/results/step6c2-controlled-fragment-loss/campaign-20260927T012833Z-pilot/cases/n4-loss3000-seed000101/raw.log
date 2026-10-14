@@ -1,0 +1,82 @@
+Starting a Gradle Daemon, 1 incompatible and 4 stopped Daemons could not be reused, use --status for details
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :run
+[32mINFO  [main] [Cooja.java:1147] - Loading /workspace/experiments/cooja/results/step6c2-controlled-fragment-loss/campaign-20260927T012833Z-pilot/cases/n4-loss3000-seed000101/scenario.csc random seed: null[0;39m
+> make -j20 ranger-static-coded-rpl.cooja TARGET=cooja DEFINES=RANGER_CODING_K=3,RANGER_CODING_N=4,RANGER_LOSS_BP=3000,RANGER_LOSS_SEED=101,RANGER_CAMPAIGN_MODE=1
+  LD        build/cooja/ranger-static-coded-rpl.cooja
+[32mINFO  [main] [LogScriptEngine.java:231] - Script timeout in 1200000 ms[0;39m
+[1;91mERROR [main] [ScriptRunner.java:311] - Test script error: [0;39m
+javax.script.ScriptException: <eval>:57:41 Expected , but found ;
+  log.log("RANGER_LOSS_ASSERT_TIMEOUT\n");
+                                         ^ in <eval> at line number 57 at column number 41
+	at org.openjdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:436)
+	at org.openjdk.nashorn.api.scripting.NashornScriptEngine.asCompiledScript(NashornScriptEngine.java:462)
+	at org.openjdk.nashorn.api.scripting.NashornScriptEngine.compile(NashornScriptEngine.java:161)
+	at org.contikios.cooja.LogScriptEngine.compileScript(LogScriptEngine.java:232)
+	at org.contikios.cooja.plugins.ScriptRunner.activateScript(ScriptRunner.java:309)
+	at org.contikios.cooja.plugins.ScriptRunner.setConfigXML(ScriptRunner.java:454)
+	at org.contikios.cooja.Cooja.startPlugin(Cooja.java:623)
+	at org.contikios.cooja.Simulation.startPlugin(Simulation.java:426)
+	at org.contikios.cooja.Simulation.<init>(Simulation.java:398)
+	at org.contikios.cooja.Cooja.createSimulation(Cooja.java:1243)
+	at org.contikios.cooja.Cooja.go(Cooja.java:1152)
+	at org.contikios.cooja.Main.main(Main.java:312)
+Caused by: org.openjdk.nashorn.internal.runtime.ParserException: <eval>:57:41 Expected , but found ;
+  log.log("RANGER_LOSS_ASSERT_TIMEOUT\n");
+                                         ^
+	at org.openjdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:293)
+	at org.openjdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:278)
+	at org.openjdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:349)
+	at org.openjdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:336)
+	at org.openjdk.nashorn.internal.parser.Parser.argumentList(Parser.java:3691)
+	at org.openjdk.nashorn.internal.parser.Parser.leftHandSideExpression(Parser.java:3385)
+	at org.openjdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:4393)
+	at org.openjdk.nashorn.internal.parser.Parser.expression(Parser.java:4564)
+	at org.openjdk.nashorn.internal.parser.Parser.conditionalExpression(Parser.java:4716)
+	at org.openjdk.nashorn.internal.parser.Parser.assignmentExpression(Parser.java:4655)
+	at org.openjdk.nashorn.internal.parser.Parser.expression(Parser.java:4533)
+	at org.openjdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1840)
+	at org.openjdk.nashorn.internal.parser.Parser.statement(Parser.java:1146)
+	at org.openjdk.nashorn.internal.parser.Parser.statement(Parser.java:1019)
+	at org.openjdk.nashorn.internal.parser.Parser.statementList(Parser.java:1452)
+	at org.openjdk.nashorn.internal.parser.Parser.getBlock(Parser.java:603)
+	at org.openjdk.nashorn.internal.parser.Parser.tryStatement(Parser.java:2614)
+	at org.openjdk.nashorn.internal.parser.Parser.statement(Parser.java:1069)
+	at org.openjdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:900)
+	at org.openjdk.nashorn.internal.parser.Parser.functionBody(Parser.java:4165)
+	at org.openjdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:3795)
+	at org.openjdk.nashorn.internal.parser.Parser.statement(Parser.java:1090)
+	at org.openjdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:900)
+	at org.openjdk.nashorn.internal.parser.Parser.program(Parser.java:835)
+	at org.openjdk.nashorn.internal.parser.Parser.parse(Parser.java:322)
+	at org.openjdk.nashorn.internal.parser.Parser.parse(Parser.java:282)
+	at org.openjdk.nashorn.internal.runtime.Context.compile(Context.java:1315)
+	at org.openjdk.nashorn.internal.runtime.Context.compileScript(Context.java:701)
+	at org.openjdk.nashorn.api.scripting.NashornScriptEngine.asCompiledScript(NashornScriptEngine.java:459)
+	... 10 common frames omitted
+[1;91mERROR [main] [Cooja.java:1154] - Failed to load simulation: Failed to start plugin: Failed to set config for org.contikios.cooja.plugins.ScriptRunner[0;39m
+[1;91mERROR [main] [Cooja.java:1160] - TEST /workspace/experiments/cooja/results/step6c2-controlled-fragment-loss/campaign-20260927T012833Z-pilot/cases/n4-loss3000-seed000101/scenario.csc FAILED
+[0;39m
+[1;91mERROR [main] [Cooja.java:1183] - Failed tests:
+/workspace/experiments/cooja/results/step6c2-controlled-fragment-loss/campaign-20260927T012833Z-pilot/cases/n4-loss3000-seed000101/scenario.csc seed: null[0;39m
+
+> Task :run FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':run' (registered by plugin 'org.gradle.application').
+> Process 'command '/usr/local/bin/java'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 48s
+3 actionable tasks: 1 executed, 2 up-to-date
+

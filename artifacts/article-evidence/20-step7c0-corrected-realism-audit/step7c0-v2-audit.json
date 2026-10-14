@@ -1,0 +1,113 @@
+{
+  "claim_guardrail": "STEP7A/STEP7B results validate the network behavior of the idealized k-of-n fragment-identity abstraction. They must not be presented as measurements of a deployed byte-level Reed-Solomon codec.",
+  "classification": "IDEALIZED_K_OF_N_ABSTRACTION_CONFIRMED_BOTH_MODELS",
+  "coding_realism_gap_confirmed": true,
+  "embedded": {
+    "files": [
+      {
+        "byte_level_erasure_payload_demonstrated": false,
+        "coded_packet_indices_exactly_0_to_8": true,
+        "explicit_idealization_comment": true,
+        "file": "experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c",
+        "fragment_identity_tracking": true,
+        "metadata_only_coding_semantics": true,
+        "no_payload_indices_after_8": true,
+        "packet_size_9": true,
+        "receive_fields_are_fragment_index_k_n": true,
+        "receive_requires_9_bytes": true,
+        "reconstruction_triggered_by_fragment_count": true,
+        "send_blocks": [
+          {
+            "indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "max_index": 8
+          }
+        ]
+      },
+      {
+        "byte_level_erasure_payload_demonstrated": false,
+        "coded_packet_indices_exactly_0_to_8": true,
+        "explicit_idealization_comment": true,
+        "file": "experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c",
+        "fragment_identity_tracking": true,
+        "metadata_only_coding_semantics": true,
+        "no_payload_indices_after_8": true,
+        "packet_size_9": true,
+        "receive_fields_are_fragment_index_k_n": true,
+        "receive_requires_9_bytes": true,
+        "reconstruction_triggered_by_fragment_count": true,
+        "send_blocks": [
+          {
+            "indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "max_index": 8
+          }
+        ]
+      },
+      {
+        "byte_level_erasure_payload_demonstrated": false,
+        "coded_packet_indices_exactly_0_to_8": true,
+        "explicit_idealization_comment": true,
+        "file": "experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c",
+        "fragment_identity_tracking": true,
+        "metadata_only_coding_semantics": true,
+        "no_payload_indices_after_8": true,
+        "packet_size_9": true,
+        "receive_fields_are_fragment_index_k_n": true,
+        "receive_requires_9_bytes": true,
+        "reconstruction_triggered_by_fragment_count": true,
+        "send_blocks": [
+          {
+            "indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "max_index": 8
+          }
+        ]
+      }
+    ],
+    "metadata_only_all": true,
+    "real_byte_level_codec": false
+  },
+  "next_step": "STEP7C1_REAL_BYTE_LEVEL_REED_SOLOMON_CODEC",
+  "previous_audit_issue": "The first lexical heuristic produced a false-positive embedded byte-level signal. V2 requires actual payload positions and actual reconstruction semantics.",
+  "python": {
+    "idealization_signals": {
+      "abstract_fragment": true,
+      "distinct_fragment_threshold": true,
+      "ideal_systematic_mds": true,
+      "no_real_rs_bytes": true
+    },
+    "idealized_k_of_n": true,
+    "real_byte_level_codec": false,
+    "source": "src/ranger_iot/ranger/coding.py"
+  },
+  "schema_version": 2,
+  "step": "STEP7C0_CODING_REALISM_AUDIT_V2"
+}

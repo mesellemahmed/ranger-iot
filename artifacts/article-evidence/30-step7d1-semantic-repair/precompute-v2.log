@@ -1,0 +1,15 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+WARNING: 4 wellformedness check failed!
+
+Multiset rewriting rules and restrictions: 10
+Raw sources: 13 cases, deconstructions complete
+Refined sources: 13 cases, deconstructions complete

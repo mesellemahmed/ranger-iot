@@ -1,0 +1,15 @@
+artifacts/article-evidence/22-step7c2-c-differential/c-o0-build-run.log: OK
+artifacts/article-evidence/22-step7c2-c-differential/c-o2-build-run.log: OK
+artifacts/article-evidence/22-step7c2-c-differential/core-ci.log: OK
+artifacts/article-evidence/22-step7c2-c-differential/c-results.sha256: OK
+artifacts/article-evidence/22-step7c2-c-differential/c-results-o0.tsv: OK
+artifacts/article-evidence/22-step7c2-c-differential/c-results-o2.tsv: OK
+artifacts/article-evidence/22-step7c2-c-differential/c-toolchain.txt: OK
+artifacts/article-evidence/22-step7c2-c-differential/frozen-source-before.sha256: OK
+artifacts/article-evidence/22-step7c2-c-differential/gitbash-docker-preflight.log: OK
+artifacts/article-evidence/22-step7c2-c-differential/python-vectors.sha256: OK
+artifacts/article-evidence/22-step7c2-c-differential/python-vectors.tsv: OK
+artifacts/article-evidence/22-step7c2-c-differential/python-vectors-pre-resume.sha256: OK
+artifacts/article-evidence/22-step7c2-c-differential/step7c2-differential-report.json: OK
+artifacts/article-evidence/22-step7c2-c-differential/step7c2-final-readiness.json: OK
+artifacts/article-evidence/22-step7c2-c-differential/step7c2-source.sha256: OK

@@ -1,0 +1,14 @@
+{
+  "accepted_nodes": [],
+  "exit_code": 1,
+  "experiment": "RANGER-COOJA-CORE-ONEHOP",
+  "marker_counts": {
+    "assert_pass": 0,
+    "core_pass": 0,
+    "test_ok": 0
+  },
+  "rejected_nodes": [],
+  "result": "FAIL",
+  "run_id": "run-20260926T024252Z",
+  "schema_version": 1
+}

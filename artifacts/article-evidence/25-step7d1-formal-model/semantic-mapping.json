@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "step": "STEP7D1_FORMAL_SEMANTIC_MAPPING",
+  "formal_layer": "LKH_AUTHORIZATION_TRANSPORT_ABSTRACTION",
+  "implemented_semantics": {
+    "authorization": "LKH remains the authorization mechanism for the protected rekey material.",
+    "ranger_payload": "RANGER transports an opaque authenticated/encrypted rekey capsule.",
+    "authorized_acceptance": "Only currently authorized members may accept a reconstructed capsule and advance to the rekey epoch.",
+    "revocation": "Revoked members may observe or relay network traffic but must not accept the new group epoch.",
+    "recovery_request": "Recovery requests are issued for stale authorized targets.",
+    "recovery_request_validation": "Requester identity, group, epoch, authorization and capsule identity are checked before a recovery response is generated.",
+    "recovery_helper": "The Group Manager or an authorized neighbor may provide available fragments.",
+    "recovery_epoch_scope": "Recovery is intentionally same-epoch only."
+  },
+  "formal_abstractions": {
+    "lkh_tree": "Collapsed into a survivor authorization wrapping secret. This models the authorization boundary, not the exact binary LKH key-update graph.",
+    "coded_fragments": "The cryptographically protected rekey capsule is modeled as one symbolic protected object. Threshold Reed-Solomon algebra is outside this Tamarin model and was validated separately in STEP7C.",
+    "network": "Dolev-Yao adversary controls delivery, replay and reordering through Tamarin In/Out facts.",
+    "topology_and_loss": "Not modeled symbolically; evaluated experimentally in STEP7A/STEP7B/STEP7C.",
+    "epoch_scope": "Each modeled rekey event has a fresh symbolic epoch. Global latest-epoch ordering across multiple sequential rekeys is not claimed in STEP7D1."
+  },
+  "explicit_compromise_model": {
+    "authorized_member_compromise": "The adversary may reveal the shared survivor authorization secret through compromise of an authorized member.",
+    "manager_compromise": "The adversary may reveal the survivor authorization secret through Group Manager compromise.",
+    "secrecy_claim": "Epoch-key secrecy is required only unless one of those relevant authorization secrets is compromised before adversary knowledge."
+  },
+  "not_claimed": [
+    "Exact LKH tree correctness",
+    "Exact LKH ciphertext minimality",
+    "Forward secrecy after authorized-member compromise",
+    "Post-compromise security",
+    "Multi-epoch replay resistance",
+    "Cryptographic Reed-Solomon secrecy",
+    "Formal equivalence between Python, C, Cooja and Tamarin",
+    "Topology-dependent availability",
+    "Radio-loss resilience"
+  ]
+}

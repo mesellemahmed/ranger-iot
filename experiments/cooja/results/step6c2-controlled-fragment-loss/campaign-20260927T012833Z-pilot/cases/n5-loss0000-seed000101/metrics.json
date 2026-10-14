@@ -1,0 +1,30 @@
+{
+  "authorized_members": 6,
+  "case_id": "n5-loss0000-seed000101",
+  "defines": "RANGER_CODING_K=3,RANGER_CODING_N=5,RANGER_LOSS_BP=0,RANGER_LOSS_SEED=101,RANGER_CAMPAIGN_MODE=1",
+  "exit_code": 1,
+  "expected_mask": 252,
+  "expected_reconstructed_count": 6,
+  "expected_reconstructed_nodes": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "fragment_send_opportunities": 35,
+  "k": 3,
+  "loss_bp": 0,
+  "loss_rate": 0.0,
+  "loss_seed": 101,
+  "n": 5,
+  "nominal_coding_overhead": 1.6666666666666667,
+  "outcome": "INFRA_FAIL",
+  "planned_fragment_drops": 0,
+  "planned_fragment_sends": 35,
+  "reconstruction_ratio": 1.0,
+  "redundancy_fragments": 2,
+  "schema_version": 1,
+  "script_runner_pass": false
+}

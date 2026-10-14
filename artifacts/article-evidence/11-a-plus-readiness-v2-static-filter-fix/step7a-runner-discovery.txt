@@ -1,0 +1,311 @@
+RANGER-IOT STEP 7A RUNNER DISCOVERY
+===================================
+
+Candidate scripts:
+experiments/cooja/scripts/run_step6c3_radio_loss.py
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py
+experiments/cooja/scripts/run_step6d2_recovery_radio.py
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py
+
+Seed/campaign-related arguments:
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:36:    add_text(simulation, "randomseed", str(cfg["random_seed"]))
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:200:        "random_seed": cfg["random_seed"],
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:139:    # Cooja ScriptRunner consumes mote logs internally. In headless mode those
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:211:        "random_seed": scenario_meta.get("random_seed"),
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:28:    "ranger-static-loss-campaign-assert.js"
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:177:        "ranger-static-loss-campaign-assert.js"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:103:    campaigns = sorted(
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:105:            "campaign-*-full"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:109:    if not campaigns:
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:111:            "No frozen STEP 6C.2 campaign."
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:115:        campaigns[-1]
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:117:        "n5-loss0000-seed000101/"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:142:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:168:        "@@SIMULATION_SEED@@":
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:169:            str(simulation_seed),
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:208:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:222:    randomseed = root.find(
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:223:        "./simulation/randomseed"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:250:        "randomseed": randomseed,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:272:    assert randomseed is not None
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:283:        f"seed{simulation_seed}"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:286:    randomseed.text = str(
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:287:        simulation_seed
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:307:            "RANGER_LOSS_SEED=1",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:308:            "RANGER_CAMPAIGN_MODE=0",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:350:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:377:        "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:378:    ) != simulation_seed:
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:380:            "simulation_seed"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:610:    campaign_dir: Path,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:614:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:627:        f"seed{simulation_seed:06d}"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:631:        campaign_dir
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:645:        simulation_seed=simulation_seed,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:653:            simulation_seed=
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:654:                simulation_seed,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:670:        "simulation_seed":
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:671:            simulation_seed,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:797:                    simulation_seed=
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:798:                        simulation_seed,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:879:            "observed_simulation_seed",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:918:        "simulation_seed":
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:919:            simulation_seed,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1009:        "seed=",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1011:            "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1024:        "--mode",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1040:    if args.mode == "smoke":
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1047:                        "pilot_simulation_seeds"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1063:                    "pilot_simulation_seeds"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1068:    campaign_id = (
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1069:        "campaign-"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1076:        + args.mode
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1079:    campaign_dir = (
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1081:        / campaign_id
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1084:    campaign_dir.mkdir(
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1090:        campaign_dir
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1091:        / "campaign-config.json"
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1105:    for n, target_rx, seed in cases:
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1108:                campaign_dir,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1113:                simulation_seed=int(
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1114:                    seed
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1120:        campaign_dir
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1128:        "simulation_seed",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1144:        "observed_simulation_seed",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1188:        "campaign_id":
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1189:            campaign_id,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1190:        "mode":
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1191:            args.mode,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1226:        campaign_dir
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1243:        "Campaign :",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1244:        campaign_dir.relative_to(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:103:    campaigns = sorted(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:105:            "campaign-*-full"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:109:    if not campaigns:
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:111:            "No frozen STEP 6C.2 campaign."
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:115:        campaigns[-1]
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:117:        "n5-loss0000-seed000101/"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:142:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:168:        "@@SIMULATION_SEED@@":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:169:            str(simulation_seed),
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:208:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:222:    randomseed = root.find(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:223:        "./simulation/randomseed"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:250:        "randomseed": randomseed,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:272:    assert randomseed is not None
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:283:        f"seed{simulation_seed}"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:286:    randomseed.text = str(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:287:        simulation_seed
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:307:            "RANGER_LOSS_SEED=1",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:308:            "RANGER_CAMPAIGN_MODE=0",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:350:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:377:        "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:378:    ) != simulation_seed:
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:380:            "simulation_seed"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:384:        "target_success_ratio_tx"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:610:    campaign_dir: Path,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:614:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:627:        f"seed{simulation_seed:06d}"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:631:        campaign_dir
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:645:        simulation_seed=simulation_seed,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:653:            simulation_seed=
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:654:                simulation_seed,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:668:        "target_success_ratio_tx":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:670:        "simulation_seed":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:671:            simulation_seed,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:797:                    simulation_seed=
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:798:                        simulation_seed,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:879:            "observed_simulation_seed",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:918:        "simulation_seed":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:919:            simulation_seed,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1009:        "seed=",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1011:            "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1024:        "--mode",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1028:            "calibration",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1041:    if args.mode == "smoke":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1048:                        "pilot_simulation_seeds"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1055:        if args.mode == "calibration":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1056:            seeds = cfg[
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1057:                "calibration_simulation_seeds"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1060:            seeds = cfg[
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1061:                "pilot_simulation_seeds"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1070:                    "target_success_ratio_tx_values"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1072:                seeds,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1076:    campaign_id = (
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1077:        "campaign-"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1084:        + args.mode
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1087:    campaign_dir = (
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1089:        / campaign_id
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1092:    campaign_dir.mkdir(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1098:        campaign_dir
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1099:        / "campaign-config.json"
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1113:    for n, target_tx, seed in cases:
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1116:                campaign_dir,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1121:                simulation_seed=int(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1122:                    seed
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1128:        campaign_dir
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1135:        "target_success_ratio_tx",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1136:        "simulation_seed",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1152:        "observed_simulation_seed",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1196:        "campaign_id":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1197:            campaign_id,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1198:        "mode":
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1199:            args.mode,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1234:        campaign_dir
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1251:        "Campaign :",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1252:        campaign_dir.relative_to(
+experiments/cooja/scripts/run_step6c3_radio_loss.py:30:    "ranger-radio-loss-campaign-template.js"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:109:    campaigns = sorted(
+experiments/cooja/scripts/run_step6c3_radio_loss.py:110:        BASE_RESULT_ROOT.glob("campaign-*-full")
+experiments/cooja/scripts/run_step6c3_radio_loss.py:113:    if not campaigns:
+experiments/cooja/scripts/run_step6c3_radio_loss.py:115:            "No frozen STEP 6C.2 full campaign found."
+experiments/cooja/scripts/run_step6c3_radio_loss.py:119:        campaigns[-1]
+experiments/cooja/scripts/run_step6c3_radio_loss.py:120:        / "cases/n5-loss0000-seed000101/"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:144:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:160:        "@@SIMULATION_SEED@@": str(simulation_seed),
+experiments/cooja/scripts/run_step6c3_radio_loss.py:192:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:202:    randomseed = root.find("./simulation/randomseed")
+experiments/cooja/scripts/run_step6c3_radio_loss.py:218:        "randomseed": randomseed,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:239:    assert randomseed is not None
+experiments/cooja/scripts/run_step6c3_radio_loss.py:249:        f"seed{simulation_seed}"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:252:    randomseed.text = str(simulation_seed)
+experiments/cooja/scripts/run_step6c3_radio_loss.py:268:            "RANGER_LOSS_SEED=1",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:269:            "RANGER_CAMPAIGN_MODE=0",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:303:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:317:    observed_seed = result.get(
+experiments/cooja/scripts/run_step6c3_radio_loss.py:318:        "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:321:    if observed_seed != simulation_seed:
+experiments/cooja/scripts/run_step6c3_radio_loss.py:323:            "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:431:    campaign_dir: Path,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:435:    simulation_seed: int,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:443:        f"seed{simulation_seed:06d}"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:446:    case_dir = campaign_dir / "cases" / case_id
+experiments/cooja/scripts/run_step6c3_radio_loss.py:453:        simulation_seed=simulation_seed,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:460:        simulation_seed=simulation_seed,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:471:        "simulation_seed": simulation_seed,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:567:                simulation_seed=simulation_seed,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:655:                "observed_simulation_seed":
+experiments/cooja/scripts/run_step6c3_radio_loss.py:657:                        "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:696:        "radio_model": "UDGM",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:700:        "simulation_seed": simulation_seed,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:778:        "seed_observed=",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:780:            "observed_simulation_seed"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:791:        "--mode",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:794:            "calibration",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:808:    if args.mode == "pilot":
+experiments/cooja/scripts/run_step6c3_radio_loss.py:809:        seeds = cfg[
+experiments/cooja/scripts/run_step6c3_radio_loss.py:810:            "pilot_simulation_seeds"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:812:    elif args.mode == "calibration":
+experiments/cooja/scripts/run_step6c3_radio_loss.py:813:        seeds = cfg[
+experiments/cooja/scripts/run_step6c3_radio_loss.py:814:            "calibration_simulation_seeds"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:817:        seeds = cfg[
+experiments/cooja/scripts/run_step6c3_radio_loss.py:818:            "confirmatory_simulation_seeds"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:829:            seeds,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:833:    campaign_id = (
+experiments/cooja/scripts/run_step6c3_radio_loss.py:834:        "campaign-"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:841:        + args.mode
+experiments/cooja/scripts/run_step6c3_radio_loss.py:844:    campaign_dir = (
+experiments/cooja/scripts/run_step6c3_radio_loss.py:846:        / campaign_id
+experiments/cooja/scripts/run_step6c3_radio_loss.py:849:    campaign_dir.mkdir(
+experiments/cooja/scripts/run_step6c3_radio_loss.py:855:        campaign_dir
+experiments/cooja/scripts/run_step6c3_radio_loss.py:856:        / "campaign-config.json"
+experiments/cooja/scripts/run_step6c3_radio_loss.py:872:    for n, rx_success, seed in cases:
+experiments/cooja/scripts/run_step6c3_radio_loss.py:875:                campaign_dir,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:880:                simulation_seed=int(
+experiments/cooja/scripts/run_step6c3_radio_loss.py:881:                    seed
+experiments/cooja/scripts/run_step6c3_radio_loss.py:887:        campaign_dir
+experiments/cooja/scripts/run_step6c3_radio_loss.py:895:        "simulation_seed",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:905:        "observed_simulation_seed",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:951:        "campaign_id":
+experiments/cooja/scripts/run_step6c3_radio_loss.py:952:            campaign_id,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:953:        "mode": args.mode,
+experiments/cooja/scripts/run_step6c3_radio_loss.py:988:        campaign_dir
+experiments/cooja/scripts/run_step6c3_radio_loss.py:1005:        "Campaign :",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:1006:        campaign_dir.relative_to(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:103:    campaigns = sorted(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:105:            "campaign-*-full"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:109:    if not campaigns:
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:111:            "No frozen STEP 6C.2 campaign."
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:115:        campaigns[-1]
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:117:        "n5-loss0000-seed000101/"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:142:    simulation_seed: int,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:168:        "@@SIMULATION_SEED@@":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:169:            str(simulation_seed),
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:208:    simulation_seed: int,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:222:    randomseed = root.find(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:223:        "./simulation/randomseed"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:250:        "randomseed": randomseed,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:272:    assert randomseed is not None
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:283:        f"seed{simulation_seed}"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:286:    randomseed.text = str(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:287:        simulation_seed
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:307:            "RANGER_LOSS_SEED=1",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:308:            "RANGER_CAMPAIGN_MODE=0",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:354:    simulation_seed: int,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:381:        "observed_simulation_seed"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:382:    ) != simulation_seed:
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:384:            "simulation_seed"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:388:        "target_success_ratio_tx"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:614:    campaign_dir: Path,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:618:    simulation_seed: int,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:631:        f"seed{simulation_seed:06d}"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:635:        campaign_dir
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:649:        simulation_seed=simulation_seed,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:657:            simulation_seed=
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:658:                simulation_seed,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:672:        "target_success_ratio_tx":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:674:        "simulation_seed":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:675:            simulation_seed,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:801:                    simulation_seed=
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:802:                        simulation_seed,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:883:            "observed_simulation_seed",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:922:        "simulation_seed":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:923:            simulation_seed,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1013:        "seed=",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1015:            "observed_simulation_seed"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1028:        "--mode",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1032:            "calibration",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1045:    if args.mode == "smoke":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1052:                        "pilot_simulation_seeds"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1059:        if args.mode == "calibration":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1060:            seeds = cfg[
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1061:                "calibration_simulation_seeds"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1064:            seeds = cfg[
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1065:                "pilot_simulation_seeds"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1074:                    "target_success_ratio_tx_values"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1076:                seeds,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1080:    campaign_id = (
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1081:        "campaign-"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1088:        + args.mode
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1091:    campaign_dir = (
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1093:        / campaign_id
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1096:    campaign_dir.mkdir(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1102:        campaign_dir
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1103:        / "campaign-config.json"
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1117:    for n, target_tx, seed in cases:
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1120:                campaign_dir,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1125:                simulation_seed=int(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1126:                    seed
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1132:        campaign_dir
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1139:        "target_success_ratio_tx",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1140:        "simulation_seed",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1156:        "observed_simulation_seed",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1200:        "campaign_id":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1201:            campaign_id,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1202:        "mode":
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1203:            args.mode,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1238:        campaign_dir
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1255:        "Campaign :",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1256:        campaign_dir.relative_to(
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:103:    campaigns = sorted(
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:105:            "campaign-*-full"
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:109:    if not campaigns:
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:111:            "No frozen STEP 6C.2 campaign."
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:115:        campaigns[-1]
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:117:        "n5-loss0000-seed000101/"
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:142:    simulation_seed: int,
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:168:        "@@SIMULATION_SEED@@":
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:169:            str(simulation_seed),
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:208:    simulation_seed: int,
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:222:    randomseed = root.find(

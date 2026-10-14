@@ -1,0 +1,28 @@
+{
+  "branch": "dev",
+  "confirmatory_rows": 480,
+  "controlled_infra_retry": {
+    "layout": "compact-onehop",
+    "original_evidence_preserved": true,
+    "protocol": "static",
+    "replacement_seeds": 0,
+    "retry_count_per_case": 1,
+    "seeds": [
+      1108,
+      5659
+    ],
+    "tx": 0.3
+  },
+  "evidence_file_count_before_final_manifest": 71,
+  "fixed_embedded_scope": "8 motes",
+  "grouped_rows": 24,
+  "head": "2e782b72915fd0e9ace915ed582d5a4ba043d302",
+  "next_step": "STEP7C0_CODING_REALISM_AUDIT",
+  "paired_effect_rows": 24,
+  "previous_package_sha256": "b8948c39847a61a1a7ae412ba0da6cb2ce7984a31e7000ec633980a600d4b493",
+  "result_tree_file_count": 4127,
+  "schema_version": 1,
+  "scientific_state": "COOJA_TOPOLOGY_EXTERNAL_VALIDITY_COMPLETE",
+  "step": "STEP7B3_FINAL_EVIDENCE_FREEZE",
+  "step7b3_pass": true
+}

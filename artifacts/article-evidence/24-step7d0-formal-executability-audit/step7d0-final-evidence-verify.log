@@ -1,0 +1,17 @@
+artifacts/article-evidence/24-step7d0-formal-executability-audit/core-ci-final.log: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/formal-absence-evidence.sha256: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/formal-absence-evidence.txt: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/formal-files.txt: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/formal-inventory.json: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/formal-source-before.sha256: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/git-branch.txt: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/git-head.txt: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/git-status-before.txt: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/previous-source-build-failure.sha256: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/step7d0-absence-classification.json: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/step7d0-final-readiness.json: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/tamarin-bottle-image-build.log: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/tamarin-image-build.log: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/tamarin-toolchain-provenance.json: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/toolchain/Dockerfile.tamarin-1.12.0: OK
+artifacts/article-evidence/24-step7d0-formal-executability-audit/toolchain-failure-classification.json: OK

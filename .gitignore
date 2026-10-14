@@ -216,3 +216,115 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---------------------------------------------------------------------------
+# Scientific experiment artifacts
+# ---------------------------------------------------------------------------
+# Publication results are intentionally versioned.
+# DO NOT ignore:
+#   experiments/results/
+#   experiments/cooja/results/
+#
+# Temporary or scratch experiment outputs only:
+experiments/**/tmp/
+experiments/**/scratch/
+
+# Contiki-NG / Cooja transient build artifacts
+**/.gradle/
+experiments/cooja/**/build/
+experiments/cooja/**/*.elf
+experiments/cooja/**/*.hex
+experiments/cooja/**/*.bin
+experiments/cooja/**/*.o
+experiments/cooja/**/*.d
+
+# Cooja scientific logs are publication artifacts and must be versioned
+!experiments/cooja/results/**/*.log
+
+# Local development patches/installers
+step*.patch
+step*.zip
+step*.py
+
+# ------------------------------------------------------------------
+# Scientific results MUST be versioned for reproducibility
+# ------------------------------------------------------------------
+!experiments/results/
+!experiments/results/**
+!experiments/cooja/
+!experiments/cooja/results/
+!experiments/cooja/results/**
+!experiments/evidence/
+!experiments/evidence/**
+
+# RANGER-IoT public repository: local generated files
+*.pyc
+*.pyo
+*.pyd
+.venv/
+node_modules/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Historical development campaigns excluded from article-1
+/experiments/results/step4d/
+/experiments/results/step4e/
+/experiments/results/step5b/
+/experiments/results/step5c/
+/experiments/results/step5d/
+/experiments/results/step5e0/
+/experiments/results/step5f2/
+
+# Per-run detailed traces kept in dev
+/experiments/results/step5e/publication-main/runs/**/events.csv
+/experiments/results/step5e/publication-main/runs/**/nodes.csv
+/experiments/results/step5f3/adaptive-v2-confirmatory/runs/**/events.csv
+/experiments/results/step5f3/adaptive-v2-confirmatory/runs/**/nodes.csv
+
+# Generated compilation and coverage outputs
+*.o
+*.d
+
+# Cooja generated application builds
+/experiments/cooja/apps/**/build/
+
+# Historical per-run outputs: retained in dev
+/experiments/results/step5e/publication-main/runs/
+/experiments/results/step5f3/adaptive-v2-confirmatory/runs/
+
+# Historical scalability individual outputs
+/experiments/results/step5e/publication-scalability/runs/
+
+# Editorial manuscript artifacts
+/manuscript/
+/paper/
+/papers/
+/latex/
+/submission/
+/submissions/
+/reviewers/
+/rebuttal/
+/revisions/
+*.tex
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Editorial-only evidence and manuscript tooling
+/artifacts/article-evidence/41-step7e1a-manuscript-evidence-compiler/
+/artifacts/article-evidence/42-step7e1b-full-manuscript-related-work/
+/artifacts/article-evidence/40-final-scientific-evidence-freeze/manuscript-architecture.md
+/artifacts/article-evidence/40-final-scientific-evidence-freeze/manuscript-rq-contract.md
+/artifacts/article-evidence/44-author-dossier/manuscript-core.txt
+/reproducibility/extract_author_core_for_manuscript.sh
+/reproducibility/step7e1a_manuscript_evidence_compiler.sh
+/reproducibility/step7e1b_full_manuscript_related_work.sh
+/reproducibility/step7e1c_latex_figures_hostile_review.sh
+
+# Editorial author-dossier tooling
+/artifacts/article-evidence/44-author-dossier/
+/reproducibility/extract_author_dossier.sh

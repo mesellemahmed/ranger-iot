@@ -1,0 +1,55 @@
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_executable_same_epoch_recovery-Start_Rekey_case_1-Start_Rekey_case_1-Accept_Initial_case_2-Start_Rekey_case_2-Start_Rekey_case_1-Start_Rekey-Start_Recovery-Start_Rekey_case_1-Setup_case_1-Start_Rekey-Start_Recovery-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Stale( $A, ~epoch, ~groupkey )|<n1> !AuthorizedEpoch( $A, ~epoch )}|{<n2> #i : Start_Recovery[RecoveryRequest( $A, ~epoch )]}|{<n3> Recovering( $A, ~epoch, ~groupkey )|<n4> Out( \<RA1, $A, ~epoch\> )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> Current( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n7> !AuthorizedEpoch( $H,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~epoch\l)\l|<n8> !AuthorizedEpoch( $A,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~epoch\l)\l|<n9> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n10> In( \<RA1, $A, ~epoch\l&nbsp;&nbsp;&nbsp;&nbsp;\>\l)\l}|{<n11> #j : Recovery_Response[RecoveryResponse( $H, $A, ~epoch )]}|{<n12> Current( $H, ~epoch, ~groupkey )|<n13> Out( SE1 )}}",fillcolor="#ced997",style="filled",fontcolor="black",role="Undefined"];
+n21[shape="record",label="{{<n15> Recovering( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n16> !AuthorizedEpoch( $A,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~epoch\l)\l|<n17> !MemberKey( $A, KS1\l)\l|<n18> In( SE1 )}|{<n19> #k : Accept_Recovery[Accept( $A, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RecoveryAccept( $A, ~epoch, ~groupkey )]\l}|{<n20> Current( $A, ~epoch, ~groupkey )}}",fillcolor="#c7d998",style="filled",fontcolor="black",role="Undefined"];
+n22[label="#vf : isend",shape="ellipse"];
+n23[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n34[shape="record",label="{{<n24> !GroupContext( $GM, $A, $H, $R, KS1 )|<n25> Fr( ~epoch )|<n26> Fr( ~groupkey )}|{<n27> #vr : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $R, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( $GM, ~epoch, ~groupkey )]\l}|{<n28> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n29> !AuthorizedEpoch( $A,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~epoch\l)\l|<n30> !AuthorizedEpoch( $H,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~epoch\l)\l|<n31> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n32> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n33> Out( SE1 )}}",fillcolor="#badb99",style="filled",fontcolor="black",role="Undefined"];
+n35[label="#vf.1 : isend",shape="ellipse"];
+n36[label="#vk.1 : coerce[!KU( ~epoch )]",shape="ellipse"];
+n37[label="#vl.1 : irecv",shape="ellipse"];
+n45[shape="record",label="{{<n38> Fr( KS1 )|<n39> Fr( ~krevoked )}|{<n40> #vr.1 : Setup[Setup( $GM, $A, $H, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n41> !GroupContext( $GM, $A, $H,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$R, KS1\l)\l|<n42> !MemberKey( $A, KS1\l)\l|<n43> !MemberKey( $H, KS1\l)\l|<n44> !RevokedOldKey( $R,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~krevoked\l)\l}}",fillcolor="#acdc9a",style="filled",fontcolor="black",role="Undefined"];
+n52[shape="record",label="{{<n46> Stale( $H, ~epoch, ~groupkey\l)\l|<n47> !AuthorizedEpoch( $H, ~epoch\l)\l|<n48> !MemberKey( $H, KS1\l)\l|<n49> In( SE1 )}|{<n50> #vr.2 : Accept_Initial[Accept( $H, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AcceptInitial( $H, ~epoch, ~groupkey )]\l}|{<n51> Current( $H, ~epoch, ~groupkey )}}",fillcolor="#a5dd9a",style="filled",fontcolor="black",role="Undefined"];
+n53[label="#vr.3 : d_0_snd",shape="ellipse"];
+n54[label="#vf.6 : isend",shape="ellipse"];
+n5:n3 -> n21:n15[style="bold",weight="10.0"];
+n5:n4 -> n37[color="gray30"];
+n22 -> n14:n10[color="gray30"];
+n34:n28 -> n14:n9[style="bold",weight="10.0",color="gray50"];
+n34:n29 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n34:n29 -> n14:n8[style="bold",weight="10.0",color="gray50"];
+n34:n29 -> n21:n16[style="bold",weight="10.0",color="gray50"];
+n34:n30 -> n14:n7[style="bold",weight="10.0",color="gray50"];
+n34:n30 -> n52:n47[style="bold",weight="10.0",color="gray50"];
+n34:n31 -> n5:n0[style="bold",weight="10.0"];
+n34:n32 -> n52:n46[style="bold",weight="10.0"];
+n34:n33 -> n23[color="orangered2"];
+n35 -> n21:n18[color="gray30"];
+n37 -> n53[color="orangered2"];
+n45:n41 -> n34:n24[style="bold",weight="10.0",color="gray50"];
+n45:n42 -> n21:n17[style="bold",weight="10.0",color="gray50"];
+n45:n43 -> n52:n48[style="bold",weight="10.0",color="gray50"];
+n52:n51 -> n14:n6[style="bold",weight="10.0"];
+n53 -> n36[color="orangered2"];
+n54 -> n52:n49[color="gray30"];
+n5:n2 -> n14:n11[color="black",style="dashed"];
+n14:n11 -> n21:n19[color="black",style="dashed"];
+n23 -> n35[color="red",style="dashed"];
+n23 -> n54[color="red",style="dashed"];
+n36 -> n22[color="red",style="dashed"];
+n37 -> n22[color="red",style="dashed"];
+n53 -> n22[color="red",style="dashed"];
+{
+rank="sink";
+n55[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">RA1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">'ranger-recovery-request'</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n21:n19 -> n55[style="invis"];
+
+}

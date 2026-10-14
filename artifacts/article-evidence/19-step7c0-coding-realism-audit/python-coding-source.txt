@@ -1,0 +1,146 @@
+     1	from __future__ import annotations
+     2	
+     3	from dataclasses import dataclass, field
+     4	from math import ceil
+     5	
+     6	from ranger_iot.ranger.capsule import RekeyCapsule
+     7	
+     8	
+     9	@dataclass(frozen=True, slots=True)
+    10	class CodingParameters:
+    11	    """Ideal systematic MDS coding parameters for the simulator."""
+    12	
+    13	    data_fragments: int
+    14	    total_fragments: int
+    15	
+    16	    def __post_init__(self) -> None:
+    17	        if self.data_fragments < 1:
+    18	            raise ValueError("data_fragments must be at least 1")
+    19	        if self.total_fragments < self.data_fragments:
+    20	            raise ValueError("total_fragments must be >= data_fragments")
+    21	
+    22	    @property
+    23	    def redundancy_fragments(self) -> int:
+    24	        return self.total_fragments - self.data_fragments
+    25	
+    26	    def fragment_payload_bytes(self, payload_bytes: int) -> int:
+    27	        if payload_bytes < 1:
+    28	            raise ValueError("payload_bytes must be at least 1")
+    29	        return ceil(payload_bytes / self.data_fragments)
+    30	
+    31	
+    32	@dataclass(frozen=True, slots=True)
+    33	class CodedFragment:
+    34	    """One abstract erasure-coded fragment of a rekey capsule."""
+    35	
+    36	    capsule_id: str
+    37	    group_id: int
+    38	    epoch: int
+    39	    fragment_index: int
+    40	    data_fragments: int
+    41	    total_fragments: int
+    42	    payload_bytes: int
+    43	
+    44	    def __post_init__(self) -> None:
+    45	        if not self.capsule_id:
+    46	            raise ValueError("capsule_id must not be empty")
+    47	        if self.group_id < 0:
+    48	            raise ValueError("group_id must be non-negative")
+    49	        if self.epoch < 1:
+    50	            raise ValueError("epoch must be at least 1")
+    51	        if self.data_fragments < 1:
+    52	            raise ValueError("data_fragments must be at least 1")
+    53	        if self.total_fragments < self.data_fragments:
+    54	            raise ValueError("total_fragments must be >= data_fragments")
+    55	        if not 0 <= self.fragment_index < self.total_fragments:
+    56	            raise ValueError("fragment_index out of range")
+    57	        if self.payload_bytes < 1:
+    58	            raise ValueError("payload_bytes must be at least 1")
+    59	
+    60	
+    61	class StaticErasureCoder:
+    62	    """Create ideal k-of-n fragments without simulating codec CPU work.
+    63	
+    64	    Any ``data_fragments`` distinct fragments are considered sufficient to
+    65	    recover the opaque capsule.  No real Reed-Solomon bytes are generated at
+    66	    this abstraction layer.
+    67	    """
+    68	
+    69	    @staticmethod
+    70	    def encode(
+    71	        capsule: RekeyCapsule,
+    72	        parameters: CodingParameters,
+    73	    ) -> tuple[CodedFragment, ...]:
+    74	        fragment_bytes = parameters.fragment_payload_bytes(capsule.payload_bytes)
+    75	        return tuple(
+    76	            CodedFragment(
+    77	                capsule_id=capsule.capsule_id,
+    78	                group_id=capsule.group_id,
+    79	                epoch=capsule.epoch,
+    80	                fragment_index=index,
+    81	                data_fragments=parameters.data_fragments,
+    82	                total_fragments=parameters.total_fragments,
+    83	                payload_bytes=fragment_bytes,
+    84	            )
+    85	            for index in range(parameters.total_fragments)
+    86	        )
+    87	
+    88	
+    89	@dataclass(slots=True)
+    90	class FragmentAccumulator:
+    91	    """Track unique fragments for exactly one capsule and coding profile."""
+    92	
+    93	    capsule_id: str
+    94	    group_id: int
+    95	    epoch: int
+    96	    parameters: CodingParameters
+    97	    _received_indexes: set[int] = field(default_factory=set, init=False, repr=False)
+    98	
+    99	    def __post_init__(self) -> None:
+   100	        if not self.capsule_id:
+   101	            raise ValueError("capsule_id must not be empty")
+   102	        if self.group_id < 0:
+   103	            raise ValueError("group_id must be non-negative")
+   104	        if self.epoch < 1:
+   105	            raise ValueError("epoch must be at least 1")
+   106	
+   107	    @property
+   108	    def unique_received(self) -> int:
+   109	        return len(self._received_indexes)
+   110	
+   111	    @property
+   112	    def received_indexes(self) -> tuple[int, ...]:
+   113	        return tuple(sorted(self._received_indexes))
+   114	
+   115	    @property
+   116	    def decodable(self) -> bool:
+   117	        return self.unique_received >= self.parameters.data_fragments
+   118	
+   119	    @property
+   120	    def remaining_needed(self) -> int:
+   121	        return max(0, self.parameters.data_fragments - self.unique_received)
+   122	
+   123	    def accept(self, fragment: CodedFragment) -> bool:
+   124	        """Accept one matching fragment.
+   125	
+   126	        Returns ``True`` only when the fragment contributes a previously unseen
+   127	        index.  Metadata mismatches are rejected because fragments from another
+   128	        group, epoch, capsule, or coding profile must never be combined.
+   129	        """
+   130	
+   131	        self._validate_fragment(fragment)
+   132	        before = len(self._received_indexes)
+   133	        self._received_indexes.add(fragment.fragment_index)
+   134	        return len(self._received_indexes) > before
+   135	
+   136	    def _validate_fragment(self, fragment: CodedFragment) -> None:
+   137	        if fragment.capsule_id != self.capsule_id:
+   138	            raise ValueError("fragment capsule_id does not match accumulator")
+   139	        if fragment.group_id != self.group_id:
+   140	            raise ValueError("fragment group_id does not match accumulator")
+   141	        if fragment.epoch != self.epoch:
+   142	            raise ValueError("fragment epoch does not match accumulator")
+   143	        if fragment.data_fragments != self.parameters.data_fragments:
+   144	            raise ValueError("fragment data_fragments does not match accumulator")
+   145	        if fragment.total_fragments != self.parameters.total_fragments:
+   146	            raise ValueError("fragment total_fragments does not match accumulator")

@@ -1,0 +1,16 @@
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/accept_has_rekey_origin.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/accept_requires_authorization.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/epoch_key_secrecy_unless_compromised.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/executable_initial_accept.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/executable_same_epoch_recovery.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/recovery_accept_has_rekey_origin.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/recovery_helper_authorized.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/recovery_requester_authorized.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/recovery_same_epoch.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/revocation_reachable.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/logs/revoked_never_accepts.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/model-hashes.sha256: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/model-v1-v2.diff: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/precompute-v2.log: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/proof-matrix-v2.json: OK
+artifacts/article-evidence/30-step7d1-semantic-repair/return-codes.tsv: OK

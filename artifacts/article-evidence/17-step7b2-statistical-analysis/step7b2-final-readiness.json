@@ -1,0 +1,26 @@
+{
+  "checks": {
+    "analysis": true,
+    "completion_effect_rows_144": true,
+    "core_ci": true,
+    "hashes": true,
+    "input_rows_2880": true,
+    "scenario_seed_cells_960": true,
+    "source_unchanged": true
+  },
+  "cost_metrics": [
+    "physical_transmissions",
+    "bytes_sent",
+    "manager_transmissions"
+  ],
+  "multiplicity": "Holm-controlled cell-level paired inference",
+  "next_step": "STEP7B3_COOJA_TOPOLOGY_EXTERNAL_VALIDITY",
+  "primary_metrics": [
+    "completion",
+    "convergence_fraction"
+  ],
+  "schema_version": 1,
+  "scientific_state": "EXTERNAL_VALIDITY_STATISTICS_COMPLETE",
+  "step": "STEP7B2_FULL_STATISTICAL_ANALYSIS",
+  "step7b2_pass": true
+}

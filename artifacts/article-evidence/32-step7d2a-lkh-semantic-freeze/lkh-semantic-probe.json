@@ -1,0 +1,1009 @@
+{
+  "cases": {
+    "five_members_revoke_5": {
+      "initial": {
+        "active_member_ids": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "leaf_base": 8,
+        "leaf_nodes": {
+          "1": 8,
+          "2": 9,
+          "3": 10,
+          "4": 11,
+          "5": 12
+        },
+        "member_ids": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "member_key_paths": {
+          "1": [
+            8,
+            4,
+            2,
+            1
+          ],
+          "2": [
+            9,
+            4,
+            2,
+            1
+          ],
+          "3": [
+            10,
+            5,
+            2,
+            1
+          ],
+          "4": [
+            11,
+            5,
+            2,
+            1
+          ],
+          "5": [
+            12,
+            6,
+            3,
+            1
+          ]
+        },
+        "root_key": {
+          "node_id": 1,
+          "version": 0
+        }
+      },
+      "steps": [
+        {
+          "after": {
+            "active_member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "leaf_base": 8,
+            "leaf_nodes": {
+              "1": 8,
+              "2": 9,
+              "3": 10,
+              "4": 11,
+              "5": 12
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "member_key_paths": {
+              "1": [
+                8,
+                4,
+                2,
+                1
+              ],
+              "2": [
+                9,
+                4,
+                2,
+                1
+              ],
+              "3": [
+                10,
+                5,
+                2,
+                1
+              ],
+              "4": [
+                11,
+                5,
+                2,
+                1
+              ],
+              "5": [
+                12,
+                6,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            }
+          },
+          "before": {
+            "active_member_ids": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "leaf_base": 8,
+            "leaf_nodes": {
+              "1": 8,
+              "2": 9,
+              "3": 10,
+              "4": 11,
+              "5": 12
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "member_key_paths": {
+              "1": [
+                8,
+                4,
+                2,
+                1
+              ],
+              "2": [
+                9,
+                4,
+                2,
+                1
+              ],
+              "3": [
+                10,
+                5,
+                2,
+                1
+              ],
+              "4": [
+                11,
+                5,
+                2,
+                1
+              ],
+              "5": [
+                12,
+                6,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 0
+            }
+          },
+          "plan": {
+            "affected_nodes": [
+              1
+            ],
+            "logical_ciphertexts": 1,
+            "revoked_members": [
+              5
+            ],
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            },
+            "update_schema": [
+              "target",
+              "wrapper",
+              "recipients"
+            ],
+            "updates": [
+              {
+                "recipients": [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 2,
+                  "version": 0
+                }
+              }
+            ]
+          },
+          "revoked_cumulative": [
+            5
+          ],
+          "revoked_now": [
+            5
+          ],
+          "step": 1
+        }
+      ]
+    },
+    "four_members_no_revocation": {
+      "initial": {
+        "active_member_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "leaf_base": 4,
+        "leaf_nodes": {
+          "1": 4,
+          "2": 5,
+          "3": 6,
+          "4": 7
+        },
+        "member_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "member_key_paths": {
+          "1": [
+            4,
+            2,
+            1
+          ],
+          "2": [
+            5,
+            2,
+            1
+          ],
+          "3": [
+            6,
+            3,
+            1
+          ],
+          "4": [
+            7,
+            3,
+            1
+          ]
+        },
+        "root_key": {
+          "node_id": 1,
+          "version": 0
+        }
+      },
+      "steps": [
+        {
+          "after": {
+            "active_member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            }
+          },
+          "before": {
+            "active_member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 0
+            }
+          },
+          "plan": {
+            "affected_nodes": [
+              1
+            ],
+            "logical_ciphertexts": 2,
+            "revoked_members": [],
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            },
+            "update_schema": [
+              "target",
+              "wrapper",
+              "recipients"
+            ],
+            "updates": [
+              {
+                "recipients": [
+                  1,
+                  2
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 2,
+                  "version": 0
+                }
+              },
+              {
+                "recipients": [
+                  3,
+                  4
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 3,
+                  "version": 0
+                }
+              }
+            ]
+          },
+          "revoked_cumulative": [],
+          "revoked_now": [],
+          "step": 1
+        }
+      ]
+    },
+    "four_members_revoke_2_and_4": {
+      "initial": {
+        "active_member_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "leaf_base": 4,
+        "leaf_nodes": {
+          "1": 4,
+          "2": 5,
+          "3": 6,
+          "4": 7
+        },
+        "member_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "member_key_paths": {
+          "1": [
+            4,
+            2,
+            1
+          ],
+          "2": [
+            5,
+            2,
+            1
+          ],
+          "3": [
+            6,
+            3,
+            1
+          ],
+          "4": [
+            7,
+            3,
+            1
+          ]
+        },
+        "root_key": {
+          "node_id": 1,
+          "version": 0
+        }
+      },
+      "steps": [
+        {
+          "after": {
+            "active_member_ids": [
+              1,
+              3
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            }
+          },
+          "before": {
+            "active_member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 0
+            }
+          },
+          "plan": {
+            "affected_nodes": [
+              2,
+              3,
+              1
+            ],
+            "logical_ciphertexts": 4,
+            "revoked_members": [
+              2,
+              4
+            ],
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            },
+            "update_schema": [
+              "target",
+              "wrapper",
+              "recipients"
+            ],
+            "updates": [
+              {
+                "recipients": [
+                  1
+                ],
+                "target": {
+                  "node_id": 2,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 4,
+                  "version": 0
+                }
+              },
+              {
+                "recipients": [
+                  3
+                ],
+                "target": {
+                  "node_id": 3,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 6,
+                  "version": 0
+                }
+              },
+              {
+                "recipients": [
+                  1
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 2,
+                  "version": 1
+                }
+              },
+              {
+                "recipients": [
+                  3
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 3,
+                  "version": 1
+                }
+              }
+            ]
+          },
+          "revoked_cumulative": [
+            2,
+            4
+          ],
+          "revoked_now": [
+            2,
+            4
+          ],
+          "step": 1
+        }
+      ]
+    },
+    "four_members_revoke_4_then_3": {
+      "initial": {
+        "active_member_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "leaf_base": 4,
+        "leaf_nodes": {
+          "1": 4,
+          "2": 5,
+          "3": 6,
+          "4": 7
+        },
+        "member_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "member_key_paths": {
+          "1": [
+            4,
+            2,
+            1
+          ],
+          "2": [
+            5,
+            2,
+            1
+          ],
+          "3": [
+            6,
+            3,
+            1
+          ],
+          "4": [
+            7,
+            3,
+            1
+          ]
+        },
+        "root_key": {
+          "node_id": 1,
+          "version": 0
+        }
+      },
+      "steps": [
+        {
+          "after": {
+            "active_member_ids": [
+              1,
+              2,
+              3
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            }
+          },
+          "before": {
+            "active_member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 0
+            }
+          },
+          "plan": {
+            "affected_nodes": [
+              3,
+              1
+            ],
+            "logical_ciphertexts": 3,
+            "revoked_members": [
+              4
+            ],
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            },
+            "update_schema": [
+              "target",
+              "wrapper",
+              "recipients"
+            ],
+            "updates": [
+              {
+                "recipients": [
+                  3
+                ],
+                "target": {
+                  "node_id": 3,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 6,
+                  "version": 0
+                }
+              },
+              {
+                "recipients": [
+                  1,
+                  2
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 2,
+                  "version": 0
+                }
+              },
+              {
+                "recipients": [
+                  3
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 1
+                },
+                "wrapper": {
+                  "node_id": 3,
+                  "version": 1
+                }
+              }
+            ]
+          },
+          "revoked_cumulative": [
+            4
+          ],
+          "revoked_now": [
+            4
+          ],
+          "step": 1
+        },
+        {
+          "after": {
+            "active_member_ids": [
+              1,
+              2
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 2
+            }
+          },
+          "before": {
+            "active_member_ids": [
+              1,
+              2,
+              3
+            ],
+            "leaf_base": 4,
+            "leaf_nodes": {
+              "1": 4,
+              "2": 5,
+              "3": 6,
+              "4": 7
+            },
+            "member_ids": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "member_key_paths": {
+              "1": [
+                4,
+                2,
+                1
+              ],
+              "2": [
+                5,
+                2,
+                1
+              ],
+              "3": [
+                6,
+                3,
+                1
+              ],
+              "4": [
+                7,
+                3,
+                1
+              ]
+            },
+            "root_key": {
+              "node_id": 1,
+              "version": 1
+            }
+          },
+          "plan": {
+            "affected_nodes": [
+              1
+            ],
+            "logical_ciphertexts": 1,
+            "revoked_members": [
+              3
+            ],
+            "root_key": {
+              "node_id": 1,
+              "version": 2
+            },
+            "update_schema": [
+              "target",
+              "wrapper",
+              "recipients"
+            ],
+            "updates": [
+              {
+                "recipients": [
+                  1,
+                  2
+                ],
+                "target": {
+                  "node_id": 1,
+                  "version": 2
+                },
+                "wrapper": {
+                  "node_id": 2,
+                  "version": 0
+                }
+              }
+            ]
+          },
+          "revoked_cumulative": [
+            3,
+            4
+          ],
+          "revoked_now": [
+            3
+          ],
+          "step": 2
+        }
+      ]
+    }
+  },
+  "execution": "inside Docker ranger image",
+  "schema_version": 1,
+  "semantics": "implemented LkhKeyTree"
+}

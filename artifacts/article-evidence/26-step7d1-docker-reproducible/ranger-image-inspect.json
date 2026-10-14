@@ -1,0 +1,69 @@
+[
+    {
+        "Id": "sha256:0839fdae00dc5eec20e73b84abe8e510f0321da7c4a609b712218285ad1c5a5c",
+        "RepoTags": [],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-21T01:16:50.359903076Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 537900379,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/smypaz5dw8ndofxilym7ezw9r/diff:/var/lib/docker/overlay2/r7vbhxu7osfwuyku6fgnd64lb/diff:/var/lib/docker/overlay2/1c62fx4hrkwc2tf7gsnpgw37f/diff:/var/lib/docker/overlay2/edj2btg9a1dt1jit318fy6pa9/diff:/var/lib/docker/overlay2/1y42ywvdwcc14ukke06cehxel/diff:/var/lib/docker/overlay2/d4727162fa273f8cdc6ef151faf1d990fbcd476552d74fcdbef2fddbe60f82ca/diff:/var/lib/docker/overlay2/9d5c65197b9bfd6441330e9d90beca68e473d76f7c8736c8b34ef503c8ffcb75/diff:/var/lib/docker/overlay2/d4fe3158dc4806abf6d50f2cb76f9632e407a31cf46964ae62b462face21b8f2/diff:/var/lib/docker/overlay2/9a1d56d32b1f86d74d2465fbabca819bb9c82356d1b5ffef3324c45e692f47c2/diff",
+                "MergedDir": "/var/lib/docker/overlay2/q582e4uwo7m8lkzslewub7prz/merged",
+                "UpperDir": "/var/lib/docker/overlay2/q582e4uwo7m8lkzslewub7prz/diff",
+                "WorkDir": "/var/lib/docker/overlay2/q582e4uwo7m8lkzslewub7prz/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac",
+                "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc",
+                "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f",
+                "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421",
+                "sha256:fc7ecbf5c9baad6cd59ac949dd09cc1e48ece8d73bbcc5bf0c08ae69c02cdbe6",
+                "sha256:606589f650ba0aebfab8d77de2e668fbe31922bee10ab9b47de3b7de29193d0e",
+                "sha256:66ffe3ef1b35f305cb1a3128d42f0f395358ff814c86de2d6f6784992773f31d",
+                "sha256:f79305e0fd6a162d0cbdca784f3932e464a4fae1f1ddf776b3c94c426449ceba",
+                "sha256:6553e8217ab968e10cd8648d31c2d02768050523db84698cea1658230c178c9e",
+                "sha256:a67d4e868252b4fe67e9a7baf4b1218396b9eec9c94760cc755d6ec76af6d1cd"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-21T01:16:50.416102873Z"
+        },
+        "Config": {
+            "ArgsEscaped": true,
+            "Cmd": [
+                "./scripts/ci.sh"
+            ],
+            "Entrypoint": null,
+            "Env": [
+                "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.12.14",
+                "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "PIP_DISABLE_PIP_VERSION_CHECK=1",
+                "PIP_NO_CACHE_DIR=1"
+            ],
+            "Labels": {
+                "com.docker.compose.project": "ranger-iot",
+                "com.docker.compose.service": "ranger",
+                "com.docker.compose.version": "2.39.2"
+            },
+            "OnBuild": null,
+            "User": "ranger",
+            "Volumes": null,
+            "WorkingDir": "/workspace"
+        }
+    }
+]

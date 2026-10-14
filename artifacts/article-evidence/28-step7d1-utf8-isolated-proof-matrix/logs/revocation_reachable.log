@@ -1,0 +1,337 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+searching for attacks at depth: 1
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+searching for attacks at depth: 2
+attack found at depth: 2
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+  --[
+  Setup( $GM, $A, $H, $R ), InitiallyAuthorized( $A ),
+  InitiallyAuthorized( $H ), RevokedIdentity( $R )
+  ]->
+   [
+   !SurvivorKey( ~ksurvivor ), !MemberKey( $A, ~ksurvivor ),
+   !MemberKey( $H, ~ksurvivor ), !RevokedOldKey( $R, ~krevoked )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Start_Rekey:
+   [ !SurvivorKey( ksurvivor ), Fr( ~epoch ), Fr( ~groupkey ) ]
+  --[
+  RekeyStarted( ~epoch, ~groupkey ), AuthorizedAt( $A, ~epoch ),
+  AuthorizedAt( $H, ~epoch ), RevokedAt( $R, ~epoch ),
+  SecretEpoch( ~epoch, ~groupkey )
+  ]->
+   [
+   !EpochCipher( ~epoch, ~groupkey,
+                 senc(<'ranger-capsule', ~epoch, ~groupkey>, ksurvivor)
+   ),
+   Stale( $A, ~epoch, ~groupkey ), Stale( $H, ~epoch, ~groupkey ),
+   Out( senc(<'ranger-capsule', ~epoch, ~groupkey>, ksurvivor) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Initial:
+   [
+   Stale( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), AcceptInitial( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "∃ e gk #i. AcceptInitial( $A, e, gk ) @ #i"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ e gk #i. (AcceptInitial( $A, e, gk ) @ #i)"
+*/
+by sorry
+
+lemma executable_same_epoch_recovery:
+  exists-trace
+  "∃ e gk #i #j #k.
+    ((((RecoveryRequest( $A, e ) @ #i) ∧
+       (RecoveryResponse( $H, $A, e ) @ #j)) ∧
+      (RecoveryAccept( $A, e, gk ) @ #k)) ∧
+     (#i < #j)) ∧
+    (#j < #k)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ e gk #i #j #k.
+  (RecoveryRequest( $A, e ) @ #i) ∧
+  (RecoveryResponse( $H, $A, e ) @ #j) ∧
+  (RecoveryAccept( $A, e, gk ) @ #k)
+ ∧
+  (#i < #j) ∧ (#j < #k)"
+*/
+by sorry
+
+lemma revocation_reachable:
+  exists-trace "∃ e #i. RevokedAt( $R, e ) @ #i"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ e #i. (RevokedAt( $R, e ) @ #i)"
+*/
+simplify
+solve( !SurvivorKey( ksurvivor ) ▶₀ #i )
+  case Setup
+  SOLVED // trace found
+qed
+
+lemma accept_has_rekey_origin:
+  all-traces
+  "∀ a e gk #i.
+    (Accept( a, e, gk ) @ #i) ⇒
+    (∃ #j. (RekeyStarted( e, gk ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ a e gk #i.
+  (Accept( a, e, gk ) @ #i)
+ ∧
+  ∀ #j. (RekeyStarted( e, gk ) @ #j) ⇒ ¬(#j < #i)"
+*/
+by sorry
+
+lemma accept_requires_authorization:
+  all-traces
+  "∀ a e gk #i.
+    (Accept( a, e, gk ) @ #i) ⇒
+    (∃ #j. (AuthorizedAt( a, e ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ a e gk #i.
+  (Accept( a, e, gk ) @ #i)
+ ∧
+  ∀ #j. (AuthorizedAt( a, e ) @ #j) ⇒ ¬(#j < #i)"
+*/
+by sorry
+
+lemma revoked_never_accepts:
+  all-traces
+  "∀ e gk #r #a.
+    ((RevokedAt( $R, e ) @ #r) ∧ (Accept( $R, e, gk ) @ #a)) ⇒ (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ e gk #r #a. (RevokedAt( $R, e ) @ #r) ∧ (Accept( $R, e, gk ) @ #a)"
+*/
+by sorry
+
+lemma recovery_requester_authorized:
+  all-traces
+  "∀ a e #i.
+    (RecoveryRequest( a, e ) @ #i) ⇒
+    (∃ #j. (AuthorizedAt( a, e ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ a e #i.
+  (RecoveryRequest( a, e ) @ #i)
+ ∧
+  ∀ #j. (AuthorizedAt( a, e ) @ #j) ⇒ ¬(#j < #i)"
+*/
+by sorry
+
+lemma recovery_helper_authorized:
+  all-traces
+  "∀ h a e #i.
+    (RecoveryResponse( h, a, e ) @ #i) ⇒
+    (∃ #j. (AuthorizedAt( h, e ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ h a e #i.
+  (RecoveryResponse( h, a, e ) @ #i)
+ ∧
+  ∀ #j. (AuthorizedAt( h, e ) @ #j) ⇒ ¬(#j < #i)"
+*/
+by sorry
+
+lemma recovery_same_epoch:
+  all-traces
+  "∀ a e gk #i.
+    (RecoveryAccept( a, e, gk ) @ #i) ⇒
+    (∃ #j. (RecoveryRequest( a, e ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ a e gk #i.
+  (RecoveryAccept( a, e, gk ) @ #i)
+ ∧
+  ∀ #j. (RecoveryRequest( a, e ) @ #j) ⇒ ¬(#j < #i)"
+*/
+by sorry
+
+lemma recovery_accept_has_rekey_origin:
+  all-traces
+  "∀ a e gk #i.
+    (RecoveryAccept( a, e, gk ) @ #i) ⇒
+    (∃ #j. (RekeyStarted( e, gk ) @ #j) ∧ (#j < #i))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ a e gk #i.
+  (RecoveryAccept( a, e, gk ) @ #i)
+ ∧
+  ∀ #j. (RekeyStarted( e, gk ) @ #j) ⇒ ¬(#j < #i)"
+*/
+by sorry
+
+lemma epoch_key_secrecy_unless_compromised:
+  all-traces
+  "∀ e gk #i #j.
+    ((SecretEpoch( e, gk ) @ #i) ∧ (K( gk ) @ #j)) ⇒
+    ((∃ a #r. (Compromise( a ) @ #r) ∧ (#r < #j)) ∨
+     (∃ #r. (CompromiseGM( $GM ) @ #r) ∧ (#r < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ e gk #i #j.
+  (SecretEpoch( e, gk ) @ #i) ∧ (K( gk ) @ #j)
+ ∧
+  (∀ a #r. (Compromise( a ) @ #r) ⇒ ¬(#r < #j)) ∧
+  (∀ #r. (CompromiseGM( $GM ) @ #r) ⇒ ¬(#r < #j))"
+*/
+by sorry
+
+/*
+WARNING: the following wellformedness checks failed!
+
+Formula terms
+=============
+
+  Lemma `executable_initial_accept' uses terms of the wrong form:
+    `Free $A'
+  
+  The only allowed terms are public constants and bound node and
+  message variables. If you encounter free message variables, then
+  you might have forgotten a #-prefix. Sort prefixes can only be
+  dropped where this is unambiguous. Moreover, reducible function
+  symbols are disallowed.
+  
+  Lemma `executable_same_epoch_recovery' uses terms of the wrong form:
+    `Free $A', `Free $H', `Free $A', `Free $A'
+  
+  The only allowed terms are public constants and bound node and
+  message variables. If you encounter free message variables, then
+  you might have forgotten a #-prefix. Sort prefixes can only be
+  dropped where this is unambiguous. Moreover, reducible function
+  symbols are disallowed.
+  
+  Lemma `revocation_reachable' uses terms of the wrong form:
+    `Free $R'
+  
+  The only allowed terms are public constants and bound node and
+  message variables. If you encounter free message variables, then
+  you might have forgotten a #-prefix. Sort prefixes can only be
+  dropped where this is unambiguous. Moreover, reducible function
+  symbols are disallowed.
+  
+  Lemma `revoked_never_accepts' uses terms of the wrong form:
+    `Free $R', `Free $R'
+  
+  The only allowed terms are public constants and bound node and
+  message variables. If you encounter free message variables, then
+  you might have forgotten a #-prefix. Sort prefixes can only be
+  dropped where this is unambiguous. Moreover, reducible function
+  symbols are disallowed.
+  
+  Lemma `epoch_key_secrecy_unless_compromised' uses terms of the wrong form:
+    `Free $GM'
+  
+  The only allowed terms are public constants and bound node and
+  message variables. If you encounter free message variables, then
+  you might have forgotten a #-prefix. Sort prefixes can only be
+  dropped where this is unambiguous. Moreover, reducible function
+  symbols are disallowed.
+*/
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: UNKNOWN, branch: UNKNOWN
+Compiled at: 2026-03-08 10:05:47.616272992 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: formal/tamarin/ranger_authorization_transport.spthy
+
+  processing time: 0.66s
+  
+  WARNING: 5 wellformedness check failed!
+           The analysis results might be wrong!
+  
+  executable_initial_accept (exists-trace): analysis incomplete (1 steps)
+  executable_same_epoch_recovery (exists-trace): analysis incomplete (1 steps)
+  revocation_reachable (exists-trace): verified (3 steps)
+  accept_has_rekey_origin (all-traces): analysis incomplete (1 steps)
+  accept_requires_authorization (all-traces): analysis incomplete (1 steps)
+  revoked_never_accepts (all-traces): analysis incomplete (1 steps)
+  recovery_requester_authorized (all-traces): analysis incomplete (1 steps)
+  recovery_helper_authorized (all-traces): analysis incomplete (1 steps)
+  recovery_same_epoch (all-traces): analysis incomplete (1 steps)
+  recovery_accept_has_rekey_origin (all-traces): analysis incomplete (1 steps)
+  epoch_key_secrecy_unless_compromised (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

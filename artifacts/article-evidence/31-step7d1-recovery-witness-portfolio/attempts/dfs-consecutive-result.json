@@ -1,0 +1,16 @@
+{
+  "attack_depths": [],
+  "attack_found": false,
+  "attempt": "dfs-consecutive",
+  "auto_sources": false,
+  "budget_seconds": 240,
+  "classification": "verified",
+  "details": "14 steps",
+  "heuristic": "C",
+  "lemma": "executable_same_epoch_recovery",
+  "maximum_search_depth_seen": null,
+  "return_code": 0,
+  "schema_version": 2,
+  "search": "DFS",
+  "tamarin_status": "verified"
+}

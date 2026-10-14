@@ -1,0 +1,33 @@
+{
+  "controlled_reconstruction_masks": {
+    "2": 7,
+    "3": 11,
+    "4": 19,
+    "5": 13,
+    "6": 26
+  },
+  "controlled_send_masks": {
+    "2": 7,
+    "3": 11,
+    "4": 19,
+    "5": 13,
+    "6": 26,
+    "7": 3,
+    "8": 1
+  },
+  "k": 3,
+  "n": 5,
+  "payload_ascii": "RANGER-RS-EPOCH1",
+  "payload_bytes": 16,
+  "payload_hex": "52414e4745522d52532d45504f434831",
+  "python_canonical_shards": {
+    "0": "52414e474552",
+    "1": "2d52532d4550",
+    "2": "4f4348310000",
+    "3": "49d499929149",
+    "4": "2bc5828ed419"
+  },
+  "schema_version": 1,
+  "shard_bytes": 6,
+  "wire_packet_bytes": 18
+}

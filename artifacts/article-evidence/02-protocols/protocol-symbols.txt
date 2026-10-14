@@ -1,0 +1,267 @@
+src/ranger_iot/analysis/publication.py:29:    "lkh-flood",
+src/ranger_iot/analysis/publication.py:30:    "lkh-unicast",
+src/ranger_iot/analysis/publication.py:31:    "skdc",
+src/ranger_iot/experiments/campaign.py:18:    "skdc",
+src/ranger_iot/experiments/campaign.py:19:    "lkh-unicast",
+src/ranger_iot/experiments/campaign.py:20:    "lkh-flood",
+src/ranger_iot/experiments/config.py:12:    "skdc",
+src/ranger_iot/experiments/config.py:13:    "lkh-flood",
+src/ranger_iot/experiments/config.py:14:    "lkh-unicast",
+src/ranger_iot/experiments/config.py:70:        if self.protocol.startswith("lkh-") and self.member_count < 2:
+src/ranger_iot/experiments/config.py:71:            raise ValueError("LKH requires at least two members")
+src/ranger_iot/experiments/runner.py:16:from ranger_iot.protocols.lkh import LkhKeyTree
+src/ranger_iot/experiments/runner.py:17:from ranger_iot.protocols.lkh_flood import LkhFloodParameters, LkhFloodProtocol
+src/ranger_iot/experiments/runner.py:18:from ranger_iot.protocols.lkh_transport import LkhTransportParameters, LkhUnicastProtocol
+src/ranger_iot/experiments/runner.py:19:from ranger_iot.protocols.skdc import SkdcParameters, SkdcProtocol
+src/ranger_iot/experiments/runner.py:21:    RangerAdaptiveParameters,
+src/ranger_iot/experiments/runner.py:22:    RangerAdaptiveProtocol,
+src/ranger_iot/experiments/runner.py:24:from ranger_iot.ranger.adaptive_v2_protocol import RangerAdaptiveV2Protocol
+src/ranger_iot/experiments/runner.py:27:    RangerRecoveryParameters,
+src/ranger_iot/experiments/runner.py:28:    RangerRecoveryProtocol,
+src/ranger_iot/experiments/runner.py:30:from ranger_iot.ranger.static_protocol import RangerStaticParameters, RangerStaticProtocol
+src/ranger_iot/experiments/runner.py:163:    if config.protocol == "skdc":
+src/ranger_iot/experiments/runner.py:169:        skdc_protocol = SkdcProtocol(
+src/ranger_iot/experiments/runner.py:172:            parameters=SkdcParameters(
+src/ranger_iot/experiments/runner.py:176:        session = skdc_protocol.start_rekey(
+src/ranger_iot/experiments/runner.py:180:        def skdc_fields() -> dict[str, object]:
+src/ranger_iot/experiments/runner.py:187:        return session, skdc_fields, None, 0
+src/ranger_iot/experiments/runner.py:189:    tree = LkhKeyTree(set(config.member_ids))
+src/ranger_iot/experiments/runner.py:191:    if config.protocol == "lkh-unicast":
+src/ranger_iot/experiments/runner.py:197:        lkh_protocol = LkhUnicastProtocol(
+src/ranger_iot/experiments/runner.py:201:            parameters=LkhTransportParameters(
+src/ranger_iot/experiments/runner.py:205:        session = lkh_protocol.start_rekey(
+src/ranger_iot/experiments/runner.py:209:        def lkh_unicast_fields() -> dict[str, object]:
+src/ranger_iot/experiments/runner.py:210:            stats = lkh_protocol.transport_stats(session.epoch)
+src/ranger_iot/experiments/runner.py:216:        return session, lkh_unicast_fields, None, 0
+src/ranger_iot/experiments/runner.py:218:    if config.protocol == "lkh-flood":
+src/ranger_iot/experiments/runner.py:224:        flood_protocol = LkhFloodProtocol(
+src/ranger_iot/experiments/runner.py:228:            parameters=LkhFloodParameters(
+src/ranger_iot/experiments/runner.py:236:        def lkh_flood_fields() -> dict[str, object]:
+src/ranger_iot/experiments/runner.py:244:        return session, lkh_flood_fields, None, 0
+src/ranger_iot/experiments/runner.py:252:        ranger_protocol = RangerStaticProtocol(
+src/ranger_iot/experiments/runner.py:256:            parameters=RangerStaticParameters(
+src/ranger_iot/experiments/runner.py:289:        recovery_protocol = RangerRecoveryProtocol(
+src/ranger_iot/experiments/runner.py:293:            parameters=RangerRecoveryParameters(
+src/ranger_iot/experiments/runner.py:341:        adaptive_protocol = RangerAdaptiveProtocol(
+src/ranger_iot/experiments/runner.py:345:            parameters=RangerAdaptiveParameters(
+src/ranger_iot/experiments/runner.py:399:        adaptive_v2_protocol = RangerAdaptiveV2Protocol(
+src/ranger_iot/experiments/runner.py:403:            parameters=RangerAdaptiveParameters(
+src/ranger_iot/protocols/base.py:8:class RekeyProtocol(Protocol):
+src/ranger_iot/protocols/lkh.py:8:class LkhKeyRef:
+src/ranger_iot/protocols/lkh.py:9:    """Symbolic reference to one LKH key version."""
+src/ranger_iot/protocols/lkh.py:22:class LkhKeyUpdate:
+src/ranger_iot/protocols/lkh.py:23:    """One logical LKH ciphertext carrying a replacement key."""
+src/ranger_iot/protocols/lkh.py:25:    target: LkhKeyRef
+src/ranger_iot/protocols/lkh.py:26:    wrapper: LkhKeyRef
+src/ranger_iot/protocols/lkh.py:39:class LkhRekeyPlan:
+src/ranger_iot/protocols/lkh.py:40:    """Deterministic bottom-up key-update plan for one LKH rekey operation."""
+src/ranger_iot/protocols/lkh.py:44:    updates: tuple[LkhKeyUpdate, ...]
+src/ranger_iot/protocols/lkh.py:45:    root_key: LkhKeyRef
+src/ranger_iot/protocols/lkh.py:52:class LkhKeyTree:
+src/ranger_iot/protocols/lkh.py:65:            raise ValueError("LKH requires at least two members")
+src/ranger_iot/protocols/lkh.py:92:    def root_key(self) -> LkhKeyRef:
+src/ranger_iot/protocols/lkh.py:99:            raise KeyError(f"unknown LKH member: {member_id}") from exc
+src/ranger_iot/protocols/lkh.py:101:    def key_ref(self, node_id: int) -> LkhKeyRef:
+src/ranger_iot/protocols/lkh.py:103:        return LkhKeyRef(node_id=node_id, version=self._versions[node_id])
+src/ranger_iot/protocols/lkh.py:122:    def rekey(self, revoked_members: set[int]) -> LkhRekeyPlan:
+src/ranger_iot/protocols/lkh.py:126:            raise ValueError("LKH rekey cannot revoke all active members")
+src/ranger_iot/protocols/lkh.py:131:        updates: list[LkhKeyUpdate] = []
+src/ranger_iot/protocols/lkh.py:133:            target_ref = LkhKeyRef(target_node, next_versions[target_node])
+src/ranger_iot/protocols/lkh.py:145:                    LkhKeyUpdate(
+src/ranger_iot/protocols/lkh.py:147:                        wrapper=LkhKeyRef(child_node, wrapper_version),
+src/ranger_iot/protocols/lkh.py:156:        return LkhRekeyPlan(
+src/ranger_iot/protocols/lkh.py:166:            raise KeyError(f"unknown LKH member: {min(unknown)}")
+src/ranger_iot/protocols/lkh.py:226:            raise KeyError(f"unknown LKH tree node: {node_id}")
+src/ranger_iot/protocols/lkh_flood.py:6:from ranger_iot.protocols.lkh import LkhKeyTree, LkhKeyUpdate, LkhRekeyPlan
+src/ranger_iot/protocols/lkh_flood.py:12:class LkhFloodParameters:
+src/ranger_iot/protocols/lkh_flood.py:13:    """Wire-size model for one flooded LKH ciphertext."""
+src/ranger_iot/protocols/lkh_flood.py:23:class LkhFloodRekeyMessage:
+src/ranger_iot/protocols/lkh_flood.py:24:    """One shared LKH key update disseminated through the flood transport."""
+src/ranger_iot/protocols/lkh_flood.py:29:    update: LkhKeyUpdate
+src/ranger_iot/protocols/lkh_flood.py:33:class LkhFloodStats:
+src/ranger_iot/protocols/lkh_flood.py:34:    """Protocol-level counters for one flooded LKH rekey epoch."""
+src/ranger_iot/protocols/lkh_flood.py:42:class _LkhFloodEpochState:
+src/ranger_iot/protocols/lkh_flood.py:43:    plan: LkhRekeyPlan
+src/ranger_iot/protocols/lkh_flood.py:50:class LkhFloodProtocol:
+src/ranger_iot/protocols/lkh_flood.py:51:    """LKH baseline with one network flood per logical ciphertext.
+src/ranger_iot/protocols/lkh_flood.py:53:    Authorization remains entirely defined by the LKH key tree. Dissemination
+src/ranger_iot/protocols/lkh_flood.py:60:    MESSAGE_KIND = "lkh.rekey"
+src/ranger_iot/protocols/lkh_flood.py:66:        tree: LkhKeyTree,
+src/ranger_iot/protocols/lkh_flood.py:68:        parameters: LkhFloodParameters | None = None,
+src/ranger_iot/protocols/lkh_flood.py:71:            raise ValueError("group and LKH tree must contain the same members")
+src/ranger_iot/protocols/lkh_flood.py:73:            raise ValueError("group epoch and LKH root-key version must match")
+src/ranger_iot/protocols/lkh_flood.py:78:        self._parameters = parameters or LkhFloodParameters()
+src/ranger_iot/protocols/lkh_flood.py:79:        self._epochs: dict[int, _LkhFloodEpochState] = {}
+src/ranger_iot/protocols/lkh_flood.py:91:    def plan(self, epoch: int) -> LkhRekeyPlan:
+src/ranger_iot/protocols/lkh_flood.py:94:    def transport_stats(self, epoch: int) -> LkhFloodStats:
+src/ranger_iot/protocols/lkh_flood.py:96:        return LkhFloodStats(
+src/ranger_iot/protocols/lkh_flood.py:111:            raise RuntimeError("LKH root-key version diverged from group epoch")
+src/ranger_iot/protocols/lkh_flood.py:116:        state = _LkhFloodEpochState(
+src/ranger_iot/protocols/lkh_flood.py:125:            message = LkhFloodRekeyMessage(
+src/ranger_iot/protocols/lkh_flood.py:153:        if not isinstance(payload, LkhFloodRekeyMessage):
+src/ranger_iot/protocols/lkh_flood.py:154:            raise TypeError("invalid flooded LKH rekey payload")
+src/ranger_iot/protocols/lkh_flood.py:158:            raise ValueError("flood epoch does not match LKH payload epoch")
+src/ranger_iot/protocols/lkh_flood.py:166:            raise ValueError("LKH update index is out of range")
+src/ranger_iot/protocols/lkh_flood.py:169:            raise ValueError("LKH payload does not match the rekey plan")
+src/ranger_iot/protocols/lkh_flood.py:197:        plan: LkhRekeyPlan,
+src/ranger_iot/protocols/lkh_flood.py:208:            raise RuntimeError(f"LKH plan does not cover authorized member: {missing[0]}")
+src/ranger_iot/protocols/lkh_flood.py:211:    def _require_epoch(self, epoch: int) -> _LkhFloodEpochState:
+src/ranger_iot/protocols/lkh_transport.py:6:from ranger_iot.protocols.lkh import LkhKeyTree, LkhKeyUpdate, LkhRekeyPlan
+src/ranger_iot/protocols/lkh_transport.py:12:class LkhTransportParameters:
+src/ranger_iot/protocols/lkh_transport.py:13:    """Wire-size model for one routed LKH ciphertext copy."""
+src/ranger_iot/protocols/lkh_transport.py:23:class LkhRekeyMessage:
+src/ranger_iot/protocols/lkh_transport.py:24:    """One routed copy of a logical LKH key update."""
+src/ranger_iot/protocols/lkh_transport.py:29:    update: LkhKeyUpdate
+src/ranger_iot/protocols/lkh_transport.py:34:class LkhTransportStats:
+src/ranger_iot/protocols/lkh_transport.py:35:    """Protocol-level transport counters for one LKH rekey epoch."""
+src/ranger_iot/protocols/lkh_transport.py:43:class _LkhEpochState:
+src/ranger_iot/protocols/lkh_transport.py:44:    plan: LkhRekeyPlan
+src/ranger_iot/protocols/lkh_transport.py:51:class LkhUnicastProtocol:
+src/ranger_iot/protocols/lkh_transport.py:52:    """LKH baseline transported as deterministic per-recipient unicasts.
+src/ranger_iot/protocols/lkh_transport.py:57:    the LKH cryptographic plan from multicast/flooding optimizations.
+src/ranger_iot/protocols/lkh_transport.py:60:    MESSAGE_KIND = "lkh.rekey"
+src/ranger_iot/protocols/lkh_transport.py:66:        tree: LkhKeyTree,
+src/ranger_iot/protocols/lkh_transport.py:68:        parameters: LkhTransportParameters | None = None,
+src/ranger_iot/protocols/lkh_transport.py:71:            raise ValueError("group and LKH tree must contain the same members")
+src/ranger_iot/protocols/lkh_transport.py:73:            raise ValueError("group epoch and LKH root-key version must match")
+src/ranger_iot/protocols/lkh_transport.py:78:        self._parameters = parameters or LkhTransportParameters()
+src/ranger_iot/protocols/lkh_transport.py:79:        self._epochs: dict[int, _LkhEpochState] = {}
+src/ranger_iot/protocols/lkh_transport.py:91:    def plan(self, epoch: int) -> LkhRekeyPlan:
+src/ranger_iot/protocols/lkh_transport.py:94:    def transport_stats(self, epoch: int) -> LkhTransportStats:
+src/ranger_iot/protocols/lkh_transport.py:96:        return LkhTransportStats(
+src/ranger_iot/protocols/lkh_transport.py:111:            raise RuntimeError("LKH root-key version diverged from group epoch")
+src/ranger_iot/protocols/lkh_transport.py:116:        state = _LkhEpochState(
+src/ranger_iot/protocols/lkh_transport.py:127:                    raise RuntimeError("LKH plan includes a non-authorized recipient")
+src/ranger_iot/protocols/lkh_transport.py:128:                message = LkhRekeyMessage(
+src/ranger_iot/protocols/lkh_transport.py:158:        if not isinstance(payload, LkhRekeyMessage):
+src/ranger_iot/protocols/lkh_transport.py:159:            raise TypeError("invalid LKH rekey payload")
+src/ranger_iot/protocols/lkh_transport.py:165:            raise ValueError("routed epoch does not match LKH payload epoch")
+src/ranger_iot/protocols/lkh_transport.py:173:            raise ValueError("LKH update index is out of range")
+src/ranger_iot/protocols/lkh_transport.py:176:            raise ValueError("LKH payload does not match the rekey plan")
+src/ranger_iot/protocols/lkh_transport.py:204:        plan: LkhRekeyPlan,
+src/ranger_iot/protocols/lkh_transport.py:215:            raise RuntimeError(f"LKH plan does not cover authorized member: {missing[0]}")
+src/ranger_iot/protocols/lkh_transport.py:218:    def _require_epoch(self, epoch: int) -> _LkhEpochState:
+src/ranger_iot/protocols/skdc.py:11:class SkdcParameters:
+src/ranger_iot/protocols/skdc.py:22:class SkdcRekeyMessage:
+src/ranger_iot/protocols/skdc.py:28:class SkdcProtocol:
+src/ranger_iot/protocols/skdc.py:31:    MESSAGE_KIND = "skdc.rekey"
+src/ranger_iot/protocols/skdc.py:38:        parameters: SkdcParameters | None = None,
+src/ranger_iot/protocols/skdc.py:42:        self._parameters = parameters or SkdcParameters()
+src/ranger_iot/protocols/skdc.py:68:            message = SkdcRekeyMessage(
+src/ranger_iot/protocols/skdc.py:94:        if not isinstance(payload, SkdcRekeyMessage):
+src/ranger_iot/protocols/skdc.py:95:            raise TypeError("invalid SKDC rekey payload")
+src/ranger_iot/protocols/skdc.py:101:            raise ValueError("routed epoch does not match SKDC payload epoch")
+src/ranger_iot/protocols/__init__.py:2:from ranger_iot.protocols.lkh import (
+src/ranger_iot/protocols/__init__.py:3:    LkhKeyRef,
+src/ranger_iot/protocols/__init__.py:4:    LkhKeyTree,
+src/ranger_iot/protocols/__init__.py:5:    LkhKeyUpdate,
+src/ranger_iot/protocols/__init__.py:6:    LkhRekeyPlan,
+src/ranger_iot/protocols/__init__.py:8:from ranger_iot.protocols.lkh_flood import (
+src/ranger_iot/protocols/__init__.py:9:    LkhFloodParameters,
+src/ranger_iot/protocols/__init__.py:10:    LkhFloodProtocol,
+src/ranger_iot/protocols/__init__.py:11:    LkhFloodRekeyMessage,
+src/ranger_iot/protocols/__init__.py:12:    LkhFloodStats,
+src/ranger_iot/protocols/__init__.py:14:from ranger_iot.protocols.lkh_transport import (
+src/ranger_iot/protocols/__init__.py:15:    LkhRekeyMessage,
+src/ranger_iot/protocols/__init__.py:16:    LkhTransportParameters,
+src/ranger_iot/protocols/__init__.py:17:    LkhTransportStats,
+src/ranger_iot/protocols/__init__.py:18:    LkhUnicastProtocol,
+src/ranger_iot/protocols/__init__.py:20:from ranger_iot.protocols.skdc import (
+src/ranger_iot/protocols/__init__.py:21:    SkdcParameters,
+src/ranger_iot/protocols/__init__.py:22:    SkdcProtocol,
+src/ranger_iot/protocols/__init__.py:23:    SkdcRekeyMessage,
+src/ranger_iot/protocols/__init__.py:27:    "LkhFloodParameters",
+src/ranger_iot/protocols/__init__.py:28:    "LkhFloodProtocol",
+src/ranger_iot/protocols/__init__.py:29:    "LkhFloodRekeyMessage",
+src/ranger_iot/protocols/__init__.py:30:    "LkhFloodStats",
+src/ranger_iot/protocols/__init__.py:31:    "LkhKeyRef",
+src/ranger_iot/protocols/__init__.py:32:    "LkhKeyTree",
+src/ranger_iot/protocols/__init__.py:33:    "LkhKeyUpdate",
+src/ranger_iot/protocols/__init__.py:34:    "LkhRekeyMessage",
+src/ranger_iot/protocols/__init__.py:35:    "LkhRekeyPlan",
+src/ranger_iot/protocols/__init__.py:36:    "LkhTransportParameters",
+src/ranger_iot/protocols/__init__.py:37:    "LkhTransportStats",
+src/ranger_iot/protocols/__init__.py:38:    "LkhUnicastProtocol",
+src/ranger_iot/protocols/__init__.py:40:    "SkdcParameters",
+src/ranger_iot/protocols/__init__.py:41:    "SkdcProtocol",
+src/ranger_iot/protocols/__init__.py:42:    "SkdcRekeyMessage",
+src/ranger_iot/ranger/adaptive_protocol.py:7:from ranger_iot.protocols.lkh import LkhKeyTree
+src/ranger_iot/ranger/adaptive_protocol.py:10:    RangerRecoveryParameters,
+src/ranger_iot/ranger/adaptive_protocol.py:11:    RangerRecoveryProtocol,
+src/ranger_iot/ranger/adaptive_protocol.py:12:    RangerRecoveryStats,
+src/ranger_iot/ranger/adaptive_protocol.py:45:class RangerAdaptiveParameters(RangerRecoveryParameters):
+src/ranger_iot/ranger/adaptive_protocol.py:52:        RangerRecoveryParameters.__post_init__(self)
+src/ranger_iot/ranger/adaptive_protocol.py:60:class RangerAdaptiveStats(RangerRecoveryStats):
+src/ranger_iot/ranger/adaptive_protocol.py:84:class RangerAdaptiveProtocol(RangerRecoveryProtocol):
+src/ranger_iot/ranger/adaptive_protocol.py:105:        tree: LkhKeyTree,
+src/ranger_iot/ranger/adaptive_protocol.py:107:        parameters: RangerAdaptiveParameters | None = None,
+src/ranger_iot/ranger/adaptive_protocol.py:109:        adaptive_parameters = parameters or RangerAdaptiveParameters()
+src/ranger_iot/ranger/adaptive_protocol.py:126:    def transport_stats(self, epoch: int) -> RangerAdaptiveStats:
+src/ranger_iot/ranger/adaptive_protocol.py:131:        return RangerAdaptiveStats(
+src/ranger_iot/ranger/adaptive_v2_protocol.py:6:from ranger_iot.protocols.lkh import LkhKeyTree
+src/ranger_iot/ranger/adaptive_v2_protocol.py:9:    RangerAdaptiveParameters,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:10:    RangerAdaptiveProtocol,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:11:    RangerAdaptiveStats,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:18:class RangerAdaptiveV2Stats(RangerAdaptiveStats):
+src/ranger_iot/ranger/adaptive_v2_protocol.py:32:class RangerAdaptiveV2Protocol(RangerAdaptiveProtocol):
+src/ranger_iot/ranger/adaptive_v2_protocol.py:56:        tree: LkhKeyTree,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:58:        parameters: RangerAdaptiveParameters | None = None,
+src/ranger_iot/ranger/adaptive_v2_protocol.py:73:    def transport_stats(self, epoch: int) -> RangerAdaptiveV2Stats:
+src/ranger_iot/ranger/adaptive_v2_protocol.py:76:        return RangerAdaptiveV2Stats(
+src/ranger_iot/ranger/capsule.py:10:    The simulator intentionally treats the capsule payload as opaque.  LKH (or a
+src/ranger_iot/ranger/recovery_protocol.py:6:from ranger_iot.protocols.lkh import LkhKeyTree
+src/ranger_iot/ranger/recovery_protocol.py:9:    RangerStaticParameters,
+src/ranger_iot/ranger/recovery_protocol.py:10:    RangerStaticProtocol,
+src/ranger_iot/ranger/recovery_protocol.py:11:    RangerStaticStats,
+src/ranger_iot/ranger/recovery_protocol.py:46:class RangerRecoveryParameters(RangerStaticParameters):
+src/ranger_iot/ranger/recovery_protocol.py:52:        RangerStaticParameters.__post_init__(self)
+src/ranger_iot/ranger/recovery_protocol.py:58:class RangerRecoveryStats(RangerStaticStats):
+src/ranger_iot/ranger/recovery_protocol.py:78:class RangerRecoveryProtocol(RangerStaticProtocol):
+src/ranger_iot/ranger/recovery_protocol.py:81:    Initial dissemination is identical to :class:`RangerStaticProtocol`. After
+src/ranger_iot/ranger/recovery_protocol.py:101:        tree: LkhKeyTree,
+src/ranger_iot/ranger/recovery_protocol.py:103:        parameters: RangerRecoveryParameters | None = None,
+src/ranger_iot/ranger/recovery_protocol.py:105:        recovery_parameters = parameters or RangerRecoveryParameters()
+src/ranger_iot/ranger/recovery_protocol.py:121:    def transport_stats(self, epoch: int) -> RangerRecoveryStats:
+src/ranger_iot/ranger/recovery_protocol.py:124:        return RangerRecoveryStats(
+src/ranger_iot/ranger/static_protocol.py:6:from ranger_iot.protocols.lkh import LkhKeyTree, LkhRekeyPlan
+src/ranger_iot/ranger/static_protocol.py:19:class RangerStaticParameters:
+src/ranger_iot/ranger/static_protocol.py:36:class RangerStaticStats:
+src/ranger_iot/ranger/static_protocol.py:49:class _RangerStaticEpochState:
+src/ranger_iot/ranger/static_protocol.py:50:    plan: LkhRekeyPlan
+src/ranger_iot/ranger/static_protocol.py:58:class RangerStaticProtocol:
+src/ranger_iot/ranger/static_protocol.py:59:    """Static coded dissemination of one opaque LKH rekey capsule.
+src/ranger_iot/ranger/static_protocol.py:61:    LKH remains the authorization mechanism.  RANGER aggregates the complete
+src/ranger_iot/ranger/static_protocol.py:62:    encrypted LKH rekey plan into one opaque capsule, models ideal k-of-n MDS
+src/ranger_iot/ranger/static_protocol.py:77:        tree: LkhKeyTree,
+src/ranger_iot/ranger/static_protocol.py:79:        parameters: RangerStaticParameters | None = None,
+src/ranger_iot/ranger/static_protocol.py:82:            raise ValueError("group and LKH tree must contain the same members")
+src/ranger_iot/ranger/static_protocol.py:84:            raise ValueError("group epoch and LKH root-key version must match")
+src/ranger_iot/ranger/static_protocol.py:89:        self._parameters = parameters or RangerStaticParameters()
+src/ranger_iot/ranger/static_protocol.py:90:        self._epochs: dict[int, _RangerStaticEpochState] = {}
+src/ranger_iot/ranger/static_protocol.py:102:    def plan(self, epoch: int) -> LkhRekeyPlan:
+src/ranger_iot/ranger/static_protocol.py:111:    def transport_stats(self, epoch: int) -> RangerStaticStats:
+src/ranger_iot/ranger/static_protocol.py:114:        return RangerStaticStats(
+src/ranger_iot/ranger/static_protocol.py:133:            raise RuntimeError("LKH root-key version diverged from group epoch")
+src/ranger_iot/ranger/static_protocol.py:159:        state = _RangerStaticEpochState(
+src/ranger_iot/ranger/static_protocol.py:176:    def _flood_fragment(self, state: _RangerStaticEpochState, fragment: CodedFragment) -> None:
+src/ranger_iot/ranger/static_protocol.py:242:    def _require_epoch(self, epoch: int) -> _RangerStaticEpochState:
+src/ranger_iot/ranger/__init__.py:3:    RangerAdaptiveParameters,
+src/ranger_iot/ranger/__init__.py:4:    RangerAdaptiveProtocol,
+src/ranger_iot/ranger/__init__.py:5:    RangerAdaptiveStats,
+src/ranger_iot/ranger/__init__.py:8:    RangerAdaptiveV2Protocol,
+src/ranger_iot/ranger/__init__.py:9:    RangerAdaptiveV2Stats,
+src/ranger_iot/ranger/__init__.py:19:    RangerRecoveryParameters,
+src/ranger_iot/ranger/__init__.py:20:    RangerRecoveryProtocol,
+src/ranger_iot/ranger/__init__.py:21:    RangerRecoveryStats,
+src/ranger_iot/ranger/__init__.py:30:    "RangerAdaptiveParameters",
+src/ranger_iot/ranger/__init__.py:31:    "RangerAdaptiveProtocol",
+src/ranger_iot/ranger/__init__.py:32:    "RangerAdaptiveStats",
+src/ranger_iot/ranger/__init__.py:33:    "RangerAdaptiveV2Protocol",
+src/ranger_iot/ranger/__init__.py:34:    "RangerAdaptiveV2Stats",
+src/ranger_iot/ranger/__init__.py:35:    "RangerRecoveryParameters",
+src/ranger_iot/ranger/__init__.py:36:    "RangerRecoveryProtocol",
+src/ranger_iot/ranger/__init__.py:37:    "RangerRecoveryStats",
+src/ranger_iot/sim/delay.py:10:class DelayModel(Protocol):
+src/ranger_iot/sim/loss.py:10:class LossModel(Protocol):
+src/ranger_iot/sim/metrics.py:16:class NetworkObserver(Protocol):
+src/ranger_iot/sim/topology.py:7:class Topology(Protocol):

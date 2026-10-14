@@ -1,0 +1,62 @@
+{
+  "campaign_id": "step7b1-model-external-validity",
+  "group_id": 1,
+  "link_delay_us": 10,
+  "manager_id": 0,
+  "max_events": 10000000,
+  "member_counts": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "packet_losses": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "payload_bytes": 64,
+  "protocols": [
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive-v2"
+  ],
+  "ranger_adaptive_max_fragments": 5,
+  "ranger_adaptive_nack_bytes": 16,
+  "ranger_adaptive_recovery_rounds": 2,
+  "ranger_capsule_overhead_bytes": 0,
+  "ranger_data_fragments": 3,
+  "ranger_recovery_request_bytes": 24,
+  "ranger_recovery_rounds": 2,
+  "ranger_total_fragments": 5,
+  "revoked_count": 1,
+  "schema_version": 1,
+  "seeds": [
+    1901,
+    2117,
+    6212,
+    8530,
+    5326,
+    4518,
+    6021,
+    1381,
+    2579,
+    6704,
+    5024,
+    3694,
+    8703,
+    2176,
+    6594,
+    8303,
+    8470,
+    2146,
+    1108,
+    5659
+  ],
+  "topologies": [
+    "line",
+    "star",
+    "balanced-tree",
+    "grid"
+  ]
+}

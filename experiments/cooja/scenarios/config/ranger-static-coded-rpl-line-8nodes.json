@@ -1,0 +1,100 @@
+{
+  "coding": {
+    "data_fragments": 3,
+    "group_id": 1,
+    "model": "ideal-k-of-n",
+    "real_codec_bytes": false,
+    "redundancy_fragments": 2,
+    "total_fragments": 5
+  },
+  "expected": {
+    "epoch": 1,
+    "reconstructed_nodes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "registered_nodes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "rejected_nodes": [
+      8
+    ],
+    "terminal_marker": "RANGER_STATIC_CODED_CORE_PASS epoch=1 registered=7 reconstructed=6 rejected=1 k=3 n=5"
+  },
+  "firmware": {
+    "build_command": "$(MAKE) -j$(CPUS) ranger-static-coded-rpl.cooja TARGET=cooja",
+    "source": "[CONFIG_DIR]/../../apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c"
+  },
+  "motes": [
+    {
+      "id": 1,
+      "role": "group-manager",
+      "x": 50.0,
+      "y": 100.0
+    },
+    {
+      "id": 2,
+      "role": "authorized",
+      "x": 85.0,
+      "y": 100.0
+    },
+    {
+      "id": 3,
+      "role": "authorized",
+      "x": 120.0,
+      "y": 100.0
+    },
+    {
+      "id": 4,
+      "role": "authorized",
+      "x": 155.0,
+      "y": 100.0
+    },
+    {
+      "id": 5,
+      "role": "authorized",
+      "x": 190.0,
+      "y": 100.0
+    },
+    {
+      "id": 6,
+      "role": "authorized",
+      "x": 225.0,
+      "y": 100.0
+    },
+    {
+      "id": 7,
+      "role": "authorized",
+      "x": 260.0,
+      "y": 100.0
+    },
+    {
+      "id": 8,
+      "role": "revoked",
+      "x": 295.0,
+      "y": 100.0
+    }
+  ],
+  "radio": {
+    "interference_range": 70.0,
+    "medium": "org.contikios.cooja.radiomediums.UDGM",
+    "success_ratio_rx": 1.0,
+    "success_ratio_tx": 1.0,
+    "transmitting_range": 45.0
+  },
+  "random_seed": 20260926,
+  "scenario_id": "ranger-static-coded-rpl-line-8nodes",
+  "schema_version": 1,
+  "timeout_ms": 600000,
+  "title": "RANGER Static Coded RPL \u2014 8 Nodes \u2014 Line"
+}

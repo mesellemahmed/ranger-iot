@@ -1,0 +1,440 @@
+Files containing calibration_simulation_seeds:
+
+experiments/cooja/config/step6c3f-post-bootstrap-tx-stress.json
+experiments/cooja/config/step6c3-radio-loss.json
+experiments/cooja/config/step6d2-recovery-radio.json
+experiments/cooja/config/step6e2-adaptive-radio.json
+experiments/cooja/results/step6c3f-post-bootstrap-tx-stress/campaign-20260928T151522Z-calibration/campaign-config.json
+experiments/cooja/results/step6c3-radio-loss/campaign-20260928T013424Z-calibration/campaign-config.json
+experiments/cooja/results/step6d2-recovery-radio/campaign-20260929T171503Z-pilot/campaign-config.json
+experiments/cooja/results/step6d2-recovery-radio/campaign-20260930T150343Z-calibration/campaign-config.json
+experiments/cooja/results/step6e2-adaptive-radio/campaign-20261001T215912Z-calibration/campaign-config.json
+
+============================================================
+
+CONTENTS:
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/config/step6c3f-post-bootstrap-tx-stress.json
+------------------------------------------------------------
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    3,
+    5
+  ],
+  "description": "Multi-seed calibration of post-bootstrap UDGM transmission-side degradation around the experimentally identified static-rekey transition regime.",
+  "experiment": "RANGER-COOJA-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "UDGM SUCCESS_RATIO_TX is dynamically changed only after successful bootstrap; SUCCESS_RATIO_RX remains 1.0.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Across multiple Cooja seeds, how does 3-of-3 versus 3-of-5 static coded rekeying behave in the post-bootstrap UDGM TX transition regime?",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.5,
+    0.4,
+    0.3,
+    0.2
+  ]
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/config/step6c3-radio-loss.json
+------------------------------------------------------------
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    3,
+    5
+  ],
+  "confirmatory_simulation_seeds": [
+    201,
+    202,
+    203
+  ],
+  "description": "Multi-seed UDGM calibration of the static coded-rekey transition regime.",
+  "experiment": "RANGER-COOJA-UDGM-RADIO-LOSS",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "radio_interpretation": "UDGM reception-success parameter; not a fixed application packet-loss probability.",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "scope": "RPL, MAC, registration, coded fragments and reports are all exposed to UDGM reception uncertainty.",
+  "script_timeout_ms": 650000,
+  "success_ratio_rx_values": [
+    0.6,
+    0.55,
+    0.5,
+    0.45
+  ],
+  "success_ratio_tx": 1.0
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/config/step6d2-recovery-radio.json
+------------------------------------------------------------
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-RECOVERY-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "description": "RANGER-Recovery 3-of-5 under transmission-side degradation applied only after successful bootstrap.",
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "initial_success_ratio_tx": 1.0,
+  "initial_success_ratio_rx": 1.0,
+  "target_success_ratio_tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ],
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "rekey_deadline_ms": 180000,
+  "post_send_settle_ms": 60000,
+  "script_timeout_ms": 650000,
+  "recovery_request_bytes": 24,
+  "recovery_fragment_bytes": 9,
+  "recovery_max_rounds": 2,
+  "interpretation": "Bootstrap runs with healthy UDGM TX/RX. SUCCESS_RATIO_TX is changed only after RANGER_CODED_READY. Recovery smoke modes remain disabled.",
+  "primary_question": "Does one-hop two-round RANGER-Recovery improve 3-of-5 rekey completion and reconstructed membership under post-bootstrap transmission loss, and at what request/repair cost?"
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/config/step6e2-adaptive-radio.json
+------------------------------------------------------------
+{
+  "adaptive_initial_fragments": 3,
+  "adaptive_max_parity_rounds": 2,
+  "adaptive_nack_bytes": 16,
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "description": "RANGER Adaptive V2 initial-k dissemination with branch-local NACK forwarding, bounded parity release, and Recovery fallback under post-bootstrap transmission-side UDGM stress.",
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "Bootstrap runs with healthy UDGM TX/RX. SUCCESS_RATIO_TX is changed only after RANGER_CODED_READY. Recovery smoke modes remain disabled.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Can Adaptive V2 preserve Recovery-level rekey resilience while avoiding unnecessary parity transmission when the initial k fragments are sufficient?",
+  "recovery_fragment_bytes": 9,
+  "recovery_max_rounds": 2,
+  "recovery_request_bytes": 24,
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/results/step6c3f-post-bootstrap-tx-stress/campaign-20260928T151522Z-calibration/campaign-config.json
+------------------------------------------------------------
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    3,
+    5
+  ],
+  "description": "Multi-seed calibration of post-bootstrap UDGM transmission-side degradation around the experimentally identified static-rekey transition regime.",
+  "experiment": "RANGER-COOJA-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "UDGM SUCCESS_RATIO_TX is dynamically changed only after successful bootstrap; SUCCESS_RATIO_RX remains 1.0.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Across multiple Cooja seeds, how does 3-of-3 versus 3-of-5 static coded rekeying behave in the post-bootstrap UDGM TX transition regime?",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.5,
+    0.4,
+    0.3,
+    0.2
+  ]
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/results/step6c3-radio-loss/campaign-20260928T013424Z-calibration/campaign-config.json
+------------------------------------------------------------
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    3,
+    5
+  ],
+  "confirmatory_simulation_seeds": [
+    201,
+    202,
+    203
+  ],
+  "description": "Multi-seed UDGM calibration of the static coded-rekey transition regime.",
+  "experiment": "RANGER-COOJA-UDGM-RADIO-LOSS",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "radio_interpretation": "UDGM reception-success parameter; not a fixed application packet-loss probability.",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "scope": "RPL, MAC, registration, coded fragments and reports are all exposed to UDGM reception uncertainty.",
+  "script_timeout_ms": 650000,
+  "success_ratio_rx_values": [
+    0.6,
+    0.55,
+    0.5,
+    0.45
+  ],
+  "success_ratio_tx": 1.0
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/results/step6d2-recovery-radio/campaign-20260929T171503Z-pilot/campaign-config.json
+------------------------------------------------------------
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "description": "RANGER-Recovery 3-of-5 under transmission-side degradation applied only after successful bootstrap.",
+  "experiment": "RANGER-COOJA-RECOVERY-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "Bootstrap runs with healthy UDGM TX/RX. SUCCESS_RATIO_TX is changed only after RANGER_CODED_READY. Recovery smoke modes remain disabled.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Does one-hop two-round RANGER-Recovery improve 3-of-5 rekey completion and reconstructed membership under post-bootstrap transmission loss, and at what request/repair cost?",
+  "recovery_fragment_bytes": 9,
+  "recovery_max_rounds": 2,
+  "recovery_request_bytes": 24,
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/results/step6d2-recovery-radio/campaign-20260930T150343Z-calibration/campaign-config.json
+------------------------------------------------------------
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "description": "RANGER-Recovery 3-of-5 under transmission-side degradation applied only after successful bootstrap.",
+  "experiment": "RANGER-COOJA-RECOVERY-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "Bootstrap runs with healthy UDGM TX/RX. SUCCESS_RATIO_TX is changed only after RANGER_CODED_READY. Recovery smoke modes remain disabled.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Does one-hop two-round RANGER-Recovery improve 3-of-5 rekey completion and reconstructed membership under post-bootstrap transmission loss, and at what request/repair cost?",
+  "recovery_fragment_bytes": 9,
+  "recovery_max_rounds": 2,
+  "recovery_request_bytes": 24,
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}
+
+
+------------------------------------------------------------
+FILE: experiments/cooja/results/step6e2-adaptive-radio/campaign-20261001T215912Z-calibration/campaign-config.json
+------------------------------------------------------------
+{
+  "adaptive_initial_fragments": 3,
+  "adaptive_max_parity_rounds": 2,
+  "adaptive_nack_bytes": 16,
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "description": "RANGER Adaptive V2 initial-k dissemination with branch-local NACK forwarding, bounded parity release, and Recovery fallback under post-bootstrap transmission-side UDGM stress.",
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "Bootstrap runs with healthy UDGM TX/RX. SUCCESS_RATIO_TX is changed only after RANGER_CODED_READY. Recovery smoke modes remain disabled.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Can Adaptive V2 preserve Recovery-level rekey resilience while avoiding unnecessary parity transmission when the initial k fragments are sufficient?",
+  "recovery_fragment_bytes": 9,
+  "recovery_max_rounds": 2,
+  "recovery_request_bytes": 24,
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}
+

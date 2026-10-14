@@ -1,0 +1,36 @@
+{
+  "assertion_script": "experiments/cooja/tests/ranger-core-assert.js",
+  "assertion_script_sha256": "c37b439dda4b917460dce98f4fe784131a327161f438c70cd29360e95f77246f",
+  "config_sha256": "0402033a51dfd5b8975d09e2cf41f4707c73a3b16608712e6b3c3b40e5e15dac",
+  "expected": {
+    "accepted_nodes": [
+      2,
+      3,
+      4
+    ],
+    "epoch": 1,
+    "rejected_nodes": [
+      5
+    ],
+    "revoked_node": 5,
+    "terminal_marker": "RANGER_CORE_PASS epoch=1 accepted=3 rejected=1"
+  },
+  "generated_scenario": "experiments/cooja/scenarios/generated/ranger-core-5nodes-onehop.csc",
+  "generation_policy": "generated from versioned code/config; no manual GUI creation",
+  "generator": "experiments/cooja/scripts/generate_ranger_core_scenario.py",
+  "headless_policy": "same generated scenario and assertions are used for GUI and headless runs",
+  "mote_count": 5,
+  "mote_ids": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "random_seed": 20260925,
+  "scenario_id": "ranger-core-5nodes-onehop",
+  "scenario_sha256": "ea72cea1e6e7db54564260f1f1cc6cee48b64fe00dc89d25349ae6f7d7f38788",
+  "schema_version": 1,
+  "script_runner_active": true,
+  "source_config": "experiments/cooja/scenarios/config/ranger-core-5nodes-onehop.json"
+}

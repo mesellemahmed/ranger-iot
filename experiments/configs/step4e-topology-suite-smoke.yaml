@@ -1,0 +1,20 @@
+schema_version: 1
+campaign_id: step4e-topology-suite-smoke
+protocols:
+  - skdc
+  - lkh-unicast
+  - lkh-flood
+topologies:
+  - line
+  - star
+  - balanced-tree
+  - grid
+member_counts: [4, 8, 16]
+packet_losses: [0.0, 0.1]
+seeds: [11, 29]
+revoked_count: 1
+group_id: 1
+manager_id: 0
+link_delay_us: 10
+payload_bytes: 64
+max_events: 1000000

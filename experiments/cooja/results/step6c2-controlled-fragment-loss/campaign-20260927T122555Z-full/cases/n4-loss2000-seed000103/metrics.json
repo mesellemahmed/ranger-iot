@@ -1,0 +1,29 @@
+{
+  "authorized_members": 6,
+  "case_id": "n4-loss2000-seed000103",
+  "defines": "RANGER_CODING_K=3,RANGER_CODING_N=4,RANGER_LOSS_BP=2000,RANGER_LOSS_SEED=103,RANGER_CAMPAIGN_MODE=1",
+  "exit_code": 0,
+  "expected_mask": 244,
+  "expected_reconstructed_count": 5,
+  "expected_reconstructed_nodes": [
+    2,
+    4,
+    5,
+    6,
+    7
+  ],
+  "fragment_send_opportunities": 28,
+  "k": 3,
+  "loss_bp": 2000,
+  "loss_rate": 0.2,
+  "loss_seed": 103,
+  "n": 4,
+  "nominal_coding_overhead": 1.3333333333333333,
+  "outcome": "INCOMPLETE",
+  "planned_fragment_drops": 4,
+  "planned_fragment_sends": 24,
+  "reconstruction_ratio": 0.8333333333333334,
+  "redundancy_fragments": 1,
+  "schema_version": 1,
+  "script_runner_pass": true
+}

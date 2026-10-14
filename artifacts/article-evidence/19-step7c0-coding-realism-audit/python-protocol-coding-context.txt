@@ -1,0 +1,711 @@
+====================================================================
+FILE=src/ranger_iot/ranger/static_protocol.py
+====================================================================
+1-from __future__ import annotations
+2-
+3-from dataclasses import dataclass, field
+4-
+5-from ranger_iot.group import GroupState
+6-from ranger_iot.protocols.lkh import LkhKeyTree, LkhRekeyPlan
+7-from ranger_iot.ranger.capsule import RekeyCapsule
+8:from ranger_iot.ranger.coding import (
+9:    CodedFragment,
+10:    CodingParameters,
+11:    FragmentAccumulator,
+12-    StaticErasureCoder,
+13-)
+14-from ranger_iot.rekey import RekeySession
+15-from ranger_iot.sim.flooding import FloodMessage, FloodReceiver, FloodTransport
+16-
+17-
+18-@dataclass(frozen=True, slots=True)
+19-class RangerStaticParameters:
+20:    """Fixed coding profile and capsule-size model for RANGER-STATIC."""
+21-
+22:    coding: CodingParameters = field(
+23:        default_factory=lambda: CodingParameters(data_fragments=3, total_fragments=5)
+24-    )
+25-    ciphertext_payload_bytes: int = 64
+26-    capsule_overhead_bytes: int = 0
+27-
+28-    def __post_init__(self) -> None:
+29-        if self.ciphertext_payload_bytes <= 0:
+30-            raise ValueError("ciphertext_payload_bytes must be positive")
+31-        if self.capsule_overhead_bytes < 0:
+--
+34-
+35-@dataclass(frozen=True, slots=True)
+36-class RangerStaticStats:
+37-    """Protocol-level counters for one RANGER-STATIC rekey epoch."""
+38-
+39-    epoch: int
+40-    logical_ciphertexts: int
+41-    capsule_payload_bytes: int
+42:    data_fragments: int
+43:    total_fragments: int
+44:    fragment_payload_bytes: int
+45-    flood_injections: int
+46-
+47-
+48-@dataclass(slots=True)
+49-class _RangerStaticEpochState:
+50-    plan: LkhRekeyPlan
+51-    capsule: RekeyCapsule
+52:    fragments: tuple[CodedFragment, ...]
+53-    session: RekeySession
+54:    accumulators: dict[int, FragmentAccumulator]
+55-    flood_injections: int = 0
+56-
+57-
+58-class RangerStaticProtocol:
+59-    """Static coded dissemination of one opaque LKH rekey capsule.
+60-
+61-    LKH remains the authorization mechanism.  RANGER aggregates the complete
+62-    encrypted LKH rekey plan into one opaque capsule, models ideal k-of-n MDS
+63:    coding, and floods every coded fragment once.  An authorized member accepts
+64:    the new epoch after receiving any ``k`` distinct fragments.
+65-
+66-    This stage intentionally has no retry, neighbor recovery, self-healing, or
+67:    adaptive coding.  Revoked nodes may still relay fragments at the network
+68-    layer but are never allowed to accept the new group epoch.
+69-    """
+70-
+71:    MESSAGE_KIND = "ranger.static.fragment"
+72-
+73-    def __init__(
+74-        self,
+75-        *,
+76-        group: GroupState,
+77-        tree: LkhKeyTree,
+78-        transport: FloodTransport,
+79-        parameters: RangerStaticParameters | None = None,
+--
+100-        return self._require_epoch(epoch).session
+101-
+102-    def plan(self, epoch: int) -> LkhRekeyPlan:
+103-        return self._require_epoch(epoch).plan
+104-
+105-    def capsule(self, epoch: int) -> RekeyCapsule:
+106-        return self._require_epoch(epoch).capsule
+107-
+108:    def fragments(self, epoch: int) -> tuple[CodedFragment, ...]:
+109:        return self._require_epoch(epoch).fragments
+110-
+111-    def transport_stats(self, epoch: int) -> RangerStaticStats:
+112-        state = self._require_epoch(epoch)
+113:        first_fragment = state.fragments[0]
+114-        return RangerStaticStats(
+115-            epoch=epoch,
+116-            logical_ciphertexts=state.plan.logical_ciphertexts,
+117-            capsule_payload_bytes=state.capsule.payload_bytes,
+118:            data_fragments=first_fragment.data_fragments,
+119:            total_fragments=first_fragment.total_fragments,
+120:            fragment_payload_bytes=first_fragment.payload_bytes,
+121-            flood_injections=state.flood_injections,
+122-        )
+123-
+124-    def start_rekey(self, *, revoked_nodes: set[int]) -> RekeySession:
+125-        self._validate_group_revocations(revoked_nodes)
+126-        plan = self._tree.rekey(revoked_nodes)
+127-
+128-        for node_id in sorted(revoked_nodes):
+--
+141-        )
+142-        capsule = RekeyCapsule(
+143-            capsule_id=f"group-{self._group.group_id}-epoch-{epoch}",
+144-            group_id=self._group.group_id,
+145-            epoch=epoch,
+146-            logical_ciphertexts=plan.logical_ciphertexts,
+147-            payload_bytes=capsule_payload_bytes,
+148-        )
+149:        fragments = StaticErasureCoder.encode(capsule, self._parameters.coding)
+150-        accumulators = {
+151:            member_id: FragmentAccumulator(
+152-                capsule_id=capsule.capsule_id,
+153-                group_id=capsule.group_id,
+154-                epoch=capsule.epoch,
+155:                parameters=self._parameters.coding,
+156-            )
+157-            for member_id in targets
+158-        }
+159-        state = _RangerStaticEpochState(
+160-            plan=plan,
+161-            capsule=capsule,
+162:            fragments=fragments,
+163-            session=session,
+164-            accumulators=accumulators,
+165-        )
+166-        self._epochs[epoch] = state
+167-
+168:        for fragment in self._initial_fragments(fragments):
+169:            self._flood_fragment(state, fragment)
+170-
+171-        return session
+172-
+173:    def _initial_fragments(self, fragments: tuple[CodedFragment, ...]) -> tuple[CodedFragment, ...]:
+174:        return fragments
+175-
+176:    def _flood_fragment(self, state: _RangerStaticEpochState, fragment: CodedFragment) -> None:
+177-        self._transport.flood(
+178-            origin=self._group.manager_id,
+179-            kind=self.MESSAGE_KIND,
+180:            payload_bytes=fragment.payload_bytes,
+181:            epoch=fragment.epoch,
+182:            payload=fragment,
+183-        )
+184-        state.flood_injections += 1
+185-
+186-    def _make_member_receiver(self, member_id: int) -> FloodReceiver:
+187-        def receive(message: FloodMessage, at_us: int) -> None:
+188:            self._handle_fragment(member_id=member_id, flooded=message, at_us=at_us)
+189-
+190-        return receive
+191-
+192:    def _handle_fragment(self, *, member_id: int, flooded: FloodMessage, at_us: int) -> None:
+193-        if flooded.kind != self.MESSAGE_KIND:
+194-            return
+195-
+196:        fragment = flooded.payload
+197:        if not isinstance(fragment, CodedFragment):
+198:            raise TypeError("invalid RANGER coded-fragment payload")
+199:        if flooded.epoch != fragment.epoch:
+200:            raise ValueError("flood epoch does not match coded-fragment epoch")
+201:        self._accept_fragment(member_id=member_id, fragment=fragment, at_us=at_us)
+202-
+203:    def _accept_fragment(
+204-        self,
+205-        *,
+206-        member_id: int,
+207:        fragment: CodedFragment,
+208-        at_us: int,
+209-    ) -> bool:
+210:        if fragment.group_id != self._group.group_id:
+211-            return False
+212-        if not self._group.is_authorized(member_id):
+213-            return False
+214-
+215:        state = self._epochs.get(fragment.epoch)
+216-        if state is None:
+217-            return False
+218-
+219-        accumulator = state.accumulators[member_id]
+220:        if not accumulator.accept(fragment):
+221-            return False
+222-        if not accumulator.decodable:
+223-            return False
+224-
+225:        accepted = self._group.accept_epoch(member_id, fragment.epoch)
+226-        if accepted:
+227-            state.session.record_acceptance(member_id, at_us)
+228-        return accepted
+229-
+230-    def _validate_group_revocations(self, revoked_nodes: set[int]) -> None:
+231-        members = set(self._group.member_ids)
+232-        unknown = revoked_nodes - members
+233-        if unknown:
+
+====================================================================
+FILE=src/ranger_iot/ranger/recovery_protocol.py
+====================================================================
+1-from __future__ import annotations
+2-
+3-from dataclasses import dataclass, field
+4-
+5-from ranger_iot.group import GroupState
+6-from ranger_iot.protocols.lkh import LkhKeyTree
+7:from ranger_iot.ranger.coding import CodedFragment
+8-from ranger_iot.ranger.static_protocol import (
+9-    RangerStaticParameters,
+10-    RangerStaticProtocol,
+11-    RangerStaticStats,
+12-)
+13-from ranger_iot.rekey import RekeySession
+14-from ranger_iot.sim.flooding import FloodMessage, FloodReceiver, FloodTransport
+15-
+16-
+17-@dataclass(frozen=True, slots=True)
+18-class RecoveryRequest:
+19:    """One same-epoch request for missing coded-fragment indexes."""
+20-
+21-    capsule_id: str
+22-    group_id: int
+23-    epoch: int
+24-    requester_id: int
+25-    received_indexes: tuple[int, ...]
+26:    needed_fragments: int
+27-
+28-    def __post_init__(self) -> None:
+29-        if not self.capsule_id:
+30-            raise ValueError("capsule_id must not be empty")
+31-        if self.group_id < 0:
+32-            raise ValueError("group_id must be non-negative")
+33-        if self.epoch < 1:
+34-            raise ValueError("epoch must be at least 1")
+35-        if self.requester_id < 0:
+36-            raise ValueError("requester_id must be non-negative")
+37-        if len(set(self.received_indexes)) != len(self.received_indexes):
+38-            raise ValueError("received_indexes must be unique")
+39-        if tuple(sorted(self.received_indexes)) != self.received_indexes:
+40-            raise ValueError("received_indexes must be sorted")
+41:        if self.needed_fragments < 1:
+42:            raise ValueError("needed_fragments must be at least 1")
+43-
+44-
+45-@dataclass(frozen=True, slots=True)
+46-class RangerRecoveryParameters(RangerStaticParameters):
+47:    """Static coding parameters plus local recovery control-message cost."""
+48-
+49-    recovery_request_bytes: int = 24
+50-
+51-    def __post_init__(self) -> None:
+52-        RangerStaticParameters.__post_init__(self)
+53-        if self.recovery_request_bytes <= 0:
+54-            raise ValueError("recovery_request_bytes must be positive")
+55-
+56-
+57-@dataclass(frozen=True, slots=True)
+58-class RangerRecoveryStats(RangerStaticStats):
+59-    """Protocol-level statistics including same-epoch local repair."""
+60-
+61-    recovery_rounds: int
+62-    recovery_requests: int
+63:    recovery_fragment_attempts: int
+64:    peer_recovery_fragment_attempts: int
+65:    manager_recovery_fragment_attempts: int
+66-    recovered_members: int
+67-
+68-
+69-@dataclass(slots=True)
+70-class _RecoveryCounters:
+71-    rounds: int = 0
+72-    requests: int = 0
+73:    fragment_attempts: int = 0
+74:    manager_fragment_attempts: int = 0
+75-    recovered_members: set[int] = field(default_factory=set)
+76-
+77-
+78-class RangerRecoveryProtocol(RangerStaticProtocol):
+79-    """RANGER-STATIC plus deterministic one-hop neighbor self-healing.
+80-
+81-    Initial dissemination is identical to :class:`RangerStaticProtocol`. After
+82-    the initial flood queue drains, stale authorized members may execute one or
+83-    more recovery rounds. Each stale member asks all directly connected
+84:    authorized neighbors for fragment indexes it is missing. The Group Manager
+85-    may answer when it is itself a direct neighbor; this cost is tracked
+86-    separately. Responses are direct one-hop transmissions and are still
+87-    subject to the configured network loss model.
+88-
+89-    Recovery is intentionally same-epoch only. Catch-up across multiple missed
+90-    epochs requires a separate key-evolution/history model and is not silently
+91-    approximated here.
+92-    """
+93-
+94-    RECOVERY_REQUEST_KIND = "ranger.recovery.request"
+95:    RECOVERY_FRAGMENT_KIND = "ranger.recovery.fragment"
+96-
+97-    def __init__(
+98-        self,
+99-        *,
+100-        group: GroupState,
+101-        tree: LkhKeyTree,
+102-        transport: FloodTransport,
+103-        parameters: RangerRecoveryParameters | None = None,
+--
+120-
+121-    def transport_stats(self, epoch: int) -> RangerRecoveryStats:
+122-        static = super().transport_stats(epoch)
+123-        counters = self._require_recovery(epoch)
+124-        return RangerRecoveryStats(
+125-            epoch=static.epoch,
+126-            logical_ciphertexts=static.logical_ciphertexts,
+127-            capsule_payload_bytes=static.capsule_payload_bytes,
+128:            data_fragments=static.data_fragments,
+129:            total_fragments=static.total_fragments,
+130:            fragment_payload_bytes=static.fragment_payload_bytes,
+131-            flood_injections=static.flood_injections,
+132-            recovery_rounds=counters.rounds,
+133-            recovery_requests=counters.requests,
+134:            recovery_fragment_attempts=counters.fragment_attempts,
+135:            peer_recovery_fragment_attempts=(
+136:                counters.fragment_attempts - counters.manager_fragment_attempts
+137-            ),
+138:            manager_recovery_fragment_attempts=counters.manager_fragment_attempts,
+139-            recovered_members=len(counters.recovered_members),
+140-        )
+141-
+142-    def start_recovery_round(self, epoch: int) -> int:
+143-        """Issue one deterministic recovery request round for stale targets."""
+144-
+145-        state = self._require_epoch(epoch)
+146-        counters = self._require_recovery(epoch)
+--
+155-                continue
+156-
+157-            request = RecoveryRequest(
+158-                capsule_id=state.capsule.capsule_id,
+159-                group_id=state.capsule.group_id,
+160-                epoch=epoch,
+161-                requester_id=member_id,
+162-                received_indexes=accumulator.received_indexes,
+163:                needed_fragments=accumulator.remaining_needed,
+164-            )
+165-            for neighbor_id in self._eligible_recovery_neighbors(member_id):
+166-                self._transport.send_neighbor(
+167-                    origin=member_id,
+168-                    destination=neighbor_id,
+169-                    kind=self.RECOVERY_REQUEST_KIND,
+170-                    payload_bytes=self._recovery_parameters.recovery_request_bytes,
+171-                    epoch=epoch,
+--
+183-            self._handle_transport_message(
+184-                node_id=self._group.manager_id,
+185-                message=message,
+186-                at_us=at_us,
+187-            )
+188-
+189-        return receive
+190-
+191:    def _handle_fragment(self, *, member_id: int, flooded: FloodMessage, at_us: int) -> None:
+192-        self._handle_transport_message(node_id=member_id, message=flooded, at_us=at_us)
+193-
+194-    def _handle_transport_message(
+195-        self,
+196-        *,
+197-        node_id: int,
+198-        message: FloodMessage,
+199-        at_us: int,
+200-    ) -> None:
+201-        if message.kind == self.MESSAGE_KIND:
+202-            if node_id == self._group.manager_id:
+203-                return
+204:            super()._handle_fragment(member_id=node_id, flooded=message, at_us=at_us)
+205-            return
+206-
+207-        if message.kind == self.RECOVERY_REQUEST_KIND:
+208-            self._handle_recovery_request(node_id=node_id, message=message)
+209-            return
+210-
+211:        if message.kind == self.RECOVERY_FRAGMENT_KIND:
+212-            if node_id == self._group.manager_id:
+213-                return
+214:            self._handle_recovery_fragment(member_id=node_id, message=message, at_us=at_us)
+215-
+216-    def _handle_recovery_request(self, *, node_id: int, message: FloodMessage) -> None:
+217-        request = message.payload
+218-        if not isinstance(request, RecoveryRequest):
+219-            raise TypeError("invalid RANGER recovery-request payload")
+220-        if message.epoch != request.epoch:
+221-            raise ValueError("recovery request epoch mismatch")
+222-        if message.origin != request.requester_id:
+--
+237-        else:
+238-            if node_id not in state.accumulators or not self._group.is_authorized(node_id):
+239-                return
+240-            available_indexes = state.accumulators[node_id].received_indexes
+241-
+242-        requester_indexes = set(request.received_indexes)
+243-        candidate_indexes = tuple(
+244-            index for index in available_indexes if index not in requester_indexes
+245:        )[: request.needed_fragments]
+246-        counters = self._require_recovery(request.epoch)
+247-
+248:        for fragment_index in candidate_indexes:
+249:            fragment = state.fragments[fragment_index]
+250-            self._transport.send_neighbor(
+251-                origin=node_id,
+252-                destination=request.requester_id,
+253:                kind=self.RECOVERY_FRAGMENT_KIND,
+254:                payload_bytes=fragment.payload_bytes,
+255-                epoch=request.epoch,
+256:                payload=fragment,
+257-            )
+258:            counters.fragment_attempts += 1
+259-            if node_id == self._group.manager_id:
+260:                counters.manager_fragment_attempts += 1
+261-
+262:    def _handle_recovery_fragment(
+263-        self,
+264-        *,
+265-        member_id: int,
+266-        message: FloodMessage,
+267-        at_us: int,
+268-    ) -> None:
+269:        fragment = message.payload
+270:        if not isinstance(fragment, CodedFragment):
+271:            raise TypeError("invalid RANGER recovery-fragment payload")
+272:        if message.epoch != fragment.epoch:
+273:            raise ValueError("recovery fragment epoch mismatch")
+274:        if self._accept_fragment(member_id=member_id, fragment=fragment, at_us=at_us):
+275:            self._require_recovery(fragment.epoch).recovered_members.add(member_id)
+276-
+277-    def _eligible_recovery_neighbors(self, member_id: int) -> tuple[int, ...]:
+278-        neighbors: list[int] = []
+279-        for neighbor_id in self._transport.neighbors(member_id):
+280-            if neighbor_id == self._group.manager_id or (
+281-                neighbor_id in self._group.member_ids and self._group.is_authorized(neighbor_id)
+282-            ):
+283-                neighbors.append(neighbor_id)
+284-        return tuple(neighbors)
+285-
+286-    def _manager_available_indexes(self, epoch: int) -> tuple[int, ...]:
+287-        state = self._require_epoch(epoch)
+288:        return tuple(range(len(state.fragments)))
+289-
+290-    def _require_recovery(self, epoch: int) -> _RecoveryCounters:
+291-        try:
+292-            return self._recovery[epoch]
+293-        except KeyError as exc:
+294-            raise KeyError(f"unknown recovery epoch: {epoch}") from exc
+
+====================================================================
+FILE=src/ranger_iot/ranger/adaptive_protocol.py
+====================================================================
+1-from __future__ import annotations
+2-
+3-from collections import deque
+4-from dataclasses import dataclass, field
+5-
+6-from ranger_iot.group import GroupState
+7-from ranger_iot.protocols.lkh import LkhKeyTree
+8:from ranger_iot.ranger.coding import CodedFragment
+9-from ranger_iot.ranger.recovery_protocol import (
+10-    RangerRecoveryParameters,
+11-    RangerRecoveryProtocol,
+12-    RangerRecoveryStats,
+13-)
+14-from ranger_iot.rekey import RekeySession
+15-from ranger_iot.sim.flooding import FloodMessage, FloodTransport
+16-
+17-
+18-@dataclass(frozen=True, slots=True)
+19-class AdaptiveRedundancyRequest:
+20:    """One explicit demand signal for another coded parity fragment."""
+21-
+22-    capsule_id: str
+23-    group_id: int
+24-    epoch: int
+25-    requester_id: int
+26-    round_id: int
+27-    unique_received: int
+28-
+--
+56-            raise ValueError("adaptive_recovery_rounds must be non-negative")
+57-
+58-
+59-@dataclass(frozen=True, slots=True)
+60-class RangerAdaptiveStats(RangerRecoveryStats):
+61-    """Protocol counters for incremental redundancy and explicit feedback."""
+62-
+63-    initial_flood_injections: int
+64:    adaptive_parity_injections: int
+65-    adaptive_nack_rounds: int
+66-    adaptive_nacks: int
+67-    adaptive_nack_hop_attempts: int
+68-    adaptive_actions: int
+69:    unused_redundancy_fragments: int
+70-
+71-
+72-@dataclass(slots=True)
+73-class _AdaptiveCounters:
+74:    next_fragment_index: int
+75-    next_phase: str = "nack"
+76-    nack_rounds: int = 0
+77-    nacks: int = 0
+78-    nack_hop_attempts: int = 0
+79:    parity_injections: int = 0
+80-    actions: int = 0
+81-    released_round_ids: set[int] = field(default_factory=set)
+82-
+83-
+84-class RangerAdaptiveProtocol(RangerRecoveryProtocol):
+85-    """RANGER with feedback-driven incremental redundancy.
+86-
+87:    The capsule is encoded as an ideal ``k-of-n_max`` code, but only the first
+88:    ``k`` fragments are initially released. Stale authorized members send an
+89-    adaptive NACK toward the Group Manager over a deterministic BFS control
+90:    tree. The Group Manager releases at most one new parity fragment for that
+91-    NACK round. Local same-epoch recovery is then allowed before another
+92-    redundancy-request round.
+93-
+94-    The configured Bernoulli packet-loss probability is never consulted by this
+95-    protocol. Redundancy is therefore demand-driven rather than oracle-driven.
+96-    """
+97-
+98:    MESSAGE_KIND = "ranger.adaptive.fragment"
+99-    ADAPTIVE_NACK_KIND = "ranger.adaptive.nack"
+100-
+101-    def __init__(
+102-        self,
+103-        *,
+104-        group: GroupState,
+105-        tree: LkhKeyTree,
+106-        transport: FloodTransport,
+--
+114-            tree=tree,
+115-            transport=transport,
+116-            parameters=adaptive_parameters,
+117-        )
+118-        self._control_parent = self._build_control_tree()
+119-
+120-    def start_rekey(self, *, revoked_nodes: set[int]) -> RekeySession:
+121-        session = super().start_rekey(revoked_nodes=revoked_nodes)
+122:        initial = self._adaptive_parameters.coding.data_fragments
+123:        self._adaptive[session.epoch] = _AdaptiveCounters(next_fragment_index=initial)
+124-        return session
+125-
+126-    def transport_stats(self, epoch: int) -> RangerAdaptiveStats:
+127-        recovery = super().transport_stats(epoch)
+128-        state = self._require_epoch(epoch)
+129-        counters = self._require_adaptive(epoch)
+130:        initial = self._adaptive_parameters.coding.data_fragments
+131-        return RangerAdaptiveStats(
+132-            epoch=recovery.epoch,
+133-            logical_ciphertexts=recovery.logical_ciphertexts,
+134-            capsule_payload_bytes=recovery.capsule_payload_bytes,
+135:            data_fragments=recovery.data_fragments,
+136:            total_fragments=recovery.total_fragments,
+137:            fragment_payload_bytes=recovery.fragment_payload_bytes,
+138-            flood_injections=recovery.flood_injections,
+139-            recovery_rounds=recovery.recovery_rounds,
+140-            recovery_requests=recovery.recovery_requests,
+141:            recovery_fragment_attempts=recovery.recovery_fragment_attempts,
+142:            peer_recovery_fragment_attempts=recovery.peer_recovery_fragment_attempts,
+143:            manager_recovery_fragment_attempts=recovery.manager_recovery_fragment_attempts,
+144-            recovered_members=recovery.recovered_members,
+145-            initial_flood_injections=initial,
+146:            adaptive_parity_injections=counters.parity_injections,
+147-            adaptive_nack_rounds=counters.nack_rounds,
+148-            adaptive_nacks=counters.nacks,
+149-            adaptive_nack_hop_attempts=counters.nack_hop_attempts,
+150-            adaptive_actions=counters.actions,
+151:            unused_redundancy_fragments=len(state.fragments) - state.flood_injections,
+152-        )
+153-
+154-    def advance(self, epoch: int) -> int:
+155-        """Start the next useful adaptive action, or return zero when quiescent."""
+156-
+157-        state = self._require_epoch(epoch)
+158-        if state.session.completed:
+159-            return 0
+--
+175-            count = self.start_recovery_round(epoch)
+176-            if count:
+177-                counters.actions += 1
+178-                return count
+179-
+180-        return 0
+181-
+182-    def start_redundancy_request_round(self, epoch: int) -> int:
+183:        """Let stale members request one additional globally flooded parity."""
+184-
+185-        state = self._require_epoch(epoch)
+186-        counters = self._require_adaptive(epoch)
+187:        if counters.next_fragment_index >= len(state.fragments):
+188-            return 0
+189-
+190-        stale_members = tuple(
+191-            member_id
+192-            for member_id in state.session.targets
+193-            if member_id not in state.session.accepted_at_us
+194-            and not state.accumulators[member_id].decodable
+195-        )
+--
+208-                unique_received=accumulator.unique_received,
+209-            )
+210-            self._send_nack_hop(node_id=member_id, request=request)
+211-            counters.nacks += 1
+212-
+213-        counters.nack_rounds += 1
+214-        return len(stale_members)
+215-
+216:    def _initial_fragments(self, fragments: tuple[CodedFragment, ...]) -> tuple[CodedFragment, ...]:
+217:        return fragments[: self._adaptive_parameters.coding.data_fragments]
+218-
+219-    def _handle_transport_message(
+220-        self,
+221-        *,
+222-        node_id: int,
+223-        message: FloodMessage,
+224-        at_us: int,
+225-    ) -> None:
+--
+246-
+247-        state = self._epochs.get(request.epoch)
+248-        if state is None or request.capsule_id != state.capsule.capsule_id:
+249-            return
+250-
+251-        counters = self._require_adaptive(request.epoch)
+252-        if request.round_id in counters.released_round_ids:
+253-            return
+254:        if counters.next_fragment_index >= len(state.fragments):
+255-            return
+256-
+257:        fragment = state.fragments[counters.next_fragment_index]
+258:        counters.next_fragment_index += 1
+259-        counters.released_round_ids.add(request.round_id)
+260:        counters.parity_injections += 1
+261:        self._flood_fragment(state, fragment)
+262-
+263-    def _send_nack_hop(
+264-        self,
+265-        *,
+266-        node_id: int,
+267-        request: AdaptiveRedundancyRequest,
+268-    ) -> None:
+269-        parent = self._control_parent.get(node_id)
+
+====================================================================
+FILE=src/ranger_iot/ranger/adaptive_v2_protocol.py
+====================================================================
+41-    cache. Consequently, a stale relay may send its own report and forward one
+42-    descendant report. This preserves a modest amount of control-path
+43-    redundancy under loss while changing long-chain feedback growth from
+44-    repeated end-to-end forwarding toward branch-local aggregation.
+45-
+46-    The protocol never reads the configured packet-loss probability.
+47-    """
+48-
+49:    MESSAGE_KIND = "ranger.adaptive-v2.fragment"
+50-    ADAPTIVE_NACK_KIND = "ranger.adaptive-v2.nack"
+51-
+52-    def __init__(
+53-        self,
+54-        *,
+55-        group: GroupState,
+56-        tree: LkhKeyTree,
+57-        transport: FloodTransport,
+--
+72-
+73-    def transport_stats(self, epoch: int) -> RangerAdaptiveV2Stats:
+74-        base = super().transport_stats(epoch)
+75-        suppression = self._require_suppression(epoch)
+76-        return RangerAdaptiveV2Stats(
+77-            epoch=base.epoch,
+78-            logical_ciphertexts=base.logical_ciphertexts,
+79-            capsule_payload_bytes=base.capsule_payload_bytes,
+80:            data_fragments=base.data_fragments,
+81:            total_fragments=base.total_fragments,
+82:            fragment_payload_bytes=base.fragment_payload_bytes,
+83-            flood_injections=base.flood_injections,
+84-            recovery_rounds=base.recovery_rounds,
+85-            recovery_requests=base.recovery_requests,
+86:            recovery_fragment_attempts=base.recovery_fragment_attempts,
+87:            peer_recovery_fragment_attempts=base.peer_recovery_fragment_attempts,
+88:            manager_recovery_fragment_attempts=base.manager_recovery_fragment_attempts,
+89-            recovered_members=base.recovered_members,
+90-            initial_flood_injections=base.initial_flood_injections,
+91:            adaptive_parity_injections=base.adaptive_parity_injections,
+92-            adaptive_nack_rounds=base.adaptive_nack_rounds,
+93-            adaptive_nacks=base.adaptive_nacks,
+94-            adaptive_nack_hop_attempts=base.adaptive_nack_hop_attempts,
+95-            adaptive_actions=base.adaptive_actions,
+96:            unused_redundancy_fragments=base.unused_redundancy_fragments,
+97-            adaptive_nack_forwarded=suppression.forwarded,
+98-            adaptive_nack_suppressed=suppression.suppressed,
+99-        )
+100-
+101-    def _handle_adaptive_nack(
+102-        self,
+103-        *,
+104-        node_id: int,
+

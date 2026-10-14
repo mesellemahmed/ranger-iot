@@ -1,0 +1,12 @@
++ docker compose -f compose.reproducibility.yaml run --rm -T --no-deps tamarin bash -lc 'timeout 900s      tamarin-prover      --prove      '\''formal/tamarin/ranger_authorization_transport.spthy'\''      +RTS -N2 -RTS'
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+

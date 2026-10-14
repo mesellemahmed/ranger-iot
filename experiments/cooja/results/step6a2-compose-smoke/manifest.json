@@ -1,0 +1,30 @@
+{
+  "compose_file": "experiments/cooja/compose.yaml",
+  "compose_sha256": "a663e85a27e38158c2766afa54ccaa298463279f755f436d30b62eb1cd4a46c6",
+  "contiki_ng_commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+  "cooja_commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4",
+  "docker_image": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+  "experiment": "COOJA-COMPOSE-INFRA-1",
+  "result": "PASS",
+  "runs": [
+    {
+      "exit_code": 0,
+      "log": "experiments/cooja/results/step6a2-compose-smoke/run-1.log",
+      "log_sha256": "e7ece0501738e3898d72ffc12485841510920d9789c5c420b5e9a8a583a88471",
+      "run": 1,
+      "test_ok": true
+    },
+    {
+      "exit_code": 0,
+      "log": "experiments/cooja/results/step6a2-compose-smoke/run-2.log",
+      "log_sha256": "26522228b65f47e6c2571134d5521893e1ff0413761a8a3aea9af3e30d52fdbd",
+      "run": 2,
+      "test_ok": true
+    }
+  ],
+  "scenario": "third_party/contiki-ng/tests/07-simulation-base/02-ringbufindex.csc",
+  "scenario_sha256": "1bb4072aa14cb4561a7ceafa9041dd12db880dd9a8c45ccf099a8e8327e88bd5",
+  "schema_version": 1,
+  "toolchain_lock": "experiments/cooja/config/toolchain-lock.json",
+  "toolchain_lock_sha256": "9584e924c1a5e47b1150a951c8fd1a599bcd51b42601f24178b3bb8318b9a9b1"
+}

@@ -1,0 +1,825 @@
+==============================================================================
+LEMMA=executable_initial_accept
+KIND=exists-trace
+RC=1
+LOG_LINES=108
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+searching for attacks at depth: 1
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+searching for attacks at depth: 2
+searching for attacks at depth: 3
+searching for attacks at depth: 4
+attack found at depth: 4
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+
+----- INTERESTING -----
+00106: lemma executable_initial_accept:
+00107:   exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+----- TAIL -----
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+
+==============================================================================
+LEMMA=executable_same_epoch_recovery
+KIND=exists-trace
+RC=1
+LOG_LINES=113
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+searching for attacks at depth: 1
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+searching for attacks at depth: 2
+searching for attacks at depth: 3
+searching for attacks at depth: 4
+searching for attacks at depth: 5
+searching for attacks at depth: 6
+searching for attacks at depth: 7
+searching for attacks at depth: 8
+searching for attacks at depth: 9
+attack found at depth: 9
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+----- INTERESTING -----
+00111: lemma executable_initial_accept:
+00112:   exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+----- TAIL -----
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+
+==============================================================================
+LEMMA=revocation_reachable
+KIND=exists-trace
+RC=1
+LOG_LINES=106
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+searching for attacks at depth: 1
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+searching for attacks at depth: 2
+attack found at depth: 2
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+
+----- INTERESTING -----
+00104: lemma executable_initial_accept:
+00105:   exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+----- TAIL -----
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+
+==============================================================================
+LEMMA=accept_has_rekey_origin
+KIND=all-traces
+RC=1
+LOG_LINES=103
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+  --[
+
+----- INTERESTING -----
+00101: lemma executable_initial_accept:
+00102:   exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+----- TAIL -----
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+
+
+==============================================================================
+LEMMA=accept_requires_authorization
+KIND=all-traces
+RC=1
+LOG_LINES=103
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+
+----- INTERESTING -----
+00011: tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+00102: lemma executable_initial_accept:
+
+----- TAIL -----
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "
+
+==============================================================================
+LEMMA=revoked_never_accepts
+KIND=all-traces
+RC=1
+LOG_LINES=103
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+
+----- INTERESTING -----
+00011: tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+00102: lemma executable_initial_accept:
+
+----- TAIL -----
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "
+
+==============================================================================
+LEMMA=recovery_requester_authorized
+KIND=all-traces
+RC=1
+LOG_LINES=103
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+
+----- INTERESTING -----
+00011: tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+00102: lemma executable_initial_accept:
+
+----- TAIL -----
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "
+
+==============================================================================
+LEMMA=recovery_helper_authorized
+KIND=all-traces
+RC=124
+LOG_LINES=11
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+
+
+----- INTERESTING -----
+<none>
+
+----- TAIL -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+
+
+==============================================================================
+LEMMA=recovery_same_epoch
+KIND=all-traces
+RC=1
+LOG_LINES=103
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+
+----- INTERESTING -----
+00011: tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+00102: lemma executable_initial_accept:
+
+----- TAIL -----
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "
+
+==============================================================================
+LEMMA=recovery_accept_has_rekey_origin
+KIND=all-traces
+RC=1
+LOG_LINES=103
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+
+----- INTERESTING -----
+00011: tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+00102: lemma executable_initial_accept:
+
+----- TAIL -----
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "
+
+==============================================================================
+LEMMA=epoch_key_secrecy_unless_compromised
+KIND=all-traces
+RC=1
+LOG_LINES=103
+
+----- HEAD -----
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+
+----- INTERESTING -----
+00011: tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+00102: lemma executable_initial_accept:
+
+----- TAIL -----
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "
+

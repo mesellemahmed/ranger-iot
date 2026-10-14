@@ -1,0 +1,16 @@
+{
+  "attack_depths": [],
+  "attack_found": false,
+  "attempt": "seqdfs-smart",
+  "auto_sources": false,
+  "budget_seconds": 180,
+  "classification": "timeout",
+  "details": null,
+  "heuristic": "s",
+  "lemma": "executable_same_epoch_recovery",
+  "maximum_search_depth_seen": null,
+  "return_code": 124,
+  "schema_version": 2,
+  "search": "SEQDFS",
+  "tamarin_status": null
+}

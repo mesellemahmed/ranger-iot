@@ -1,0 +1,13 @@
+49f3c02cd6c77459582ae623353396e6bce1992dd7aaf160b4a1f90411a02b20 *artifacts/article-evidence/21-step7c1-python-byte-codec/core-ci.log
+7816214961489ecbda2af50c2f0cf210313084568b0c767756fb7b2ddc1051de *artifacts/article-evidence/21-step7c1-python-byte-codec/core-ci-final.log
+5a50c0575f610b8ada452cca7fa363bc4e4c649a8c0fc1b55e7d537b7e28f2d4 *artifacts/article-evidence/21-step7c1-python-byte-codec/legacy-source-after.sha256
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *artifacts/article-evidence/21-step7c1-python-byte-codec/legacy-source-diff.txt
+1821fdb7c9a617e4e4e08fba37f4b76649bfd0e01e2ed95db8fbc20dd826fa60 *artifacts/article-evidence/21-step7c1-python-byte-codec/post-ruff-ast.json
+d1616afb39e4b08b678428325ec5f413d4f56cec129ce767e8af3c7fc5022521 *artifacts/article-evidence/21-step7c1-python-byte-codec/post-ruff-byte-validation.json
+1821fdb7c9a617e4e4e08fba37f4b76649bfd0e01e2ed95db8fbc20dd826fa60 *artifacts/article-evidence/21-step7c1-python-byte-codec/pre-ruff-ast.json
+022031e1f78489792579d663c77d2f65fe3b6cc65e71ef63cb8de3ccf8a0ae67 *artifacts/article-evidence/21-step7c1-python-byte-codec/real-codec-source.sha256
+9c34c10424ba3513d816daa3d3a2d6e8ef3e6309bd4b528afa4f8e1fcab3823a *artifacts/article-evidence/21-step7c1-python-byte-codec/real-codec-source-final.sha256
+3689c67a5b21cac07ae292136013ad23aa563856520fb75e964eb460f6ee4e96 *artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-byte-validation.json
+3abeb41cbf370bd348c4dd0f810401d264373cc1804c7ad11a8640b76f567b42 *artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-closure.json
+b3a8beb8f150c806ef01c76c504bf53b905e34c91e0e855b61e4417c092cc34f *artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-final-readiness.json
+f3e1e3c6af20d524a41854846958de0ef6e2dbafdf98adaeacbbdc7148142f15 *artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-overhead.csv

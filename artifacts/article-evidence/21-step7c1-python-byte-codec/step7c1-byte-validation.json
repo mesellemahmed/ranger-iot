@@ -1,0 +1,26 @@
+{
+  "corruption_detection": "PASS",
+  "corruption_detection_scope": "CRC32 reconstruction oracle only; not cryptographic authentication.",
+  "field": "GF(256)",
+  "generic_profile_reconstructions": 28,
+  "legacy_network_model_modified": false,
+  "network_integration": false,
+  "next_step": "STEP7C2_EMBEDDED_C_CODEC_AND_CROSS_LANGUAGE_DIFFERENTIAL_VALIDATION",
+  "payload_lengths_exhaustively_checked": {
+    "count": 256,
+    "max": 256,
+    "min": 1
+  },
+  "primary_exact_reconstructions": 2560,
+  "primary_profile": {
+    "k": 3,
+    "n": 5
+  },
+  "primitive_polynomial": "0x11D",
+  "schema_version": 1,
+  "scientific_state": "PYTHON_BYTE_LEVEL_CODEC_VALIDATED",
+  "step": "STEP7C1_REAL_BYTE_LEVEL_REED_SOLOMON",
+  "subsets_per_payload": 10,
+  "systematic": true,
+  "validation_digest_sha256": "269a7dcaf8d65c89594ceaba2a0a8fde7f34b5f8e18b0b910ec55819a1d8ded5"
+}

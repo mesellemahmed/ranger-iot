@@ -1,0 +1,45 @@
+{
+  "all_scientific_gates_pass": true,
+  "authoritative_documents": {
+    "step7a": "artifacts/article-evidence/13-step7a-statistical-hardening/step7a-final-readiness.json",
+    "step7b1": "artifacts/article-evidence/16-step7b1-model-external-validity/step7b1-final-readiness.json",
+    "step7b2": "artifacts/article-evidence/17-step7b2-statistical-analysis/step7b2-final-readiness.json",
+    "step7b3": "artifacts/article-evidence/18-step7b3-cooja-topology/step7b3-final-readiness.json",
+    "step7c1": "artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-final-readiness.json",
+    "step7c2": "artifacts/article-evidence/22-step7c2-c-differential/step7c2-final-readiness.json",
+    "step7c3": "artifacts/article-evidence/23-step7c3-cooja-real-rs-wire/step7c3-final-readiness.json",
+    "step7d2b": "artifacts/article-evidence/37-step7d2b-temporal-security-contract/final-state.json",
+    "step7d2ca": "artifacts/article-evidence/38-step7d2ca-structural-lkh-generalization/final-state.json",
+    "step7d2cb": "artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/final-state.json"
+  },
+  "checks": {
+    "no_arbitrary_n_overclaim": true,
+    "no_full_formal_overclaim": true,
+    "step7a_statistical_hardening": true,
+    "step7b1_2880_runs": true,
+    "step7b2_statistics": true,
+    "step7b3_cooja": true,
+    "step7c1_python_rs": true,
+    "step7c2_cross_language": true,
+    "step7c3_real_wire": true,
+    "step7d2b_formal_temporal": true,
+    "step7d2ca_structural": true,
+    "step7d2cb_real_rs_bridge": true
+  },
+  "quantitative_anchor": {
+    "finite_structural_cases": 10386,
+    "finite_structural_failures": 0,
+    "finite_structural_rekey_epochs": 17180,
+    "formal_temporal_lemmas": 17,
+    "real_rs_bridge_runs": 420,
+    "real_rs_member_decisions": 16380,
+    "step7b1_grouped_cells": 144,
+    "step7b1_scenario_seed_cells": 960,
+    "step7b1_simulation_runs": 2880,
+    "step7c1_exact_python_rs_reconstructions": 2560,
+    "step7c2_cross_language_vectors": 259,
+    "step7c2_subset_decodes_per_direction": 2588
+  },
+  "schema_version": 1,
+  "step": "STEP7E0_FINAL_SCIENTIFIC_EVIDENCE_FREEZE"
+}

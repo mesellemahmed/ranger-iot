@@ -1,0 +1,125 @@
+FROM ubuntu:24.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+ARG TAMARIN_VERSION=1.12.0
+
+ARG TAMARIN_BOTTLE_SHA256_AMD64=936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99
+
+ARG TAMARIN_BOTTLE_SHA256_ARM64=10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6
+
+
+RUN apt-get update \
+    && apt-get install -y \
+        --no-install-recommends \
+        ca-certificates \
+        curl \
+        graphviz \
+        maude \
+        libgmp10 \
+        libtinfo6 \
+        zlib1g \
+        tar \
+        gzip \
+        coreutils \
+        file \
+    && rm -rf \
+        /var/lib/apt/lists/*
+
+
+RUN set -eux; \
+    architecture="$(dpkg --print-architecture)"; \
+    case "${architecture}" in \
+      amd64) \
+        bottle_arch="x86_64_linux"; \
+        expected_sha="${TAMARIN_BOTTLE_SHA256_AMD64}"; \
+        ;; \
+      arm64) \
+        bottle_arch="arm64_linux"; \
+        expected_sha="${TAMARIN_BOTTLE_SHA256_ARM64}"; \
+        ;; \
+      *) \
+        echo "Unsupported architecture: ${architecture}" >&2; \
+        exit 1; \
+        ;; \
+    esac; \
+    asset="tamarin-prover-${TAMARIN_VERSION}.${bottle_arch}.bottle.tar.gz"; \
+    url="https://github.com/tamarin-prover/tamarin-prover/releases/download/${TAMARIN_VERSION}/${asset}"; \
+    echo "TAMARIN_BOTTLE_URL=${url}"; \
+    echo "TAMARIN_BOTTLE_SHA256=${expected_sha}"; \
+    curl \
+      -fL \
+      --retry 5 \
+      --retry-delay 2 \
+      --retry-all-errors \
+      "${url}" \
+      -o /tmp/tamarin-bottle.tar.gz; \
+    echo \
+      "${expected_sha}  /tmp/tamarin-bottle.tar.gz" \
+      | sha256sum -c -; \
+    mkdir \
+      -p /tmp/tamarin-bottle; \
+    tar \
+      -xzf /tmp/tamarin-bottle.tar.gz \
+      -C /tmp/tamarin-bottle; \
+    tamarin_binary="$( \
+      find /tmp/tamarin-bottle \
+        \( -type f -o -type l \) \
+        -path '*/bin/tamarin-prover' \
+        -print \
+        | head -n 1 \
+    )"; \
+    test -n "${tamarin_binary}"; \
+    echo \
+      "BOTTLE_BINARY=${tamarin_binary}"; \
+    bottle_prefix="$( \
+      dirname \
+        "$(dirname "${tamarin_binary}")" \
+    )"; \
+    echo \
+      "BOTTLE_PREFIX=${bottle_prefix}"; \
+    test \
+      -d "${bottle_prefix}"; \
+    cp \
+      -a \
+      "${bottle_prefix}/." \
+      /usr/local/; \
+    test \
+      -x /usr/local/bin/tamarin-prover; \
+    rm \
+      -rf \
+      /tmp/tamarin-bottle \
+      /tmp/tamarin-bottle.tar.gz
+
+
+RUN set -eux; \
+    command -v tamarin-prover; \
+    command -v maude; \
+    command -v dot; \
+    tamarin-prover --version; \
+    file /usr/local/bin/tamarin-prover; \
+    if \
+      ldd /usr/local/bin/tamarin-prover \
+        > /tmp/tamarin-ldd.txt \
+        2>&1; \
+    then \
+      cat /tmp/tamarin-ldd.txt; \
+      if grep -q \
+        'not found' \
+        /tmp/tamarin-ldd.txt; \
+      then \
+        echo \
+          "ERROR: unresolved dynamic library" \
+          >&2; \
+        exit 1; \
+      fi; \
+    else \
+      cat /tmp/tamarin-ldd.txt \
+        || true; \
+    fi; \
+    tamarin-prover test
+
+
+WORKDIR /workspace
+
+ENTRYPOINT ["tamarin-prover"]

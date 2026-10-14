@@ -1,0 +1,12 @@
+2e782b729 test: freeze comparative Cooja evidence
+692ed308d test: record three-protocol application cost analysis
+252e78ca7 test: add three-protocol application cost analysis
+f305ee8cc test: record paired three-protocol statistical analysis
+980ce6727 test: add paired three-protocol statistical analysis
+c138ab488 test: record 30-case Adaptive V2 real-radio calibration
+366d1f995 test: add Adaptive V2 real-radio campaign harness
+cec3bf3e1 test: record Adaptive V2 controlled NACK parity path
+54b1ff7b4 feat: add Adaptive V2 NACK parity recovery path
+bf9d6fdf6 test: record Adaptive V2 initial-k no-loss oracle
+7ea10e864 feat: add Adaptive V2 initial-k Cooja foundation
+31fb59b23 test: record 30-case real-radio Recovery calibration

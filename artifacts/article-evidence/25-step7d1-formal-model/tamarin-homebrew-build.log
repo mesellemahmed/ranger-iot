@@ -1,0 +1,477 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.tamarin
+#1 transferring dockerfile: 798B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/homebrew/brew:4.6.20
+#2 DONE 1.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/homebrew/brew:4.6.20@sha256:b0072bfdebf5934ae24b93b44a1928a88057399b3283ffa0177bb86084fdedfd
+#4 resolve docker.io/homebrew/brew:4.6.20@sha256:b0072bfdebf5934ae24b93b44a1928a88057399b3283ffa0177bb86084fdedfd 0.0s done
+#4 sha256:5f90674511c6ce602eab9df639833fb4abf98b556b000e90fe16192a003079d3 1.63kB / 1.63kB done
+#4 sha256:c1e2de683d29f938d6f03e9b0a8c906b769a0c9430b5e936cf07de9d893a3def 6.97kB / 6.97kB done
+#4 sha256:b0072bfdebf5934ae24b93b44a1928a88057399b3283ffa0177bb86084fdedfd 1.61kB / 1.61kB done
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 0B / 29.54MB 0.1s
+#4 sha256:0f4a81656d02e655631838f5db5a29034293bcf753fd52d1f6173644c91ee30a 0B / 150B 0.1s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 0B / 217.02MB 0.1s
+#4 sha256:0f4a81656d02e655631838f5db5a29034293bcf753fd52d1f6173644c91ee30a 150B / 150B 0.1s done
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 0B / 116.72MB 0.2s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 2.10MB / 29.54MB 0.4s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 4.19MB / 29.54MB 0.8s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 6.29MB / 29.54MB 1.0s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 8.39MB / 29.54MB 1.4s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 6.29MB / 116.72MB 1.4s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 10.49MB / 29.54MB 1.7s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 13.63MB / 29.54MB 2.1s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 11.53MB / 217.02MB 2.1s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 12.58MB / 116.72MB 2.3s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 15.73MB / 29.54MB 2.4s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 17.83MB / 29.54MB 2.8s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 19.92MB / 29.54MB 3.1s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 18.87MB / 116.72MB 3.3s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 23.07MB / 29.54MB 3.6s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 25.17MB / 29.54MB 3.9s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 23.07MB / 217.02MB 3.9s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 27.26MB / 29.54MB 4.3s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 25.17MB / 116.72MB 4.3s
+#4 sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 29.54MB / 29.54MB 4.6s done
+#4 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0B / 32B 4.6s
+#4 extracting sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447
+#4 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 4.7s done
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 0B / 1.13GB 4.8s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 31.46MB / 116.72MB 5.1s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 34.60MB / 217.02MB 5.4s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 37.75MB / 116.72MB 5.9s
+#4 extracting sha256:af6eca94c8104c8e90d3f9efe59c2b3a02b20aad3d985e31c7cd009ea104c447 2.0s done
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 44.04MB / 116.72MB 6.9s
+#4 extracting sha256:0f4a81656d02e655631838f5db5a29034293bcf753fd52d1f6173644c91ee30a done
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 46.14MB / 217.02MB 7.1s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 50.33MB / 116.72MB 7.9s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 57.67MB / 217.02MB 8.7s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 56.62MB / 116.72MB 8.7s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 62.91MB / 116.72MB 9.6s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 34.60MB / 1.13GB 9.8s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 69.21MB / 217.02MB 10.3s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 69.21MB / 116.72MB 10.5s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 75.50MB / 116.72MB 11.4s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 80.74MB / 217.02MB 12.0s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 81.79MB / 116.72MB 12.2s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 88.08MB / 116.72MB 13.1s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 93.32MB / 217.02MB 13.8s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 94.37MB / 116.72MB 14.1s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 70.25MB / 1.13GB 14.9s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 101.71MB / 116.72MB 15.2s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 104.86MB / 217.02MB 15.5s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 108.00MB / 116.72MB 16.2s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 114.29MB / 116.72MB 17.1s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 116.39MB / 217.02MB 17.3s
+#4 sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 116.72MB / 116.72MB 17.7s done
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 0B / 56.40MB 17.8s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 3.15MB / 56.40MB 18.4s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 7.34MB / 56.40MB 18.9s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 127.93MB / 217.02MB 19.1s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 10.49MB / 56.40MB 19.4s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 105.91MB / 1.13GB 20.0s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 14.68MB / 56.40MB 20.0s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 17.83MB / 56.40MB 20.5s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 139.46MB / 217.02MB 20.8s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 20.97MB / 56.40MB 20.9s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 25.17MB / 56.40MB 21.4s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 28.31MB / 56.40MB 21.8s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 150.99MB / 217.02MB 22.4s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 32.51MB / 56.40MB 22.4s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 35.65MB / 56.40MB 22.9s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 38.80MB / 56.40MB 23.3s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 41.94MB / 56.40MB 23.9s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 162.53MB / 217.02MB 24.1s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 45.09MB / 56.40MB 24.3s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 48.23MB / 56.40MB 24.8s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 142.61MB / 1.13GB 25.1s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 51.38MB / 56.40MB 25.2s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 54.53MB / 56.40MB 25.6s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 174.06MB / 217.02MB 25.7s
+#4 sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 56.40MB / 56.40MB 26.0s done
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 186.65MB / 217.02MB 27.0s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 199.23MB / 217.02MB 28.3s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 210.76MB / 217.02MB 29.5s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 191.89MB / 1.13GB 30.1s
+#4 sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 217.02MB / 217.02MB 30.4s done
+#4 extracting sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 248.51MB / 1.13GB 33.4s
+#4 extracting sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 5.0s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 306.18MB / 1.13GB 36.4s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 362.81MB / 1.13GB 39.4s
+#4 extracting sha256:2a29d04929799a7fb7421ccbadab143913cf2dff200f45fd5629ef354fb6a0f3 9.6s done
+#4 extracting sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 0.1s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 419.43MB / 1.13GB 42.4s
+#4 extracting sha256:ceb1fc425de41c3318f7b4d17c6e52fe01b4cfcb66c281188c26d7ad75d13cd6 2.6s done
+#4 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+#4 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 done
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 478.15MB / 1.13GB 45.7s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 535.82MB / 1.13GB 48.9s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 592.45MB / 1.13GB 52.1s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 650.12MB / 1.13GB 55.3s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 707.79MB / 1.13GB 58.5s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 764.41MB / 1.13GB 61.6s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 821.04MB / 1.13GB 64.9s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 877.66MB / 1.13GB 68.1s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 935.33MB / 1.13GB 71.4s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 993.00MB / 1.13GB 74.6s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 1.05GB / 1.13GB 78.0s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 1.11GB / 1.13GB 81.4s
+#4 sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 1.13GB / 1.13GB 82.5s done
+#4 extracting sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 0.1s
+#4 extracting sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 5.2s
+#4 extracting sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 10.4s
+#4 extracting sha256:fda6c05d4a4d53f7ec7e1790a5f9d67008a6f132ea7b26ae7c0eb5e922425816 11.9s done
+#4 extracting sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c
+#4 extracting sha256:5246a47a398794ccc5ea05e3ef3a2131928604b42cbfb0f7b3be4663cb12ef9c 3.8s done
+#4 DONE 99.0s
+
+#5 [2/3] RUN set -eux;     brew tap tamarin-prover/tap;     formula="$(brew --repository tamarin-prover/tap)/Formula/tamarin-prover.rb";     test -f "${formula}";     grep -q       'refs/tags/1.12.0.tar.gz'       "${formula}";     grep -q       '936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99'       "${formula}";     grep -q       '10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6'       "${formula}";     brew install tamarin-prover/tap/tamarin-prover;     tamarin-prover --version;     tamarin-prover test
+#5 0.534 + brew tap tamarin-prover/tap
+#5 2.043 ==> Tapping tamarin-prover/tap
+#5 2.061 Cloning into '/home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/tamarin-prover/homebrew-tap'...
+#5 2.853 Tapped 3 formulae (18 files, 158.9KB).
+#5 3.582 + brew --repository tamarin-prover/tap
+#5 3.760 + formula=/home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/tamarin-prover/homebrew-tap/Formula/tamarin-prover.rb
+#5 3.760 + test -f /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/tamarin-prover/homebrew-tap/Formula/tamarin-prover.rb
+#5 3.760 + grep -q refs/tags/1.12.0.tar.gz /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/tamarin-prover/homebrew-tap/Formula/tamarin-prover.rb
+#5 3.761 + grep -q 936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99 /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/tamarin-prover/homebrew-tap/Formula/tamarin-prover.rb
+#5 3.762 + grep -q 10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6 /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/tamarin-prover/homebrew-tap/Formula/tamarin-prover.rb
+#5 3.763 + brew install tamarin-prover/tap/tamarin-prover
+#5 4.605 ==> Fetching downloads for: tamarin-prover
+#5 7.168 ==> Fetching dependencies for tamarin-prover/tap/tamarin-prover: zlib-ng-compat, libpng, bzip2, freetype, expat, fontconfig, pcre2, dbus, ncurses, readline, libxcrypt, sqlite, util-linux, libffi, ca-certificates, mpdecimal, openssl@3, xz, lz4, zstd, libedit, python@3.14, glib, xorgproto, libxau, libxdmcp, libxcb, libx11, libxext, libxrender, lzo, pixman, cairo, jpeg-turbo, libvmaf, aom, dav1d, libavif, giflib, webp, libtiff, gd, jasper, libxml2, netpbm, gts, shared-mime-info, gdk-pixbuf, graphite2, icu4c@78, harfbuzz, fribidi, libdatrie, libthai, pango, librsvg, m4, libtool, graphviz, gmp, tamarin-prover/tap/libbuddy, libsigsegv, libtecla, flex and tamarin-prover/tap/maude
+#5 7.168 ==> Downloading https://ghcr.io/v2/homebrew/core/zlib-ng-compat/manifests/2.3.3_1-1
+#5 7.558 ==> Fetching zlib-ng-compat
+#5 7.558 ==> Downloading https://ghcr.io/v2/homebrew/core/zlib-ng-compat/blobs/sha256:b8d7e8802092be9ecc516a0a43f35da61f3a83c73ba2e65b55419195a7ce7718
+#5 8.140 ==> Downloading https://ghcr.io/v2/homebrew/core/libpng/manifests/1.6.59
+#5 8.478 ==> Fetching libpng
+#5 8.478 ==> Downloading https://ghcr.io/v2/homebrew/core/libpng/blobs/sha256:8955801e64761d8552a9cc206195694a438ab0b87cfe69f9ddbe9c29f69cfc50
+#5 9.070 ==> Downloading https://ghcr.io/v2/homebrew/core/bzip2/manifests/1.0.8-2
+#5 9.423 ==> Fetching bzip2
+#5 9.423 ==> Downloading https://ghcr.io/v2/homebrew/core/bzip2/blobs/sha256:a731afa70daaafec28359b4f10f1c68455c1955ae66cdbb6b6d52eee277bbd3e
+#5 9.994 ==> Downloading https://ghcr.io/v2/homebrew/core/freetype/manifests/2.14.3
+#5 10.31 ==> Fetching freetype
+#5 10.31 ==> Downloading https://ghcr.io/v2/homebrew/core/freetype/blobs/sha256:4dfd17e1b578e43e2200b48b3b6745e18280df3ce9c9504f365f1bcc8fe8869e
+#5 10.96 ==> Downloading https://ghcr.io/v2/homebrew/core/expat/manifests/2.9.0
+#5 11.27 ==> Fetching expat
+#5 11.27 ==> Downloading https://ghcr.io/v2/homebrew/core/expat/blobs/sha256:b8f1785877c07e5f126c85b9610660f56bb5919fdfc668bbd5869d238c435571
+#5 11.80 ==> Downloading https://ghcr.io/v2/homebrew/core/fontconfig/manifests/2.18.3
+#5 12.26 ==> Fetching fontconfig
+#5 12.26 ==> Downloading https://ghcr.io/v2/homebrew/core/fontconfig/blobs/sha256:56c35f5cc20e978189ba6693eef8ed1167de1d04ef9e5289e9a9dff8b5077049
+#5 12.79 ==> Downloading https://ghcr.io/v2/homebrew/core/pcre2/manifests/10.49
+#5 13.17 ==> Fetching pcre2
+#5 13.17 ==> Downloading https://ghcr.io/v2/homebrew/core/pcre2/blobs/sha256:372ff34217dfe1185894c7ee06dc5c865eea331192c13ed5e62df0babe1b0520
+#5 13.87 ==> Downloading https://ghcr.io/v2/homebrew/core/dbus/manifests/1.16.2_1
+#5 14.27 ==> Fetching dbus
+#5 14.27 ==> Downloading https://ghcr.io/v2/homebrew/core/dbus/blobs/sha256:42841a5373f596cbccd52b4cf3eae4f3ec6a853309b14e36e869a7030fabd21a
+#5 14.84 ==> Downloading https://ghcr.io/v2/homebrew/core/ncurses/manifests/6.6
+#5 15.16 ==> Fetching ncurses
+#5 15.16 ==> Downloading https://ghcr.io/v2/homebrew/core/ncurses/blobs/sha256:12c037b176c3300398cc53f0f278ba14195ae525cb6188dc085fd07236e5db48
+#5 15.86 ==> Downloading https://ghcr.io/v2/homebrew/core/readline/manifests/8.3.6
+#5 16.20 ==> Fetching readline
+#5 16.20 ==> Downloading https://ghcr.io/v2/homebrew/core/readline/blobs/sha256:4edcc5d53fb104818fd0e642f18edaace69e60c24b5e892df2bd437670c32857
+#5 16.83 ==> Downloading https://ghcr.io/v2/homebrew/core/libxcrypt/manifests/4.5.2
+#5 17.15 ==> Fetching libxcrypt
+#5 17.15 ==> Downloading https://ghcr.io/v2/homebrew/core/libxcrypt/blobs/sha256:9319e1e70e1e3e476e421956baaeebc0d7be9c3030897844a3c348fe4dd116a5
+#5 17.73 ==> Downloading https://ghcr.io/v2/homebrew/core/sqlite/manifests/3.53.4-1
+#5 18.18 ==> Fetching sqlite
+#5 18.18 ==> Downloading https://ghcr.io/v2/homebrew/core/sqlite/blobs/sha256:a7d570ed08f4678d8aee733ab6f12a3193891709b8047042b07b48b90473fad5
+#5 18.93 ==> Downloading https://ghcr.io/v2/homebrew/core/util-linux/manifests/2.42.4
+#5 19.39 ==> Fetching util-linux
+#5 19.39 ==> Downloading https://ghcr.io/v2/homebrew/core/util-linux/blobs/sha256:a2f2f02b1a397f4bbda2832fc1403c55daff00e3c52c6a8c970d0c98fff95139
+#5 20.60 ==> Downloading https://ghcr.io/v2/homebrew/core/libffi/manifests/3.8.0
+#5 20.98 ==> Fetching libffi
+#5 20.98 ==> Downloading https://ghcr.io/v2/homebrew/core/libffi/blobs/sha256:250d5150db65018e524595cae9de93f8d72ebe8a078bfde968eae51bdc1787fc
+#5 21.52 ==> Downloading https://ghcr.io/v2/homebrew/core/ca-certificates/manifests/2026-09-25
+#5 21.87 ==> Fetching ca-certificates
+#5 21.87 ==> Downloading https://ghcr.io/v2/homebrew/core/ca-certificates/blobs/sha256:81804ad8a70a7a8d2a0a964d106765ff88716b310decaeffb4b4895a3252186a
+#5 22.46 ==> Downloading https://ghcr.io/v2/homebrew/core/mpdecimal/manifests/4.0.1-1
+#5 22.83 ==> Fetching mpdecimal
+#5 22.83 ==> Downloading https://ghcr.io/v2/homebrew/core/mpdecimal/blobs/sha256:d92d8706831c7dfa2fdd0f1a0d8548137a7ef325ae5c5a7f98fb5090182d6974
+#5 23.52 ==> Downloading https://ghcr.io/v2/homebrew/core/openssl/3/manifests/3.6.5
+#5 23.89 ==> Fetching openssl@3
+#5 23.89 ==> Downloading https://ghcr.io/v2/homebrew/core/openssl/3/blobs/sha256:d1059270d1dfaae5e945745c7d5930c76a178b270a964ff450c16a2f2cda5ad2
+#5 25.11 ==> Downloading https://ghcr.io/v2/homebrew/core/xz/manifests/5.8.4
+#5 25.49 ==> Fetching xz
+#5 25.49 ==> Downloading https://ghcr.io/v2/homebrew/core/xz/blobs/sha256:aa3b18af4d682e52746cd73dca60cec5422bfe1dc8bf4fff3c38a63fe4d516f5
+#5 26.13 ==> Downloading https://ghcr.io/v2/homebrew/core/lz4/manifests/1.10.0-3
+#5 26.50 ==> Fetching lz4
+#5 26.50 ==> Downloading https://ghcr.io/v2/homebrew/core/lz4/blobs/sha256:9e0b7281ea67651501955030ea0e1b3f4036a6a1b712589f9ac816c545577eae
+#5 27.14 ==> Downloading https://ghcr.io/v2/homebrew/core/zstd/manifests/1.5.7_1
+#5 27.57 ==> Fetching zstd
+#5 27.57 ==> Downloading https://ghcr.io/v2/homebrew/core/zstd/blobs/sha256:3d5ca8948526a2e3a487db0cd0acec9f4b415d5a4b08cffe27e2ea0c339c9dbe
+#5 28.16 ==> Downloading https://ghcr.io/v2/homebrew/core/libedit/manifests/20260512-3.1
+#5 28.49 ==> Fetching libedit
+#5 28.49 ==> Downloading https://ghcr.io/v2/homebrew/core/libedit/blobs/sha256:4d9a605075987c2f832b9caa24b1a5b56dee88ae662cb6a4efee375fce1d8dcf
+#5 29.00 Warning: python@3.14 has been deprecated! It will be disabled on 2031-11-01.
+#5 29.00 ==> Downloading https://ghcr.io/v2/homebrew/core/python/3.14/manifests/3.14.8-1
+#5 29.60 ==> Fetching python@3.14
+#5 29.60 ==> Downloading https://ghcr.io/v2/homebrew/core/python/3.14/blobs/sha256:87a955d0f6f076cf0403a1d25841378181285c131ce89ce108b01b60b5fac5f2
+#5 31.31 ==> Downloading https://ghcr.io/v2/homebrew/core/glib/manifests/2.90.1
+#5 31.96 ==> Fetching glib
+#5 31.96 ==> Downloading https://ghcr.io/v2/homebrew/core/glib/blobs/sha256:34d5b26ae5146696ff16df027995c7118a051306177eb8c822a18aaddae12483
+#5 33.08 ==> Downloading https://ghcr.io/v2/homebrew/core/xorgproto/manifests/2026.1
+#5 33.42 ==> Fetching xorgproto
+#5 33.42 ==> Downloading https://ghcr.io/v2/homebrew/core/xorgproto/blobs/sha256:14bbb72aa9d9a989ea94f21ca6b31f3f40b1fe337438bf1e9b5b318eb3131899
+#5 34.01 ==> Downloading https://ghcr.io/v2/homebrew/core/libxau/manifests/1.0.12
+#5 34.43 ==> Fetching libxau
+#5 34.43 ==> Downloading https://ghcr.io/v2/homebrew/core/libxau/blobs/sha256:eaab2aad3bf7abb8cf6f1b164cd6648731814a71b1b3cb1141055d48fa07914d
+#5 34.88 ==> Downloading https://ghcr.io/v2/homebrew/core/libxdmcp/manifests/1.1.5
+#5 35.31 ==> Fetching libxdmcp
+#5 35.31 ==> Downloading https://ghcr.io/v2/homebrew/core/libxdmcp/blobs/sha256:d8b9dc2969e85e26c6d426d8865244e1416d73f7f408c9f5404a2a614a62e7d4
+#5 35.88 ==> Downloading https://ghcr.io/v2/homebrew/core/libxcb/manifests/1.17.0-1
+#5 36.27 ==> Fetching libxcb
+#5 36.27 ==> Downloading https://ghcr.io/v2/homebrew/core/libxcb/blobs/sha256:1ccb2f6e9f4feb73b3dbc56248554bc8ce30cb34771ed987eec1bd956f8563e2
+#5 36.91 ==> Downloading https://ghcr.io/v2/homebrew/core/libx11/manifests/1.8.13-1
+#5 37.39 ==> Fetching libx11
+#5 37.39 ==> Downloading https://ghcr.io/v2/homebrew/core/libx11/blobs/sha256:bf17b051a14a369ee1aa3e3566338aafe21fedae9735f6b178197e871d042ac2
+#5 38.15 ==> Downloading https://ghcr.io/v2/homebrew/core/libxext/manifests/1.3.7
+#5 38.62 ==> Fetching libxext
+#5 38.62 ==> Downloading https://ghcr.io/v2/homebrew/core/libxext/blobs/sha256:7bc771ee68f57189ea941e83f2f5ff18ac94878ae35c30aed8868a906834d148
+#5 39.14 ==> Downloading https://ghcr.io/v2/homebrew/core/libxrender/manifests/0.9.12
+#5 39.57 ==> Fetching libxrender
+#5 39.57 ==> Downloading https://ghcr.io/v2/homebrew/core/libxrender/blobs/sha256:44bddde0557643e137ddd5aa00d60bf220527719d2cb9263e397098dee2664c5
+#5 40.08 ==> Downloading https://ghcr.io/v2/homebrew/core/lzo/manifests/2.10
+#5 40.48 ==> Fetching lzo
+#5 40.48 ==> Downloading https://ghcr.io/v2/homebrew/core/lzo/blobs/sha256:8413f94bb69f337f7e1837e7f525e703cac105d27ceeb29de5c08c7bbfa77b29
+#5 41.00 ==> Downloading https://ghcr.io/v2/homebrew/core/pixman/manifests/0.46.4-1
+#5 41.37 ==> Fetching pixman
+#5 41.37 ==> Downloading https://ghcr.io/v2/homebrew/core/pixman/blobs/sha256:acad642a52a0e39159ba340f1e676c63d014422bf1d90e218ba7397b5873a2d1
+#5 41.97 ==> Downloading https://ghcr.io/v2/homebrew/core/cairo/manifests/1.18.6
+#5 42.74 ==> Fetching cairo
+#5 42.74 ==> Downloading https://ghcr.io/v2/homebrew/core/cairo/blobs/sha256:5fd48263c0683b91d89c475f500db3bcd00178490005646cb6b09d57d7b30c91
+#5 43.41 ==> Downloading https://ghcr.io/v2/homebrew/core/jpeg-turbo/manifests/3.2.0-1
+#5 43.76 ==> Fetching jpeg-turbo
+#5 43.76 ==> Downloading https://ghcr.io/v2/homebrew/core/jpeg-turbo/blobs/sha256:85713cddd87d363f7e772f9ab0db5d4192d6f4ef8793393458601ffdba8a1e07
+#5 44.46 ==> Downloading https://ghcr.io/v2/homebrew/core/libvmaf/manifests/3.2.1
+#5 44.84 ==> Fetching libvmaf
+#5 44.84 ==> Downloading https://ghcr.io/v2/homebrew/core/libvmaf/blobs/sha256:f7c74f138725548feae2bc8478202bf23d6cf063da33f03e09f28043270b423b
+#5 45.49 ==> Downloading https://ghcr.io/v2/homebrew/core/aom/manifests/3.15.1
+#5 46.00 ==> Fetching aom
+#5 46.00 ==> Downloading https://ghcr.io/v2/homebrew/core/aom/blobs/sha256:ed7e7a71a73934b4d5e599fa0f7e61517c8ef6bae02626f438ca2f90fb389370
+#5 46.90 ==> Downloading https://ghcr.io/v2/homebrew/core/dav1d/manifests/1.5.4
+#5 47.31 ==> Fetching dav1d
+#5 47.31 ==> Downloading https://ghcr.io/v2/homebrew/core/dav1d/blobs/sha256:6c978ac8a5eb6652bd8780911ff45d73a181e6c6a9f18d60f1c7f86184d4bdb2
+#5 47.90 ==> Downloading https://ghcr.io/v2/homebrew/core/libavif/manifests/1.4.2
+#5 48.35 ==> Fetching libavif
+#5 48.35 ==> Downloading https://ghcr.io/v2/homebrew/core/libavif/blobs/sha256:824125e726a4ea8c4495ef60d538ef5b769037bd9c4acc7c5a757d0cd03c4819
+#5 49.04 ==> Downloading https://ghcr.io/v2/homebrew/core/giflib/manifests/6.1.3-1
+#5 49.33 ==> Fetching giflib
+#5 49.33 ==> Downloading https://ghcr.io/v2/homebrew/core/giflib/blobs/sha256:8e8b91a9a5412978380c43049dd2101939e7b699a6ded7bd18e72a91b34d3e3a
+#5 49.94 ==> Downloading https://ghcr.io/v2/homebrew/core/webp/manifests/1.6.0-1
+#5 50.43 ==> Fetching webp
+#5 50.43 ==> Downloading https://ghcr.io/v2/homebrew/core/webp/blobs/sha256:74466119f8e80a2375631657c0daaf53c910938c4a8754385c579b4d71f95887
+#5 51.10 ==> Downloading https://ghcr.io/v2/homebrew/core/libtiff/manifests/4.7.2-2
+#5 51.63 ==> Fetching libtiff
+#5 51.63 ==> Downloading https://ghcr.io/v2/homebrew/core/libtiff/blobs/sha256:565e06c1da5aca67e2993315807301afddd252372c0896b76be515895b3c053a
+#5 52.33 ==> Downloading https://ghcr.io/v2/homebrew/core/gd/manifests/2.3.3_6
+#5 52.95 ==> Fetching gd
+#5 52.95 ==> Downloading https://ghcr.io/v2/homebrew/core/gd/blobs/sha256:da124ea2c614748107f9683ed08afa140d98a5d429332137f4f6ce17460360ec
+#5 53.47 ==> Downloading https://ghcr.io/v2/homebrew/core/jasper/manifests/4.2.9
+#5 53.88 ==> Fetching jasper
+#5 53.88 ==> Downloading https://ghcr.io/v2/homebrew/core/jasper/blobs/sha256:42e56bdae47308719c6a31f311c8b5a0ffd11cb4d98e69e7a81309ab0245562d
+#5 54.64 ==> Downloading https://ghcr.io/v2/homebrew/core/libxml2/manifests/2.15.4
+#5 55.11 ==> Fetching libxml2
+#5 55.11 ==> Downloading https://ghcr.io/v2/homebrew/core/libxml2/blobs/sha256:57b219c3bbf96111a57e2afaa052757b8697f268bc61944689eb9ae35829f1d0
+#5 55.92 ==> Downloading https://ghcr.io/v2/homebrew/core/netpbm/manifests/11.02.30
+#5 56.66 ==> Fetching netpbm
+#5 56.66 ==> Downloading https://ghcr.io/v2/homebrew/core/netpbm/blobs/sha256:d234463812ea8bfe30df940ee2732a622366ac4ade33216865b3edd86aad123d
+#5 57.55 ==> Downloading https://ghcr.io/v2/homebrew/core/gts/manifests/0.7.6_3-1
+#5 58.33 ==> Fetching gts
+#5 58.33 ==> Downloading https://ghcr.io/v2/homebrew/core/gts/blobs/sha256:49f026fbc5f1a7dfb651f350fad3f3fedfd72c04f385340b9f713753131fe597
+#5 58.93 ==> Downloading https://ghcr.io/v2/homebrew/core/shared-mime-info/manifests/2.5.1
+#5 59.66 ==> Fetching shared-mime-info
+#5 59.66 ==> Downloading https://ghcr.io/v2/homebrew/core/shared-mime-info/blobs/sha256:0c437c9eff86b2dec2f79752de0690c1f037584bbcd008a888a845507edfa09f
+#5 60.34 ==> Downloading https://ghcr.io/v2/homebrew/core/gdk-pixbuf/manifests/2.44.8
+#5 61.16 ==> Fetching gdk-pixbuf
+#5 61.16 ==> Downloading https://ghcr.io/v2/homebrew/core/gdk-pixbuf/blobs/sha256:13498f2cb02bb122c7befb4e3eaa4a79aca7d736f1c5cb68c85088fc70f37f24
+#5 61.69 ==> Downloading https://ghcr.io/v2/homebrew/core/graphite2/manifests/1.3.15
+#5 62.01 ==> Fetching graphite2
+#5 62.01 ==> Downloading https://ghcr.io/v2/homebrew/core/graphite2/blobs/sha256:2c2803a27eb8365e8c02726d2c2e967496044a9af06e59348b52fef23e8360fd
+#5 62.54 ==> Downloading https://ghcr.io/v2/homebrew/core/icu4c/78/manifests/78.3
+#5 62.89 ==> Fetching icu4c@78
+#5 62.89 ==> Downloading https://ghcr.io/v2/homebrew/core/icu4c/78/blobs/sha256:b152f4b6f581af753a52bf6dc5b7a113cd9f77088dcc94deaf6c321109aa43c2
+#5 65.39 ==> Downloading https://ghcr.io/v2/homebrew/core/harfbuzz/manifests/14.6.0
+#5 66.14 ==> Fetching harfbuzz
+#5 66.14 ==> Downloading https://ghcr.io/v2/homebrew/core/harfbuzz/blobs/sha256:683512035ebf2fd2e5343bec56a3678828d45492598c9ebbd128f46ebe5d924b
+#5 67.00 ==> Downloading https://ghcr.io/v2/homebrew/core/fribidi/manifests/1.0.17
+#5 67.39 ==> Fetching fribidi
+#5 67.39 ==> Downloading https://ghcr.io/v2/homebrew/core/fribidi/blobs/sha256:1e7ec5073ebe601d951fa4df6ce5cda4aa03bc7bff95216116c29d2ef82dbe17
+#5 67.94 ==> Downloading https://ghcr.io/v2/homebrew/core/libdatrie/manifests/0.2.14
+#5 68.25 ==> Fetching libdatrie
+#5 68.25 ==> Downloading https://ghcr.io/v2/homebrew/core/libdatrie/blobs/sha256:2296c37b6f7f5499b944e6e0d553e3ceac5a3666046ed133d495748045a4835f
+#5 68.75 ==> Downloading https://ghcr.io/v2/homebrew/core/libthai/manifests/0.1.30
+#5 69.09 ==> Fetching libthai
+#5 69.09 ==> Downloading https://ghcr.io/v2/homebrew/core/libthai/blobs/sha256:54551ab441971407573f2f97d085cd26ec3b61eda8fbf6d599ce2a41bfdb5f02
+#5 69.57 ==> Downloading https://ghcr.io/v2/homebrew/core/pango/manifests/1.58.2-1
+#5 70.39 ==> Fetching pango
+#5 70.39 ==> Downloading https://ghcr.io/v2/homebrew/core/pango/blobs/sha256:29de9540633d5eff78b7cc37b5c40bad05ddeef1f50ceb7de8c762691f5a3a5e
+#5 70.97 ==> Downloading https://ghcr.io/v2/homebrew/core/librsvg/manifests/2.63.2
+#5 71.87 ==> Fetching librsvg
+#5 71.87 ==> Downloading https://ghcr.io/v2/homebrew/core/librsvg/blobs/sha256:1a438c28f352fd9208967b9b385e1294457735e2948b14f5efd747d032d3d28d
+#5 72.95 ==> Downloading https://ghcr.io/v2/homebrew/core/m4/manifests/1.4.21
+#5 73.24 ==> Fetching m4
+#5 73.24 ==> Downloading https://ghcr.io/v2/homebrew/core/m4/blobs/sha256:ba0b5d546365710422739b622d9a2301f9096f78bc7d6dd5b3cb4cc4a55e184f
+#5 73.73 ==> Downloading https://ghcr.io/v2/homebrew/core/libtool/manifests/2.6.2
+#5 74.06 ==> Fetching libtool
+#5 74.06 ==> Downloading https://ghcr.io/v2/homebrew/core/libtool/blobs/sha256:6987dea502aa790323eeed36812983d07620595eff67992f1d6992f4de98e136
+#5 74.62 ==> Downloading https://ghcr.io/v2/homebrew/core/graphviz/manifests/16.1.0-1
+#5 75.66 ==> Fetching graphviz
+#5 75.66 ==> Downloading https://ghcr.io/v2/homebrew/core/graphviz/blobs/sha256:b577048dcf51da574b0d6feaf37ec54ffdffb8c2d69fa96b47767f98316d5448
+#5 76.47 ==> Downloading https://ghcr.io/v2/homebrew/core/gmp/manifests/6.3.0-1
+#5 76.85 ==> Fetching gmp
+#5 76.85 ==> Downloading https://ghcr.io/v2/homebrew/core/gmp/blobs/sha256:0cb5dc6f783367a97202b5fd53e8f61a6024c5cfa075cf81aee15c05772ee9f3
+#5 77.42 ==> Fetching tamarin-prover/tap/libbuddy
+#5 78.20 ==> Downloading https://raw.githubusercontent.com/tamarin-prover/binaries/HEAD/dependencies/libbuddy-2.4.x86_64_linux.bottle.3.tar.gz
+#5 78.49 ==> Downloading https://ghcr.io/v2/homebrew/core/libsigsegv/manifests/2.15
+#5 78.82 ==> Fetching libsigsegv
+#5 78.82 ==> Downloading https://ghcr.io/v2/homebrew/core/libsigsegv/blobs/sha256:8c64896be0e57b66fdc9086d93835beaf01f269826d3beaae2d6e4ec14ae2eb3
+#5 79.30 ==> Downloading https://ghcr.io/v2/homebrew/core/libtecla/manifests/1.6.3
+#5 79.63 ==> Fetching libtecla
+#5 79.63 ==> Downloading https://ghcr.io/v2/homebrew/core/libtecla/blobs/sha256:8bcf6021a1cff18af685065c3778f709fdcc17e22767818c6e5fef4e309adc3e
+#5 80.24 ==> Downloading https://ghcr.io/v2/homebrew/core/flex/manifests/2.6.4_2
+#5 80.69 ==> Fetching flex
+#5 80.69 ==> Downloading https://ghcr.io/v2/homebrew/core/flex/blobs/sha256:b2bff056ad86d8a1cb1a08944867b5f60636ad4e7edca623810937330d87d8eb
+#5 81.41 ==> Fetching tamarin-prover/tap/maude
+#5 82.01 ==> Downloading https://raw.githubusercontent.com/tamarin-prover/binaries/HEAD/dependencies/maude-3.5.1_1.x86_64_linux.bottle.tar.gz
+#5 82.45 ==> Fetching tamarin-prover/tap/tamarin-prover
+#5 83.05 ==> Downloading https://github.com/tamarin-prover/tamarin-prover/releases/download/1.12.0/tamarin-prover-1.12.0.x86_64_linux.bottle.tar.gz
+#5 83.05 ==> Downloading from https://release-assets.githubusercontent.com/github-production-release-asset/3518380/e5a0c356-24c3-4c0c-806e-675434cc5c98?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-07T20%3A15%3A26Z&rscd=attachment%3B+filename%3Dtamarin-prover-1.12.0.x86_64_linux.bottle.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-07T19%3A15%3A15Z&ske=2026-10-07T20%3A15%3A26Z&sks=b&skv=2018-11-09&sig=DbdhhZGDdF3buV5ySiP5tDthkGHQjVxenWLmJJuzydg%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MTQwMjkwOCwibmJmIjoxNzkxNDAxMTA4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.wSVWYQbSctI0OjRcZE7V21TKPGgl4YBd4L7lOLW7xgA&response-content-disposition=attachment%3B%20filename%3Dtamarin-prover-1.12.0.x86_64_linux.bottle.tar.gz&response-content-type=application%2Foctet-stream
+#5 84.85 ==> Installing tamarin-prover from tamarin-prover/tap
+#5 84.85 ==> Installing dependencies for tamarin-prover/tap/tamarin-prover: zlib-ng-compat, libpng, bzip2, freetype, expat, fontconfig, pcre2, dbus, ncurses, readline, libxcrypt, sqlite, util-linux, libffi, ca-certificates, mpdecimal, openssl@3, xz, lz4, zstd, libedit, python@3.14, glib, xorgproto, libxau, libxdmcp, libxcb, libx11, libxext, libxrender, lzo, pixman, cairo, jpeg-turbo, libvmaf, aom, dav1d, libavif, giflib, webp, libtiff, gd, jasper, libxml2, netpbm, gts, shared-mime-info, gdk-pixbuf, graphite2, icu4c@78, harfbuzz, fribidi, libdatrie, libthai, pango, librsvg, m4, libtool, graphviz, gmp, tamarin-prover/tap/libbuddy, libsigsegv, libtecla, flex and tamarin-prover/tap/maude
+#5 84.85 ==> Installing tamarin-prover/tap/tamarin-prover dependency: zlib-ng-compat
+#5 84.85 ==> Downloading https://ghcr.io/v2/homebrew/core/zlib-ng-compat/manifests/2.3.3_1-1
+#5 84.85 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/ac25eeabee9199cbf998d894928df4d036eea108f2126f05b340db1117be41ea--zlib-ng-compat-2.3.3_1-1.bottle_manifest.json
+#5 84.85 ==> Pouring zlib-ng-compat--2.3.3_1.x86_64_linux.bottle.1.tar.gz
+#5 86.06 🍺  /home/linuxbrew/.linuxbrew/Cellar/zlib-ng-compat/2.3.3_1: 17 files, 613.5KB
+#5 86.06 ==> Installing tamarin-prover/tap/tamarin-prover dependency: libpng
+#5 86.06 ==> Downloading https://ghcr.io/v2/homebrew/core/libpng/manifests/1.6.59
+#5 86.06 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/4a927b335b66f50d42c144f2bbc7c000384414951a542ced9ccf8ab03da5d05d--libpng-1.6.59.bottle_manifest.json
+#5 86.06 ==> Pouring libpng--1.6.59.x86_64_linux.bottle.tar.gz
+#5 86.36 🍺  /home/linuxbrew/.linuxbrew/Cellar/libpng/1.6.59: 29 files, 1.5MB
+#5 86.36 ==> Installing tamarin-prover/tap/tamarin-prover dependency: bzip2
+#5 86.36 ==> Downloading https://ghcr.io/v2/homebrew/core/bzip2/manifests/1.0.8-2
+#5 86.36 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/c1a79a32cc9082c99fc318e6b2596b8b1f6e99abacb32bcbe88f979e4be5e4ea--bzip2-1.0.8-2.bottle_manifest.json
+#5 86.36 ==> Pouring bzip2--1.0.8.x86_64_linux.bottle.2.tar.gz
+#5 86.95 🍺  /home/linuxbrew/.linuxbrew/Cellar/bzip2/1.0.8: 32 files, 607.6KB
+#5 86.95 ==> Installing tamarin-prover/tap/tamarin-prover dependency: freetype
+#5 86.95 ==> Downloading https://ghcr.io/v2/homebrew/core/freetype/manifests/2.14.3
+#5 86.95 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/19effaf053b0df2648c35e6bc45326d9655eb0e666537b9e15295ea6a5fbe816--freetype-2.14.3.bottle_manifest.json
+#5 86.95 ==> Pouring freetype--2.14.3.x86_64_linux.bottle.tar.gz
+#5 87.23 🍺  /home/linuxbrew/.linuxbrew/Cellar/freetype/2.14.3: 69 files, 3.1MB
+#5 87.23 ==> Installing tamarin-prover/tap/tamarin-prover dependency: expat
+#5 87.23 ==> Downloading https://ghcr.io/v2/homebrew/core/expat/manifests/2.9.0
+#5 87.23 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/66ed22f045ed15711b9b53030c0b427510e26e9aebd174e4d506ac7ec2b724a0--expat-2.9.0.bottle_manifest.json
+#5 87.23 ==> Pouring expat--2.9.0.x86_64_linux.bottle.tar.gz
+#5 87.60 🍺  /home/linuxbrew/.linuxbrew/Cellar/expat/2.9.0: 23 files, 953.9KB
+#5 87.60 ==> Installing tamarin-prover/tap/tamarin-prover dependency: fontconfig
+#5 87.60 ==> Downloading https://ghcr.io/v2/homebrew/core/fontconfig/manifests/2.18.3
+#5 87.60 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/02f56bf3898c6f8e43f0b195a5ecf1137bc4a64f4fdcfb87454a26c0582c6cea--fontconfig-2.18.3.bottle_manifest.json
+#5 87.60 ==> Pouring fontconfig--2.18.3.x86_64_linux.bottle.tar.gz
+#5 88.45 🍺  /home/linuxbrew/.linuxbrew/Cellar/fontconfig/2.18.3: 101 files, 2MB
+#5 88.45 ==> Installing tamarin-prover/tap/tamarin-prover dependency: pcre2
+#5 88.45 ==> Downloading https://ghcr.io/v2/homebrew/core/pcre2/manifests/10.49
+#5 88.45 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/73869938a79a2a80d894ee957e1fcfe49ec630e4af2840c0710e8f5443c8e027--pcre2-10.49.bottle_manifest.json
+#5 88.45 ==> Pouring pcre2--10.49.x86_64_linux.bottle.tar.gz
+#5 89.17 🍺  /home/linuxbrew/.linuxbrew/Cellar/pcre2/10.49: 249 files, 8MB
+#5 89.17 ==> Installing tamarin-prover/tap/tamarin-prover dependency: dbus
+#5 89.17 ==> Downloading https://ghcr.io/v2/homebrew/core/dbus/manifests/1.16.2_1
+#5 89.17 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/7f749e0a84725ad0364a867834935928f9c2d03474cea80821bb83b8d9bde915--dbus-1.16.2_1.bottle_manifest.json
+#5 89.17 ==> Pouring dbus--1.16.2_1.x86_64_linux.bottle.tar.gz
+#5 90.01 🍺  /home/linuxbrew/.linuxbrew/Cellar/dbus/1.16.2_1: 78 files, 2.2MB
+#5 90.01 ==> Installing tamarin-prover/tap/tamarin-prover dependency: ncurses
+#5 90.01 ==> Downloading https://ghcr.io/v2/homebrew/core/ncurses/manifests/6.6
+#5 90.01 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/40b3748b8b6030c832b016714eee3f2018860e2a20eca25067c7568cbfe3b5e2--ncurses-6.6.bottle_manifest.json
+#5 90.01 ==> Pouring ncurses--6.6.x86_64_linux.bottle.tar.gz
+#5 92.13 🍺  /home/linuxbrew/.linuxbrew/Cellar/ncurses/6.6: 4,071 files, 11.2MB
+#5 92.13 ==> Installing tamarin-prover/tap/tamarin-prover dependency: readline
+#5 92.13 ==> Downloading https://ghcr.io/v2/homebrew/core/readline/manifests/8.3.6
+#5 92.13 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/86390acc2bbeae5b2803050d5af9e2f6b7edb39e0b3b33519b4efec1ddb46b46--readline-8.3.6.bottle_manifest.json
+#5 92.13 ==> Pouring readline--8.3.6.x86_64_linux.bottle.tar.gz
+#5 92.36 🍺  /home/linuxbrew/.linuxbrew/Cellar/readline/8.3.6: 56 files, 2.9MB
+#5 92.36 ==> Installing tamarin-prover/tap/tamarin-prover dependency: libxcrypt
+#5 92.36 ==> Downloading https://ghcr.io/v2/homebrew/core/libxcrypt/manifests/4.5.2
+#5 92.36 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/8174781eb1f43157530a6a71e0925ec8ee0814d40e648ab8a1455b7f59ed7d55--libxcrypt-4.5.2.bottle_manifest.json
+#5 92.36 ==> Pouring libxcrypt--4.5.2.x86_64_linux.bottle.tar.gz
+#5 92.52 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxcrypt/4.5.2: 25 files, 396.9KB
+#5 92.52 ==> Installing tamarin-prover/tap/tamarin-prover dependency: sqlite
+#5 92.52 ==> Downloading https://ghcr.io/v2/homebrew/core/sqlite/manifests/3.53.4-1
+#5 92.52 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/7b1e08834f21ab4eddf247a89553438b9929637b5b5ae1228e086bdfdd51e71e--sqlite-3.53.4-1.bottle_manifest.json
+#5 92.52 ==> Pouring sqlite--3.53.4.x86_64_linux.bottle.1.tar.gz
+#5 92.95 🍺  /home/linuxbrew/.linuxbrew/Cellar/sqlite/3.53.4: 13 files, 6.5MB
+#5 92.95 ==> Installing tamarin-prover/tap/tamarin-prover dependency: util-linux
+#5 92.95 ==> Downloading https://ghcr.io/v2/homebrew/core/util-linux/manifests/2.42.4
+#5 92.95 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/e40da21908564bce2ff94c6e0a88b3d2a643f831c9a5a36d73131622515c3d30--util-linux-2.42.4.bottle_manifest.json
+#5 92.95 ==> Pouring util-linux--2.42.4.x86_64_linux.bottle.tar.gz
+#5 101.9 🍺  /home/linuxbrew/.linuxbrew/Cellar/util-linux/2.42.4: 461 files, 29.5MB
+#5 101.9 ==> Installing tamarin-prover/tap/tamarin-prover dependency: libffi
+#5 101.9 ==> Downloading https://ghcr.io/v2/homebrew/core/libffi/manifests/3.8.0
+#5 101.9 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/338478934da104b98f85f45130c3022c84abfbeae9f23ac48822c2daf91d5c9f--libffi-3.8.0.bottle_manifest.json
+#5 101.9 ==> Pouring libffi--3.8.0.x86_64_linux.bottle.tar.gz
+#5 102.0 🍺  /home/linuxbrew/.linuxbrew/Cellar/libffi/3.8.0: 19 files, 981.3KB
+#5 102.0 ==> Installing tamarin-prover/tap/tamarin-prover dependency: ca-certificates
+#5 102.0 ==> Downloading https://ghcr.io/v2/homebrew/core/ca-certificates/manifests/2026-09-25
+#5 102.0 Already downloaded: /home/linuxbrew/.cache/Homebrew/downloads/01832f429b89467a0ad4d29d0518faff11681279410d7aecd3badb7ea9b95d15--ca-certificates-2026-09-25.bottle_manifest.json
+#5 102.0 ==> Pouring ca-certificates--2026-09-25.all.bottle.tar.gz
+#5 102.0 Error: undefined method '[]' for nil
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/utils/bottles.rb:127:in 'Utils::Bottles.load_tab'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:1528:in 'FormulaInstaller#pour'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:593:in 'FormulaInstaller#install'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:935:in 'FormulaInstaller#install_dependency'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:846:in 'block in FormulaInstaller#install_dependencies'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:846:in 'Array#each'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:846:in 'FormulaInstaller#install_dependencies'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:569:in 'FormulaInstaller#install'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:489:in 'Homebrew::Install.install_formula'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:422:in 'block in Homebrew::Install.install_formulae'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:419:in 'Array#each'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:419:in 'Homebrew::Install.install_formulae'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/cmd/install.rb:392:in 'Homebrew::Cmd::InstallCmd#run'
+#5 102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/brew.rb:101:in '<main>'
+#5 102.0 You have disabled automatic updates and have not updated today.
+#5 102.0 Do not report this issue until you've run `brew update` and tried again.
+#5 ERROR: process "/bin/sh -c set -eux;     brew tap tamarin-prover/tap;     formula=\"$(brew --repository tamarin-prover/tap)/Formula/tamarin-prover.rb\";     test -f \"${formula}\";     grep -q       'refs/tags/1.12.0.tar.gz'       \"${formula}\";     grep -q       '936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99'       \"${formula}\";     grep -q       '10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6'       \"${formula}\";     brew install tamarin-prover/tap/tamarin-prover;     tamarin-prover --version;     tamarin-prover test" did not complete successfully: exit code: 1
+------
+ > [2/3] RUN set -eux;     brew tap tamarin-prover/tap;     formula="$(brew --repository tamarin-prover/tap)/Formula/tamarin-prover.rb";     test -f "${formula}";     grep -q       'refs/tags/1.12.0.tar.gz'       "${formula}";     grep -q       '936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99'       "${formula}";     grep -q       '10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6'       "${formula}";     brew install tamarin-prover/tap/tamarin-prover;     tamarin-prover --version;     tamarin-prover test:
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:846:in 'FormulaInstaller#install_dependencies'
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/formula_installer.rb:569:in 'FormulaInstaller#install'
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:489:in 'Homebrew::Install.install_formula'
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:422:in 'block in Homebrew::Install.install_formulae'
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:419:in 'Array#each'
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/install.rb:419:in 'Homebrew::Install.install_formulae'
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/cmd/install.rb:392:in 'Homebrew::Cmd::InstallCmd#run'
+102.0 /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/brew.rb:101:in '<main>'
+102.0 You have disabled automatic updates and have not updated today.
+102.0 Do not report this issue until you've run `brew update` and tried again.
+------
+Dockerfile.tamarin:9
+--------------------
+   8 |     
+   9 | >>> RUN set -eux; \
+  10 | >>>     brew tap tamarin-prover/tap; \
+  11 | >>>     formula="$(brew --repository tamarin-prover/tap)/Formula/tamarin-prover.rb"; \
+  12 | >>>     test -f "${formula}"; \
+  13 | >>>     grep -q \
+  14 | >>>       'refs/tags/1.12.0.tar.gz' \
+  15 | >>>       "${formula}"; \
+  16 | >>>     grep -q \
+  17 | >>>       '936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99' \
+  18 | >>>       "${formula}"; \
+  19 | >>>     grep -q \
+  20 | >>>       '10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6' \
+  21 | >>>       "${formula}"; \
+  22 | >>>     brew install tamarin-prover/tap/tamarin-prover; \
+  23 | >>>     tamarin-prover --version; \
+  24 | >>>     tamarin-prover test
+  25 |     
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c set -eux;     brew tap tamarin-prover/tap;     formula=\"$(brew --repository tamarin-prover/tap)/Formula/tamarin-prover.rb\";     test -f \"${formula}\";     grep -q       'refs/tags/1.12.0.tar.gz'       \"${formula}\";     grep -q       '936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99'       \"${formula}\";     grep -q       '10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6'       \"${formula}\";     brew install tamarin-prover/tap/tamarin-prover;     tamarin-prover --version;     tamarin-prover test" did not complete successfully: exit code: 1
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/xap1zd6b3osz1p8oulgrxqnxb

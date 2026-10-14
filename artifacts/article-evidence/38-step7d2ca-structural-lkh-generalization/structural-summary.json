@@ -1,0 +1,48 @@
+{
+  "arbitrary_n_theorem": false,
+  "case_classes": [
+    "single",
+    "sequential_pair",
+    "simultaneous_pair"
+  ],
+  "checks": {
+    "all_second_revoked_members_retained_previous_root": true,
+    "sequential_case_count": true,
+    "simultaneous_case_count": true,
+    "single_case_count": true,
+    "zero_failures": true
+  },
+  "failure_count": 0,
+  "formal_tamarin_generalization": false,
+  "group_sizes": [
+    4,
+    5,
+    7,
+    8,
+    9,
+    16,
+    17,
+    32,
+    33,
+    64
+  ],
+  "historical_boundary_cases": 6794,
+  "implementation_modified": false,
+  "method": "finite exhaustive symbolic-key closure over exact LkhKeyTree update plans",
+  "schema_version": 1,
+  "scientific_state": "FINITE_STRUCTURAL_GENERALIZATION_PASS",
+  "security_invariants": [
+    "authorized survivors derive the new root",
+    "no currently or previously revoked member derives the new root",
+    "the coalition of all revoked members does not derive the new root",
+    "published LKH update recipients exclude revoked members",
+    "root version follows rekey epoch",
+    "historical roots remain known to members that legitimately held them before later revocation"
+  ],
+  "sequential_pair_cases": 6794,
+  "simultaneous_pair_cases": 3397,
+  "single_cases": 195,
+  "step": "STEP7D2CA_STRUCTURAL_LKH_GENERALIZATION",
+  "total_cases": 10386,
+  "total_rekey_epochs": 17180
+}

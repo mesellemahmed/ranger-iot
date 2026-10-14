@@ -1,0 +1,34 @@
+Fetching distribution (retrying 3 times, with an initial back off of 500 ms).
+Downloading https://services.gradle.org/distributions/gradle-9.6.1-bin.zip
+.............10%.............20%..............30%.............40%..............50%.............60%.............70%..............80%.............90%..............100%
+
+Welcome to Gradle 9.6.1!
+
+Here are the highlights of this release:
+ - Improved Configuration Cache hit rates
+ - Additional CLI rendering options
+ - Important project hierarchy lookup deprecations
+
+For more details see https://docs.gradle.org/9.6.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :run
+[32mINFO  [main] [Cooja.java:1147] - Loading /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed002146/scenario.csc random seed: null[0;39m
+> make -j20 ranger-adaptive-v2-rpl.cooja TARGET=cooja DEFINES=RANGER_CODING_K=3,RANGER_CODING_N=5,RANGER_LOSS_BP=0,RANGER_LOSS_SEED=1,RANGER_CAMPAIGN_MODE=0,RANGER_RECOVERY_SMOKE=0,RANGER_RECOVERY_CASCADE_SMOKE=0,RANGER_ADAPTIVE_NACK_SMOKE=0
+  CC        ranger-adaptive-v2-rpl.c
+  LD        build/cooja/ranger-adaptive-v2-rpl.cooja
+[32mINFO  [main] [LogScriptEngine.java:231] - Script timeout in 650000 ms[0;39m
+[32mINFO  [sim] [LogScriptEngine.java:320] -  5% completed, 14.0 sec remaining[0;39m
+[32mINFO  [sim] [LogScriptEngine.java:320] - 10% completed, 10.0 sec remaining[0;39m
+[32mINFO  [sim] [LogScriptEngine.java:320] - 15% completed,  7.0 sec remaining[0;39m
+[32mINFO  [sim] [LogScriptEngine.java:320] - 20% completed,  5.0 sec remaining[0;39m
+[32mINFO  [sim] [Simulation.java:450] - Runtime: 1442 ms. Simulated time: 131148 ms. Speedup: 90.9486823855756[0;39m
+[32mINFO  [main] [Cooja.java:1173] - TEST OK
+[0;39m
+
+BUILD SUCCESSFUL in 1m 28s
+3 actionable tasks: 1 executed, 2 up-to-date

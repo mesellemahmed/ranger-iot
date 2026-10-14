@@ -1,0 +1,13 @@
+artifacts/article-evidence/21-step7c1-python-byte-codec/core-ci.log: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/core-ci-final.log: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/legacy-source-after.sha256: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/legacy-source-diff.txt: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/post-ruff-ast.json: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/post-ruff-byte-validation.json: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/pre-ruff-ast.json: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/real-codec-source.sha256: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/real-codec-source-final.sha256: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-byte-validation.json: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-closure.json: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-final-readiness.json: OK
+artifacts/article-evidence/21-step7c1-python-byte-codec/step7c1-overhead.csv: OK

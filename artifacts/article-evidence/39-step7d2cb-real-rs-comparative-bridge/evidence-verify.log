@@ -1,0 +1,12 @@
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/bridge-grouped.csv: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/bridge-members.csv: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/bridge-run.log: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/bridge-runs.csv: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/bridge-selection.json: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/bridge-summary.json: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/final-state.json: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/project-ci.log: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/rs-api-resolution.json: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/rs-regression.log: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/run_bridge.py: OK
+artifacts/article-evidence/39-step7d2cb-real-rs-comparative-bridge/source-before.sha256: OK

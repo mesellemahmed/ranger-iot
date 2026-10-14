@@ -1,0 +1,28 @@
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_epoch_key_secrecy_unless_compromised-Setup-Start_Rekey-Compromise_Group_Manager" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n8[shape="record",label="{{<n0> !SurvivorKey( KS1 )|<n1> Fr( ~epoch )|<n2> Fr( ~groupkey )}|{<n3> #i : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $R, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n4> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n5> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n6> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n7> Out( SE1 )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n9[label="#j : isend[K( ~groupkey )]",shape="ellipse"];
+n10[label="#vk : coerce[!KU( ~groupkey )]",shape="ellipse"];
+n18[shape="record",label="{{<n11> Fr( KS1 )|<n12> Fr( ~krevoked )}|{<n13> #vr : Setup[Setup( $GM, $A.1, $H.1, $R.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R.1 )]\l}|{<n14> !SurvivorKey( KS1 )|<n15> !MemberKey( $A.1, KS1\l)\l|<n16> !MemberKey( $H.1, KS1\l)\l|<n17> !RevokedOldKey( $R.1,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~krevoked\l)\l}}",fillcolor="#bfda99",style="filled",fontcolor="black",role="Undefined"];
+n19[label="#vk.1 : coerce[!KU( KS1 )]",shape="ellipse"];
+n20[label="#vr.1 : d_0_sdec",shape="ellipse"];
+n24[shape="record",label="{{<n21> !SurvivorKey( KS1 )}|{<n22> #vr.4 : Compromise_Group_Manager[CompromiseGM( $GM.1 )]}|{<n23> Out( KS1 )}}",fillcolor="#a9dc9a",style="filled",fontcolor="black",role="Undefined"];
+n8:n7 -> n20[color="orangered2"];
+n18:n14 -> n8:n0[style="bold",weight="10.0",color="gray50"];
+n18:n14 -> n24:n21[style="bold",weight="10.0",color="gray50"];
+n20 -> n10[color="orangered2"];
+n24:n23 -> n19[color="orangered2"];
+n10 -> n9[color="red",style="dashed"];
+n19 -> n20[color="red",style="dashed"];
+{
+rank="sink";
+n25[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n9 -> n25[style="invis"];
+
+}

@@ -1,0 +1,40 @@
+    def rekey(self, revoked_members: set[int]) -> LkhRekeyPlan:
+        self._validate_revocations(revoked_members)
+        active_after = self._active_members - revoked_members
+        if not active_after:
+            raise ValueError("LKH rekey cannot revoke all active members")
+
+        affected_nodes = self._affected_internal_nodes(revoked_members, active_after)
+        next_versions = {node_id: self._versions[node_id] + 1 for node_id in affected_nodes}
+
+        updates: list[LkhKeyUpdate] = []
+        for target_node in affected_nodes:
+            target_ref = LkhKeyRef(target_node, next_versions[target_node])
+            for child_node in self._children(target_node):
+                recipients = tuple(
+                    member
+                    for member in self._members_under_node(child_node)
+                    if member in active_after
+                )
+                if not recipients:
+                    continue
+
+                wrapper_version = next_versions.get(child_node, self._versions[child_node])
+                updates.append(
+                    LkhKeyUpdate(
+                        target=target_ref,
+                        wrapper=LkhKeyRef(child_node, wrapper_version),
+                        recipients=recipients,
+                    )
+                )
+
+        for node_id, version in next_versions.items():
+            self._versions[node_id] = version
+        self._active_members = active_after
+
+        return LkhRekeyPlan(
+            revoked_members=tuple(sorted(revoked_members)),
+            affected_nodes=affected_nodes,
+            updates=tuple(updates),
+            root_key=self.root_key,
+        )

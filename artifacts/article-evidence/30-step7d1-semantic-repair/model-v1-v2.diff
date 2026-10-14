@@ -1,0 +1,140 @@
+--- formal/tamarin/ranger_authorization_transport.spthy
++++ formal/tamarin/ranger_authorization_transport_v2.spthy
+@@ -48,13 +48,29 @@
+       RevokedIdentity($R)
+     ]->
+   [
+-      !SurvivorKey(~ksurvivor),
++      !GroupContext($GM,$A,$H,$R,~ksurvivor),
+       !MemberKey($A,~ksurvivor),
+       !MemberKey($H,~ksurvivor),
+       !RevokedOldKey($R,~krevoked)
+   ]
+ 
+ 
++restriction Distinct_Group_Principals:
++  "
++    All gm a h r #i.
++      Setup(gm,a,h,r) @ i
++      ==>
++      (
++          not (gm = a)
++        & not (gm = h)
++        & not (gm = r)
++        & not (a = h)
++        & not (a = r)
++        & not (h = r)
++      )
++  "
++
++
+ /*
+  * One rekey instance.
+  *
+@@ -66,7 +82,7 @@
+ 
+ rule Start_Rekey:
+   [
+-      !SurvivorKey(ksurvivor),
++      !GroupContext($GM,$A,$H,$R,ksurvivor),
+       Fr(~epoch),
+       Fr(~groupkey)
+   ]
+@@ -75,7 +91,7 @@
+       AuthorizedAt($A,~epoch),
+       AuthorizedAt($H,~epoch),
+       RevokedAt($R,~epoch),
+-      SecretEpoch(~epoch,~groupkey)
++      SecretEpoch($GM,~epoch,~groupkey)
+     ]->
+   [
+       !EpochCipher(
+@@ -83,6 +99,9 @@
+           ~groupkey,
+           senc(<'ranger-capsule',~epoch,~groupkey>,ksurvivor)
+       ),
++
++      !AuthorizedEpoch($A,~epoch),
++      !AuthorizedEpoch($H,~epoch),
+ 
+       Stale($A,~epoch,~groupkey),
+       Stale($H,~epoch,~groupkey),
+@@ -108,6 +127,7 @@
+ rule Accept_Initial:
+   [
+       Stale(a,e,gk),
++      !AuthorizedEpoch(a,e),
+       !MemberKey(a,k),
+       In(senc(<'ranger-capsule',e,gk>,k))
+   ]
+@@ -129,7 +149,8 @@
+ 
+ rule Start_Recovery:
+   [
+-      Stale(a,e,gk)
++      Stale(a,e,gk),
++      !AuthorizedEpoch(a,e)
+   ]
+   --[
+       RecoveryRequest(a,e)
+@@ -151,6 +172,8 @@
+ rule Recovery_Response:
+   [
+       Current(h,e,gk),
++      !AuthorizedEpoch(h,e),
++      !AuthorizedEpoch(a,e),
+       !EpochCipher(e,gk,ciphertext),
+       In(<'ranger-recovery-request',a,e>)
+   ]
+@@ -171,6 +194,7 @@
+ rule Accept_Recovery:
+   [
+       Recovering(a,e,gk),
++      !AuthorizedEpoch(a,e),
+       !MemberKey(a,k),
+       In(senc(<'ranger-capsule',e,gk>,k))
+   ]
+@@ -201,11 +225,11 @@
+ 
+ rule Compromise_Group_Manager:
+   [
+-      !SurvivorKey(k)
+-  ]
+-  --[
+-      CompromiseGM($GM)
+-    ]->
++      !GroupContext(gm,a,h,r,k)
++  ]
++  --[
++      CompromiseGM(gm)
++  ]->
+   [
+       Out(k)
+   ]
+@@ -332,18 +356,18 @@
+ 
+ lemma epoch_key_secrecy_unless_compromised:
+   "
+-    All e gk #i #j.
+-      SecretEpoch(e,gk) @ i
++    All gm e gk #i #j.
++      SecretEpoch(gm,e,gk) @ i
+     & K(gk) @ j
+       ==>
+       (
+-        (Ex a #r.
+-           Compromise(a) @ r
+-         & r < j)
++          (Ex a #r.
++             Compromise(a) @ r
++           & r < j)
+         |
+-        (Ex #r.
+-           CompromiseGM($GM) @ r
+-         & r < j)
++          (Ex #r.
++             CompromiseGM(gm) @ r
++           & r < j)
+       )
+   "
+ 

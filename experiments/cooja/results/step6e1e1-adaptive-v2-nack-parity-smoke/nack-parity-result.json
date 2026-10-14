@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-NACK-PARITY-SMOKE",
+  "simulation_seed": 20261001,
+  "trigger": "post_parity_reconstruction",
+  "initial_all_sent": true,
+  "released_requester": 7,
+  "released_round": 1,
+  "released_epoch": 1,
+  "released_fragment": 3,
+  "source": {
+    "requester": 7,
+    "parent": 6,
+    "round": 1,
+    "epoch": 1,
+    "unique": 2,
+    "bytes": 16,
+    "time": 138885000
+  },
+  "forward_count": 5,
+  "forwarding_needed": true,
+  "forwarding_ok": true,
+  "gm": {
+    "requester": 7,
+    "via": 2,
+    "round": 1,
+    "epoch": 1,
+    "unique": 2,
+    "time": 139034568
+  },
+  "release_count": 1,
+  "parity_send_count": 7,
+  "parity_already_released_count": 0,
+  "repaired_requester": true,
+  "requester_reconstruct_time": 139523200,
+  "recovery_reconstructed_requester": false,
+  "revoked_reconstructed": false,
+  "causal_order": true,
+  "success": true,
+  "finish_time": 149523200
+}

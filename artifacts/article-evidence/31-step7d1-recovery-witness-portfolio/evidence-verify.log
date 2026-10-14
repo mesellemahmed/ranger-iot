@@ -1,0 +1,16 @@
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-consecutive-result.json: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-consecutive.dot: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-consecutive.json: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-consecutive.log: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-consecutive.rc: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-smart-result.json: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-smart.dot: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-smart.log: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/dfs-smart.rc: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/seqdfs-smart-result.json: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/seqdfs-smart.dot: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/seqdfs-smart.log: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/attempts/seqdfs-smart.rc: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/model-after.sha256: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/model-before.sha256: OK
+artifacts/article-evidence/31-step7d1-recovery-witness-portfolio/step7d1w-summary.json: OK

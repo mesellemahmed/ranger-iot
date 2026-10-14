@@ -1,0 +1,8 @@
+{
+  "actual": "falsified",
+  "expected": "falsified",
+  "mutation": "intentional direct disclosure of epoch2 root",
+  "negative_control_pass": true,
+  "schema_version": 1,
+  "target_lemma": "epoch2_root_confidential_against_m3_revoked_state"
+}

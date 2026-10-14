@@ -1,0 +1,10 @@
+{
+  "campaign_id": "campaign-20260927T122555Z-full",
+  "case_count": 75,
+  "complete": 43,
+  "incomplete": 32,
+  "infra_fail": 0,
+  "mode": "full",
+  "schema_version": 1,
+  "validated": 75
+}

@@ -1,0 +1,40 @@
+# RANGER-IoT repository normalization
+
+* text=auto
+
+# Reproducible text artifacts
+*.sh      text eol=lf
+*.py      text eol=lf
+*.toml    text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf
+*.json    text eol=lf
+*.jsonl   text eol=lf
+*.csv     text eol=lf
+*.tsv     text eol=lf
+*.txt     text eol=lf
+*.md      text eol=lf
+*.c       text eol=lf
+*.h       text eol=lf
+*.js      text eol=lf
+*.csc     text eol=lf
+*.gradle  text eol=lf
+
+gradlew text eol=lf
+
+# Binary scientific and archive artifacts
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.tar   binary
+
+# Scientific raw evidence: preserve exact bytes
+experiments/cooja/results/**/*.log binary
+
+# Additional reproducible project text
+Makefile text eol=lf
+Dockerfile text eol=lf
+*.sha256 text eol=lf

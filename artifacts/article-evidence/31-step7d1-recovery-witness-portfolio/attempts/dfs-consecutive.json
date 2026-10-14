@@ -1,0 +1,1995 @@
+{
+    "graphs": [
+        {
+            "jgAbbrevs": [
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "RA1"
+                    },
+                    "jgaExpansion": {
+                        "jgnConst": "'ranger-recovery-request'"
+                    },
+                    "jgaTerm": {
+                        "jgnConst": "'ranger-recovery-request'"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "KS1"
+                    },
+                    "jgaExpansion": {
+                        "jgnConst": "~ksurvivor"
+                    },
+                    "jgaTerm": {
+                        "jgnConst": "~ksurvivor"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SE1"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "senc",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'ranger-capsule'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~epoch"
+                                            },
+                                            {
+                                                "jgnConst": "~groupkey"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                    }
+                                ],
+                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                            },
+                            {
+                                "jgnConst": "KS1"
+                            }
+                        ],
+                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),KS1)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "senc",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'ranger-capsule'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~epoch"
+                                            },
+                                            {
+                                                "jgnConst": "~groupkey"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                    }
+                                ],
+                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                            },
+                            {
+                                "jgnConst": "~ksurvivor"
+                            }
+                        ],
+                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                    }
+                }
+            ],
+            "jgClusters": [],
+            "jgDirected": true,
+            "jgEdges": [
+                {
+                    "jgeRelation": "ProtoFact",
+                    "jgeSource": "#i:c0",
+                    "jgeTarget": "#k:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#i:c1",
+                    "jgeTarget": "#vl.1:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf:c0",
+                    "jgeTarget": "#j:p4"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c0",
+                    "jgeTarget": "#j:p3"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c1",
+                    "jgeTarget": "#i:p1"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c1",
+                    "jgeTarget": "#j:p2"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c1",
+                    "jgeTarget": "#k:p1"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c2",
+                    "jgeTarget": "#j:p1"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c2",
+                    "jgeTarget": "#vr.2:p1"
+                },
+                {
+                    "jgeRelation": "ProtoFact",
+                    "jgeSource": "#vr:c3",
+                    "jgeTarget": "#i:p0"
+                },
+                {
+                    "jgeRelation": "ProtoFact",
+                    "jgeSource": "#vr:c4",
+                    "jgeTarget": "#vr.2:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr:c5",
+                    "jgeTarget": "#vk:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.1:c0",
+                    "jgeTarget": "#k:p3"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl.1:c0",
+                    "jgeTarget": "#vr.3:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.1:c0",
+                    "jgeTarget": "#vr:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.1:c1",
+                    "jgeTarget": "#k:p2"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.1:c2",
+                    "jgeTarget": "#vr.2:p2"
+                },
+                {
+                    "jgeRelation": "ProtoFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#j:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.3:c0",
+                    "jgeTarget": "#vk.1:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.6:c0",
+                    "jgeTarget": "#vr.2:p3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#i",
+                    "jgeTarget": "#j"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#j",
+                    "jgeTarget": "#k"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk",
+                    "jgeTarget": "#vf.6"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.1",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vl.1",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.3",
+                    "jgeTarget": "#vf"
+                }
+            ],
+            "jgLabel": "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_executable_same_epoch_recovery-Start_Rekey_case_1-Start_Rekey_case_1-Accept_Initial_case_2-Start_Rekey_case_2-Start_Rekey_case_1-Start_Rekey-Start_Recovery-Start_Rekey_case_1-Setup_case_1-Start_Rekey-Start_Recovery-Start_Rekey",
+            "jgNodes": [
+                {
+                    "jgnId": "#i",
+                    "jgnLabel": "Start_Recovery",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "RecoveryRequest",
+                                "jgnFactShow": "RecoveryRequest( $A, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#i:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Recovering",
+                                "jgnFactShow": "Recovering( $A, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#i:c1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#i:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Stale",
+                                "jgnFactShow": "Stale( $A, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#i:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AuthorizedEpoch",
+                                "jgnFactShow": "!AuthorizedEpoch( $A, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#j",
+                    "jgnLabel": "Recovery_Response",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "RecoveryResponse",
+                                "jgnFactShow": "RecoveryResponse( $H, $A, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#j:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Current",
+                                "jgnFactShow": "Current( $H, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:c1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#j:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Current",
+                                "jgnFactShow": "Current( $H, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AuthorizedEpoch",
+                                "jgnFactShow": "!AuthorizedEpoch( $H, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p2",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AuthorizedEpoch",
+                                "jgnFactShow": "!AuthorizedEpoch( $A, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p3",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!EpochCipher",
+                                "jgnFactShow": "!EpochCipher( ~epoch, ~groupkey, senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor))",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    },
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p4",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#k",
+                    "jgnLabel": "Accept_Recovery",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Accept",
+                                "jgnFactShow": "Accept( $A, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "RecoveryAccept",
+                                "jgnFactShow": "RecoveryAccept( $A, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#k:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Current",
+                                "jgnFactShow": "Current( $A, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#k:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Recovering",
+                                "jgnFactShow": "Recovering( $A, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#k:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AuthorizedEpoch",
+                                "jgnFactShow": "!AuthorizedEpoch( $A, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#k:p2",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!MemberKey",
+                                "jgnFactShow": "!MemberKey( $A, ~ksurvivor )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~ksurvivor"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#k:p3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr",
+                    "jgnLabel": "Start_Rekey",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "RekeyStarted",
+                                "jgnFactShow": "RekeyStarted( ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "AuthorizedAt",
+                                "jgnFactShow": "AuthorizedAt( $A, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "AuthorizedAt",
+                                "jgnFactShow": "AuthorizedAt( $H, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "RevokedAt",
+                                "jgnFactShow": "RevokedAt( $R, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$R"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "SecretEpoch",
+                                "jgnFactShow": "SecretEpoch( $GM, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$GM"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!EpochCipher",
+                                "jgnFactShow": "!EpochCipher( ~epoch, ~groupkey, senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor))",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    },
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AuthorizedEpoch",
+                                "jgnFactShow": "!AuthorizedEpoch( $A, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c2",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AuthorizedEpoch",
+                                "jgnFactShow": "!AuthorizedEpoch( $H, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Stale",
+                                "jgnFactShow": "Stale( $A, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c4",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Stale",
+                                "jgnFactShow": "Stale( $H, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c5",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!GroupContext",
+                                "jgnFactShow": "!GroupContext( $GM, $A, $H, $R, ~ksurvivor )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$GM"
+                                    },
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "$R"
+                                    },
+                                    {
+                                        "jgnConst": "~ksurvivor"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~epoch )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~groupkey )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.1",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.1:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.1",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~epoch )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~epoch )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~epoch )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl.1",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl.1:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.1",
+                    "jgnLabel": "Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Setup",
+                                "jgnFactShow": "Setup( $GM, $A, $H, $R )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$GM"
+                                    },
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "$R"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "InitiallyAuthorized",
+                                "jgnFactShow": "InitiallyAuthorized( $A )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "InitiallyAuthorized",
+                                "jgnFactShow": "InitiallyAuthorized( $H )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "RevokedIdentity",
+                                "jgnFactShow": "RevokedIdentity( $R )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$R"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!GroupContext",
+                                "jgnFactShow": "!GroupContext( $GM, $A, $H, $R, ~ksurvivor )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$GM"
+                                    },
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "$R"
+                                    },
+                                    {
+                                        "jgnConst": "~ksurvivor"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!MemberKey",
+                                "jgnFactShow": "!MemberKey( $A, ~ksurvivor )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~ksurvivor"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:c2",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!MemberKey",
+                                "jgnFactShow": "!MemberKey( $H, ~ksurvivor )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~ksurvivor"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:c3",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RevokedOldKey",
+                                "jgnFactShow": "!RevokedOldKey( $R, ~krevoked )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$R"
+                                    },
+                                    {
+                                        "jgnConst": "~krevoked"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.1:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~ksurvivor )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~ksurvivor"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~krevoked )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~krevoked"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vr.2",
+                    "jgnLabel": "Accept_Initial",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Accept",
+                                "jgnFactShow": "Accept( $H, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "AcceptInitial",
+                                "jgnFactShow": "AcceptInitial( $H, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.2:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Current",
+                                "jgnFactShow": "Current( $H, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.2:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Stale",
+                                "jgnFactShow": "Stale( $H, ~epoch, ~groupkey )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    },
+                                    {
+                                        "jgnConst": "~groupkey"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AuthorizedEpoch",
+                                "jgnFactShow": "!AuthorizedEpoch( $H, ~epoch )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~epoch"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:p2",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!MemberKey",
+                                "jgnFactShow": "!MemberKey( $H, ~ksurvivor )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$H"
+                                    },
+                                    {
+                                        "jgnConst": "~ksurvivor"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:p3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vr.3",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.3:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <$A, ~epoch> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$A"
+                                            },
+                                            {
+                                                "jgnConst": "~epoch"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($A,~epoch)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'ranger-recovery-request', $A, ~epoch> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ranger-recovery-request'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$A"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~epoch"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($A,~epoch)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ranger-recovery-request',pair($A,~epoch))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vf.6",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.6:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.6:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( senc(<'ranger-capsule', ~epoch, ~groupkey>, ~ksurvivor) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "senc",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ranger-capsule'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~epoch"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~groupkey"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~epoch,~groupkey)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ranger-capsule',pair(~epoch,~groupkey))"
+                                            },
+                                            {
+                                                "jgnConst": "~ksurvivor"
+                                            }
+                                        ],
+                                        "jgnShow": "senc(pair('ranger-capsule',pair(~epoch,~groupkey)),~ksurvivor)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                }
+            ],
+            "jgType": "Tamarin prover constraint system"
+        }
+    ]
+}

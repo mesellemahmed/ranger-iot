@@ -1,0 +1,32 @@
+{
+  "counterexample_observed": false,
+  "formal_security_result": "NONE",
+  "important_note": "Neither toolchain attempt reached execution of a RANGER-IoT Tamarin model.",
+  "lemma_evaluation_reached": false,
+  "manual_bottle_attempt": {
+    "checks": {
+      "binary_copied": true,
+      "binary_found": true,
+      "log_present": true,
+      "model_execution_absent": true,
+      "official_sha_pass": true,
+      "runtime_failure": true
+    },
+    "classification": "BINARY_RUNTIME_ENVIRONMENT_FAILURE",
+    "security_result": "NONE"
+  },
+  "schema_version": 1,
+  "source_build_attempt": {
+    "checks": {
+      "frontend_pass": true,
+      "hackage_failure": true,
+      "log_present": true,
+      "model_execution_absent": true,
+      "source_checksum_pass": true
+    },
+    "classification": "TOOLCHAIN_DEPENDENCY_METADATA_FAILURE",
+    "security_result": "NONE"
+  },
+  "step": "STEP7D0_TOOLCHAIN_HISTORY",
+  "tamarin_model_execution_reached": false
+}

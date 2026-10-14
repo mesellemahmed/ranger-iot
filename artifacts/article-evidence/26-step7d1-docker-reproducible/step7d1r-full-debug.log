@@ -1,0 +1,619 @@
++ set -euo pipefail
++ ROOT_COMPOSE=docker-compose.yml
++ REPRO_COMPOSE=compose.reproducibility.yaml
++ TAMARIN_DIR=docker/tamarin
++ TAP_DIR=docker/tamarin/tap/Formula
++ POLICY_DIR=reproducibility
++ FORMAL_DIR=formal/tamarin
++ MODEL=formal/tamarin/ranger_authorization_transport.spthy
++ OUT_PREV=artifacts/article-evidence/24-step7d0-formal-executability-audit
++ OUT_FAILED=artifacts/article-evidence/25-step7d1-formal-model
++ OUT=artifacts/article-evidence/26-step7d1-docker-reproducible
++ READINESS=artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json
++ PROOF_SUMMARY=artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json
++ PROVE_LOG=artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-prove.log
++ IMAGE=ranger-tamarin:1.12.0-repro
++ HOMEBREW_BASE=ghcr.io/homebrew/brew@sha256:b03f29bb755e1b28c5082bd376e1539762e9dc4e9cff9485655002437595a5d0
++ TAMARIN_VERSION=1.12.0
++ TAMARIN_SOURCE_SHA256=35f0262e770db3632fcb297deb6ecc2d7c724c693fecfe97892e8224fa161956
++ TAMARIN_BOTTLE_SHA256=936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99
++ MAUDE_SOURCE_SHA256=3dce4f7b42fae2430a08ab2663303d1be244792bb3cc365c58cdb2f3f7bff170
++ MAUDE_BOTTLE_SHA256=3a941ae6e9eaa567827959dcac44129166c87b020d238c742c32467980e99936
++ LIBBUDDY_SOURCE_SHA256=d3df80a6a669d9ae408cb46012ff17bd33d855529d20f3a7e563d0d913358836
++ LIBBUDDY_BOTTLE_SHA256=0807d5706dc37213dbc466b06819fc1b93d710c3543b92eec3c07e7c4fc317d5
++ mkdir -p docker/tamarin/tap/Formula reproducibility artifacts/article-evidence/26-step7d1-docker-reproducible
++ echo ====================================================================
+====================================================================
++ echo 'RANGER-IOT — STEP 7D.1-R'
+RANGER-IOT — STEP 7D.1-R
++ echo 'DOCKER-ONLY REPRODUCIBLE FORMAL VERIFICATION'
+DOCKER-ONLY REPRODUCIBLE FORMAL VERIFICATION
++ echo
+
++ echo HOST:
+HOST:
++ echo '  orchestration only'
+  orchestration only
++ echo
+
++ echo 'SCIENTIFIC EXECUTION:'
+SCIENTIFIC EXECUTION:
++ echo '  Docker only'
+  Docker only
++ echo
+
++ echo NETWORK:
+NETWORK:
++ echo '  allowed during immutable image construction'
+  allowed during immutable image construction
++ echo '  forbidden during Tamarin proof execution'
+  forbidden during Tamarin proof execution
++ echo
+
++ echo 'NO COMMIT / NO PUSH'
+NO COMMIT / NO PUSH
++ echo ====================================================================
+====================================================================
++ echo
+
++ echo '===== 1. DOCKER-ONLY HOST PREFLIGHT ====='
+===== 1. DOCKER-ONLY HOST PREFLIGHT =====
++ docker version
++ docker compose version
++ echo DOCKER_ENGINE=PASS
+DOCKER_ENGINE=PASS
++ echo DOCKER_COMPOSE=PASS
+DOCKER_COMPOSE=PASS
++ '[' '!' -f formal/tamarin/ranger_authorization_transport.spthy ']'
++ '[' '!' -f artifacts/article-evidence/24-step7d0-formal-executability-audit/step7d0-final-readiness.json ']'
++ echo MODEL_PRESENT=PASS
+MODEL_PRESENT=PASS
++ echo STEP7D0_EVIDENCE_PRESENT=PASS
+STEP7D0_EVIDENCE_PRESENT=PASS
++ echo
+
++ echo '===== 2. WRITE PERMANENT DOCKER-ONLY POLICY ====='
+===== 2. WRITE PERMANENT DOCKER-ONLY POLICY =====
++ cat
++ echo DOCKER_ONLY_POLICY_CREATED=PASS
+DOCKER_ONLY_POLICY_CREATED=PASS
++ echo
+
++ echo '===== 3. VENDOR PINNED LIBBUDDY FORMULA ====='
+===== 3. VENDOR PINNED LIBBUDDY FORMULA =====
++ cat
++ echo PINNED_LIBBUDDY_FORMULA=PASS
+PINNED_LIBBUDDY_FORMULA=PASS
++ echo
+
++ echo '===== 4. VENDOR PINNED MAUDE FORMULA ====='
+===== 4. VENDOR PINNED MAUDE FORMULA =====
++ cat
++ echo PINNED_MAUDE_FORMULA=PASS
+PINNED_MAUDE_FORMULA=PASS
++ echo
+
++ echo '===== 5. VENDOR PINNED TAMARIN FORMULA ====='
+===== 5. VENDOR PINNED TAMARIN FORMULA =====
++ cat
++ echo PINNED_TAMARIN_FORMULA=PASS
+PINNED_TAMARIN_FORMULA=PASS
++ echo
+
++ echo '===== 6. CREATE REPRODUCIBLE TAMARIN DOCKERFILE ====='
+===== 6. CREATE REPRODUCIBLE TAMARIN DOCKERFILE =====
++ cat
++ echo REPRODUCIBLE_TAMARIN_DOCKERFILE=PASS
+REPRODUCIBLE_TAMARIN_DOCKERFILE=PASS
++ echo
+
++ echo '===== 7. CREATE LOCK MANIFEST ====='
+===== 7. CREATE LOCK MANIFEST =====
++ cat
++ echo TOOLCHAIN_LOCK_CREATED=PASS
+TOOLCHAIN_LOCK_CREATED=PASS
++ echo
+
++ echo '===== 8. CREATE REPRODUCIBILITY COMPOSE ====='
+===== 8. CREATE REPRODUCIBILITY COMPOSE =====
++ cat
++ echo REPRODUCIBILITY_COMPOSE_CREATED=PASS
+REPRODUCIBILITY_COMPOSE_CREATED=PASS
++ echo
+
++ echo '===== 9. DOCKER-ONLY STATIC POLICY VALIDATION ====='
+===== 9. DOCKER-ONLY STATIC POLICY VALIDATION =====
++ ranger_python - reproducibility/docker-only-policy.json docker/tamarin/toolchain.lock.json formal/tamarin/ranger_authorization_transport.spthy
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger python - reproducibility/docker-only-policy.json docker/tamarin/toolchain.lock.json formal/tamarin/ranger_authorization_transport.spthy
+docker_policy                      PASS
+host_python_forbidden              PASS
+digest_pinned                      PASS
+homebrew_api_disabled              PASS
+tamarin_1_12                       PASS
+tamarin_bottle_sha                 PASS
+maude_bottle_sha                   PASS
+offline_proof                      PASS
+no_source_fallback                 PASS
+lemma_count_11                     PASS
+lemma_set_exact                    PASS
+three_nonvacuity                   PASS
+
+DOCKER_REPRODUCIBILITY_STATIC_CONTRACT=PASS
++ echo
+
++ echo '===== 10. HASH REPRODUCIBILITY INPUTS — INSIDE DOCKER ====='
+===== 10. HASH REPRODUCIBILITY INPUTS — INSIDE DOCKER =====
++ ranger_exec sha256sum reproducibility/docker-only-policy.json docker/tamarin/toolchain.lock.json docker/tamarin/Dockerfile docker/tamarin/tap/Formula/tamarin-prover.rb docker/tamarin/tap/Formula/maude.rb docker/tamarin/tap/Formula/libbuddy.rb compose.reproducibility.yaml formal/tamarin/ranger_authorization_transport.spthy
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger sha256sum reproducibility/docker-only-policy.json docker/tamarin/toolchain.lock.json docker/tamarin/Dockerfile docker/tamarin/tap/Formula/tamarin-prover.rb docker/tamarin/tap/Formula/maude.rb docker/tamarin/tap/Formula/libbuddy.rb compose.reproducibility.yaml formal/tamarin/ranger_authorization_transport.spthy
++ echo REPRODUCIBILITY_INPUT_HASHES=PASS
+REPRODUCIBILITY_INPUT_HASHES=PASS
++ echo
+
++ echo '===== 11. RECORD PROJECT REVISION — INSIDE DOCKER ====='
+===== 11. RECORD PROJECT REVISION — INSIDE DOCKER =====
++ ranger_python - artifacts/article-evidence/26-step7d1-docker-reproducible/repository-revision.json
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger python - artifacts/article-evidence/26-step7d1-docker-reproducible/repository-revision.json
+{
+  "branch": "dev",
+  "head": "2e782b72915fd0e9ace915ed582d5a4ba043d302",
+  "host_git_used_for_scientific_evidence": false,
+  "resolved_inside_docker": true,
+  "schema_version": 1
+}
++ echo REPOSITORY_REVISION_CAPTURED_IN_DOCKER=PASS
+REPOSITORY_REVISION_CAPTURED_IN_DOCKER=PASS
++ echo '===== 12. RECORD RANGER IMAGE ID ====='
+===== 12. RECORD RANGER IMAGE ID =====
+++ docker compose -f docker-compose.yml images -q ranger
+++ head -n 1
++ RANGER_IMAGE=0839fdae00dc5eec20e73b84abe8e510f0321da7c4a609b712218285ad1c5a5c
++ '[' -z 0839fdae00dc5eec20e73b84abe8e510f0321da7c4a609b712218285ad1c5a5c ']'
++ docker image inspect 0839fdae00dc5eec20e73b84abe8e510f0321da7c4a609b712218285ad1c5a5c
++ echo RANGER_IMAGE=0839fdae00dc5eec20e73b84abe8e510f0321da7c4a609b712218285ad1c5a5c
+RANGER_IMAGE=0839fdae00dc5eec20e73b84abe8e510f0321da7c4a609b712218285ad1c5a5c
++ echo
+
++ echo '===== 13. BUILD PINNED TAMARIN IMAGE ====='
+===== 13. BUILD PINNED TAMARIN IMAGE =====
++ set +e
++ docker compose -f compose.reproducibility.yaml build --no-cache tamarin
++ BUILD_RC=0
++ set -e
++ echo BUILD_RC=0
+BUILD_RC=0
++ '[' 0 -ne 0 ']'
++ echo TAMARIN_IMAGE_BUILD=PASS
+TAMARIN_IMAGE_BUILD=PASS
++ echo
+
++ echo '===== 14. RECORD FINAL TAMARIN IMAGE ID ====='
+===== 14. RECORD FINAL TAMARIN IMAGE ID =====
+++ docker image inspect ranger-tamarin:1.12.0-repro --format '{{.Id}}'
++ TAMARIN_IMAGE_ID=sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0
++ echo sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0
++ docker image inspect ranger-tamarin:1.12.0-repro
++ echo TAMARIN_IMAGE_ID=sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0
+TAMARIN_IMAGE_ID=sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0
++ echo
+
++ echo '===== 15. OFFLINE TAMARIN RUNTIME CONTRACT ====='
+===== 15. OFFLINE TAMARIN RUNTIME CONTRACT =====
++ set +e
++ tamarin_exec bash -lc '
+      set -euo pipefail
+
+      echo "===== ENVIRONMENT ====="
+
+      echo "architecture=$(uname -m)"
+
+      echo "brew=$(command -v brew)"
+      echo "tamarin=$(command -v tamarin-prover)"
+      echo "maude=$(command -v maude)"
+      echo "dot=$(command -v dot)"
+
+      echo
+      echo "===== VERSIONS ====="
+
+      brew --version
+
+      tamarin-prover --version
+
+      maude --version 2>&1 \
+        | head -n 5 \
+        || true
+
+      dot -V 2>&1
+
+      echo
+      echo "===== PINNED HOMEBREW CORE ====="
+
+      CORE="$(brew --repository homebrew/core)"
+
+      echo "core_repository=$CORE"
+
+      git \
+        -C "$CORE" \
+        rev-parse HEAD
+
+      echo
+      echo "===== INSTALLED FORMULAE ====="
+
+      brew list --versions \
+        tamarin-prover \
+        maude \
+        libbuddy \
+        graphviz
+
+      echo
+      echo "===== TAMARIN SELFTEST ====="
+
+      tamarin-prover test
+
+      echo
+      echo "OFFLINE_TAMARIN_RUNTIME_CONTRACT=PASS"
+    '
++ RUNTIME_RC=0
++ set -e
++ echo RUNTIME_RC=0
+RUNTIME_RC=0
++ '[' 0 -ne 0 ']'
++ echo OFFLINE_TAMARIN_RUNTIME=PASS
+OFFLINE_TAMARIN_RUNTIME=PASS
++ echo
+
++ echo '===== 16. DOCKER-ONLY FORMAL MODEL STATIC AUDIT ====='
+===== 16. DOCKER-ONLY FORMAL MODEL STATIC AUDIT =====
++ ranger_python - formal/tamarin/ranger_authorization_transport.spthy artifacts/article-evidence/26-step7d1-docker-reproducible/model-static-audit.json
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger python - formal/tamarin/ranger_authorization_transport.spthy artifacts/article-evidence/26-step7d1-docker-reproducible/model-static-audit.json
+{
+  "checks": {
+    "dolev_yao_in": true,
+    "dolev_yao_out": true,
+    "eleven_lemmas": true,
+    "fresh_epoch": true,
+    "fresh_groupkey": true,
+    "gm_compromise": true,
+    "member_compromise": true,
+    "no_admit": true,
+    "no_sorry": true,
+    "non_vacuity_three": true,
+    "revocation": true,
+    "symmetric_encryption": true,
+    "theory": true
+  },
+  "lemma_count": 11,
+  "lemmas": [
+    "executable_initial_accept",
+    "executable_same_epoch_recovery",
+    "revocation_reachable",
+    "accept_has_rekey_origin",
+    "accept_requires_authorization",
+    "revoked_never_accepts",
+    "recovery_requester_authorized",
+    "recovery_helper_authorized",
+    "recovery_same_epoch",
+    "recovery_accept_has_rekey_origin",
+    "epoch_key_secrecy_unless_compromised"
+  ],
+  "model": "formal/tamarin/ranger_authorization_transport.spthy",
+  "pass": true,
+  "schema_version": 1
+}
++ echo DOCKER_MODEL_STATIC_AUDIT=PASS
+DOCKER_MODEL_STATIC_AUDIT=PASS
++ echo
+
++ echo '===== 17. OFFLINE TAMARIN PARSE / PRECOMPUTATION ====='
+===== 17. OFFLINE TAMARIN PARSE / PRECOMPUTATION =====
++ set +e
++ tamarin_exec bash -lc 'timeout 300s      tamarin-prover      --precompute-only      '\''formal/tamarin/ranger_authorization_transport.spthy'\'''
++ PRECOMPUTE_RC=0
++ set -e
++ echo PRECOMPUTE_RC=0
+PRECOMPUTE_RC=0
++ '[' 0 -ne 0 ']'
++ echo TAMARIN_PRECOMPUTE=PASS
+TAMARIN_PRECOMPUTE=PASS
++ echo
+
++ echo '===== 18. OFFLINE TAMARIN PROOF — ALL LEMMAS ====='
+===== 18. OFFLINE TAMARIN PROOF — ALL LEMMAS =====
++ set +e
++ tamarin_exec bash -lc 'timeout 900s      tamarin-prover      --prove      '\''formal/tamarin/ranger_authorization_transport.spthy'\''      +RTS -N2 -RTS'
++ PROVE_RC=124
++ set -e
++ echo PROVE_RC=124
+PROVE_RC=124
++ '[' 124 -eq 124 ']'
++ echo TAMARIN_PROOF_TIMEOUT=YES
+TAMARIN_PROOF_TIMEOUT=YES
++ echo
+
++ echo '===== 19. PARSE PROOF OUTPUT — PYTHON INSIDE DOCKER ====='
+===== 19. PARSE PROOF OUTPUT — PYTHON INSIDE DOCKER =====
++ ranger_python - artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-prove.log artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json 124
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger python - artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-prove.log artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json 124
+{
+  "all_required_lemmas_verified": false,
+  "docker_only": true,
+  "expected_lemma_count": 11,
+  "falsified_count": 0,
+  "falsified_lemmas": [],
+  "incomplete_count": 0,
+  "incomplete_lemmas": [],
+  "missing_lemmas": [
+    "executable_initial_accept",
+    "executable_same_epoch_recovery",
+    "revocation_reachable",
+    "accept_has_rekey_origin",
+    "accept_requires_authorization",
+    "revoked_never_accepts",
+    "recovery_requester_authorized",
+    "recovery_helper_authorized",
+    "recovery_same_epoch",
+    "recovery_accept_has_rekey_origin",
+    "epoch_key_secrecy_unless_compromised"
+  ],
+  "proof_network": "none",
+  "reported_lemma_count": 0,
+  "results": {},
+  "return_code": 124,
+  "schema_version": 2,
+  "scientific_state": "TAMARIN_PROOF_TIMEOUT",
+  "step": "STEP7D1_DOCKER_REPRODUCIBLE_PROOF",
+  "verified_count": 0,
+  "verified_lemmas": []
+}
++ echo
+
++ echo '===== 20. CLASSIFY FORMAL RESULT ====='
+===== 20. CLASSIFY FORMAL RESULT =====
++ ranger_python - artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-image-id.txt
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger python - artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-image-id.txt
+{
+  "architecture": "linux/amd64",
+  "docker_only_execution": true,
+  "falsified_lemma_count": 0,
+  "forbidden_claims": [
+    "RANGER-IoT is formally verified.",
+    "The complete LKH implementation is formally verified.",
+    "Multi-epoch replay resistance is formally verified.",
+    "Python/C/Cooja and Tamarin are formally equivalent."
+  ],
+  "formal_model": "formal/tamarin/ranger_authorization_transport.spthy",
+  "formal_security_claim_ready": false,
+  "full_ranger_formally_verified": false,
+  "host_scientific_execution": false,
+  "incomplete_lemma_count": 0,
+  "lemma_count": 11,
+  "model_class": "LKH_AUTHORIZATION_TRANSPORT_ABSTRACTION",
+  "next_step": "STEP7D1_ANALYZE_FORMAL_RESULT_BEFORE_MODEL_CHANGE",
+  "permitted_claim_if_pass": "The STEP7D1 abstract authorization/transport model was machine-checked using the pinned offline Docker Tamarin environment under the explicit symbolic assumptions.",
+  "proof_network_disabled": true,
+  "remaining_gaps": [
+    "Exact LKH tree semantics",
+    "Sequential multi-epoch replay/freshness",
+    "Tighter compromise timing",
+    "Implementation-to-action correspondence"
+  ],
+  "schema_version": 2,
+  "scientific_state": "TAMARIN_PROOF_TIMEOUT",
+  "step": "STEP7D1_DOCKER_REPRODUCIBLE_FORMAL_MODEL",
+  "step7d1_pass": false,
+  "tamarin_image_id": "sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0",
+  "tamarin_version": "1.12.0",
+  "verified_lemma_count": 0
+}
++ echo
+
++ echo '===== 21. VERIFY PREVIOUS IMPLEMENTED SEMANTICS UNCHANGED ====='
+===== 21. VERIFY PREVIOUS IMPLEMENTED SEMANTICS UNCHANGED =====
++ '[' -f artifacts/article-evidence/25-step7d1-formal-model/implemented-semantics-before.sha256 ']'
++ ranger_exec sha256sum -c artifacts/article-evidence/25-step7d1-formal-model/implemented-semantics-before.sha256
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger sha256sum -c artifacts/article-evidence/25-step7d1-formal-model/implemented-semantics-before.sha256
+src/ranger_iot/group.py: OK
+src/ranger_iot/protocols/lkh.py: OK
+src/ranger_iot/ranger/capsule.py: OK
+src/ranger_iot/ranger/static_protocol.py: OK
+src/ranger_iot/ranger/recovery_protocol.py: OK
+src/ranger_iot/ranger/adaptive_protocol.py: OK
+src/ranger_iot/ranger/adaptive_v2_protocol.py: OK
+src/ranger_iot/ranger/rs_codec.py: OK
++ echo IMPLEMENTED_PROTOCOL_SOURCES_UNCHANGED=PASS
+IMPLEMENTED_PROTOCOL_SOURCES_UNCHANGED=PASS
++ echo
+
++ echo '===== 22. DOCKER-ONLY PROJECT CI ====='
+===== 22. DOCKER-ONLY PROJECT CI =====
++ ranger_exec sha256sum run.sh
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger sha256sum run.sh
++ set +e
++ ./run.sh check
++ CI_RC=0
++ set -e
++ echo CI_RC=0
+CI_RC=0
++ '[' 0 -ne 0 ']'
++ echo CORE_CI=PASS
+CORE_CI=PASS
++ echo
+
++ echo '===== 23. FINAL DOCKER-ONLY POLICY AUDIT ====='
+===== 23. FINAL DOCKER-ONLY POLICY AUDIT =====
++ ranger_python - artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json docker/tamarin/toolchain.lock.json artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-runtime-offline.log
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger python - artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json docker/tamarin/toolchain.lock.json artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-runtime-offline.log
+docker_only                      PASS
+no_host_science                  PASS
+proof_offline                    PASS
+lock_offline                     PASS
+runtime_contract                 PASS
+tamarin_1_12                     PASS
+source_fallback_forbidden        PASS
+
+FINAL_DOCKER_ONLY_POLICY_AUDIT=PASS
++ echo
+
++ echo '===== 24. FINAL EVIDENCE MANIFEST — INSIDE DOCKER ====='
+===== 24. FINAL EVIDENCE MANIFEST — INSIDE DOCKER =====
++ ranger_exec bash -lc '
+      set -euo pipefail
+
+      cd /workspace
+
+      find '\''artifacts/article-evidence/26-step7d1-docker-reproducible'\''         -type f         ! -name '\''*.tar.gz'\''         ! -name '\''*.tar.gz.sha256'\''         ! -name '\''step7d1r-final-evidence.sha256'\''         ! -name '\''step7d1r-final-evidence-verify.log'\''         -print0       | sort -z       | xargs -0 sha256sum       > '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.sha256'\''
+
+      sha256sum         -c         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.sha256'\''         > '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence-verify.log'\''
+    '
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger bash -lc '
+      set -euo pipefail
+
+      cd /workspace
+
+      find '\''artifacts/article-evidence/26-step7d1-docker-reproducible'\''         -type f         ! -name '\''*.tar.gz'\''         ! -name '\''*.tar.gz.sha256'\''         ! -name '\''step7d1r-final-evidence.sha256'\''         ! -name '\''step7d1r-final-evidence-verify.log'\''         -print0       | sort -z       | xargs -0 sha256sum       > '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.sha256'\''
+
+      sha256sum         -c         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.sha256'\''         > '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence-verify.log'\''
+    '
++ echo EVIDENCE_MANIFEST=PASS
+EVIDENCE_MANIFEST=PASS
++ echo
+
++ echo '===== 25. PACKAGE EVIDENCE — INSIDE DOCKER ====='
+===== 25. PACKAGE EVIDENCE — INSIDE DOCKER =====
++ ranger_exec bash -lc '
+      set -euo pipefail
+
+      cd /workspace
+
+      rm -f         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz.sha256'\''
+
+      tar         --exclude='\''*.tar.gz'\''         --exclude='\''*.tar.gz.sha256'\''         -czf /tmp/step7d1r-final-evidence.tar.gz         '\''artifacts/article-evidence/26-step7d1-docker-reproducible'\''
+
+      tar         -tzf         /tmp/step7d1r-final-evidence.tar.gz         >/dev/null
+
+      cp         /tmp/step7d1r-final-evidence.tar.gz         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''
+
+      sha256sum         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''         > '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz.sha256'\''
+
+      sha256sum         -c         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz.sha256'\''
+
+      tar         -tzf         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''         >/dev/null
+    '
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger bash -lc '
+      set -euo pipefail
+
+      cd /workspace
+
+      rm -f         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz.sha256'\''
+
+      tar         --exclude='\''*.tar.gz'\''         --exclude='\''*.tar.gz.sha256'\''         -czf /tmp/step7d1r-final-evidence.tar.gz         '\''artifacts/article-evidence/26-step7d1-docker-reproducible'\''
+
+      tar         -tzf         /tmp/step7d1r-final-evidence.tar.gz         >/dev/null
+
+      cp         /tmp/step7d1r-final-evidence.tar.gz         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''
+
+      sha256sum         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''         > '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz.sha256'\''
+
+      sha256sum         -c         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz.sha256'\''
+
+      tar         -tzf         '\''artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz'\''         >/dev/null
+    '
+artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-evidence.tar.gz: OK
++ echo EVIDENCE_PACKAGE=PASS
+EVIDENCE_PACKAGE=PASS
++ echo
+
++ echo '===== 26. FINAL STATUS ====='
+===== 26. FINAL STATUS =====
++ ranger_python - artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json
++ docker compose -f docker-compose.yml run --rm -T --no-deps ranger python - artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json
+{
+  "architecture": "linux/amd64",
+  "docker_only_execution": true,
+  "falsified_lemma_count": 0,
+  "forbidden_claims": [
+    "RANGER-IoT is formally verified.",
+    "The complete LKH implementation is formally verified.",
+    "Multi-epoch replay resistance is formally verified.",
+    "Python/C/Cooja and Tamarin are formally equivalent."
+  ],
+  "formal_model": "formal/tamarin/ranger_authorization_transport.spthy",
+  "formal_security_claim_ready": false,
+  "full_ranger_formally_verified": false,
+  "host_scientific_execution": false,
+  "incomplete_lemma_count": 0,
+  "lemma_count": 11,
+  "model_class": "LKH_AUTHORIZATION_TRANSPORT_ABSTRACTION",
+  "next_step": "STEP7D1_ANALYZE_FORMAL_RESULT_BEFORE_MODEL_CHANGE",
+  "permitted_claim_if_pass": "The STEP7D1 abstract authorization/transport model was machine-checked using the pinned offline Docker Tamarin environment under the explicit symbolic assumptions.",
+  "proof_network_disabled": true,
+  "remaining_gaps": [
+    "Exact LKH tree semantics",
+    "Sequential multi-epoch replay/freshness",
+    "Tighter compromise timing",
+    "Implementation-to-action correspondence"
+  ],
+  "schema_version": 2,
+  "scientific_state": "TAMARIN_PROOF_TIMEOUT",
+  "step": "STEP7D1_DOCKER_REPRODUCIBLE_FORMAL_MODEL",
+  "step7d1_pass": false,
+  "tamarin_image_id": "sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0",
+  "tamarin_version": "1.12.0",
+  "verified_lemma_count": 0
+}
+
+STEP7D1R_FINAL=FORMAL_RESULT_REQUIRES_ANALYSIS
+VERIFIED_LEMMAS=0/11
+FALSIFIED_LEMMAS=0
+INCOMPLETE_LEMMAS=0
++ echo
+
++ echo ====================================================================
+====================================================================
++ echo 'STEP 7D.1-R EXECUTION COMPLETE'
+STEP 7D.1-R EXECUTION COMPLETE
++ echo
+
++ echo INFRASTRUCTURE:
+INFRASTRUCTURE:
++ echo '  scientific execution           = DOCKER ONLY'
+  scientific execution           = DOCKER ONLY
++ echo '  host Python                    = FORBIDDEN'
+  host Python                    = FORBIDDEN
++ echo '  host compiler                  = FORBIDDEN'
+  host compiler                  = FORBIDDEN
++ echo '  host Tamarin/Maude             = FORBIDDEN'
+  host Tamarin/Maude             = FORBIDDEN
++ echo '  Tamarin base image             = OCI DIGEST PINNED'
+  Tamarin base image             = OCI DIGEST PINNED
++ echo '  Tamarin                        = 1.12.0 BOTTLE PINNED'
+  Tamarin                        = 1.12.0 BOTTLE PINNED
++ echo '  Maude                          = 3.5.1 BOTTLE PINNED'
+  Maude                          = 3.5.1 BOTTLE PINNED
++ echo '  Homebrew API resolution        = DISABLED'
+  Homebrew API resolution        = DISABLED
++ echo '  source fallback                = FORBIDDEN'
+  source fallback                = FORBIDDEN
++ echo '  proof network                  = NONE'
+  proof network                  = NONE
++ echo
+
++ echo 'SCIENTIFIC RESULT:'
+SCIENTIFIC RESULT:
++ echo '  see:'
+  see:
++ echo '    artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json'
+    artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json
++ echo
+
++ echo IMPORTANT:
+IMPORTANT:
++ echo '  full RANGER formal verification remains NOT CLAIMED'
+  full RANGER formal verification remains NOT CLAIMED
++ echo
+
++ echo 'NO COMMIT'
+NO COMMIT
++ echo 'NO PUSH'
+NO PUSH
++ echo ====================================================================
+====================================================================

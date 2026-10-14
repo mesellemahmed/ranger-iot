@@ -1,0 +1,5 @@
+formal_directory=formal/tamarin
+formal_file_count=0
+spthy_count=0
+git_head=2e782b72915fd0e9ace915ed582d5a4ba043d302
+git_branch=dev

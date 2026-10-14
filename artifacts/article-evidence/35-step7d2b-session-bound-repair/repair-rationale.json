@@ -1,0 +1,34 @@
+{
+  "classification": "CAPTURED_COUNTEREXAMPLES_EXHIBIT_CROSS_SESSION_MIXING",
+  "counterexamples": {
+    "new_epoch_key_secret_without_relevant_compromise": {
+      "graph_count": 1,
+      "indicators": {
+        "contains_manager_compromise": false,
+        "contains_member_compromise": false,
+        "contains_old_key_leak": true,
+        "has_multiple_epoch1_instances": true,
+        "has_multiple_epoch2_instances": false,
+        "has_multiple_setup_instances": true
+      },
+      "status": "falsified"
+    },
+    "revoked_old_key_does_not_reveal_new_root_key": {
+      "graph_count": 1,
+      "indicators": {
+        "contains_manager_compromise": false,
+        "contains_member_compromise": false,
+        "contains_old_key_leak": true,
+        "has_multiple_epoch1_instances": true,
+        "has_multiple_epoch2_instances": false,
+        "has_multiple_setup_instances": true
+      },
+      "status": "falsified"
+    }
+  },
+  "cryptographic_semantics_change": false,
+  "implementation_change": false,
+  "important_guardrail": "This does not yet prove that session mixing is the sole cause. The repaired model must be re-proved.",
+  "repair": "Introduce a fresh session/group identifier and propagate it through all protocol state and security actions.",
+  "schema_version": 1
+}

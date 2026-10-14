@@ -1,0 +1,27 @@
+{
+  "contiki_ng_commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+  "cooja_commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4",
+  "docker_image": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+  "experiment": "COOJA-INFRA-1",
+  "purpose": "Dockerized Cooja headless infrastructure validation",
+  "result": "PASS",
+  "runs": [
+    {
+      "exit_code": 0,
+      "log": "experiments\\cooja\\results\\step6a1-infra-smoke\\run-1.log",
+      "log_sha256": "bdf933f94c7053546fbe31bfb99dc1d663746d7e410ec16eb209ea71a5c63623",
+      "run": 1,
+      "test_ok": true
+    },
+    {
+      "exit_code": 0,
+      "log": "experiments\\cooja\\results\\step6a1-infra-smoke\\run-2.log",
+      "log_sha256": "46a4b0ce5d3ce8a435966494a4e91c0407de6c4f82e61ac061b8d5b2bed85ab5",
+      "run": 2,
+      "test_ok": true
+    }
+  ],
+  "scenario": "third_party\\contiki-ng\\tests\\07-simulation-base\\02-ringbufindex.csc",
+  "scenario_sha256": "1bb4072aa14cb4561a7ceafa9041dd12db880dd9a8c45ccf099a8e8327e88bd5",
+  "schema_version": 1
+}
