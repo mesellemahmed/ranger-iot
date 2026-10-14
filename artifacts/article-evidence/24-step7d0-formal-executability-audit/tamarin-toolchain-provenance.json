@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "tool": "Tamarin Prover",
+  "version": "1.12.0",
+  "distribution": "official GitHub/Homebrew bottle",
+  "release_root": "https://github.com/tamarin-prover/tamarin-prover/releases/download/1.12.0",
+  "bottles": {
+    "amd64": {
+      "asset": "tamarin-prover-1.12.0.x86_64_linux.bottle.tar.gz",
+      "sha256": "936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99"
+    },
+    "arm64": {
+      "asset": "tamarin-prover-1.12.0.arm64_linux.bottle.tar.gz",
+      "sha256": "10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6"
+    }
+  },
+  "integrity_policy": "SHA256 must match the official Tamarin Homebrew formula before installation.",
+  "source_compilation": false,
+  "hackage_dependency": false,
+  "security_bypass": false
+}

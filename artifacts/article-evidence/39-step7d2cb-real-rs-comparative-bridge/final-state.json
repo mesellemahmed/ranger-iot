@@ -1,0 +1,18 @@
+{
+  "arbitrary_n_theorem": false,
+  "bridge_runs": 420,
+  "finite_structural_generalization_closed": true,
+  "formal_17_of_17": true,
+  "formal_negative_control": true,
+  "formal_temporal_reference_closed": true,
+  "full_ranger_formally_verified": false,
+  "member_rs_decisions": 16380,
+  "next_step": "FINAL_SCIENTIFIC_EVIDENCE_FREEZE_AND_MANUSCRIPT",
+  "real_rs_comparative_bridge": true,
+  "schema_version": 1,
+  "scientific_state": "STEP7D2CB_REAL_RS_COMPARATIVE_BRIDGE_CLOSED",
+  "step": "STEP7D2CB",
+  "step7d2cb_closed": true,
+  "structural_cases": 10386,
+  "structural_rekey_epochs": 17180
+}

@@ -1,0 +1,51 @@
+{
+  "loss_semantics": "Python Bernoulli packet_loss semantics from the existing scalability template; not Cooja SUCCESS_RATIO_TX.",
+  "member_counts": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "packet_losses": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "protocols": [
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive-v2"
+  ],
+  "run_count": 2880,
+  "scale_semantics": "N equals member_count. manager_id=0 is the group manager and is not included in N.",
+  "schema_version": 5,
+  "seeds": [
+    1901,
+    2117,
+    6212,
+    8530,
+    5326,
+    4518,
+    6021,
+    1381,
+    2579,
+    6704,
+    5024,
+    3694,
+    8703,
+    2176,
+    6594,
+    8303,
+    8470,
+    2146,
+    1108,
+    5659
+  ],
+  "source_template": "experiments/configs/step5e-publication-scalability.yaml",
+  "topologies": [
+    "line",
+    "star",
+    "balanced-tree",
+    "grid"
+  ]
+}

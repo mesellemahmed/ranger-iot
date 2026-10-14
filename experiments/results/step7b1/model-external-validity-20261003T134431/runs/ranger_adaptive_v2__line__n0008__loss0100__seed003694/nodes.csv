@@ -1,0 +1,10 @@
+node_id,role,active,authorized,revoked,current_epoch,synchronized,transmissions
+0,manager,True,,,,,4
+1,member,True,True,False,1,True,5
+2,member,True,True,False,1,True,5
+3,member,True,True,False,1,True,4
+4,member,True,True,False,1,True,4
+5,member,True,True,False,1,True,4
+6,member,True,True,False,1,True,6
+7,member,True,True,False,1,True,3
+8,member,True,False,True,0,False,0

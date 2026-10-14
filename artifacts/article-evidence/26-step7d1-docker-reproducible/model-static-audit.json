@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "dolev_yao_in": true,
+    "dolev_yao_out": true,
+    "eleven_lemmas": true,
+    "fresh_epoch": true,
+    "fresh_groupkey": true,
+    "gm_compromise": true,
+    "member_compromise": true,
+    "no_admit": true,
+    "no_sorry": true,
+    "non_vacuity_three": true,
+    "revocation": true,
+    "symmetric_encryption": true,
+    "theory": true
+  },
+  "lemma_count": 11,
+  "lemmas": [
+    "executable_initial_accept",
+    "executable_same_epoch_recovery",
+    "revocation_reachable",
+    "accept_has_rekey_origin",
+    "accept_requires_authorization",
+    "revoked_never_accepts",
+    "recovery_requester_authorized",
+    "recovery_helper_authorized",
+    "recovery_same_epoch",
+    "recovery_accept_has_rekey_origin",
+    "epoch_key_secrecy_unless_compromised"
+  ],
+  "model": "formal/tamarin/ranger_authorization_transport.spthy",
+  "pass": true,
+  "schema_version": 1
+}

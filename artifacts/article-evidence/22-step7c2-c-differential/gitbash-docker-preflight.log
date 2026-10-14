@@ -1,0 +1,6 @@
+CONTAINER_SHELL=PASS
+bash=/usr/bin/bash
+cc=/usr/bin/cc
+cc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+WORKSPACE_MOUNT=PASS
+C_TOOLCHAIN_PREFLIGHT=PASS

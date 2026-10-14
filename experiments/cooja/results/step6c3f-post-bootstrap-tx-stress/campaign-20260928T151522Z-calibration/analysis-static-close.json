@@ -1,0 +1,95 @@
+{
+  "experiment": "STEP-6C-STATIC-CLOSE",
+  "groups": [
+    {
+      "complete": 8,
+      "completion_rate": 0.8,
+      "max_reconstructed": 6,
+      "mean_reconstructed": 5.8,
+      "min_reconstructed": 5,
+      "n": 3,
+      "runs": 10,
+      "tx": 0.5
+    },
+    {
+      "complete": 10,
+      "completion_rate": 1.0,
+      "max_reconstructed": 6,
+      "mean_reconstructed": 6.0,
+      "min_reconstructed": 6,
+      "n": 5,
+      "runs": 10,
+      "tx": 0.5
+    },
+    {
+      "complete": 2,
+      "completion_rate": 0.2,
+      "max_reconstructed": 6,
+      "mean_reconstructed": 4.9,
+      "min_reconstructed": 3,
+      "n": 3,
+      "runs": 10,
+      "tx": 0.4
+    },
+    {
+      "complete": 10,
+      "completion_rate": 1.0,
+      "max_reconstructed": 6,
+      "mean_reconstructed": 6.0,
+      "min_reconstructed": 6,
+      "n": 5,
+      "runs": 10,
+      "tx": 0.4
+    },
+    {
+      "complete": 0,
+      "completion_rate": 0.0,
+      "max_reconstructed": 5,
+      "mean_reconstructed": 3.6,
+      "min_reconstructed": 1,
+      "n": 3,
+      "runs": 10,
+      "tx": 0.3
+    },
+    {
+      "complete": 2,
+      "completion_rate": 0.2,
+      "max_reconstructed": 6,
+      "mean_reconstructed": 5.2,
+      "min_reconstructed": 5,
+      "n": 5,
+      "runs": 10,
+      "tx": 0.3
+    },
+    {
+      "complete": 0,
+      "completion_rate": 0.0,
+      "max_reconstructed": 2,
+      "mean_reconstructed": 1.6,
+      "min_reconstructed": 0,
+      "n": 3,
+      "runs": 10,
+      "tx": 0.2
+    },
+    {
+      "complete": 0,
+      "completion_rate": 0.0,
+      "max_reconstructed": 5,
+      "mean_reconstructed": 3.6,
+      "min_reconstructed": 2,
+      "n": 5,
+      "runs": 10,
+      "tx": 0.2
+    }
+  ],
+  "interpretation": {
+    "tx_0_20": "severe recovery stress regime",
+    "tx_0_30": "primary recovery stress regime",
+    "tx_0_40": "static redundancy discriminant regime",
+    "tx_0_50": "mild-degradation reference"
+  },
+  "method_note": "Seed-paired comparisons use the same initial Cooja seed but do not imply identical packet-level loss traces.",
+  "schema_version": 1,
+  "source_aggregate": "aggregate.csv",
+  "source_sha256": "2cbf1c5e21802f14993e0c3896283898053e4093b131506d8a916d4243bd2298"
+}

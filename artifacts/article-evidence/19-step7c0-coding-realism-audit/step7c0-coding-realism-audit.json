@@ -1,0 +1,143 @@
+{
+  "claim_guardrail": "Do not describe the current mechanism as byte-level erasure coding unless actual payload symbols are encoded and arbitrary qualifying subsets reconstruct the original payload in both Python and embedded validation.",
+  "classification": "BYTE_LEVEL_CODING_NOT_YET_DEMONSTRATED",
+  "embedded": {
+    "byte_level_codec_demonstrated_by_automated_evidence": true,
+    "file_count": 3,
+    "files": [
+      {
+        "coded_fragment_occurrences": 4,
+        "coded_window_uint8_array_sizes": [
+          9
+        ],
+        "coefficient_signal": false,
+        "decoder_payload_signal": true,
+        "explicit_coded_payload_signal": false,
+        "file": "experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c",
+        "finite_field_signal": true,
+        "matrix_signal": false,
+        "max_update_index": 9,
+        "metadata_fragment_index_field": true,
+        "metadata_k_field": true,
+        "metadata_n_field": true,
+        "metadata_only_shape": false,
+        "payload_after_metadata_index8": true,
+        "planned_delivery_threshold_k": true,
+        "receive_threshold_signal": true,
+        "update_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "coded_fragment_occurrences": 3,
+        "coded_window_uint8_array_sizes": [
+          9
+        ],
+        "coefficient_signal": false,
+        "decoder_payload_signal": true,
+        "explicit_coded_payload_signal": false,
+        "file": "experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c",
+        "finite_field_signal": true,
+        "matrix_signal": false,
+        "max_update_index": 9,
+        "metadata_fragment_index_field": true,
+        "metadata_k_field": true,
+        "metadata_n_field": true,
+        "metadata_only_shape": false,
+        "payload_after_metadata_index8": true,
+        "planned_delivery_threshold_k": true,
+        "receive_threshold_signal": true,
+        "update_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "coded_fragment_occurrences": 3,
+        "coded_window_uint8_array_sizes": [
+          9
+        ],
+        "coefficient_signal": false,
+        "decoder_payload_signal": true,
+        "explicit_coded_payload_signal": false,
+        "file": "experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c",
+        "finite_field_signal": true,
+        "matrix_signal": false,
+        "max_update_index": 9,
+        "metadata_fragment_index_field": true,
+        "metadata_k_field": true,
+        "metadata_n_field": true,
+        "metadata_only_shape": false,
+        "payload_after_metadata_index8": true,
+        "planned_delivery_threshold_k": true,
+        "receive_threshold_signal": true,
+        "update_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ],
+    "metadata_only_shape_detected_in_all_coded_implementations": false
+  },
+  "next_step": "STEP7C1_TARGETED_BYTE_LEVEL_SEMANTIC_VALIDATION",
+  "python": {
+    "byte_level_codec_demonstrated_by_automated_evidence": false,
+    "byte_type_signal": true,
+    "classes": [
+      "CodingParameters",
+      "CodedFragment",
+      "StaticErasureCoder",
+      "FragmentAccumulator"
+    ],
+    "decode_like_functions": [],
+    "encode_like_functions": [],
+    "finite_field_signal": true,
+    "functions": [],
+    "insufficient_fragment_test_signal": false,
+    "matrix_or_coefficient_signal": false,
+    "payload_equality_test_signal": true,
+    "subset_recovery_test_signal": true,
+    "test_classes": [],
+    "test_functions": [
+      "_capsule",
+      "_fragments",
+      "test_coding_parameters_report_redundancy_and_fragment_size",
+      "test_coding_parameters_reject_invalid_values",
+      "test_coding_parameters_reject_zero_payload",
+      "test_static_coder_emits_deterministic_k_of_n_metadata",
+      "test_accumulator_decodes_any_three_distinct_fragments",
+      "test_accumulator_does_not_count_duplicate_fragment_twice",
+      "test_accumulator_rejects_mismatched_fragment",
+      "test_coded_fragment_rejects_invalid_metadata",
+      "test_accumulator_rejects_invalid_identity"
+    ],
+    "xor_signal": false
+  },
+  "schema_version": 1,
+  "step": "STEP7C0_CODING_REALISM_AUDIT"
+}

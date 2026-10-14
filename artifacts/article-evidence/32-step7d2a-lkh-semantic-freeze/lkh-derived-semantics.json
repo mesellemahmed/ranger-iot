@@ -1,0 +1,43 @@
+{
+  "code_facts": {
+    "bottom_up_rekey_plan": true,
+    "has_LkhKeyRef": true,
+    "has_LkhKeyUpdate": true,
+    "has_LkhRekeyPlan": true,
+    "has_rekey_method": true,
+    "ranger_checks_epoch_root_version": true,
+    "ranger_consumes_tree_rekey": true,
+    "ranger_targets_current_authorized_members": true,
+    "symbolic_key_versions": true
+  },
+  "not_claimed": [
+    "byte-level LKH encryption implementation",
+    "computational cryptographic security proof",
+    "equivalence between Tamarin and Python implementation"
+  ],
+  "observed_execution": {
+    "final_active_members": [
+      1,
+      2
+    ],
+    "observed_update_schemas": [
+      [
+        "target",
+        "wrapper",
+        "recipients"
+      ]
+    ],
+    "sequential_logical_ciphertexts": [
+      3,
+      1
+    ],
+    "sequential_revocation_case": "4 then 3",
+    "sequential_root_versions": [
+      1,
+      2
+    ]
+  },
+  "schema_version": 1,
+  "scope_name": "IMPLEMENTED_SYMBOLIC_LKH_PLAN_SEMANTICS",
+  "semantic_contract_pass": true
+}

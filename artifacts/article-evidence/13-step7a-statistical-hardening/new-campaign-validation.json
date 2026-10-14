@@ -1,0 +1,58 @@
+{
+  "adaptive-v2": {
+    "campaign": "experiments/cooja/results/step6e2-adaptive-radio/campaign-20261003T034016Z-calibration",
+    "harness_pass": true,
+    "n_values": [
+      5
+    ],
+    "pass": true,
+    "revoked_safety_pass": true,
+    "row_count": 40,
+    "seed_count": 20,
+    "seed_max": 230,
+    "seed_min": 211,
+    "tx_counts": {
+      "0.2": 20,
+      "0.3": 20
+    },
+    "unique_keys": 40
+  },
+  "global_pass": true,
+  "recovery": {
+    "campaign": "experiments/cooja/results/step6d2-recovery-radio/campaign-20261003T024536Z-calibration",
+    "harness_pass": true,
+    "n_values": [
+      5
+    ],
+    "pass": true,
+    "revoked_safety_pass": true,
+    "row_count": 40,
+    "seed_count": 20,
+    "seed_max": 230,
+    "seed_min": 211,
+    "tx_counts": {
+      "0.2": 20,
+      "0.3": 20
+    },
+    "unique_keys": 40
+  },
+  "static": {
+    "campaign": "experiments/cooja/results/step6c3f-post-bootstrap-tx-stress/campaign-20261003T014842Z-calibration",
+    "harness_pass": true,
+    "n_values": [
+      5
+    ],
+    "pass": true,
+    "revoked_safety_pass": true,
+    "row_count": 40,
+    "seed_count": 20,
+    "seed_max": 230,
+    "seed_min": 211,
+    "tx_counts": {
+      "0.2": 20,
+      "0.3": 20
+    },
+    "unique_keys": 40
+  },
+  "validated_new_runs": 120
+}

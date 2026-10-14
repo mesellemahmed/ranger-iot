@@ -1,0 +1,695 @@
+==============================================================================
+RULE Setup
+==============================================================================
+rule Setup:
+  [
+      Fr(~k4),
+      Fr(~k5),
+      Fr(~k6),
+      Fr(~k7),
+      Fr(~k2v0),
+      Fr(~k3v0),
+      Fr(~root0)
+  ]
+  --[
+      Setup('gm'),
+
+      EpochRoot(
+          'e0',
+          'v0',
+          ~root0
+      )
+    ]->
+  [
+      !GroupContext(
+          'gm',
+          'm1',
+          'm2',
+          'm3',
+          'm4'
+      ),
+
+      !Parent('n4','n2'),
+      !Parent('n5','n2'),
+      !Parent('n6','n3'),
+      !Parent('n7','n3'),
+      !Parent('n2','n1'),
+      !Parent('n3','n1'),
+
+      !MemberLeaf('m1','n4'),
+      !MemberLeaf('m2','n5'),
+      !MemberLeaf('m3','n6'),
+      !MemberLeaf('m4','n7'),
+
+      !M1Base(~k4,~k2v0,~root0),
+      !M2Base(~k5,~k2v0,~root0),
+      !M3Base(~k6,~k3v0,~root0),
+      !M4Base(~k7,~k3v0,~root0),
+
+      !OwnsKey('m1','n4','v0',~k4),
+      !OwnsKey('m1','n2','v0',~k2v0),
+      !OwnsKey('m1','n1','v0',~root0),
+
+      !OwnsKey('m2','n5','v0',~k5),
+      !OwnsKey('m2','n2','v0',~k2v0),
+      !OwnsKey('m2','n1','v0',~root0),
+
+      !OwnsKey('m3','n6','v0',~k6),
+      !OwnsKey('m3','n3','v0',~k3v0),
+      !OwnsKey('m3','n1','v0',~root0),
+
+      !OwnsKey('m4','n7','v0',~k7),
+      !OwnsKey('m4','n3','v0',~k3v0),
+      !OwnsKey('m4','n1','v0',~root0),
+
+      !EpochRootKey(
+          'e0',
+          'v0',
+          ~root0
+      ),
+
+      Stage('s0')
+  ]
+
+
+/********************************************************************
+ * EPOCH 1
+ *
+ * Implemented plan:
+ *
+ *   revoke m4
+ *
+ *   target n3/v1 wrapper n6/v0 recipients {m3}
+ *   target n1/v1 wrapper n2/v0 recipients {m1,m2}
+ *   target n1/v1 wrapper n3/v1 recipients {m3}
+ ********************************************************************/
+
+==============================================================================
+RULE Start_Epoch1
+==============================================================================
+rule Start_Epoch1:
+  [
+      Stage('s0'),
+
+      !M1Base(k4,k2v0,root0),
+      !M3Base(k6,k3v0,root0),
+
+      Fr(~k3v1),
+      Fr(~root1)
+  ]
+  --[
+      RekeyStarted('e1'),
+
+      NextEpoch('e0','e1'),
+
+      AuthorizedAt('m1','e1'),
+      AuthorizedAt('m2','e1'),
+      AuthorizedAt('m3','e1'),
+
+      RevokedAt('m4','e1'),
+
+      KeyVersion(
+          'n3',
+          'v1',
+          'e1'
+      ),
+
+      KeyVersion(
+          'n1',
+          'v1',
+          'e1'
+      ),
+
+      EpochRoot(
+          'e1',
+          'v1',
+          ~root1
+      ),
+
+      SecretEpoch(
+          'e1',
+          'v1',
+          ~root1
+      ),
+
+      LkhUpdate(
+          'e1',
+          'n3',
+          'v1',
+          'n6',
+          'v0'
+      ),
+
+      LkhRecipient(
+          'e1',
+          'n3',
+          'v1',
+          'm3'
+      ),
+
+      LkhUpdate(
+          'e1',
+          'n1',
+          'v1',
+          'n2',
+          'v0'
+      ),
+
+      LkhRecipient(
+          'e1',
+          'n1',
+          'v1',
+          'm1'
+      ),
+
+      LkhRecipient(
+          'e1',
+          'n1',
+          'v1',
+          'm2'
+      ),
+
+      LkhUpdate(
+          'e1',
+          'n1',
+          'v1',
+          'n3',
+          'v1'
+      ),
+
+      LkhRecipient(
+          'e1',
+          'n1',
+          'v1',
+          'm3'
+      )
+    ]->
+  [
+      !AuthorizedEpoch('m1','e1'),
+      !AuthorizedEpoch('m2','e1'),
+      !AuthorizedEpoch('m3','e1'),
+
+      !RevokedEpoch('m4','e1'),
+
+      !KeyMaterial(
+          'n3',
+          'v1',
+          'e1',
+          ~k3v1
+      ),
+
+      !EpochRootKey(
+          'e1',
+          'v1',
+          ~root1
+      ),
+
+      !EpochCipher(
+          'e1',
+          'n3',
+          'v1',
+          'n6',
+          'v0',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n3',
+                  'v1',
+                  ~k3v1
+              >,
+              k6
+          )
+      ),
+
+      !EpochCipher(
+          'e1',
+          'n1',
+          'v1',
+          'n2',
+          'v0',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              k2v0
+          )
+      ),
+
+      !EpochCipher(
+          'e1',
+          'n1',
+          'v1',
+          'n3',
+          'v1',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              ~k3v1
+          )
+      ),
+
+      !ManagerEpoch1(
+          ~k3v1,
+          ~root1
+      ),
+
+      Stage('s1'),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n3',
+                  'v1',
+                  ~k3v1
+              >,
+              k6
+          )
+      ),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              k2v0
+          )
+      ),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              ~k3v1
+          )
+      )
+  ]
+
+
+/********************************************************************
+ * MEMBER 3 DERIVES THE UPDATED n3 KEY
+ ********************************************************************/
+
+==============================================================================
+RULE M3_Derive_N3_V1
+==============================================================================
+rule M3_Derive_N3_V1:
+  [
+      !M3Base(k6,k3v0,root0),
+
+      !KeyMaterial(
+          'n3',
+          'v1',
+          'e1',
+          k3v1
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n3',
+                  'v1',
+                  k3v1
+              >,
+              k6
+          )
+      )
+  ]
+  --[
+      DerivedKey(
+          'm3',
+          'n3',
+          'v1',
+          'e1'
+      )
+    ]->
+  [
+      !M3BranchE1(k3v1),
+
+      !OwnsKey(
+          'm3',
+          'n3',
+          'v1',
+          k3v1
+      )
+  ]
+
+
+/********************************************************************
+ * INITIAL ACCEPTANCE — EPOCH 1
+ ********************************************************************/
+
+==============================================================================
+RULE Start_Epoch2
+==============================================================================
+rule Start_Epoch2:
+  [
+      Stage('s1'),
+
+      !M1Base(k4,k2v0,root0),
+
+      Fr(~root2)
+  ]
+  --[
+      RekeyStarted('e2'),
+
+      NextEpoch('e1','e2'),
+
+      AuthorizedAt('m1','e2'),
+      AuthorizedAt('m2','e2'),
+
+      RevokedAt('m3','e2'),
+
+      KeyVersion(
+          'n1',
+          'v2',
+          'e2'
+      ),
+
+      EpochRoot(
+          'e2',
+          'v2',
+          ~root2
+      ),
+
+      SecretEpoch(
+          'e2',
+          'v2',
+          ~root2
+      ),
+
+      LkhUpdate(
+          'e2',
+          'n1',
+          'v2',
+          'n2',
+          'v0'
+      ),
+
+      LkhRecipient(
+          'e2',
+          'n1',
+          'v2',
+          'm1'
+      ),
+
+      LkhRecipient(
+          'e2',
+          'n1',
+          'v2',
+          'm2'
+      )
+    ]->
+  [
+      !AuthorizedEpoch('m1','e2'),
+      !AuthorizedEpoch('m2','e2'),
+
+      !RevokedEpoch('m3','e2'),
+
+      !EpochRootKey(
+          'e2',
+          'v2',
+          ~root2
+      ),
+
+      !EpochCipher(
+          'e2',
+          'n1',
+          'v2',
+          'n2',
+          'v0',
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  ~root2
+              >,
+              k2v0
+          )
+      ),
+
+      !ManagerEpoch2(~root2),
+
+      Stage('s2'),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  ~root2
+              >,
+              k2v0
+          )
+      )
+  ]
+
+
+/********************************************************************
+ * INITIAL ACCEPTANCE — EPOCH 2
+ ********************************************************************/
+
+==============================================================================
+RULE Compromise_M1
+==============================================================================
+rule Compromise_M1:
+  [
+      !M1Base(k4,k2v0,root0)
+  ]
+  --[
+      CompromiseMember('m1')
+    ]->
+  [
+      Out(k4),
+      Out(k2v0),
+      Out(root0)
+  ]
+
+==============================================================================
+RULE Compromise_M2
+==============================================================================
+rule Compromise_M2:
+  [
+      !M2Base(k5,k2v0,root0)
+  ]
+  --[
+      CompromiseMember('m2')
+    ]->
+  [
+      Out(k5),
+      Out(k2v0),
+      Out(root0)
+  ]
+
+==============================================================================
+RULE Compromise_M3
+==============================================================================
+rule Compromise_M3:
+  [
+      !M3Base(k6,k3v0,root0)
+  ]
+  --[
+      CompromiseMember('m3')
+    ]->
+  [
+      Out(k6),
+      Out(k3v0),
+      Out(root0)
+  ]
+
+==============================================================================
+RULE Compromise_M4
+==============================================================================
+rule Compromise_M4:
+  [
+      !M4Base(k7,k3v0,root0)
+  ]
+  --[
+      CompromiseMember('m4')
+    ]->
+  [
+      Out(k7),
+      Out(k3v0),
+      Out(root0)
+  ]
+
+==============================================================================
+RULE Compromise_GM_E1
+==============================================================================
+rule Compromise_GM_E1:
+  [
+      !ManagerEpoch1(
+          k3v1,
+          root1
+      )
+  ]
+  --[
+      CompromiseManager('e1')
+    ]->
+  [
+      Out(k3v1),
+      Out(root1)
+  ]
+
+==============================================================================
+RULE Compromise_GM_E2
+==============================================================================
+rule Compromise_GM_E2:
+  [
+      !ManagerEpoch2(root2)
+  ]
+  --[
+      CompromiseManager('e2')
+    ]->
+  [
+      Out(root2)
+  ]
+
+
+/********************************************************************
+ * REVOKED OLD-KEY EXPOSURE
+ *
+ * These are deliberately NOT classified as compromise exceptions
+ * for the new epoch.
+ ********************************************************************/
+
+==============================================================================
+RULE Leak_M4_Old_Keys_After_E1
+==============================================================================
+rule Leak_M4_Old_Keys_After_E1:
+  [
+      !RevokedEpoch('m4','e1'),
+
+      !M4Base(
+          k7,
+          k3v0,
+          root0
+      )
+  ]
+  --[
+      OldKeyLeak(
+          'm4',
+          'e1'
+      )
+    ]->
+  [
+      Out(k7),
+      Out(k3v0),
+      Out(root0)
+  ]
+
+==============================================================================
+RULE Leak_M3_Old_Keys_After_E2
+==============================================================================
+rule Leak_M3_Old_Keys_After_E2:
+  [
+      !RevokedEpoch('m3','e2'),
+
+      !M3Base(
+          k6,
+          k3v0,
+          root0
+      ),
+
+      !M3BranchE1(k3v1),
+
+      !Accepted(
+          'm3',
+          'e1',
+          'v1',
+          root1
+      )
+  ]
+  --[
+      OldKeyLeak(
+          'm3',
+          'e2'
+      )
+    ]->
+  [
+      Out(k6),
+      Out(k3v0),
+      Out(root0),
+      Out(k3v1),
+      Out(root1)
+  ]
+
+
+/********************************************************************
+ * NON-VACUITY
+ ********************************************************************/
+
+==============================================================================
+LEMMA new_epoch_key_secret_without_relevant_compromise
+==============================================================================
+lemma new_epoch_key_secret_without_relevant_compromise:
+  "
+    All e v root #s #k.
+      SecretEpoch(e,v,root) @ s
+    & K(root) @ k
+      ==>
+      (
+        (Ex m #a #c.
+           AuthorizedAt(m,e) @ a
+         & CompromiseMember(m) @ c
+         & c < k)
+        |
+        (Ex #c.
+           CompromiseManager(e) @ c
+         & c < k)
+      )
+  "
+
+==============================================================================
+LEMMA revoked_old_key_does_not_reveal_new_root_key
+==============================================================================
+lemma revoked_old_key_does_not_reveal_new_root_key:
+  "
+    All m e v root #l #s #k.
+      OldKeyLeak(m,e) @ l
+    & SecretEpoch(e,v,root) @ s
+    & K(root) @ k
+      ==>
+      (
+        (Ex survivor #a #c.
+           AuthorizedAt(survivor,e) @ a
+         & CompromiseMember(survivor) @ c
+         & c < k)
+        |
+        (Ex #c.
+           CompromiseManager(e) @ c
+         & c < k)
+      )
+  "
+
+
+/********************************************************************
+ * RECOVERY AUTHORIZATION
+ ********************************************************************/
+

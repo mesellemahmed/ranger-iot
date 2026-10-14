@@ -1,0 +1,21 @@
+{
+  "retry_count": 2,
+  "retry_keys": [
+    {
+      "outcome": "REKEY_COMPLETE",
+      "reconstructed": 6,
+      "script_runner_pass": true,
+      "seed": 1108,
+      "tx": 0.3
+    },
+    {
+      "outcome": "REKEY_COMPLETE",
+      "reconstructed": 6,
+      "script_runner_pass": true,
+      "seed": 5659,
+      "tx": 0.3
+    }
+  ],
+  "retry_verdict": "PASS",
+  "schema_version": 1
+}

@@ -1,0 +1,215 @@
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Initial-Start_Rekey_case_1-Setup_case_1-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Stale( $A, ~epoch, ~groupkey )|<n1> !MemberKey( $A, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Initial[Accept( $A, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AcceptInitial( $A, ~epoch, ~groupkey )]\l}|{<n4> Current( $A, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#c7d998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $A, $H.1, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $A, KS1\l)\l|<n21> !MemberKey( $H.1, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#acdc9a",style="filled",fontcolor="black",role="Undefined"];
+n24[label="#vf.4 : isend",shape="ellipse"];
+n14:n11 -> n5:n0[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n20 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n24 -> n5:n2[color="gray30"];
+n15 -> n24[color="red",style="dashed"];
+{
+rank="sink";
+n25[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n25[style="invis"];
+
+}
+
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Initial-Start_Rekey_case_1-Setup_case_2-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Stale( $A, ~epoch, ~groupkey )|<n1> !MemberKey( $A, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Initial[Accept( $A, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AcceptInitial( $A, ~epoch, ~groupkey )]\l}|{<n4> Current( $A, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#c7d998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $A.1, $A, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $A.1, KS1\l)\l|<n21> !MemberKey( $A, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#acdc9a",style="filled",fontcolor="black",role="Undefined"];
+n24[label="#vf.4 : isend",shape="ellipse"];
+n14:n11 -> n5:n0[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n21 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n24 -> n5:n2[color="gray30"];
+n15 -> n24[color="red",style="dashed"];
+{
+rank="sink";
+n25[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n25[style="invis"];
+
+}
+
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Initial-Start_Rekey_case_2-Setup_case_1-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Stale( $H, ~epoch, ~groupkey )|<n1> !MemberKey( $H, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Initial[Accept( $H, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AcceptInitial( $H, ~epoch, ~groupkey )]\l}|{<n4> Current( $H, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#c7d998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $H, $H.1, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $H, KS1\l)\l|<n21> !MemberKey( $H.1, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#acdc9a",style="filled",fontcolor="black",role="Undefined"];
+n24[label="#vf.4 : isend",shape="ellipse"];
+n14:n12 -> n5:n0[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n20 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n24 -> n5:n2[color="gray30"];
+n15 -> n24[color="red",style="dashed"];
+{
+rank="sink";
+n25[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n25[style="invis"];
+
+}
+
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Initial-Start_Rekey_case_2-Setup_case_2-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Stale( $H, ~epoch, ~groupkey )|<n1> !MemberKey( $H, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Initial[Accept( $H, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AcceptInitial( $H, ~epoch, ~groupkey )]\l}|{<n4> Current( $H, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#c7d998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $A.1, $H, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $A.1, KS1\l)\l|<n21> !MemberKey( $H, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#acdc9a",style="filled",fontcolor="black",role="Undefined"];
+n24[label="#vf.4 : isend",shape="ellipse"];
+n14:n12 -> n5:n0[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n21 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n24 -> n5:n2[color="gray30"];
+n15 -> n24[color="red",style="dashed"];
+{
+rank="sink";
+n25[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n25[style="invis"];
+
+}
+
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Recovery-Start_Recovery_case_1-Setup_case_1-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Recovering( $A, ~epoch, ~groupkey )|<n1> !MemberKey( $A, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Recovery[Accept( $A, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RecoveryAccept( $A, ~epoch, ~groupkey )]\l}|{<n4> Current( $A, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#cad998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $A, $H.1, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $A, KS1\l)\l|<n21> !MemberKey( $H.1, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#b4db99",style="filled",fontcolor="black",role="Undefined"];
+n28[shape="record",label="{{<n24> Stale( $A, ~epoch, ~groupkey )}|{<n25> #vr.1 : Start_Recovery[RecoveryRequest( $A, ~epoch )]}|{<n26> Recovering( $A, ~epoch, ~groupkey )|<n27> Out( \<'ranger-recovery-request', $A, ~epoch\> )}}",fillcolor="#a9dc9a",style="filled",fontcolor="black",role="Undefined"];
+n29[label="#vf.4 : isend",shape="ellipse"];
+n14:n11 -> n28:n24[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n20 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n28:n26 -> n5:n0[style="bold",weight="10.0"];
+n29 -> n5:n2[color="gray30"];
+n15 -> n29[color="red",style="dashed"];
+{
+rank="sink";
+n30[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n30[style="invis"];
+
+}
+
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Recovery-Start_Recovery_case_1-Setup_case_2-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Recovering( $A, ~epoch, ~groupkey )|<n1> !MemberKey( $A, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Recovery[Accept( $A, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RecoveryAccept( $A, ~epoch, ~groupkey )]\l}|{<n4> Current( $A, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#cad998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $A.1, $A, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $A.1, KS1\l)\l|<n21> !MemberKey( $A, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#b4db99",style="filled",fontcolor="black",role="Undefined"];
+n28[shape="record",label="{{<n24> Stale( $A, ~epoch, ~groupkey )}|{<n25> #vr.1 : Start_Recovery[RecoveryRequest( $A, ~epoch )]}|{<n26> Recovering( $A, ~epoch, ~groupkey )|<n27> Out( \<'ranger-recovery-request', $A, ~epoch\> )}}",fillcolor="#a9dc9a",style="filled",fontcolor="black",role="Undefined"];
+n29[label="#vf.4 : isend",shape="ellipse"];
+n14:n11 -> n28:n24[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n21 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n28:n26 -> n5:n0[style="bold",weight="10.0"];
+n29 -> n5:n2[color="gray30"];
+n15 -> n29[color="red",style="dashed"];
+{
+rank="sink";
+n30[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n30[style="invis"];
+
+}
+
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Recovery-Start_Recovery_case_2-Setup_case_1-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Recovering( $H, ~epoch, ~groupkey )|<n1> !MemberKey( $H, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Recovery[Accept( $H, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RecoveryAccept( $H, ~epoch, ~groupkey )]\l}|{<n4> Current( $H, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#cad998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $H, $H.1, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $H, KS1\l)\l|<n21> !MemberKey( $H.1, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#b4db99",style="filled",fontcolor="black",role="Undefined"];
+n28[shape="record",label="{{<n24> Stale( $H, ~epoch, ~groupkey )}|{<n25> #vr.1 : Start_Recovery[RecoveryRequest( $H, ~epoch )]}|{<n26> Recovering( $H, ~epoch, ~groupkey )|<n27> Out( \<'ranger-recovery-request', $H, ~epoch\> )}}",fillcolor="#a9dc9a",style="filled",fontcolor="black",role="Undefined"];
+n29[label="#vf.4 : isend",shape="ellipse"];
+n14:n12 -> n28:n24[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n20 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n28:n26 -> n5:n0[style="bold",weight="10.0"];
+n29 -> n5:n2[color="gray30"];
+n15 -> n29[color="red",style="dashed"];
+{
+rank="sink";
+n30[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n30[style="invis"];
+
+}
+
+digraph "trace_RangerIoT_AuthorizationTransport_SL2-AS0-CL0-A1-C1-NB_revoked_never_accepts-Setup-Accept_Recovery-Start_Recovery_case_2-Setup_case_2-Start_Rekey" {
+nodesep="0.3";
+ranksep="0.3";
+node[fontsize="8",fontname="Helvetica",width="0.3",height="0.2"];
+edge[fontsize="8",fontname="Helvetica"];
+n5[shape="record",label="{{<n0> Recovering( $H, ~epoch, ~groupkey )|<n1> !MemberKey( $H, KS1 )|<n2> In( SE1 )}|{<n3> #a : Accept_Recovery[Accept( $H, ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RecoveryAccept( $H, ~epoch, ~groupkey )]\l}|{<n4> Current( $H, ~epoch, ~groupkey )}}",fillcolor="#d5d897",style="filled",fontcolor="black",role="Undefined"];
+n14[shape="record",label="{{<n6> !SurvivorKey( KS1 )|<n7> Fr( ~epoch )|<n8> Fr( ~groupkey )}|{<n9> #r : Start_Rekey[RekeyStarted( ~epoch, ~groupkey ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $A, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AuthorizedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedAt( $H, ~epoch ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SecretEpoch( ~epoch, ~groupkey )]\l}|{<n10> !EpochCipher( ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey, SE1\l)\l|<n11> Stale( $A, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n12> Stale( $H, ~epoch,\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~groupkey\l)\l|<n13> Out( SE1 )}}",fillcolor="#cad998",style="filled",fontcolor="black",role="Undefined"];
+n15[label="#vk : coerce[!KU( SE1 )]",shape="ellipse"];
+n23[shape="record",label="{{<n16> Fr( KS1 )|<n17> Fr( ~krevoked )}|{<n18> #vr : Setup[Setup( $GM, $A.1, $H, $R ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $A.1 ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InitiallyAuthorized( $H ),\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RevokedIdentity( $R )]\l}|{<n19> !SurvivorKey( KS1 )|<n20> !MemberKey( $A.1, KS1\l)\l|<n21> !MemberKey( $H, KS1\l)\l|<n22> !RevokedOldKey( $R, ~krevoked\l)\l}}",fillcolor="#b4db99",style="filled",fontcolor="black",role="Undefined"];
+n28[shape="record",label="{{<n24> Stale( $H, ~epoch, ~groupkey )}|{<n25> #vr.1 : Start_Recovery[RecoveryRequest( $H, ~epoch )]}|{<n26> Recovering( $H, ~epoch, ~groupkey )|<n27> Out( \<'ranger-recovery-request', $H, ~epoch\> )}}",fillcolor="#a9dc9a",style="filled",fontcolor="black",role="Undefined"];
+n29[label="#vf.4 : isend",shape="ellipse"];
+n14:n12 -> n28:n24[style="bold",weight="10.0"];
+n14:n13 -> n15[color="orangered2"];
+n23:n19 -> n14:n6[style="bold",weight="10.0",color="gray50"];
+n23:n21 -> n5:n1[style="bold",weight="10.0",color="gray50"];
+n28:n26 -> n5:n0[style="bold",weight="10.0"];
+n29 -> n5:n2[color="gray30"];
+n15 -> n29[color="red",style="dashed"];
+{
+rank="sink";
+n30[shape="plain",label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" CELLPADDING="1"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">KS1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">~ksurvivor</TD></TR>
+                                                                 <TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT COLOR="#000000">SE1</FONT></TD> <TD ALIGN="LEFT" VALIGN="TOP">=</TD> <TD ALIGN="LEFT" VALIGN="TOP">senc(&lt;'ranger-capsule', ~epoch, ~groupkey&gt;, KS1)</TD></TR></TABLE>>];
+
+}
+n5:n3 -> n30[style="invis"];
+
+}

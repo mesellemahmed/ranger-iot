@@ -1,0 +1,17 @@
+{
+  "coding": {
+    "k": 3,
+    "n": 5
+  },
+  "experiment": "RANGER-COOJA-RECOVERY-PEER-CACHE-PILOT",
+  "interpretation": "Single-seed authoritative pilot validating bootstrap-learned one-hop Recovery peers under post-bootstrap radio degradation. Not a confirmatory statistical campaign.",
+  "known_limit": "A member receiving zero coded fragments does not yet learn pending_epoch and therefore cannot initiate Recovery.",
+  "schema_version": 1,
+  "simulation_seed": 201,
+  "source_commit": "605bd3b921904989507dadcd694270e9536e8dbe",
+  "target_success_ratio_tx": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}

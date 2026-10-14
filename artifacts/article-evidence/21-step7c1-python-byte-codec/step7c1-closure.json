@@ -1,0 +1,43 @@
+{
+  "branch": "dev",
+  "codec": {
+    "algorithm": "SYSTEMATIC_REED_SOLOMON_GF256",
+    "primary_profile": {
+      "k": 3,
+      "n": 5
+    },
+    "primitive_polynomial": "0x11D",
+    "source_sha256": "39ed5565da639070e4e05035e41c2633d98f8cbd08e92d118edb4b6af4d5233d"
+  },
+  "head": "2e782b72915fd0e9ace915ed582d5a4ba043d302",
+  "next_step": "STEP7C2_EMBEDDED_C_CODEC_AND_CROSS_LANGUAGE_DIFFERENTIAL_VALIDATION",
+  "packaging_policy": {
+    "archive_built_outside_evidence_directory": true,
+    "self_referential_package_files_excluded": true
+  },
+  "repository_validation": {
+    "coverage": "90.61%",
+    "legacy_7a_7b_sources": "UNCHANGED",
+    "mypy": "PASS",
+    "pytest": "209/209 PASS",
+    "ruff": "PASS"
+  },
+  "schema_version": 1,
+  "scientific_scope": {
+    "cooja_real_rs_integration": "NOT_YET_VALIDATED",
+    "embedded_c_codec": "NOT_YET_IMPLEMENTED",
+    "historical_7a_7b_results": "PRESERVED_AS_IDEALIZED_K_OF_N_NETWORK_EXPERIMENTS",
+    "python_byte_level_codec": "VALIDATED"
+  },
+  "scientific_state": "PYTHON_BYTE_LEVEL_CODEC_VALIDATED",
+  "step": "STEP7C1_FINAL_CLOSURE",
+  "step7c1_pass": true,
+  "test_source_sha256": "b041304b65daea2519bba9b306d4888c7b8121594f13f90676191c2869513803",
+  "validation": {
+    "corruption_detection": "PASS",
+    "primary_exact_reconstructions": 2560,
+    "readiness_sha256": "b3a8beb8f150c806ef01c76c504bf53b905e34c91e0e855b61e4417c092cc34f",
+    "validation_digest_sha256": "269a7dcaf8d65c89594ceaba2a0a8fde7f34b5f8e18b0b910ec55819a1d8ded5",
+    "validation_file_sha256": "3689c67a5b21cac07ae292136013ad23aa563856520fb75e964eb460f6ee4e96"
+  }
+}

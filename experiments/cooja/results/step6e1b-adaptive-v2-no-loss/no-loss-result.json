@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-INITIAL-K-NO-LOSS",
+  "simulation_seed": 20260930,
+  "trigger": "post_initial_settle",
+  "initial_send_count": 18,
+  "expected_initial_send_count": 18,
+  "per_target_send_count": {
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 3,
+    "6": 3,
+    "7": 3,
+    "8": 0
+  },
+  "per_target_fragment_mask": {
+    "2": 7,
+    "3": 7,
+    "4": 7,
+    "5": 7,
+    "6": 7,
+    "7": 7,
+    "8": 0
+  },
+  "initial_all_sent": true,
+  "authorized_reconstructed_mask": 252,
+  "authorized_reconstructed_count": 6,
+  "revoked_reconstructed": false,
+  "recovery_request_count": 0,
+  "recovery_fragment_send_count": 0,
+  "recovery_reconstruct_count": 0,
+  "nack_count": 0,
+  "success": true,
+  "finish_time": 161235000
+}

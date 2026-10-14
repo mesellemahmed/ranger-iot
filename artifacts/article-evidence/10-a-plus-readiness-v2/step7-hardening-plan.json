@@ -1,0 +1,44 @@
+{
+  "coding_realism": {
+    "action": "Benchmark a real byte-level erasure codec or explicitly bound the idealized coding assumption in the article.",
+    "required": true,
+    "signals": [
+      "src/ranger_iot/ranger/coding.py",
+      "experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c",
+      "experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c"
+    ]
+  },
+  "do_not_repeat": [
+    "TX_0.50_seed_extension",
+    "general_repository_audit",
+    "reimplementation_of_static",
+    "reimplementation_of_recovery",
+    "reimplementation_of_adaptive_v2"
+  ],
+  "external_validity": {
+    "action": "Add topology/scale sensitivity after statistical hardening; do not change protocol semantics during this campaign.",
+    "required": true
+  },
+  "formal_security": {
+    "action": "Audit formal artifacts before claiming formal security; absence of executable proof means no formal-security claim.",
+    "artifacts_found": [],
+    "required_review": true
+  },
+  "statistical_hardening": {
+    "additional_runs_if_full_pairing_preserved": 120,
+    "additional_seeds_per_protocol_tx": 20,
+    "current_seeds_per_protocol_tx": 10,
+    "protocols": [
+      "static",
+      "recovery",
+      "adaptive-v2"
+    ],
+    "reason": "Preserve exact three-protocol pairing only in the two informative loss regimes.",
+    "target_seeds_per_protocol_tx": 30,
+    "target_tx": [
+      0.3,
+      0.2
+    ]
+  },
+  "step": "STEP_7_A_PLUS_SCIENTIFIC_HARDENING"
+}

@@ -1,0 +1,53 @@
+{
+  "adaptive_initial_fragments": 3,
+  "adaptive_max_parity_rounds": 2,
+  "adaptive_nack_bytes": 16,
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    1901,
+    2117,
+    6212,
+    8530,
+    5326,
+    4518,
+    6021,
+    1381,
+    2579,
+    6704,
+    5024,
+    3694,
+    8703,
+    2176,
+    6594,
+    8303,
+    8470,
+    2146,
+    1108,
+    5659
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "description": "STEP7B3 fixed-8-mote Cooja topology/layout external-validity campaign.",
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "Bootstrap runs with healthy UDGM TX/RX. SUCCESS_RATIO_TX is changed only after RANGER_CODED_READY. Recovery smoke modes remain disabled.",
+  "pilot_simulation_seeds": [
+    1901
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Can Adaptive V2 preserve Recovery-level rekey resilience while avoiding unnecessary parity transmission when the initial k fragments are sufficient?",
+  "recovery_fragment_bytes": 9,
+  "recovery_max_rounds": 2,
+  "recovery_request_bytes": 24,
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.3,
+    0.2
+  ]
+}

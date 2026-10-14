@@ -1,0 +1,21 @@
+{
+  "accepted_nodes": [],
+  "direct_root_to_farthest": false,
+  "exit_code": 1,
+  "experiment": "RANGER-COOJA-RPL-LINE-8",
+  "marker_counts": {
+    "all_sent": 0,
+    "assert_pass": 0,
+    "core_pass": 0,
+    "ready": 0,
+    "root_start": 0,
+    "test_ok": 0
+  },
+  "registered_nodes": [],
+  "rejected_nodes": [],
+  "result": "FAIL",
+  "root_to_farthest_distance": 245.0,
+  "run_id": "run-20260926T125411Z",
+  "schema_version": 1,
+  "transmitting_range": 45.0
+}

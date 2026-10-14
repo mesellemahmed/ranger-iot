@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-RECOVERY-CASCADE-SMOKE",
+  "trigger": "post_cascade_settle",
+  "simulation_seed": 20260928,
+  "initial_unique": {
+    "6": 2,
+    "7": 2
+  },
+  "controlled_drops": {
+    "6": 3,
+    "7": 3
+  },
+  "round1": {
+    "node7_requested_node6": true,
+    "node6_requested_node5": true,
+    "node6_repaired_from_node5": true,
+    "node6_recovered": true,
+    "node6_recovery_round": 1,
+    "node6_recovery_time": 187144344
+  },
+  "round2": {
+    "node7_requested_node6": true,
+    "node7_repaired_from_node6": true,
+    "node7_recovered": true,
+    "node7_recovery_round": 2,
+    "node7_recovery_time": 193248344
+  },
+  "causal_order": true,
+  "revoked_recovery_activity": false,
+  "revoked_reconstructed": false,
+  "success": true,
+  "finish_time": 203248344
+}

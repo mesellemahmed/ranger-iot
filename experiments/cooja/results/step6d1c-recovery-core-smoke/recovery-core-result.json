@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-RECOVERY-CORE-SMOKE",
+  "trigger": "post_recovery_settle",
+  "simulation_seed": 20260928,
+  "target_node": 4,
+  "initial_unique_before_recovery": 2,
+  "controlled_initial_drops": 3,
+  "request_peers": [
+    "3",
+    "5"
+  ],
+  "response_peers": [
+    "3",
+    "5"
+  ],
+  "recovery_fragment_count": 1,
+  "recovery_fragment_indexes": [
+    "2"
+  ],
+  "recovery_round": 1,
+  "recovered": true,
+  "revoked_recovery_activity": false,
+  "revoked_reconstructed": false,
+  "success": true,
+  "finish_time": 180124344
+}

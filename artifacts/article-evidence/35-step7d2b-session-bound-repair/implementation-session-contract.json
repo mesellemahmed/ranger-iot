@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "capsule_contains_group_id": true,
+    "capsule_id_contains_group_epoch": true,
+    "fragment_accumulator_checks_capsule": true,
+    "fragment_accumulator_checks_epoch": true,
+    "fragment_accumulator_checks_group": true,
+    "recovery_checks_capsule_id": true,
+    "recovery_rejects_wrong_group": true,
+    "recovery_request_contains_group_id": true,
+    "static_rejects_wrong_group": true
+  },
+  "formal_correspondence": "sid abstracts the concrete group/capsule instance discriminator used to prevent cross-group/cross-epoch mixing.",
+  "pass": true,
+  "schema_version": 1
+}

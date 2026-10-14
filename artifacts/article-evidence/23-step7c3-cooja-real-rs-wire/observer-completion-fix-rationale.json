@@ -1,0 +1,45 @@
+{
+  "canonical_rx_failures": [],
+  "canonical_send_failures": [],
+  "classification": "HARNESS_SYNCHRONIZATION_FIX",
+  "codec_change": false,
+  "corrected_completion_condition": "CORE_PASS AND RANGER_RS_WIRE_ALL_SHARDS_SENT",
+  "functional_semantics_passed": true,
+  "missing_send_pairs": [
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      4
+    ]
+  ],
+  "observed_receive_count": 19,
+  "observed_send_count": 31,
+  "oracle_relaxation": false,
+  "preserved_controlled_gate": {
+    "authorized_reconstructions": 5,
+    "below_k_node": 7,
+    "receive_events": 18,
+    "send_events": 18
+  },
+  "preserved_no_loss_gate": {
+    "authorized_reconstructions": 6,
+    "receive_events": 19,
+    "send_events": 35
+  },
+  "previous_behavior": "The ScriptRunner finalized as soon as CORE_PASS was observed.",
+  "root_cause": "In no-loss mode, revoked node 8 reports REJECT after receiving shard 0. That completes the seventh report and therefore emits CORE_PASS before the GM has emitted shards 1..4 to node 8.",
+  "schema_version": 1,
+  "scientific_protocol_change": false,
+  "step": "STEP7C3_OBSERVER_COMPLETION_FIX"
+}

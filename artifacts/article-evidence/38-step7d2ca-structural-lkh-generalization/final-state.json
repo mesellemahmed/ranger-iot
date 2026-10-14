@@ -1,0 +1,29 @@
+{
+  "arbitrary_n_theorem": false,
+  "formal_17_of_17": true,
+  "formal_negative_control": true,
+  "formal_reference_instance_closed": true,
+  "full_ranger_formally_verified": false,
+  "group_sizes": [
+    4,
+    5,
+    7,
+    8,
+    9,
+    16,
+    17,
+    32,
+    33,
+    64
+  ],
+  "next_step": "STEP7D2CB_REAL_RS_COMPARATIVE_BRIDGE",
+  "revoked_coalition_checked": true,
+  "schema_version": 1,
+  "scientific_state": "STEP7D2CA_FINITE_STRUCTURAL_GENERALIZATION_CLOSED",
+  "step": "STEP7D2CA",
+  "step7d2ca_closed": true,
+  "structural_case_count": 10386,
+  "structural_failure_count": 0,
+  "structural_generalization_pass": true,
+  "structural_rekey_epoch_count": 17180
+}

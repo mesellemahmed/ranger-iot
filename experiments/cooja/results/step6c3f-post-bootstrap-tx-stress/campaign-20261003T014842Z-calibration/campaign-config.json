@@ -1,0 +1,47 @@
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    5
+  ],
+  "description": "Multi-seed calibration of post-bootstrap UDGM transmission-side degradation around the experimentally identified static-rekey transition regime.",
+  "experiment": "RANGER-COOJA-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "UDGM SUCCESS_RATIO_TX is dynamically changed only after successful bootstrap; SUCCESS_RATIO_RX remains 1.0.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Across multiple Cooja seeds, how does 3-of-3 versus 3-of-5 static coded rekeying behave in the post-bootstrap UDGM TX transition regime?",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    0.3,
+    0.2
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "application_loss": false,
+  "assertion_sha256": "64b4e67738e2526c1f50f2b22f3968953bda0b7547a42870b9c1c65b19eba22e",
+  "case_id": "n3-rx04500-seed000201",
+  "config_sha256": "7d725486251fb304ab79be13c7e1c2cd148afcf0d37f7606bb8e479266315b16",
+  "experiment": "RANGER-COOJA-UDGM-RADIO-LOSS",
+  "radio_model": "UDGM",
+  "result": "REKEY_COMPLETE",
+  "runner_sha256": "5b8aa244c701c45f45400ab5a2b02ff2b99ba150d86d58555d60c5e6202b6400",
+  "scenario_sha256": "936f9ab6f5a8e075c220e2105479f7bd31f651fc4787c81eef58f65677eea4e7",
+  "schema_version": 1,
+  "simulation_seed": 201,
+  "source_commit": "af6f5043bd14618c5b2c8c5d2fb59dab693ed634",
+  "source_sha256": "53475a4c0e57b16847f36aec300ca4bbac6d1c6bd7bfed12ca925d4fcf4da7b2",
+  "success_ratio_rx": 0.45,
+  "success_ratio_tx": 1.0,
+  "template_sha256": "7e3b1e02d9a4d8851cafd90312df480d7f1a34c8feadf014bfc3233e9d42a245",
+  "toolchain_lock_sha256": "9584e924c1a5e47b1150a951c8fd1a599bcd51b42601f24178b3bb8318b9a9b1",
+  "validation_source": "cooja-script-runner-structured-json"
+}

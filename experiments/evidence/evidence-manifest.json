@@ -1,0 +1,36 @@
+{
+  "artifact_count": 180855,
+  "campaigns": {
+    "results": 6,
+    "step4d": 8,
+    "step4e": 1452,
+    "step5b": 1542,
+    "step5c": 3846,
+    "step5d": 2307,
+    "step5e": 74895,
+    "step5e0": 774,
+    "step5f2": 15363,
+    "step5f3": 80643,
+    "step5g": 19
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "checksums": "experiments/evidence/CHECKSUMS.sha256",
+    "index": "experiments/evidence/artifact-index.csv"
+  },
+  "policy": {
+    "aggregated_results_versioned": true,
+    "cooja_results_versioned": true,
+    "generated_figures_versioned": true,
+    "raw_results_versioned": true,
+    "results_must_not_be_deleted_after_publication": true
+  },
+  "project": "RANGER-IoT",
+  "purpose": "Complete reproducibility evidence registry of scientific experiment results",
+  "result_roots": [
+    "experiments/results",
+    "experiments/cooja/results"
+  ],
+  "schema_version": 1,
+  "total_size_bytes": 1457304521
+}

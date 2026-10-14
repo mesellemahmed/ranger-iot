@@ -1,0 +1,56 @@
+schema_version: 1
+campaign_id: step5e-publication-scalability
+
+protocols:
+  - skdc
+  - lkh-unicast
+  - lkh-flood
+  - ranger-static
+  - ranger-recovery
+  - ranger-adaptive
+
+topologies:
+  - line
+  - star
+  - balanced-tree
+  - grid
+
+member_counts:
+  - 128
+  - 256
+
+packet_losses:
+  - 0.0
+  - 0.10
+  - 0.20
+
+seeds:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+
+revoked_count: 1
+group_id: 1
+manager_id: 0
+link_delay_us: 10
+payload_bytes: 64
+
+ranger_data_fragments: 3
+ranger_total_fragments: 5
+ranger_capsule_overhead_bytes: 0
+
+ranger_recovery_rounds: 2
+ranger_recovery_request_bytes: 24
+
+ranger_adaptive_max_fragments: 5
+ranger_adaptive_nack_bytes: 16
+ranger_adaptive_recovery_rounds: 2
+
+max_events: 10000000

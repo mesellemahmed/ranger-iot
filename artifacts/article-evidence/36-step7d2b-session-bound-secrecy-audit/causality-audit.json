@@ -1,0 +1,912 @@
+{
+  "counterexamples_reproduced": true,
+  "guardrail": "No security interpretation is finalized solely from conjunction of OldKeyLeak and K(root); the root derivation occurrence and epoch relationship must be inspected.",
+  "implementation_modified": false,
+  "learned_secret_extraction_complete": true,
+  "lemmas_modified": false,
+  "model_modified": false,
+  "results": {
+    "new_epoch_key_secret_without_relevant_compromise": {
+      "graph_count": 1,
+      "graphs": [
+        {
+          "graph_label": "trace_RangerIoT_LKH_MultiEpoch_4Member_SessionBound_SL2-AS0-CL0-A1-C1-NB_new_epoch_key_secret_without_relevant_compromise-Start_Epoch1-Setup-Setup-Setup-Leak_M3_Old_Keys_After_E2-Start_Epoch1-Start_Epoch1",
+          "knowledge": [
+            {
+              "args": [
+                "~root1"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 0,
+              "rule": "Send",
+              "shown": "K( ~root1 )",
+              "term": "~root1"
+            },
+            {
+              "args": [
+                "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 11,
+              "rule": "Send",
+              "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )",
+              "term": "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+            },
+            {
+              "args": [
+                "senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1)"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 12,
+              "rule": "Send",
+              "shown": "K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )",
+              "term": "senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1)"
+            },
+            {
+              "args": [
+                "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 13,
+              "rule": "Send",
+              "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )",
+              "term": "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+            }
+          ],
+          "learned_secrets": [
+            {
+              "epoch": "'e1'",
+              "knowledge_facts": [
+                {
+                  "args": [
+                    "~root1"
+                  ],
+                  "category": "actions",
+                  "name": "K",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "K( ~root1 )",
+                  "term": "~root1"
+                }
+              ],
+              "other_epoch_old_key_leaks": [
+                {
+                  "args": [
+                    "~sid",
+                    "'m3'",
+                    "'e2'"
+                  ],
+                  "category": "actions",
+                  "epoch": "'e2'",
+                  "member": "'m3'",
+                  "name": "OldKeyLeak",
+                  "ordinal": 5,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "OldKeyLeak( ~sid, 'm3', 'e2' )",
+                  "sid": "~sid"
+                }
+              ],
+              "root": "~root1",
+              "root_occurrences": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "K( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "In",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "In( ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "EpochRoot( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "SecretEpoch( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "Fr",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "Fr( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!EpochRootKey",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "!EpochRootKey( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!EpochCipher",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "!EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n2', 'v0', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0))"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!EpochCipher",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "!EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n3', 'v1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!ManagerEpoch1",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "!ManagerEpoch1( ~sid, ~k3v1, ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "Out",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "Out",
+                  "ordinal": 1,
+                  "rule": "Start_Epoch1",
+                  "shown": "Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "ordinal": 2,
+                  "rule": "Coerce",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "ordinal": 2,
+                  "rule": "Coerce",
+                  "shown": "!KD( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "ordinal": 2,
+                  "rule": "Coerce",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!Accepted",
+                  "ordinal": 5,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "!Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "Out",
+                  "ordinal": 5,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "Out( ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "ordinal": 6,
+                  "rule": "Coerce",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "ordinal": 6,
+                  "rule": "Coerce",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "ordinal": 6,
+                  "rule": "Coerce",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "actions",
+                  "name": "Accept",
+                  "ordinal": 9,
+                  "rule": "Accept_E1_M3",
+                  "shown": "Accept( ~sid, 'm3', 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AcceptCipher",
+                  "ordinal": 9,
+                  "rule": "Accept_E1_M3",
+                  "shown": "AcceptCipher( ~sid, 'm3', 'e1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))"
+                },
+                {
+                  "category": "premises",
+                  "name": "!EpochRootKey",
+                  "ordinal": 9,
+                  "rule": "Accept_E1_M3",
+                  "shown": "!EpochRootKey( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "In",
+                  "ordinal": 9,
+                  "rule": "Accept_E1_M3",
+                  "shown": "In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!Accepted",
+                  "ordinal": 9,
+                  "rule": "Accept_E1_M3",
+                  "shown": "!Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!OwnsKey",
+                  "ordinal": 9,
+                  "rule": "Accept_E1_M3",
+                  "shown": "!OwnsKey( ~sid, 'm3', 'n1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "ordinal": 12,
+                  "rule": "Send",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "ordinal": 12,
+                  "rule": "Send",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "In",
+                  "ordinal": 12,
+                  "rule": "Send",
+                  "shown": "In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                }
+              ],
+              "root_occurs_in_other_epoch_leak_rule": true,
+              "root_occurs_in_same_epoch_leak_rule": false,
+              "same_epoch_old_key_leaks": [],
+              "same_sid_manager_compromises": [],
+              "same_sid_member_compromises": [],
+              "same_sid_old_key_leaks": [
+                {
+                  "args": [
+                    "~sid",
+                    "'m3'",
+                    "'e2'"
+                  ],
+                  "category": "actions",
+                  "epoch": "'e2'",
+                  "member": "'m3'",
+                  "name": "OldKeyLeak",
+                  "ordinal": 5,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "OldKeyLeak( ~sid, 'm3', 'e2' )",
+                  "sid": "~sid"
+                }
+              ],
+              "secret_fact": {
+                "args": [
+                  "~sid",
+                  "'e1'",
+                  "'v1'",
+                  "~root1"
+                ],
+                "category": "actions",
+                "epoch": "'e1'",
+                "name": "SecretEpoch",
+                "ordinal": 1,
+                "root": "~root1",
+                "rule": "Start_Epoch1",
+                "shown": "SecretEpoch( ~sid, 'e1', 'v1', ~root1 )",
+                "sid": "~sid",
+                "version": "'v1'"
+              },
+              "sid": "~sid",
+              "version": "'v1'"
+            }
+          ],
+          "manager_compromises": [],
+          "member_compromises": [],
+          "old_key_leaks": [
+            {
+              "args": [
+                "~sid",
+                "'m3'",
+                "'e2'"
+              ],
+              "category": "actions",
+              "epoch": "'e2'",
+              "member": "'m3'",
+              "name": "OldKeyLeak",
+              "ordinal": 5,
+              "rule": "Leak_M3_Old_Keys_After_E2",
+              "shown": "OldKeyLeak( ~sid, 'm3', 'e2' )",
+              "sid": "~sid"
+            }
+          ],
+          "patterns": {
+            "contains_manager_compromise": false,
+            "contains_member_compromise": false,
+            "contains_multiple_secret_sids": false,
+            "contains_old_key_leak": true,
+            "historical_secret_revealed_by_other_epoch_leak_candidate": true,
+            "learned_secret_count": 1,
+            "multiple_setup_rules": false,
+            "same_epoch_old_key_direct_disclosure_candidate": false,
+            "secret_sid_count": 1,
+            "setup_rule_count": 1
+          },
+          "rule_counts": {
+            "Accept_E1_M3": 1,
+            "Coerce": 3,
+            "Leak_M3_Old_Keys_After_E2": 1,
+            "M3_Derive_N3_V1": 2,
+            "Send": 4,
+            "Setup": 1,
+            "Start_Epoch1": 1,
+            "Start_Epoch2": 1
+          },
+          "secrets": [
+            {
+              "args": [
+                "~sid",
+                "'e1'",
+                "'v1'",
+                "~root1"
+              ],
+              "category": "actions",
+              "epoch": "'e1'",
+              "name": "SecretEpoch",
+              "ordinal": 1,
+              "root": "~root1",
+              "rule": "Start_Epoch1",
+              "shown": "SecretEpoch( ~sid, 'e1', 'v1', ~root1 )",
+              "sid": "~sid",
+              "version": "'v1'"
+            },
+            {
+              "args": [
+                "~sid",
+                "'e2'",
+                "'v2'",
+                "~root2"
+              ],
+              "category": "actions",
+              "epoch": "'e2'",
+              "name": "SecretEpoch",
+              "ordinal": 7,
+              "root": "~root2",
+              "rule": "Start_Epoch2",
+              "shown": "SecretEpoch( ~sid, 'e2', 'v2', ~root2 )",
+              "sid": "~sid",
+              "version": "'v2'"
+            }
+          ],
+          "setups": [
+            {
+              "args": [
+                "~sid",
+                "'gm'"
+              ],
+              "category": "actions",
+              "name": "Setup",
+              "ordinal": 3,
+              "rule": "Setup",
+              "shown": "Setup( ~sid, 'gm' )"
+            }
+          ]
+        }
+      ]
+    },
+    "revoked_old_key_does_not_reveal_new_root_key": {
+      "graph_count": 1,
+      "graphs": [
+        {
+          "graph_label": "trace_RangerIoT_LKH_MultiEpoch_4Member_SessionBound_SL2-AS0-CL0-A1-C1-NB_revoked_old_key_does_not_reveal_new_root_key-Leak_M4_Old_Keys_After_E1-Start_Epoch1-Setup-Start_Epoch1-Setup-Leak_M3_Old_Keys_After_E2-Start_Epoch1-Start_Epoch1",
+          "knowledge": [
+            {
+              "args": [
+                "~root1"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 0,
+              "rule": "Send",
+              "shown": "K( ~root1 )",
+              "term": "~root1"
+            },
+            {
+              "args": [
+                "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 12,
+              "rule": "Send",
+              "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )",
+              "term": "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+            },
+            {
+              "args": [
+                "senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1)"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 13,
+              "rule": "Send",
+              "shown": "K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )",
+              "term": "senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1)"
+            },
+            {
+              "args": [
+                "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+              ],
+              "category": "actions",
+              "name": "K",
+              "ordinal": 14,
+              "rule": "Send",
+              "shown": "K( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6) )",
+              "term": "senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, ~k6)"
+            }
+          ],
+          "learned_secrets": [
+            {
+              "epoch": "'e1'",
+              "knowledge_facts": [
+                {
+                  "args": [
+                    "~root1"
+                  ],
+                  "category": "actions",
+                  "name": "K",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "K( ~root1 )",
+                  "term": "~root1"
+                }
+              ],
+              "other_epoch_old_key_leaks": [
+                {
+                  "args": [
+                    "~sid",
+                    "'m3'",
+                    "'e2'"
+                  ],
+                  "category": "actions",
+                  "epoch": "'e2'",
+                  "member": "'m3'",
+                  "name": "OldKeyLeak",
+                  "ordinal": 6,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "OldKeyLeak( ~sid, 'm3', 'e2' )",
+                  "sid": "~sid"
+                }
+              ],
+              "root": "~root1",
+              "root_occurrences": [
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "K( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "In",
+                  "ordinal": 0,
+                  "rule": "Send",
+                  "shown": "In( ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "EpochRoot",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "EpochRoot( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "SecretEpoch",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "SecretEpoch( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "Fr",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "Fr( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!EpochRootKey",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "!EpochRootKey( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!EpochCipher",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "!EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n2', 'v0', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0))"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!EpochCipher",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "!EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n3', 'v1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!ManagerEpoch1",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "!ManagerEpoch1( ~sid, ~k3v1, ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "Out",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "Out",
+                  "ordinal": 2,
+                  "rule": "Start_Epoch1",
+                  "shown": "Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "ordinal": 3,
+                  "rule": "Coerce",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "ordinal": 3,
+                  "rule": "Coerce",
+                  "shown": "!KD( ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "ordinal": 3,
+                  "rule": "Coerce",
+                  "shown": "!KU( ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!Accepted",
+                  "ordinal": 6,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "!Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "Out",
+                  "ordinal": 6,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "Out( ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "!KU",
+                  "ordinal": 7,
+                  "rule": "Coerce",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KD",
+                  "ordinal": 7,
+                  "rule": "Coerce",
+                  "shown": "!KD( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!KU",
+                  "ordinal": 7,
+                  "rule": "Coerce",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "actions",
+                  "name": "Accept",
+                  "ordinal": 10,
+                  "rule": "Accept_E1_M3",
+                  "shown": "Accept( ~sid, 'm3', 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "AcceptCipher",
+                  "ordinal": 10,
+                  "rule": "Accept_E1_M3",
+                  "shown": "AcceptCipher( ~sid, 'm3', 'e1', senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1))"
+                },
+                {
+                  "category": "premises",
+                  "name": "!EpochRootKey",
+                  "ordinal": 10,
+                  "rule": "Accept_E1_M3",
+                  "shown": "!EpochRootKey( ~sid, 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "premises",
+                  "name": "In",
+                  "ordinal": 10,
+                  "rule": "Accept_E1_M3",
+                  "shown": "In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!Accepted",
+                  "ordinal": 10,
+                  "rule": "Accept_E1_M3",
+                  "shown": "!Accepted( ~sid, 'm3', 'e1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "!OwnsKey",
+                  "ordinal": 10,
+                  "rule": "Accept_E1_M3",
+                  "shown": "!OwnsKey( ~sid, 'm3', 'n1', 'v1', ~root1 )"
+                },
+                {
+                  "category": "actions",
+                  "name": "K",
+                  "ordinal": 13,
+                  "rule": "Send",
+                  "shown": "K( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "premises",
+                  "name": "!KU",
+                  "ordinal": 13,
+                  "rule": "Send",
+                  "shown": "!KU( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                },
+                {
+                  "category": "conclusions",
+                  "name": "In",
+                  "ordinal": 13,
+                  "rule": "Send",
+                  "shown": "In( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )"
+                }
+              ],
+              "root_occurs_in_other_epoch_leak_rule": true,
+              "root_occurs_in_same_epoch_leak_rule": false,
+              "same_epoch_old_key_leaks": [
+                {
+                  "args": [
+                    "~sid",
+                    "'m4'",
+                    "'e1'"
+                  ],
+                  "category": "actions",
+                  "epoch": "'e1'",
+                  "member": "'m4'",
+                  "name": "OldKeyLeak",
+                  "ordinal": 1,
+                  "rule": "Leak_M4_Old_Keys_After_E1",
+                  "shown": "OldKeyLeak( ~sid, 'm4', 'e1' )",
+                  "sid": "~sid"
+                }
+              ],
+              "same_sid_manager_compromises": [],
+              "same_sid_member_compromises": [],
+              "same_sid_old_key_leaks": [
+                {
+                  "args": [
+                    "~sid",
+                    "'m4'",
+                    "'e1'"
+                  ],
+                  "category": "actions",
+                  "epoch": "'e1'",
+                  "member": "'m4'",
+                  "name": "OldKeyLeak",
+                  "ordinal": 1,
+                  "rule": "Leak_M4_Old_Keys_After_E1",
+                  "shown": "OldKeyLeak( ~sid, 'm4', 'e1' )",
+                  "sid": "~sid"
+                },
+                {
+                  "args": [
+                    "~sid",
+                    "'m3'",
+                    "'e2'"
+                  ],
+                  "category": "actions",
+                  "epoch": "'e2'",
+                  "member": "'m3'",
+                  "name": "OldKeyLeak",
+                  "ordinal": 6,
+                  "rule": "Leak_M3_Old_Keys_After_E2",
+                  "shown": "OldKeyLeak( ~sid, 'm3', 'e2' )",
+                  "sid": "~sid"
+                }
+              ],
+              "secret_fact": {
+                "args": [
+                  "~sid",
+                  "'e1'",
+                  "'v1'",
+                  "~root1"
+                ],
+                "category": "actions",
+                "epoch": "'e1'",
+                "name": "SecretEpoch",
+                "ordinal": 2,
+                "root": "~root1",
+                "rule": "Start_Epoch1",
+                "shown": "SecretEpoch( ~sid, 'e1', 'v1', ~root1 )",
+                "sid": "~sid",
+                "version": "'v1'"
+              },
+              "sid": "~sid",
+              "version": "'v1'"
+            }
+          ],
+          "manager_compromises": [],
+          "member_compromises": [],
+          "old_key_leaks": [
+            {
+              "args": [
+                "~sid",
+                "'m4'",
+                "'e1'"
+              ],
+              "category": "actions",
+              "epoch": "'e1'",
+              "member": "'m4'",
+              "name": "OldKeyLeak",
+              "ordinal": 1,
+              "rule": "Leak_M4_Old_Keys_After_E1",
+              "shown": "OldKeyLeak( ~sid, 'm4', 'e1' )",
+              "sid": "~sid"
+            },
+            {
+              "args": [
+                "~sid",
+                "'m3'",
+                "'e2'"
+              ],
+              "category": "actions",
+              "epoch": "'e2'",
+              "member": "'m3'",
+              "name": "OldKeyLeak",
+              "ordinal": 6,
+              "rule": "Leak_M3_Old_Keys_After_E2",
+              "shown": "OldKeyLeak( ~sid, 'm3', 'e2' )",
+              "sid": "~sid"
+            }
+          ],
+          "patterns": {
+            "contains_manager_compromise": false,
+            "contains_member_compromise": false,
+            "contains_multiple_secret_sids": false,
+            "contains_old_key_leak": true,
+            "historical_secret_revealed_by_other_epoch_leak_candidate": true,
+            "learned_secret_count": 1,
+            "multiple_setup_rules": false,
+            "same_epoch_old_key_direct_disclosure_candidate": false,
+            "secret_sid_count": 1,
+            "setup_rule_count": 1
+          },
+          "rule_counts": {
+            "Accept_E1_M3": 1,
+            "Coerce": 3,
+            "Leak_M3_Old_Keys_After_E2": 1,
+            "Leak_M4_Old_Keys_After_E1": 1,
+            "M3_Derive_N3_V1": 2,
+            "Send": 4,
+            "Setup": 1,
+            "Start_Epoch1": 1,
+            "Start_Epoch2": 1
+          },
+          "secrets": [
+            {
+              "args": [
+                "~sid",
+                "'e1'",
+                "'v1'",
+                "~root1"
+              ],
+              "category": "actions",
+              "epoch": "'e1'",
+              "name": "SecretEpoch",
+              "ordinal": 2,
+              "root": "~root1",
+              "rule": "Start_Epoch1",
+              "shown": "SecretEpoch( ~sid, 'e1', 'v1', ~root1 )",
+              "sid": "~sid",
+              "version": "'v1'"
+            },
+            {
+              "args": [
+                "~sid",
+                "'e2'",
+                "'v2'",
+                "~root2"
+              ],
+              "category": "actions",
+              "epoch": "'e2'",
+              "name": "SecretEpoch",
+              "ordinal": 8,
+              "root": "~root2",
+              "rule": "Start_Epoch2",
+              "shown": "SecretEpoch( ~sid, 'e2', 'v2', ~root2 )",
+              "sid": "~sid",
+              "version": "'v2'"
+            }
+          ],
+          "setups": [
+            {
+              "args": [
+                "~sid",
+                "'gm'"
+              ],
+              "category": "actions",
+              "name": "Setup",
+              "ordinal": 4,
+              "rule": "Setup",
+              "shown": "Setup( ~sid, 'gm' )"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "schema_version": 2,
+  "scientific_state": "MONO_SESSION_CAUSALITY_EXTRACTED_FOR_SEMANTIC_CLASSIFICATION",
+  "step": "STEP7D2B_SESSION_BOUND_MONOSESSION_SECRECY_CAUSALITY_AUDIT"
+}

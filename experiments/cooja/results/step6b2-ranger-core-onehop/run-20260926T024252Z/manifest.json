@@ -1,0 +1,18 @@
+{
+  "contiki_ng_commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+  "cooja_commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4",
+  "docker_image": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+  "experiment": "RANGER-COOJA-CORE-ONEHOP",
+  "metrics": "experiments/cooja/results/step6b2-ranger-core-onehop/run-20260926T024252Z/metrics.json",
+  "metrics_sha256": "a292d02cc0fd5892460f8bc399921530d6aedd252d5eb5d9d84ac596cc2a1110",
+  "random_seed": 20260925,
+  "raw_log": "experiments/cooja/results/step6b2-ranger-core-onehop/run-20260926T024252Z/raw.log",
+  "raw_log_sha256": "df66e989ef0f49236b1ce96ed56fd965e8e220ca42d2418916389a0d22799083",
+  "result": "FAIL",
+  "run_id": "run-20260926T024252Z",
+  "scenario": "experiments/cooja/scenarios/generated/ranger-core-5nodes-onehop.csc",
+  "scenario_manifest_sha256": "b93fb44ac8495e982b27daa962ed30542f22d0cd5b05fb2acd0aa25bc7cb5c45",
+  "scenario_sha256": "ea72cea1e6e7db54564260f1f1cc6cee48b64fe00dc89d25349ae6f7d7f38788",
+  "schema_version": 1,
+  "toolchain_lock_sha256": "9584e924c1a5e47b1150a951c8fd1a599bcd51b42601f24178b3bb8318b9a9b1"
+}

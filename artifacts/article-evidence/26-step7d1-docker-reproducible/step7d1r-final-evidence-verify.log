@@ -1,0 +1,17 @@
+artifacts/article-evidence/26-step7d1-docker-reproducible/core-ci.log: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/docker-compose-version.txt: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/docker-version.txt: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/model-static-audit.json: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/ranger-image-inspect.json: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/repository-revision.json: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/reproducibility-inputs.sha256: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/run-sh.sha256: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-final-readiness.json: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/step7d1r-full-debug.log: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-image-build.log: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-image-id.txt: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-image-inspect.json: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-precompute.log: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-proof-summary.json: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-prove.log: OK
+artifacts/article-evidence/26-step7d1-docker-reproducible/tamarin-runtime-offline.log: OK

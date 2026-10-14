@@ -1,0 +1,2179 @@
+theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity
+
+begin
+
+builtins: symmetric-encryption
+
+
+/*
+ * STEP 7D.2-B-SR
+ *
+ * Same four-member implemented-LKH reference instance as 7D.2-B,
+ * but every protocol state is bound to a fresh public session/group
+ * identifier sid.
+ *
+ * The repair addresses a confirmed modeling gap in V1:
+ * independent Setup instances could previously contribute persistent
+ * key facts to the same constant epoch names 'e1' and 'e2'.
+ *
+ * sid is public; it is an instance discriminator, not a secret.
+ */
+
+
+/********************************************************************
+ * SETUP
+ ********************************************************************/
+
+rule Setup:
+  [
+      Fr(~sid),
+      Fr(~k4),
+      Fr(~k5),
+      Fr(~k6),
+      Fr(~k7),
+      Fr(~k2v0),
+      Fr(~k3v0),
+      Fr(~root0)
+  ]
+  --[
+      Setup(~sid,'gm'),
+
+      EpochRoot(
+          ~sid,
+          'e0',
+          'v0',
+          ~root0
+      )
+    ]->
+  [
+      !GroupContext(
+          ~sid,
+          'gm',
+          'm1',
+          'm2',
+          'm3',
+          'm4'
+      ),
+
+      !Parent(~sid,'n4','n2'),
+      !Parent(~sid,'n5','n2'),
+      !Parent(~sid,'n6','n3'),
+      !Parent(~sid,'n7','n3'),
+      !Parent(~sid,'n2','n1'),
+      !Parent(~sid,'n3','n1'),
+
+      !MemberLeaf(~sid,'m1','n4'),
+      !MemberLeaf(~sid,'m2','n5'),
+      !MemberLeaf(~sid,'m3','n6'),
+      !MemberLeaf(~sid,'m4','n7'),
+
+      !M1Base(
+          ~sid,
+          ~k4,
+          ~k2v0,
+          ~root0
+      ),
+
+      !M2Base(
+          ~sid,
+          ~k5,
+          ~k2v0,
+          ~root0
+      ),
+
+      !M3Base(
+          ~sid,
+          ~k6,
+          ~k3v0,
+          ~root0
+      ),
+
+      !M4Base(
+          ~sid,
+          ~k7,
+          ~k3v0,
+          ~root0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm1',
+          'n4',
+          'v0',
+          ~k4
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm1',
+          'n2',
+          'v0',
+          ~k2v0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm1',
+          'n1',
+          'v0',
+          ~root0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm2',
+          'n5',
+          'v0',
+          ~k5
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm2',
+          'n2',
+          'v0',
+          ~k2v0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm2',
+          'n1',
+          'v0',
+          ~root0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm3',
+          'n6',
+          'v0',
+          ~k6
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm3',
+          'n3',
+          'v0',
+          ~k3v0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm3',
+          'n1',
+          'v0',
+          ~root0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm4',
+          'n7',
+          'v0',
+          ~k7
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm4',
+          'n3',
+          'v0',
+          ~k3v0
+      ),
+
+      !OwnsKey(
+          ~sid,
+          'm4',
+          'n1',
+          'v0',
+          ~root0
+      ),
+
+      !EpochRootKey(
+          ~sid,
+          'e0',
+          'v0',
+          ~root0
+      ),
+
+      Stage(
+          ~sid,
+          's0'
+      ),
+
+      Out(~sid)
+  ]
+
+
+/********************************************************************
+ * EPOCH 1
+ ********************************************************************/
+
+rule Start_Epoch1:
+  [
+      Stage(
+          sid,
+          's0'
+      ),
+
+      !M1Base(
+          sid,
+          k4,
+          k2v0,
+          root0
+      ),
+
+      !M3Base(
+          sid,
+          k6,
+          k3v0,
+          root0
+      ),
+
+      Fr(~k3v1),
+      Fr(~root1)
+  ]
+  --[
+      RekeyStarted(
+          sid,
+          'e1'
+      ),
+
+      NextEpoch(
+          sid,
+          'e0',
+          'e1'
+      ),
+
+      AuthorizedAt(
+          sid,
+          'm1',
+          'e1'
+      ),
+
+      AuthorizedAt(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      AuthorizedAt(
+          sid,
+          'm3',
+          'e1'
+      ),
+
+      RevokedAt(
+          sid,
+          'm4',
+          'e1'
+      ),
+
+      KeyVersion(
+          sid,
+          'n3',
+          'v1',
+          'e1'
+      ),
+
+      KeyVersion(
+          sid,
+          'n1',
+          'v1',
+          'e1'
+      ),
+
+      EpochRoot(
+          sid,
+          'e1',
+          'v1',
+          ~root1
+      ),
+
+      SecretEpoch(
+          sid,
+          'e1',
+          'v1',
+          ~root1
+      ),
+
+      LkhUpdate(
+          sid,
+          'e1',
+          'n3',
+          'v1',
+          'n6',
+          'v0'
+      ),
+
+      LkhRecipient(
+          sid,
+          'e1',
+          'n3',
+          'v1',
+          'm3'
+      ),
+
+      LkhUpdate(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'n2',
+          'v0'
+      ),
+
+      LkhRecipient(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'm1'
+      ),
+
+      LkhRecipient(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'm2'
+      ),
+
+      LkhUpdate(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'n3',
+          'v1'
+      ),
+
+      LkhRecipient(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'm3'
+      )
+    ]->
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm1',
+          'e1'
+      ),
+
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      !AuthorizedEpoch(
+          sid,
+          'm3',
+          'e1'
+      ),
+
+      !RevokedEpoch(
+          sid,
+          'm4',
+          'e1'
+      ),
+
+      !KeyMaterial(
+          sid,
+          'n3',
+          'v1',
+          'e1',
+          ~k3v1
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e1',
+          'v1',
+          ~root1
+      ),
+
+      !EpochCipher(
+          sid,
+          'e1',
+          'n3',
+          'v1',
+          'n6',
+          'v0',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n3',
+                  'v1',
+                  ~k3v1
+              >,
+              k6
+          )
+      ),
+
+      !EpochCipher(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'n2',
+          'v0',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              k2v0
+          )
+      ),
+
+      !EpochCipher(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'n3',
+          'v1',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              ~k3v1
+          )
+      ),
+
+      !ManagerEpoch1(
+          sid,
+          ~k3v1,
+          ~root1
+      ),
+
+      Stage(
+          sid,
+          's1'
+      ),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n3',
+                  'v1',
+                  ~k3v1
+              >,
+              k6
+          )
+      ),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              k2v0
+          )
+      ),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  ~root1
+              >,
+              ~k3v1
+          )
+      )
+  ]
+
+
+rule M3_Derive_N3_V1:
+  [
+      !M3Base(
+          sid,
+          k6,
+          k3v0,
+          root0
+      ),
+
+      !KeyMaterial(
+          sid,
+          'n3',
+          'v1',
+          'e1',
+          k3v1
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n3',
+                  'v1',
+                  k3v1
+              >,
+              k6
+          )
+      )
+  ]
+  --[
+      DerivedKey(
+          sid,
+          'm3',
+          'n3',
+          'v1',
+          'e1'
+      )
+    ]->
+  [
+      !M3BranchE1(
+          sid,
+          k3v1
+      ),
+
+      !OwnsKey(
+          sid,
+          'm3',
+          'n3',
+          'v1',
+          k3v1
+      )
+  ]
+
+
+rule Accept_E1_M1:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm1',
+          'e1'
+      ),
+
+      !M1Base(
+          sid,
+          k4,
+          k2v0,
+          root0
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e1',
+          'v1',
+          root1
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k2v0
+          )
+      )
+  ]
+  --[
+      Accept(
+          sid,
+          'm1',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      AcceptCipher(
+          sid,
+          'm1',
+          'e1',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k2v0
+          )
+      )
+    ]->
+  [
+      !Accepted(
+          sid,
+          'm1',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      !OwnsKey(
+          sid,
+          'm1',
+          'n1',
+          'v1',
+          root1
+      )
+  ]
+
+
+rule Accept_E1_M2:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      !M2Base(
+          sid,
+          k5,
+          k2v0,
+          root0
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e1',
+          'v1',
+          root1
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k2v0
+          )
+      )
+  ]
+  --[
+      Accept(
+          sid,
+          'm2',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      AcceptCipher(
+          sid,
+          'm2',
+          'e1',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k2v0
+          )
+      )
+    ]->
+  [
+      !Accepted(
+          sid,
+          'm2',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      !OwnsKey(
+          sid,
+          'm2',
+          'n1',
+          'v1',
+          root1
+      )
+  ]
+
+
+rule Accept_E1_M3:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm3',
+          'e1'
+      ),
+
+      !M3BranchE1(
+          sid,
+          k3v1
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e1',
+          'v1',
+          root1
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k3v1
+          )
+      )
+  ]
+  --[
+      Accept(
+          sid,
+          'm3',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      AcceptCipher(
+          sid,
+          'm3',
+          'e1',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k3v1
+          )
+      )
+    ]->
+  [
+      !Accepted(
+          sid,
+          'm3',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      !OwnsKey(
+          sid,
+          'm3',
+          'n1',
+          'v1',
+          root1
+      )
+  ]
+
+
+/********************************************************************
+ * RECOVERY EPOCH 1
+ ********************************************************************/
+
+rule Recovery_Request_E1_M2:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      !EpochCipher(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'n2',
+          'v0',
+          cipher
+      )
+  ]
+  --[
+      RecoveryRequest(
+          sid,
+          'm2',
+          'e1'
+      )
+    ]->
+  [
+      Recovering(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      Out(
+          <
+              'recovery-request',
+              sid,
+              'm2',
+              'e1'
+          >
+      )
+  ]
+
+
+rule Recovery_Response_E1_M1:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm1',
+          'e1'
+      ),
+
+      !Accepted(
+          sid,
+          'm1',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      !EpochCipher(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'n2',
+          'v0',
+          cipher
+      ),
+
+      In(
+          <
+              'recovery-request',
+              sid,
+              'm2',
+              'e1'
+          >
+      )
+  ]
+  --[
+      RecoveryResponse(
+          sid,
+          'm1',
+          'm2',
+          'e1'
+      )
+    ]->
+  [
+      !RecoveryResponseCipher(
+          sid,
+          'e1',
+          cipher
+      ),
+
+      Out(cipher)
+  ]
+
+
+rule Recovery_Accept_E1_M2:
+  [
+      Recovering(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      !M2Base(
+          sid,
+          k5,
+          k2v0,
+          root0
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e1',
+          'v1',
+          root1
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k2v0
+          )
+      )
+  ]
+  --[
+      Accept(
+          sid,
+          'm2',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      RecoveryAccept(
+          sid,
+          'm2',
+          'e1'
+      ),
+
+      RecoveryAcceptCipher(
+          sid,
+          'm2',
+          'e1',
+          senc(
+              <
+                  'lkh-update',
+                  'e1',
+                  'n1',
+                  'v1',
+                  root1
+              >,
+              k2v0
+          )
+      )
+    ]->
+  [
+      !Accepted(
+          sid,
+          'm2',
+          'e1',
+          'v1',
+          root1
+      ),
+
+      !OwnsKey(
+          sid,
+          'm2',
+          'n1',
+          'v1',
+          root1
+      )
+  ]
+
+
+/********************************************************************
+ * EPOCH 2
+ ********************************************************************/
+
+rule Start_Epoch2:
+  [
+      Stage(
+          sid,
+          's1'
+      ),
+
+      !M1Base(
+          sid,
+          k4,
+          k2v0,
+          root0
+      ),
+
+      Fr(~root2)
+  ]
+  --[
+      RekeyStarted(
+          sid,
+          'e2'
+      ),
+
+      NextEpoch(
+          sid,
+          'e1',
+          'e2'
+      ),
+
+      AuthorizedAt(
+          sid,
+          'm1',
+          'e2'
+      ),
+
+      AuthorizedAt(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      RevokedAt(
+          sid,
+          'm3',
+          'e2'
+      ),
+
+      KeyVersion(
+          sid,
+          'n1',
+          'v2',
+          'e2'
+      ),
+
+      EpochRoot(
+          sid,
+          'e2',
+          'v2',
+          ~root2
+      ),
+
+      SecretEpoch(
+          sid,
+          'e2',
+          'v2',
+          ~root2
+      ),
+
+      LkhUpdate(
+          sid,
+          'e2',
+          'n1',
+          'v2',
+          'n2',
+          'v0'
+      ),
+
+      LkhRecipient(
+          sid,
+          'e2',
+          'n1',
+          'v2',
+          'm1'
+      ),
+
+      LkhRecipient(
+          sid,
+          'e2',
+          'n1',
+          'v2',
+          'm2'
+      )
+    ]->
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm1',
+          'e2'
+      ),
+
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      !RevokedEpoch(
+          sid,
+          'm3',
+          'e2'
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e2',
+          'v2',
+          ~root2
+      ),
+
+      !EpochCipher(
+          sid,
+          'e2',
+          'n1',
+          'v2',
+          'n2',
+          'v0',
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  ~root2
+              >,
+              k2v0
+          )
+      ),
+
+      !ManagerEpoch2(
+          sid,
+          ~root2
+      ),
+
+      Stage(
+          sid,
+          's2'
+      ),
+
+      Out(
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  ~root2
+              >,
+              k2v0
+          )
+      )
+  ]
+
+
+rule Accept_E2_M1:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm1',
+          'e2'
+      ),
+
+      !M1Base(
+          sid,
+          k4,
+          k2v0,
+          root0
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e2',
+          'v2',
+          root2
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  root2
+              >,
+              k2v0
+          )
+      )
+  ]
+  --[
+      Accept(
+          sid,
+          'm1',
+          'e2',
+          'v2',
+          root2
+      ),
+
+      AcceptCipher(
+          sid,
+          'm1',
+          'e2',
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  root2
+              >,
+              k2v0
+          )
+      )
+    ]->
+  [
+      !Accepted(
+          sid,
+          'm1',
+          'e2',
+          'v2',
+          root2
+      ),
+
+      !OwnsKey(
+          sid,
+          'm1',
+          'n1',
+          'v2',
+          root2
+      )
+  ]
+
+
+rule Accept_E2_M2:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      !M2Base(
+          sid,
+          k5,
+          k2v0,
+          root0
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e2',
+          'v2',
+          root2
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  root2
+              >,
+              k2v0
+          )
+      )
+  ]
+  --[
+      Accept(
+          sid,
+          'm2',
+          'e2',
+          'v2',
+          root2
+      ),
+
+      AcceptCipher(
+          sid,
+          'm2',
+          'e2',
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  root2
+              >,
+              k2v0
+          )
+      )
+    ]->
+  [
+      !Accepted(
+          sid,
+          'm2',
+          'e2',
+          'v2',
+          root2
+      ),
+
+      !OwnsKey(
+          sid,
+          'm2',
+          'n1',
+          'v2',
+          root2
+      )
+  ]
+
+
+/********************************************************************
+ * RECOVERY EPOCH 2
+ ********************************************************************/
+
+rule Recovery_Request_E2_M2:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      !EpochCipher(
+          sid,
+          'e2',
+          'n1',
+          'v2',
+          'n2',
+          'v0',
+          cipher
+      )
+  ]
+  --[
+      RecoveryRequest(
+          sid,
+          'm2',
+          'e2'
+      )
+    ]->
+  [
+      Recovering(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      Out(
+          <
+              'recovery-request',
+              sid,
+              'm2',
+              'e2'
+          >
+      )
+  ]
+
+
+rule Recovery_Response_E2_M1:
+  [
+      !AuthorizedEpoch(
+          sid,
+          'm1',
+          'e2'
+      ),
+
+      !Accepted(
+          sid,
+          'm1',
+          'e2',
+          'v2',
+          root2
+      ),
+
+      !EpochCipher(
+          sid,
+          'e2',
+          'n1',
+          'v2',
+          'n2',
+          'v0',
+          cipher
+      ),
+
+      In(
+          <
+              'recovery-request',
+              sid,
+              'm2',
+              'e2'
+          >
+      )
+  ]
+  --[
+      RecoveryResponse(
+          sid,
+          'm1',
+          'm2',
+          'e2'
+      )
+    ]->
+  [
+      !RecoveryResponseCipher(
+          sid,
+          'e2',
+          cipher
+      ),
+
+      Out(cipher)
+  ]
+
+
+rule Recovery_Accept_E2_M2:
+  [
+      Recovering(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      !AuthorizedEpoch(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      !M2Base(
+          sid,
+          k5,
+          k2v0,
+          root0
+      ),
+
+      !EpochRootKey(
+          sid,
+          'e2',
+          'v2',
+          root2
+      ),
+
+      In(
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  root2
+              >,
+              k2v0
+          )
+      )
+  ]
+  --[
+      Accept(
+          sid,
+          'm2',
+          'e2',
+          'v2',
+          root2
+      ),
+
+      RecoveryAccept(
+          sid,
+          'm2',
+          'e2'
+      ),
+
+      RecoveryAcceptCipher(
+          sid,
+          'm2',
+          'e2',
+          senc(
+              <
+                  'lkh-update',
+                  'e2',
+                  'n1',
+                  'v2',
+                  root2
+              >,
+              k2v0
+          )
+      )
+    ]->
+  [
+      !Accepted(
+          sid,
+          'm2',
+          'e2',
+          'v2',
+          root2
+      ),
+
+      !OwnsKey(
+          sid,
+          'm2',
+          'n1',
+          'v2',
+          root2
+      )
+  ]
+
+
+/********************************************************************
+ * REPLAY
+ ********************************************************************/
+
+rule Replay_E1_Root_Cipher_At_E2:
+  [
+      !EpochRootKey(
+          sid,
+          'e2',
+          'v2',
+          root2
+      ),
+
+      !EpochCipher(
+          sid,
+          'e1',
+          'n1',
+          'v1',
+          'n2',
+          'v0',
+          oldcipher
+      )
+  ]
+  --[
+      ReplayOldCipher(
+          sid,
+          'e1',
+          'e2',
+          oldcipher
+      )
+    ]->
+  [
+      Out(oldcipher)
+  ]
+
+
+rule Replay_E1_Recovery_Response_At_E2:
+  [
+      !EpochRootKey(
+          sid,
+          'e2',
+          'v2',
+          root2
+      ),
+
+      !RecoveryResponseCipher(
+          sid,
+          'e1',
+          oldcipher
+      )
+  ]
+  --[
+      ReplayOldRecoveryResponse(
+          sid,
+          'e1',
+          'e2',
+          oldcipher
+      )
+    ]->
+  [
+      Out(oldcipher)
+  ]
+
+
+/********************************************************************
+ * COMPROMISE
+ ********************************************************************/
+
+rule Compromise_M1:
+  [
+      !M1Base(
+          sid,
+          k4,
+          k2v0,
+          root0
+      )
+  ]
+  --[
+      CompromiseMember(
+          sid,
+          'm1'
+      )
+    ]->
+  [
+      Out(k4),
+      Out(k2v0),
+      Out(root0)
+  ]
+
+
+rule Compromise_M2:
+  [
+      !M2Base(
+          sid,
+          k5,
+          k2v0,
+          root0
+      )
+  ]
+  --[
+      CompromiseMember(
+          sid,
+          'm2'
+      )
+    ]->
+  [
+      Out(k5),
+      Out(k2v0),
+      Out(root0)
+  ]
+
+
+rule Compromise_M3:
+  [
+      !M3Base(
+          sid,
+          k6,
+          k3v0,
+          root0
+      )
+  ]
+  --[
+      CompromiseMember(
+          sid,
+          'm3'
+      )
+    ]->
+  [
+      Out(k6),
+      Out(k3v0),
+      Out(root0)
+  ]
+
+
+rule Compromise_M4:
+  [
+      !M4Base(
+          sid,
+          k7,
+          k3v0,
+          root0
+      )
+  ]
+  --[
+      CompromiseMember(
+          sid,
+          'm4'
+      )
+    ]->
+  [
+      Out(k7),
+      Out(k3v0),
+      Out(root0)
+  ]
+
+
+rule Compromise_GM_E1:
+  [
+      !ManagerEpoch1(
+          sid,
+          k3v1,
+          root1
+      )
+  ]
+  --[
+      CompromiseManager(
+          sid,
+          'e1'
+      )
+    ]->
+  [
+      Out(k3v1),
+      Out(root1)
+  ]
+
+
+rule Compromise_GM_E2:
+  [
+      !ManagerEpoch2(
+          sid,
+          root2
+      )
+  ]
+  --[
+      CompromiseManager(
+          sid,
+          'e2'
+      )
+    ]->
+  [
+      Out(root2)
+  ]
+
+
+/********************************************************************
+ * OLD-KEY LEAKS
+ ********************************************************************/
+
+rule Leak_M4_Old_Keys_After_E1:
+  [
+      !RevokedEpoch(
+          sid,
+          'm4',
+          'e1'
+      ),
+
+      !M4Base(
+          sid,
+          k7,
+          k3v0,
+          root0
+      )
+  ]
+  --[
+      OldKeyLeak(
+          sid,
+          'm4',
+          'e1'
+      )
+    ]->
+  [
+      Out(k7),
+      Out(k3v0),
+      Out(root0)
+  ]
+
+
+rule Leak_M3_Old_Keys_After_E2:
+  [
+      !RevokedEpoch(
+          sid,
+          'm3',
+          'e2'
+      ),
+
+      !M3Base(
+          sid,
+          k6,
+          k3v0,
+          root0
+      ),
+
+      !M3BranchE1(
+          sid,
+          k3v1
+      ),
+
+      !Accepted(
+          sid,
+          'm3',
+          'e1',
+          'v1',
+          root1
+      )
+  ]
+  --[
+      OldKeyLeak(
+          sid,
+          'm3',
+          'e2'
+      )
+    ]->
+  [
+      Out(k6),
+      Out(k3v0),
+      Out(root0),
+      Out(k3v1),
+      Out(root1)
+  ]
+
+
+/********************************************************************
+ * 16 ORIGINAL STEP7D2-B LEMMAS — SESSION BOUND
+ ********************************************************************/
+
+lemma executable_first_lkh_rekey:
+  exists-trace
+  "
+    Ex sid root #i.
+      RekeyStarted(sid,'e1') @ i
+    & EpochRoot(sid,'e1','v1',root) @ i
+  "
+
+
+lemma executable_second_lkh_rekey:
+  exists-trace
+  "
+    Ex sid root1 root2 #i #j.
+      EpochRoot(sid,'e1','v1',root1) @ i
+    & EpochRoot(sid,'e2','v2',root2) @ j
+    & i < j
+  "
+
+
+lemma executable_same_epoch_recovery_after_lkh_rekey:
+  exists-trace
+  "
+    Ex sid #q #r #a.
+      RecoveryRequest(sid,'m2','e1') @ q
+    & RecoveryResponse(sid,'m1','m2','e1') @ r
+    & RecoveryAccept(sid,'m2','e1') @ a
+    & q < r
+    & r < a
+  "
+
+
+lemma executable_old_cipher_replay:
+  exists-trace
+  "
+    Ex sid c #i #r.
+      RekeyStarted(sid,'e2') @ i
+    & ReplayOldCipher(sid,'e1','e2',c) @ r
+    & i < r
+  "
+
+
+lemma second_epoch_follows_first:
+  "
+    All sid #j.
+      RekeyStarted(sid,'e2') @ j
+      ==>
+      (Ex #i.
+         RekeyStarted(sid,'e1') @ i
+       & NextEpoch(sid,'e1','e2') @ j
+       & i < j)
+  "
+
+
+lemma revoked_member_excluded_from_new_epoch:
+  "
+    All sid m e v root #r #a.
+      RevokedAt(sid,m,e) @ r
+    & Accept(sid,m,e,v,root) @ a
+      ==> F
+  "
+
+
+lemma survivor_acceptance_has_lkh_update_chain:
+  "
+    All sid m e v root #a.
+      Accept(sid,m,e,v,root) @ a
+      ==>
+      (Ex wrapper wrapperVersion #u.
+         LkhUpdate(
+             sid,
+             e,
+             'n1',
+             v,
+             wrapper,
+             wrapperVersion
+         ) @ u
+       & LkhRecipient(
+             sid,
+             e,
+             'n1',
+             v,
+             m
+         ) @ u
+       & u < a)
+  "
+
+
+lemma m3_acceptance_requires_branch_update:
+  "
+    All sid root #a.
+      Accept(
+          sid,
+          'm3',
+          'e1',
+          'v1',
+          root
+      ) @ a
+      ==>
+      (Ex #d.
+         DerivedKey(
+             sid,
+             'm3',
+             'n3',
+             'v1',
+             'e1'
+         ) @ d
+       & d < a)
+  "
+
+
+lemma acceptance_matches_current_root_version:
+  "
+    All sid m e v root #a.
+      Accept(sid,m,e,v,root) @ a
+      ==>
+      (Ex #r.
+         EpochRoot(sid,e,v,root) @ r
+       & r < a)
+  "
+
+
+lemma replay_old_capsule_cannot_accept_new_epoch:
+  "
+    All sid m c #r #a.
+      ReplayOldCipher(
+          sid,
+          'e1',
+          'e2',
+          c
+      ) @ r
+    & AcceptCipher(
+          sid,
+          m,
+          'e2',
+          c
+      ) @ a
+      ==> F
+  "
+
+
+lemma replay_old_recovery_response_cannot_accept_new_epoch:
+  "
+    All sid m c #r #a.
+      ReplayOldRecoveryResponse(
+          sid,
+          'e1',
+          'e2',
+          c
+      ) @ r
+    & RecoveryAcceptCipher(
+          sid,
+          m,
+          'e2',
+          c
+      ) @ a
+      ==> F
+  "
+
+
+lemma root_keys_fresh_across_epochs:
+  "
+    All sid root1 root2 #i #j.
+      EpochRoot(
+          sid,
+          'e1',
+          'v1',
+          root1
+      ) @ i
+    & EpochRoot(
+          sid,
+          'e2',
+          'v2',
+          root2
+      ) @ j
+      ==>
+      not (root1 = root2)
+  "
+
+
+/********************************************************************
+ * TEMPORALLY SCOPED SECURITY CONTRACT
+ *
+ * The previous two diagnostic secrecy lemmas are intentionally
+ * preserved in the V2 evidence package but are not certification
+ * properties here.
+ *
+ * They were falsified because historical root1 is deliberately
+ * exposed when m3 -- a legitimate e1 holder -- is later revoked
+ * in e2.
+ *
+ * The properties below separate:
+ *
+ *   (1) confidentiality of a newly generated root against the
+ *       member revoked at that rekey,
+ *
+ *   (2) later exposure of a historical key by a former legitimate
+ *       holder.
+ ********************************************************************/
+
+
+lemma epoch1_root_confidential_against_m4_revoked_state:
+  "
+    All sid root #s #l #k.
+      SecretEpoch(
+          sid,
+          'e1',
+          'v1',
+          root
+      ) @ s
+
+    & OldKeyLeak(
+          sid,
+          'm4',
+          'e1'
+      ) @ l
+
+    & l < k
+
+    & K(root) @ k
+
+      ==>
+
+      (
+        /*
+         * A later leak of m3 is an explicit exposure
+         * of a legitimate e1 holder of root1.
+         */
+        (Ex #x.
+           OldKeyLeak(
+               sid,
+               'm3',
+               'e2'
+           ) @ x
+         & x < k)
+
+        |
+
+        /*
+         * Or a member authorized in e1 was compromised.
+         */
+        (Ex m #a #c.
+           AuthorizedAt(
+               sid,
+               m,
+               'e1'
+           ) @ a
+
+         & CompromiseMember(
+               sid,
+               m
+           ) @ c
+
+         & c < k)
+
+        |
+
+        /*
+         * Or the e1 manager state was compromised.
+         */
+        (Ex #c.
+           CompromiseManager(
+               sid,
+               'e1'
+           ) @ c
+
+         & c < k)
+      )
+  "
+
+
+lemma epoch2_root_confidential_against_m3_revoked_state:
+  "
+    All sid root #s #l #k.
+      SecretEpoch(
+          sid,
+          'e2',
+          'v2',
+          root
+      ) @ s
+
+    & OldKeyLeak(
+          sid,
+          'm3',
+          'e2'
+      ) @ l
+
+    & l < k
+
+    & K(root) @ k
+
+      ==>
+
+      (
+        /*
+         * Only e2 survivors may legitimately hold
+         * material protecting root2.
+         */
+        (Ex m #a #c.
+           AuthorizedAt(
+               sid,
+               m,
+               'e2'
+           ) @ a
+
+         & CompromiseMember(
+               sid,
+               m
+           ) @ c
+
+         & c < k)
+
+        |
+
+        /*
+         * Or the e2 manager state was compromised.
+         */
+        (Ex #c.
+           CompromiseManager(
+               sid,
+               'e2'
+           ) @ c
+
+         & c < k)
+      )
+  "
+
+
+lemma historical_e1_root_exposure_after_later_holder_leak:
+  exists-trace
+  "
+    Ex sid root #e1 #l #k.
+      SecretEpoch(
+          sid,
+          'e1',
+          'v1',
+          root
+      ) @ e1
+
+    & AuthorizedAt(
+          sid,
+          'm3',
+          'e1'
+      ) @ e1
+
+    & OldKeyLeak(
+          sid,
+          'm3',
+          'e2'
+      ) @ l
+
+    & K(root) @ k
+
+    & e1 < l
+    & l < k
+  "
+
+
+lemma recovery_requester_authorized_in_same_epoch:
+  "
+    All sid requester e #r.
+      RecoveryRequest(
+          sid,
+          requester,
+          e
+      ) @ r
+      ==>
+      (Ex #a.
+         AuthorizedAt(
+             sid,
+             requester,
+             e
+         ) @ a
+       & a < r)
+  "
+
+
+lemma recovery_helper_authorized_in_same_epoch:
+  "
+    All sid helper requester e #r.
+      RecoveryResponse(
+          sid,
+          helper,
+          requester,
+          e
+      ) @ r
+      ==>
+      (Ex #a.
+         AuthorizedAt(
+             sid,
+             helper,
+             e
+         ) @ a
+       & a < r)
+  "
+
+
+end

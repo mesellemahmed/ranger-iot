@@ -1,0 +1,24 @@
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/grid/adaptive-v2/campaign-20261003T204705Z-pilot/cases/n5-posttx03000-seed001901/scenario.csc
+n5-posttx03000-seed001901 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 1901
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/grid/adaptive-v2/campaign-20261003T204705Z-pilot/cases/n5-posttx02000-seed001901/scenario.csc
+n5-posttx02000-seed001901 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 1901
+
+Campaign : experiments/cooja/results/step7b3-cooja-topology/20261003T144752/grid/adaptive-v2/campaign-20261003T204705Z-pilot
+{
+  "bootstrap_fail": 0,
+  "campaign_id": "campaign-20261003T204705Z-pilot",
+  "case_count": 2,
+  "infra_fail": 0,
+  "mode": "pilot",
+  "rekey_complete": 2,
+  "rekey_incomplete": 0,
+  "safety_fail": 0,
+  "schema_version": 1,
+  "validated": 2
+}
+
+case_id,n,target_success_ratio_tx,simulation_seed,script_runner_pass,outcome,bootstrap_complete,registered_count,radio_switch_applied,radio_switch_time,radio_success_ratio_tx_before,radio_success_ratio_tx_after,first_coded_send_time,switch_before_first_coded_send,authorized_reconstructed_count,authorized_reconstruction_ratio,revoked_reconstructed,revoked_reject_observed,report_count,observed_simulation_seed
+n5-posttx03000-seed001901,5,0.3,1901,True,REKEY_COMPLETE,True,7,True,53962000,1,0.3,54963000,True,6,1,False,False,3,1901
+n5-posttx02000-seed001901,5,0.2,1901,True,REKEY_COMPLETE,True,7,True,53962000,1,0.2,54963000,True,6,1,False,True,0,1901

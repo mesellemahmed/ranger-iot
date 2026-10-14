@@ -1,0 +1,50 @@
+{
+  "coding_n": [
+    5
+  ],
+  "confirmatory_cases": 480,
+  "confirmatory_seeds": [
+    1901,
+    2117,
+    6212,
+    8530,
+    5326,
+    4518,
+    6021,
+    1381,
+    2579,
+    6704,
+    5024,
+    3694,
+    8703,
+    2176,
+    6594,
+    8303,
+    8470,
+    2146,
+    1108,
+    5659
+  ],
+  "layouts": [
+    "line",
+    "balanced-tree",
+    "grid",
+    "compact-onehop"
+  ],
+  "pilot_cases": 24,
+  "pilot_seed": [
+    1901
+  ],
+  "protocols": [
+    "static",
+    "recovery",
+    "adaptive-v2"
+  ],
+  "scale_scope": "Fixed current embedded Cooja implementation: 8 motes total, GM node 1, members 2..8, member 8 revoked.",
+  "schema_version": 1,
+  "stopping_rule": "Pilot is a harness/bootstrap validity gate only. No outcome-based seed expansion or significance chasing is permitted.",
+  "target_success_ratio_tx": [
+    0.3,
+    0.2
+  ]
+}

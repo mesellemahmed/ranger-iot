@@ -1,0 +1,44 @@
+schema_version: 1
+campaign_id: step5c-ranger-recovery-suite-smoke
+
+protocols:
+  - skdc
+  - lkh-unicast
+  - lkh-flood
+  - ranger-static
+  - ranger-recovery
+
+topologies:
+  - line
+  - star
+  - balanced-tree
+  - grid
+
+member_counts:
+  - 4
+  - 8
+  - 16
+
+packet_losses:
+  - 0.0
+  - 0.1
+  - 0.2
+  - 0.3
+
+seeds:
+  - 11
+  - 29
+
+revoked_count: 1
+group_id: 1
+manager_id: 0
+link_delay_us: 10
+payload_bytes: 64
+
+ranger_data_fragments: 3
+ranger_total_fragments: 5
+ranger_capsule_overhead_bytes: 0
+ranger_recovery_rounds: 2
+ranger_recovery_request_bytes: 24
+
+max_events: 1000000

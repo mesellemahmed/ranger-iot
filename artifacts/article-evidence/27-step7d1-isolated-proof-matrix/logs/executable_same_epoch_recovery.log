@@ -1,0 +1,113 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_AuthorizationTransport] Theory loaded
+[Theory RangerIoT_AuthorizationTransport] Theory translated
+[Theory RangerIoT_AuthorizationTransport] Derivation checks started
+[Theory RangerIoT_AuthorizationTransport] Derivation checks ended
+[Theory RangerIoT_AuthorizationTransport] Theory closed
+searching for attacks at depth: 1
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+searching for attacks at depth: 2
+searching for attacks at depth: 3
+searching for attacks at depth: 4
+searching for attacks at depth: 5
+searching for attacks at depth: 6
+searching for attacks at depth: 7
+searching for attacks at depth: 8
+searching for attacks at depth: 9
+attack found at depth: 9
+theory RangerIoT_AuthorizationTransport
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+rule (modulo E) Setup:
+   [ Fr( ~ksurvivor ), Fr( ~krevoked ) ]
+  --[
+  Setup( $GM, $A, $H, $R ), InitiallyAuthorized( $A ),
+  InitiallyAuthorized( $H ), RevokedIdentity( $R )
+  ]->
+   [
+   !SurvivorKey( ~ksurvivor ), !MemberKey( $A, ~ksurvivor ),
+   !MemberKey( $H, ~ksurvivor ), !RevokedOldKey( $R, ~krevoked )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Start_Rekey:
+   [ !SurvivorKey( ksurvivor ), Fr( ~epoch ), Fr( ~groupkey ) ]
+  --[
+  RekeyStarted( ~epoch, ~groupkey ), AuthorizedAt( $A, ~epoch ),
+  AuthorizedAt( $H, ~epoch ), RevokedAt( $R, ~epoch ),
+  SecretEpoch( ~epoch, ~groupkey )
+  ]->
+   [
+   !EpochCipher( ~epoch, ~groupkey,
+                 senc(<'ranger-capsule', ~epoch, ~groupkey>, ksurvivor)
+   ),
+   Stale( $A, ~epoch, ~groupkey ), Stale( $H, ~epoch, ~groupkey ),
+   Out( senc(<'ranger-capsule', ~epoch, ~groupkey>, ksurvivor) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Initial:
+   [
+   Stale( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), AcceptInitial( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Start_Recovery:
+   [ Stale( a, e, gk ) ]
+  --[ RecoveryRequest( a, e ) ]->
+   [ Recovering( a, e, gk ), Out( <'ranger-recovery-request', a, e> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response:
+   [
+   Current( h, e, gk ), !EpochCipher( e, gk, ciphertext ),
+   In( <'ranger-recovery-request', a, e> )
+   ]
+  --[ RecoveryResponse( h, a, e ) ]->
+   [ Current( h, e, gk ), Out( ciphertext ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Recovery:
+   [
+   Recovering( a, e, gk ), !MemberKey( a, k ),
+   In( senc(<'ranger-capsule', e, gk>, k) )
+   ]
+  --[ Accept( a, e, gk ), RecoveryAccept( a, e, gk ) ]->
+   [ Current( a, e, gk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Authorized_Member:
+   [ !MemberKey( a, k ) ] --[ Compromise( a ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_Group_Manager:
+   [ !SurvivorKey( k ) ] --[ CompromiseGM( $GM ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_initial_accept:
+  exists-trace "tamarin-prover: <stdout>: commitBuffer: invalid argument (cannot encode character '\8707')
+

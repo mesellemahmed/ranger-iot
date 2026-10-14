@@ -1,0 +1,25 @@
+{
+  "experiment_id": "step7b1-model-external-validity__ranger_recovery__balanced-tree__n0032__loss0100__seed003694",
+  "group_id": 1,
+  "link_delay_us": 10,
+  "manager_id": 0,
+  "max_events": 10000000,
+  "member_count": 32,
+  "packet_loss": 0.1,
+  "payload_bytes": 64,
+  "protocol": "ranger-recovery",
+  "ranger_adaptive_max_fragments": 5,
+  "ranger_adaptive_nack_bytes": 16,
+  "ranger_adaptive_recovery_rounds": 2,
+  "ranger_capsule_overhead_bytes": 0,
+  "ranger_data_fragments": 3,
+  "ranger_recovery_request_bytes": 24,
+  "ranger_recovery_rounds": 2,
+  "ranger_total_fragments": 5,
+  "revoked_members": [
+    32
+  ],
+  "schema_version": 1,
+  "seed": 3694,
+  "topology": "balanced-tree"
+}

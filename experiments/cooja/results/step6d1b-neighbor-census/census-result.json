@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-RPL-NEIGHBOR-CENSUS",
+  "simulation_seed": 20260928,
+  "summaries": {
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 2,
+    "8": 1
+  },
+  "entries": {
+    "1": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=1 lladdr=0002.0002.0002.0002 ip=fe80::202:2:2:2"
+    ],
+    "2": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=2 lladdr=0001.0001.0001.0001 ip=fe80::201:1:1:1",
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=2 lladdr=0003.0003.0003.0003 ip=fe80::203:3:3:3"
+    ],
+    "3": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=3 lladdr=0002.0002.0002.0002 ip=fe80::202:2:2:2",
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=3 lladdr=0004.0004.0004.0004 ip=fe80::204:4:4:4"
+    ],
+    "4": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=4 lladdr=0003.0003.0003.0003 ip=fe80::203:3:3:3",
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=4 lladdr=0005.0005.0005.0005 ip=fe80::205:5:5:5"
+    ],
+    "5": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=5 lladdr=0006.0006.0006.0006 ip=fe80::206:6:6:6",
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=5 lladdr=0004.0004.0004.0004 ip=fe80::204:4:4:4"
+    ],
+    "6": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=6 lladdr=0007.0007.0007.0007 ip=fe80::207:7:7:7",
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=6 lladdr=0005.0005.0005.0005 ip=fe80::205:5:5:5"
+    ],
+    "7": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=7 lladdr=0006.0006.0006.0006 ip=fe80::206:6:6:6",
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=7 lladdr=0008.0008.0008.0008 ip=fe80::208:8:8:8"
+    ],
+    "8": [
+      "[INFO: RANGER-RPL] RANGER_NEIGHBOR_ENTRY node=8 lladdr=0007.0007.0007.0007 ip=fe80::207:7:7:7"
+    ]
+  },
+  "self_lines": {
+    "1": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=1 lladdr=0001.0001.0001.0001",
+    "2": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=2 lladdr=0002.0002.0002.0002",
+    "3": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=3 lladdr=0003.0003.0003.0003",
+    "4": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=4 lladdr=0004.0004.0004.0004",
+    "5": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=5 lladdr=0005.0005.0005.0005",
+    "6": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=6 lladdr=0006.0006.0006.0006",
+    "7": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=7 lladdr=0007.0007.0007.0007",
+    "8": "[INFO: RANGER-RPL] RANGER_NEIGHBOR_SELF node=8 lladdr=0008.0008.0008.0008"
+  },
+  "finish_time": 180841000
+}

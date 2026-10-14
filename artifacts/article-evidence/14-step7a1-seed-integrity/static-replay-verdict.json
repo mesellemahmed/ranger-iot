@@ -1,0 +1,29 @@
+{
+  "exact_scientific_replay": true,
+  "fields_compared": [
+    "outcome",
+    "bootstrap_complete",
+    "radio_switch_applied",
+    "switch_before_first_coded_send",
+    "authorized_reconstructed_count",
+    "revoked_reconstructed",
+    "observed_simulation_seed"
+  ],
+  "matching_cases": 10,
+  "protocol": "static",
+  "schema_version": 1,
+  "seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "total_cases": 10,
+  "tx": 0.3
+}

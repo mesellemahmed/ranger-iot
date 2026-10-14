@@ -1,0 +1,6 @@
+LKH_TEST_FILES:
+  tests/protocols/test_lkh.py
+  tests/protocols/test_lkh_flood.py
+  tests/protocols/test_lkh_transport.py
+..................                                                       [100%]
+18 passed in 13.97s

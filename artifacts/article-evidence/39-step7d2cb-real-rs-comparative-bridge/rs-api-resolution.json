@@ -1,0 +1,11 @@
+{
+  "all_3_of_5_subsets_validated": true,
+  "decode_pattern": [
+    "fragments"
+  ],
+  "encode_pattern": [
+    "payload"
+  ],
+  "schema_version": 1,
+  "target": "ReedSolomonCodec:instance(params)"
+}

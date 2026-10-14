@@ -1,0 +1,22 @@
+{
+  "case_id": "n4-loss1000-seed000102",
+  "defines": "RANGER_CODING_K=3,RANGER_CODING_N=4,RANGER_LOSS_BP=1000,RANGER_LOSS_SEED=102,RANGER_CAMPAIGN_MODE=1",
+  "expected_mask": 188,
+  "expected_reconstructed_count": 5,
+  "expected_reconstructed_nodes": [
+    2,
+    3,
+    4,
+    5,
+    7
+  ],
+  "fragment_send_opportunities": 28,
+  "k": 3,
+  "loss_bp": 1000,
+  "loss_rate": 0.1,
+  "loss_seed": 102,
+  "n": 4,
+  "planned_fragment_drops": 3,
+  "planned_fragment_sends": 25,
+  "schema_version": 1
+}

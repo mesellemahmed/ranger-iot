@@ -1,0 +1,33 @@
+{
+  "coding": {
+    "data_fragments": 3,
+    "group_id": 1,
+    "model": "ideal-k-of-n",
+    "real_codec_bytes": false,
+    "redundancy_fragments": 2,
+    "total_fragments": 5
+  },
+  "contiki_ng_commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+  "cooja_commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4",
+  "docker_image": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+  "experiment": "RANGER-COOJA-STATIC-CODED-RPL-LINE-8",
+  "metrics": "experiments/cooja/results/step6c1-ranger-static-coded-rpl-line-8nodes/run-20260927T005314Z/metrics.json",
+  "metrics_sha256": "afd35031507b2f2ddcd8987a0049285a7f2e82ae2ac609924a58b2c80c61ae73",
+  "mote_count": 8,
+  "observability_note": "Cooja ScriptRunner observes mote logs internally; headless Gradle stdout may contain TEST OK without forwarding individual mote logs.",
+  "random_seed": 20260926,
+  "raw_log": "experiments/cooja/results/step6c1-ranger-static-coded-rpl-line-8nodes/run-20260927T005314Z/raw.log",
+  "raw_log_sha256": "13634c2bdd56e83ce2ef6ee2a2ad893773e76414537e4854b3e10540e1e6ac47",
+  "result": "PASS",
+  "run_id": "run-20260927T005314Z",
+  "scenario": "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.csc",
+  "scenario_manifest": "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.manifest.json",
+  "scenario_manifest_sha256": "e929a0597d008e39f187b93872a7d3415bc3646ab74303da7f95b51d3df88ca8",
+  "scenario_sha256": "552bec33669397b0add2ea26898f0a0b94c6004c72ca12c51250246234ebf14e",
+  "schema_version": 1,
+  "scientific_scope": "fixed 3-of-5 ideal coded reconstruction over validated multi-hop RPL; functional coding/revocation semantics only; no Reed-Solomon bytes, recovery, adaptation, or cryptographic post-revocation claim",
+  "script_runner_pass": true,
+  "toolchain_lock_sha256": "9584e924c1a5e47b1150a951c8fd1a599bcd51b42601f24178b3bb8318b9a9b1",
+  "topology": "line",
+  "validation_source": "cooja-script-runner"
+}

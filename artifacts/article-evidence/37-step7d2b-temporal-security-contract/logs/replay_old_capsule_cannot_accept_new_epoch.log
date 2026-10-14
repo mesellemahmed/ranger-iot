@@ -1,0 +1,742 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Theory loaded
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Theory translated
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Derivation checks started
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Derivation checks ended
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, sdec/2, senc/2, snd/1
+equations:
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+/* looping facts with injective instances: Stage/2 */
+
+rule (modulo E) Setup:
+   [
+   Fr( ~sid ), Fr( ~k4 ), Fr( ~k5 ), Fr( ~k6 ), Fr( ~k7 ), Fr( ~k2v0 ),
+   Fr( ~k3v0 ), Fr( ~root0 )
+   ]
+  --[ Setup( ~sid, 'gm' ), EpochRoot( ~sid, 'e0', 'v0', ~root0 ) ]->
+   [
+   !GroupContext( ~sid, 'gm', 'm1', 'm2', 'm3', 'm4' ),
+   !Parent( ~sid, 'n4', 'n2' ), !Parent( ~sid, 'n5', 'n2' ),
+   !Parent( ~sid, 'n6', 'n3' ), !Parent( ~sid, 'n7', 'n3' ),
+   !Parent( ~sid, 'n2', 'n1' ), !Parent( ~sid, 'n3', 'n1' ),
+   !MemberLeaf( ~sid, 'm1', 'n4' ), !MemberLeaf( ~sid, 'm2', 'n5' ),
+   !MemberLeaf( ~sid, 'm3', 'n6' ), !MemberLeaf( ~sid, 'm4', 'n7' ),
+   !M1Base( ~sid, ~k4, ~k2v0, ~root0 ), !M2Base( ~sid, ~k5, ~k2v0, ~root0 ),
+   !M3Base( ~sid, ~k6, ~k3v0, ~root0 ), !M4Base( ~sid, ~k7, ~k3v0, ~root0 ),
+   !OwnsKey( ~sid, 'm1', 'n4', 'v0', ~k4 ),
+   !OwnsKey( ~sid, 'm1', 'n2', 'v0', ~k2v0 ),
+   !OwnsKey( ~sid, 'm1', 'n1', 'v0', ~root0 ),
+   !OwnsKey( ~sid, 'm2', 'n5', 'v0', ~k5 ),
+   !OwnsKey( ~sid, 'm2', 'n2', 'v0', ~k2v0 ),
+   !OwnsKey( ~sid, 'm2', 'n1', 'v0', ~root0 ),
+   !OwnsKey( ~sid, 'm3', 'n6', 'v0', ~k6 ),
+   !OwnsKey( ~sid, 'm3', 'n3', 'v0', ~k3v0 ),
+   !OwnsKey( ~sid, 'm3', 'n1', 'v0', ~root0 ),
+   !OwnsKey( ~sid, 'm4', 'n7', 'v0', ~k7 ),
+   !OwnsKey( ~sid, 'm4', 'n3', 'v0', ~k3v0 ),
+   !OwnsKey( ~sid, 'm4', 'n1', 'v0', ~root0 ),
+   !EpochRootKey( ~sid, 'e0', 'v0', ~root0 ), Stage( ~sid, 's0' ),
+   Out( ~sid )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Start_Epoch1:
+   [
+   Stage( sid, 's0' ), !M1Base( sid, k4, k2v0, root0 ),
+   !M3Base( sid, k6, k3v0, root0 ), Fr( ~k3v1 ), Fr( ~root1 )
+   ]
+  --[
+  RekeyStarted( sid, 'e1' ), NextEpoch( sid, 'e0', 'e1' ),
+  AuthorizedAt( sid, 'm1', 'e1' ), AuthorizedAt( sid, 'm2', 'e1' ),
+  AuthorizedAt( sid, 'm3', 'e1' ), RevokedAt( sid, 'm4', 'e1' ),
+  KeyVersion( sid, 'n3', 'v1', 'e1' ), KeyVersion( sid, 'n1', 'v1', 'e1' ),
+  EpochRoot( sid, 'e1', 'v1', ~root1 ),
+  SecretEpoch( sid, 'e1', 'v1', ~root1 ),
+  LkhUpdate( sid, 'e1', 'n3', 'v1', 'n6', 'v0' ),
+  LkhRecipient( sid, 'e1', 'n3', 'v1', 'm3' ),
+  LkhUpdate( sid, 'e1', 'n1', 'v1', 'n2', 'v0' ),
+  LkhRecipient( sid, 'e1', 'n1', 'v1', 'm1' ),
+  LkhRecipient( sid, 'e1', 'n1', 'v1', 'm2' ),
+  LkhUpdate( sid, 'e1', 'n1', 'v1', 'n3', 'v1' ),
+  LkhRecipient( sid, 'e1', 'n1', 'v1', 'm3' )
+  ]->
+   [
+   !AuthorizedEpoch( sid, 'm1', 'e1' ), !AuthorizedEpoch( sid, 'm2', 'e1' ),
+   !AuthorizedEpoch( sid, 'm3', 'e1' ), !RevokedEpoch( sid, 'm4', 'e1' ),
+   !KeyMaterial( sid, 'n3', 'v1', 'e1', ~k3v1 ),
+   !EpochRootKey( sid, 'e1', 'v1', ~root1 ),
+   !EpochCipher( sid, 'e1', 'n3', 'v1', 'n6', 'v0',
+                 senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, k6)
+   ),
+   !EpochCipher( sid, 'e1', 'n1', 'v1', 'n2', 'v0',
+                 senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, k2v0)
+   ),
+   !EpochCipher( sid, 'e1', 'n1', 'v1', 'n3', 'v1',
+                 senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1)
+   ),
+   !ManagerEpoch1( sid, ~k3v1, ~root1 ), Stage( sid, 's1' ),
+   Out( senc(<'lkh-update', 'e1', 'n3', 'v1', ~k3v1>, k6) ),
+   Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, k2v0) ),
+   Out( senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k3v1) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) M3_Derive_N3_V1:
+   [
+   !M3Base( sid, k6, k3v0, root0 ),
+   !KeyMaterial( sid, 'n3', 'v1', 'e1', k3v1 ),
+   In( senc(<'lkh-update', 'e1', 'n3', 'v1', k3v1>, k6) )
+   ]
+  --[ DerivedKey( sid, 'm3', 'n3', 'v1', 'e1' ) ]->
+   [ !M3BranchE1( sid, k3v1 ), !OwnsKey( sid, 'm3', 'n3', 'v1', k3v1 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_E1_M1:
+   [
+   !AuthorizedEpoch( sid, 'm1', 'e1' ), !M1Base( sid, k4, k2v0, root0 ),
+   !EpochRootKey( sid, 'e1', 'v1', root1 ),
+   In( senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k2v0) )
+   ]
+  --[
+  Accept( sid, 'm1', 'e1', 'v1', root1 ),
+  AcceptCipher( sid, 'm1', 'e1',
+                senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k2v0)
+  )
+  ]->
+   [
+   !Accepted( sid, 'm1', 'e1', 'v1', root1 ),
+   !OwnsKey( sid, 'm1', 'n1', 'v1', root1 )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_E1_M2:
+   [
+   !AuthorizedEpoch( sid, 'm2', 'e1' ), !M2Base( sid, k5, k2v0, root0 ),
+   !EpochRootKey( sid, 'e1', 'v1', root1 ),
+   In( senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k2v0) )
+   ]
+  --[
+  Accept( sid, 'm2', 'e1', 'v1', root1 ),
+  AcceptCipher( sid, 'm2', 'e1',
+                senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k2v0)
+  )
+  ]->
+   [
+   !Accepted( sid, 'm2', 'e1', 'v1', root1 ),
+   !OwnsKey( sid, 'm2', 'n1', 'v1', root1 )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_E1_M3:
+   [
+   !AuthorizedEpoch( sid, 'm3', 'e1' ), !M3BranchE1( sid, k3v1 ),
+   !EpochRootKey( sid, 'e1', 'v1', root1 ),
+   In( senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k3v1) )
+   ]
+  --[
+  Accept( sid, 'm3', 'e1', 'v1', root1 ),
+  AcceptCipher( sid, 'm3', 'e1',
+                senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k3v1)
+  )
+  ]->
+   [
+   !Accepted( sid, 'm3', 'e1', 'v1', root1 ),
+   !OwnsKey( sid, 'm3', 'n1', 'v1', root1 )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Request_E1_M2:
+   [
+   !AuthorizedEpoch( sid, 'm2', 'e1' ),
+   !EpochCipher( sid, 'e1', 'n1', 'v1', 'n2', 'v0', cipher )
+   ]
+  --[ RecoveryRequest( sid, 'm2', 'e1' ) ]->
+   [
+   Recovering( sid, 'm2', 'e1' ),
+   Out( <'recovery-request', sid, 'm2', 'e1'> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response_E1_M1:
+   [
+   !AuthorizedEpoch( sid, 'm1', 'e1' ),
+   !Accepted( sid, 'm1', 'e1', 'v1', root1 ),
+   !EpochCipher( sid, 'e1', 'n1', 'v1', 'n2', 'v0', cipher ),
+   In( <'recovery-request', sid, 'm2', 'e1'> )
+   ]
+  --[ RecoveryResponse( sid, 'm1', 'm2', 'e1' ) ]->
+   [ !RecoveryResponseCipher( sid, 'e1', cipher ), Out( cipher ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Accept_E1_M2:
+   [
+   Recovering( sid, 'm2', 'e1' ), !AuthorizedEpoch( sid, 'm2', 'e1' ),
+   !M2Base( sid, k5, k2v0, root0 ), !EpochRootKey( sid, 'e1', 'v1', root1 ),
+   In( senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k2v0) )
+   ]
+  --[
+  Accept( sid, 'm2', 'e1', 'v1', root1 ),
+  RecoveryAccept( sid, 'm2', 'e1' ),
+  RecoveryAcceptCipher( sid, 'm2', 'e1',
+                        senc(<'lkh-update', 'e1', 'n1', 'v1', root1>, k2v0)
+  )
+  ]->
+   [
+   !Accepted( sid, 'm2', 'e1', 'v1', root1 ),
+   !OwnsKey( sid, 'm2', 'n1', 'v1', root1 )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Start_Epoch2:
+   [ Stage( sid, 's1' ), !M1Base( sid, k4, k2v0, root0 ), Fr( ~root2 ) ]
+  --[
+  RekeyStarted( sid, 'e2' ), NextEpoch( sid, 'e1', 'e2' ),
+  AuthorizedAt( sid, 'm1', 'e2' ), AuthorizedAt( sid, 'm2', 'e2' ),
+  RevokedAt( sid, 'm3', 'e2' ), KeyVersion( sid, 'n1', 'v2', 'e2' ),
+  EpochRoot( sid, 'e2', 'v2', ~root2 ),
+  SecretEpoch( sid, 'e2', 'v2', ~root2 ),
+  LkhUpdate( sid, 'e2', 'n1', 'v2', 'n2', 'v0' ),
+  LkhRecipient( sid, 'e2', 'n1', 'v2', 'm1' ),
+  LkhRecipient( sid, 'e2', 'n1', 'v2', 'm2' )
+  ]->
+   [
+   !AuthorizedEpoch( sid, 'm1', 'e2' ), !AuthorizedEpoch( sid, 'm2', 'e2' ),
+   !RevokedEpoch( sid, 'm3', 'e2' ),
+   !EpochRootKey( sid, 'e2', 'v2', ~root2 ),
+   !EpochCipher( sid, 'e2', 'n1', 'v2', 'n2', 'v0',
+                 senc(<'lkh-update', 'e2', 'n1', 'v2', ~root2>, k2v0)
+   ),
+   !ManagerEpoch2( sid, ~root2 ), Stage( sid, 's2' ),
+   Out( senc(<'lkh-update', 'e2', 'n1', 'v2', ~root2>, k2v0) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_E2_M1:
+   [
+   !AuthorizedEpoch( sid, 'm1', 'e2' ), !M1Base( sid, k4, k2v0, root0 ),
+   !EpochRootKey( sid, 'e2', 'v2', root2 ),
+   In( senc(<'lkh-update', 'e2', 'n1', 'v2', root2>, k2v0) )
+   ]
+  --[
+  Accept( sid, 'm1', 'e2', 'v2', root2 ),
+  AcceptCipher( sid, 'm1', 'e2',
+                senc(<'lkh-update', 'e2', 'n1', 'v2', root2>, k2v0)
+  )
+  ]->
+   [
+   !Accepted( sid, 'm1', 'e2', 'v2', root2 ),
+   !OwnsKey( sid, 'm1', 'n1', 'v2', root2 )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_E2_M2:
+   [
+   !AuthorizedEpoch( sid, 'm2', 'e2' ), !M2Base( sid, k5, k2v0, root0 ),
+   !EpochRootKey( sid, 'e2', 'v2', root2 ),
+   In( senc(<'lkh-update', 'e2', 'n1', 'v2', root2>, k2v0) )
+   ]
+  --[
+  Accept( sid, 'm2', 'e2', 'v2', root2 ),
+  AcceptCipher( sid, 'm2', 'e2',
+                senc(<'lkh-update', 'e2', 'n1', 'v2', root2>, k2v0)
+  )
+  ]->
+   [
+   !Accepted( sid, 'm2', 'e2', 'v2', root2 ),
+   !OwnsKey( sid, 'm2', 'n1', 'v2', root2 )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Request_E2_M2:
+   [
+   !AuthorizedEpoch( sid, 'm2', 'e2' ),
+   !EpochCipher( sid, 'e2', 'n1', 'v2', 'n2', 'v0', cipher )
+   ]
+  --[ RecoveryRequest( sid, 'm2', 'e2' ) ]->
+   [
+   Recovering( sid, 'm2', 'e2' ),
+   Out( <'recovery-request', sid, 'm2', 'e2'> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Response_E2_M1:
+   [
+   !AuthorizedEpoch( sid, 'm1', 'e2' ),
+   !Accepted( sid, 'm1', 'e2', 'v2', root2 ),
+   !EpochCipher( sid, 'e2', 'n1', 'v2', 'n2', 'v0', cipher ),
+   In( <'recovery-request', sid, 'm2', 'e2'> )
+   ]
+  --[ RecoveryResponse( sid, 'm1', 'm2', 'e2' ) ]->
+   [ !RecoveryResponseCipher( sid, 'e2', cipher ), Out( cipher ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recovery_Accept_E2_M2:
+   [
+   Recovering( sid, 'm2', 'e2' ), !AuthorizedEpoch( sid, 'm2', 'e2' ),
+   !M2Base( sid, k5, k2v0, root0 ), !EpochRootKey( sid, 'e2', 'v2', root2 ),
+   In( senc(<'lkh-update', 'e2', 'n1', 'v2', root2>, k2v0) )
+   ]
+  --[
+  Accept( sid, 'm2', 'e2', 'v2', root2 ),
+  RecoveryAccept( sid, 'm2', 'e2' ),
+  RecoveryAcceptCipher( sid, 'm2', 'e2',
+                        senc(<'lkh-update', 'e2', 'n1', 'v2', root2>, k2v0)
+  )
+  ]->
+   [
+   !Accepted( sid, 'm2', 'e2', 'v2', root2 ),
+   !OwnsKey( sid, 'm2', 'n1', 'v2', root2 )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Replay_E1_Root_Cipher_At_E2:
+   [
+   !EpochRootKey( sid, 'e2', 'v2', root2 ),
+   !EpochCipher( sid, 'e1', 'n1', 'v1', 'n2', 'v0', oldcipher )
+   ]
+  --[ ReplayOldCipher( sid, 'e1', 'e2', oldcipher ) ]->
+   [ Out( oldcipher ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Replay_E1_Recovery_Response_At_E2:
+   [
+   !EpochRootKey( sid, 'e2', 'v2', root2 ),
+   !RecoveryResponseCipher( sid, 'e1', oldcipher )
+   ]
+  --[ ReplayOldRecoveryResponse( sid, 'e1', 'e2', oldcipher ) ]->
+   [ Out( oldcipher ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_M1:
+   [ !M1Base( sid, k4, k2v0, root0 ) ]
+  --[ CompromiseMember( sid, 'm1' ) ]->
+   [ Out( k4 ), Out( k2v0 ), Out( root0 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_M2:
+   [ !M2Base( sid, k5, k2v0, root0 ) ]
+  --[ CompromiseMember( sid, 'm2' ) ]->
+   [ Out( k5 ), Out( k2v0 ), Out( root0 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_M3:
+   [ !M3Base( sid, k6, k3v0, root0 ) ]
+  --[ CompromiseMember( sid, 'm3' ) ]->
+   [ Out( k6 ), Out( k3v0 ), Out( root0 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_M4:
+   [ !M4Base( sid, k7, k3v0, root0 ) ]
+  --[ CompromiseMember( sid, 'm4' ) ]->
+   [ Out( k7 ), Out( k3v0 ), Out( root0 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_GM_E1:
+   [ !ManagerEpoch1( sid, k3v1, root1 ) ]
+  --[ CompromiseManager( sid, 'e1' ) ]->
+   [ Out( k3v1 ), Out( root1 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Compromise_GM_E2:
+   [ !ManagerEpoch2( sid, root2 ) ]
+  --[ CompromiseManager( sid, 'e2' ) ]->
+   [ Out( root2 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Leak_M4_Old_Keys_After_E1:
+   [ !RevokedEpoch( sid, 'm4', 'e1' ), !M4Base( sid, k7, k3v0, root0 ) ]
+  --[ OldKeyLeak( sid, 'm4', 'e1' ) ]->
+   [ Out( k7 ), Out( k3v0 ), Out( root0 ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Leak_M3_Old_Keys_After_E2:
+   [
+   !RevokedEpoch( sid, 'm3', 'e2' ), !M3Base( sid, k6, k3v0, root0 ),
+   !M3BranchE1( sid, k3v1 ), !Accepted( sid, 'm3', 'e1', 'v1', root1 )
+   ]
+  --[ OldKeyLeak( sid, 'm3', 'e2' ) ]->
+   [ Out( k6 ), Out( k3v0 ), Out( root0 ), Out( k3v1 ), Out( root1 ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable_first_lkh_rekey:
+  exists-trace
+  "∃ sid root #i.
+    (RekeyStarted( sid, 'e1' ) @ #i) ∧
+    (EpochRoot( sid, 'e1', 'v1', root ) @ #i)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ sid root #i.
+  (RekeyStarted( sid, 'e1' ) @ #i) ∧
+  (EpochRoot( sid, 'e1', 'v1', root ) @ #i)"
+*/
+by sorry
+
+lemma executable_second_lkh_rekey:
+  exists-trace
+  "∃ sid root1 root2 #i #j.
+    ((EpochRoot( sid, 'e1', 'v1', root1 ) @ #i) ∧
+     (EpochRoot( sid, 'e2', 'v2', root2 ) @ #j)) ∧
+    (#i < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ sid root1 root2 #i #j.
+  (EpochRoot( sid, 'e1', 'v1', root1 ) @ #i) ∧
+  (EpochRoot( sid, 'e2', 'v2', root2 ) @ #j)
+ ∧
+  #i < #j"
+*/
+by sorry
+
+lemma executable_same_epoch_recovery_after_lkh_rekey:
+  exists-trace
+  "∃ sid #q #r #a.
+    ((((RecoveryRequest( sid, 'm2', 'e1' ) @ #q) ∧
+       (RecoveryResponse( sid, 'm1', 'm2', 'e1' ) @ #r)) ∧
+      (RecoveryAccept( sid, 'm2', 'e1' ) @ #a)) ∧
+     (#q < #r)) ∧
+    (#r < #a)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ sid #q #r #a.
+  (RecoveryRequest( sid, 'm2', 'e1' ) @ #q) ∧
+  (RecoveryResponse( sid, 'm1', 'm2', 'e1' ) @ #r) ∧
+  (RecoveryAccept( sid, 'm2', 'e1' ) @ #a)
+ ∧
+  (#q < #r) ∧ (#r < #a)"
+*/
+by sorry
+
+lemma executable_old_cipher_replay:
+  exists-trace
+  "∃ sid c #i #r.
+    ((RekeyStarted( sid, 'e2' ) @ #i) ∧
+     (ReplayOldCipher( sid, 'e1', 'e2', c ) @ #r)) ∧
+    (#i < #r)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ sid c #i #r.
+  (RekeyStarted( sid, 'e2' ) @ #i) ∧
+  (ReplayOldCipher( sid, 'e1', 'e2', c ) @ #r)
+ ∧
+  #i < #r"
+*/
+by sorry
+
+lemma second_epoch_follows_first:
+  all-traces
+  "∀ sid #j.
+    (RekeyStarted( sid, 'e2' ) @ #j) ⇒
+    (∃ #i.
+      ((RekeyStarted( sid, 'e1' ) @ #i) ∧
+       (NextEpoch( sid, 'e1', 'e2' ) @ #j)) ∧
+      (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid #j.
+  (RekeyStarted( sid, 'e2' ) @ #j)
+ ∧
+  ∀ #i.
+   (RekeyStarted( sid, 'e1' ) @ #i) ∧ (NextEpoch( sid, 'e1', 'e2' ) @ #j)
+  ⇒
+   ¬(#i < #j)"
+*/
+by sorry
+
+lemma revoked_member_excluded_from_new_epoch:
+  all-traces
+  "∀ sid m e v root #r #a.
+    ((RevokedAt( sid, m, e ) @ #r) ∧ (Accept( sid, m, e, v, root ) @ #a)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid m e v root #r #a.
+  (RevokedAt( sid, m, e ) @ #r) ∧ (Accept( sid, m, e, v, root ) @ #a)"
+*/
+by sorry
+
+lemma survivor_acceptance_has_lkh_update_chain:
+  all-traces
+  "∀ sid m e v root #a.
+    (Accept( sid, m, e, v, root ) @ #a) ⇒
+    (∃ wrapper wrapperVersion #u.
+      ((LkhUpdate( sid, e, 'n1', v, wrapper, wrapperVersion ) @ #u) ∧
+       (LkhRecipient( sid, e, 'n1', v, m ) @ #u)) ∧
+      (#u < #a))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid m e v root #a.
+  (Accept( sid, m, e, v, root ) @ #a)
+ ∧
+  ∀ wrapper wrapperVersion #u.
+   (LkhUpdate( sid, e, 'n1', v, wrapper, wrapperVersion ) @ #u) ∧
+   (LkhRecipient( sid, e, 'n1', v, m ) @ #u)
+  ⇒
+   ¬(#u < #a)"
+*/
+by sorry
+
+lemma m3_acceptance_requires_branch_update:
+  all-traces
+  "∀ sid root #a.
+    (Accept( sid, 'm3', 'e1', 'v1', root ) @ #a) ⇒
+    (∃ #d. (DerivedKey( sid, 'm3', 'n3', 'v1', 'e1' ) @ #d) ∧ (#d < #a))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid root #a.
+  (Accept( sid, 'm3', 'e1', 'v1', root ) @ #a)
+ ∧
+  ∀ #d. (DerivedKey( sid, 'm3', 'n3', 'v1', 'e1' ) @ #d) ⇒ ¬(#d < #a)"
+*/
+by sorry
+
+lemma acceptance_matches_current_root_version:
+  all-traces
+  "∀ sid m e v root #a.
+    (Accept( sid, m, e, v, root ) @ #a) ⇒
+    (∃ #r. (EpochRoot( sid, e, v, root ) @ #r) ∧ (#r < #a))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid m e v root #a.
+  (Accept( sid, m, e, v, root ) @ #a)
+ ∧
+  ∀ #r. (EpochRoot( sid, e, v, root ) @ #r) ⇒ ¬(#r < #a)"
+*/
+by sorry
+
+lemma replay_old_capsule_cannot_accept_new_epoch:
+  all-traces
+  "∀ sid m c #r #a.
+    ((ReplayOldCipher( sid, 'e1', 'e2', c ) @ #r) ∧
+     (AcceptCipher( sid, m, 'e2', c ) @ #a)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid m c #r #a.
+  (ReplayOldCipher( sid, 'e1', 'e2', c ) @ #r) ∧
+  (AcceptCipher( sid, m, 'e2', c ) @ #a)"
+*/
+simplify
+solve( !EpochRootKey( sid, 'e2', 'v2', root2 ) ▶₀ #r )
+  case Start_Epoch2
+  solve( !EpochCipher( ~sid, 'e1', 'n1', 'v1', 'n2', 'v0', c ) ▶₁ #r )
+    case Start_Epoch1
+    by solve( AcceptCipher( ~sid, m, 'e2',
+                            senc(<'lkh-update', 'e1', 'n1', 'v1', ~root1>, ~k2v0)
+              ) @ #a )
+  qed
+qed
+
+lemma replay_old_recovery_response_cannot_accept_new_epoch:
+  all-traces
+  "∀ sid m c #r #a.
+    ((ReplayOldRecoveryResponse( sid, 'e1', 'e2', c ) @ #r) ∧
+     (RecoveryAcceptCipher( sid, m, 'e2', c ) @ #a)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid m c #r #a.
+  (ReplayOldRecoveryResponse( sid, 'e1', 'e2', c ) @ #r) ∧
+  (RecoveryAcceptCipher( sid, m, 'e2', c ) @ #a)"
+*/
+by sorry
+
+lemma root_keys_fresh_across_epochs:
+  all-traces
+  "∀ sid root1 root2 #i #j.
+    ((EpochRoot( sid, 'e1', 'v1', root1 ) @ #i) ∧
+     (EpochRoot( sid, 'e2', 'v2', root2 ) @ #j)) ⇒
+    (¬(root1 = root2))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid root1 root2 #i #j.
+  (EpochRoot( sid, 'e1', 'v1', root1 ) @ #i) ∧
+  (EpochRoot( sid, 'e2', 'v2', root2 ) @ #j)
+ ∧
+  root1 = root2"
+*/
+by sorry
+
+lemma epoch1_root_confidential_against_m4_revoked_state:
+  all-traces
+  "∀ sid root #s #l #k.
+    ((((SecretEpoch( sid, 'e1', 'v1', root ) @ #s) ∧
+       (OldKeyLeak( sid, 'm4', 'e1' ) @ #l)) ∧
+      (#l < #k)) ∧
+     (K( root ) @ #k)) ⇒
+    (((∃ #x. (OldKeyLeak( sid, 'm3', 'e2' ) @ #x) ∧ (#x < #k)) ∨
+      (∃ m #a #c.
+        ((AuthorizedAt( sid, m, 'e1' ) @ #a) ∧
+         (CompromiseMember( sid, m ) @ #c)) ∧
+        (#c < #k))) ∨
+     (∃ #c. (CompromiseManager( sid, 'e1' ) @ #c) ∧ (#c < #k)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid root #s #l #k.
+  (SecretEpoch( sid, 'e1', 'v1', root ) @ #s) ∧
+  (OldKeyLeak( sid, 'm4', 'e1' ) @ #l) ∧
+  (K( root ) @ #k)
+ ∧
+  (#l < #k) ∧
+  (∀ #x. (OldKeyLeak( sid, 'm3', 'e2' ) @ #x) ⇒ ¬(#x < #k)) ∧
+  (∀ m #a #c.
+    (AuthorizedAt( sid, m, 'e1' ) @ #a) ∧ (CompromiseMember( sid, m ) @ #c)
+   ⇒
+    ¬(#c < #k)) ∧
+  (∀ #c. (CompromiseManager( sid, 'e1' ) @ #c) ⇒ ¬(#c < #k))"
+*/
+by sorry
+
+lemma epoch2_root_confidential_against_m3_revoked_state:
+  all-traces
+  "∀ sid root #s #l #k.
+    ((((SecretEpoch( sid, 'e2', 'v2', root ) @ #s) ∧
+       (OldKeyLeak( sid, 'm3', 'e2' ) @ #l)) ∧
+      (#l < #k)) ∧
+     (K( root ) @ #k)) ⇒
+    ((∃ m #a #c.
+       ((AuthorizedAt( sid, m, 'e2' ) @ #a) ∧
+        (CompromiseMember( sid, m ) @ #c)) ∧
+       (#c < #k)) ∨
+     (∃ #c. (CompromiseManager( sid, 'e2' ) @ #c) ∧ (#c < #k)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid root #s #l #k.
+  (SecretEpoch( sid, 'e2', 'v2', root ) @ #s) ∧
+  (OldKeyLeak( sid, 'm3', 'e2' ) @ #l) ∧
+  (K( root ) @ #k)
+ ∧
+  (#l < #k) ∧
+  (∀ m #a #c.
+    (AuthorizedAt( sid, m, 'e2' ) @ #a) ∧ (CompromiseMember( sid, m ) @ #c)
+   ⇒
+    ¬(#c < #k)) ∧
+  (∀ #c. (CompromiseManager( sid, 'e2' ) @ #c) ⇒ ¬(#c < #k))"
+*/
+by sorry
+
+lemma historical_e1_root_exposure_after_later_holder_leak:
+  exists-trace
+  "∃ sid root #e1 #l #k.
+    (((((SecretEpoch( sid, 'e1', 'v1', root ) @ #e1) ∧
+        (AuthorizedAt( sid, 'm3', 'e1' ) @ #e1)) ∧
+       (OldKeyLeak( sid, 'm3', 'e2' ) @ #l)) ∧
+      (K( root ) @ #k)) ∧
+     (#e1 < #l)) ∧
+    (#l < #k)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ sid root #e1 #l #k.
+  (SecretEpoch( sid, 'e1', 'v1', root ) @ #e1) ∧
+  (AuthorizedAt( sid, 'm3', 'e1' ) @ #e1) ∧
+  (OldKeyLeak( sid, 'm3', 'e2' ) @ #l) ∧
+  (K( root ) @ #k)
+ ∧
+  (#e1 < #l) ∧ (#l < #k)"
+*/
+by sorry
+
+lemma recovery_requester_authorized_in_same_epoch:
+  all-traces
+  "∀ sid requester e #r.
+    (RecoveryRequest( sid, requester, e ) @ #r) ⇒
+    (∃ #a. (AuthorizedAt( sid, requester, e ) @ #a) ∧ (#a < #r))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid requester e #r.
+  (RecoveryRequest( sid, requester, e ) @ #r)
+ ∧
+  ∀ #a. (AuthorizedAt( sid, requester, e ) @ #a) ⇒ ¬(#a < #r)"
+*/
+by sorry
+
+lemma recovery_helper_authorized_in_same_epoch:
+  all-traces
+  "∀ sid helper requester e #r.
+    (RecoveryResponse( sid, helper, requester, e ) @ #r) ⇒
+    (∃ #a. (AuthorizedAt( sid, helper, e ) @ #a) ∧ (#a < #r))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ sid helper requester e #r.
+  (RecoveryResponse( sid, helper, requester, e ) @ #r)
+ ∧
+  ∀ #a. (AuthorizedAt( sid, helper, e ) @ #a) ⇒ ¬(#a < #r)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: UNKNOWN, branch: UNKNOWN
+Compiled at: 2026-03-08 10:05:47.616272992 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: formal/tamarin/ranger_lkh_multi_epoch_4member_temporal_security.spthy
+
+  processing time: 7.27s
+  
+  executable_first_lkh_rekey (exists-trace): analysis incomplete (1 steps)
+  executable_second_lkh_rekey (exists-trace): analysis incomplete (1 steps)
+  executable_same_epoch_recovery_after_lkh_rekey (exists-trace): analysis incomplete (1 steps)
+  executable_old_cipher_replay (exists-trace): analysis incomplete (1 steps)
+  second_epoch_follows_first (all-traces): analysis incomplete (1 steps)
+  revoked_member_excluded_from_new_epoch (all-traces): analysis incomplete (1 steps)
+  survivor_acceptance_has_lkh_update_chain (all-traces): analysis incomplete (1 steps)
+  m3_acceptance_requires_branch_update (all-traces): analysis incomplete (1 steps)
+  acceptance_matches_current_root_version (all-traces): analysis incomplete (1 steps)
+  replay_old_capsule_cannot_accept_new_epoch (all-traces): verified (4 steps)
+  replay_old_recovery_response_cannot_accept_new_epoch (all-traces): analysis incomplete (1 steps)
+  root_keys_fresh_across_epochs (all-traces): analysis incomplete (1 steps)
+  epoch1_root_confidential_against_m4_revoked_state (all-traces): analysis incomplete (1 steps)
+  epoch2_root_confidential_against_m3_revoked_state (all-traces): analysis incomplete (1 steps)
+  historical_e1_root_exposure_after_later_holder_leak (exists-trace): analysis incomplete (1 steps)
+  recovery_requester_authorized_in_same_epoch (all-traces): analysis incomplete (1 steps)
+  recovery_helper_authorized_in_same_epoch (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

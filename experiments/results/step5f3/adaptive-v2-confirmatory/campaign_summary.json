@@ -1,0 +1,83 @@
+{
+  "campaign_id": "step5f3-adaptive-v2-confirmatory",
+  "campaign_sha256": "be58c27c0c1f0d29bd3aed79b1fbb6356b163841b02f45ff137ee3f7810d6cab",
+  "completed_count": 8139,
+  "incomplete_count": 12021,
+  "member_counts": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "packet_losses": [
+    0.0,
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.4
+  ],
+  "protocols": [
+    "skdc",
+    "lkh-unicast",
+    "lkh-flood",
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive",
+    "ranger-adaptive-v2"
+  ],
+  "ranger_adaptive": {
+    "max_fragments": 5,
+    "nack_bytes": 16,
+    "recovery_rounds": 2
+  },
+  "ranger_recovery": {
+    "request_bytes": 24,
+    "rounds": 2
+  },
+  "ranger_static": {
+    "capsule_overhead_bytes": 0,
+    "data_fragments": 3,
+    "total_fragments": 5
+  },
+  "run_count": 20160,
+  "schema_version": 1,
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130
+  ],
+  "topologies": [
+    "line",
+    "star",
+    "balanced-tree",
+    "grid"
+  ]
+}

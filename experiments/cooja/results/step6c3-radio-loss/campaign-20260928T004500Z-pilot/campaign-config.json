@@ -1,0 +1,31 @@
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "coding_k": 3,
+  "coding_n_values": [
+    3,
+    5
+  ],
+  "confirmatory_simulation_seeds": [
+    201,
+    202,
+    203
+  ],
+  "description": "Static ideal k-of-n coded rekeying over lossy Cooja UDGM/RPL.",
+  "experiment": "RANGER-COOJA-UDGM-RADIO-LOSS",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "radio_interpretation": "UDGM reception-success parameter; not a fixed application packet-loss probability.",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "scope": "RPL, MAC, registration, coded fragments and reports are all exposed to UDGM reception uncertainty.",
+  "script_timeout_ms": 650000,
+  "success_ratio_rx_values": [
+    1.0,
+    0.85,
+    0.7
+  ],
+  "success_ratio_tx": 1.0
+}

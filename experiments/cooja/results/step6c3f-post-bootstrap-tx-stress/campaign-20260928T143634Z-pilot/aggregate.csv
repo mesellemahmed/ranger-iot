@@ -1,0 +1,13 @@
+case_id,n,target_success_ratio_tx,simulation_seed,script_runner_pass,outcome,bootstrap_complete,registered_count,radio_switch_applied,radio_switch_time,radio_success_ratio_tx_before,radio_success_ratio_tx_after,first_coded_send_time,switch_before_first_coded_send,authorized_reconstructed_count,authorized_reconstruction_ratio,revoked_reconstructed,revoked_reject_observed,report_count,observed_simulation_seed
+n3-posttx10000-seed000201,3,1.0,201,True,REKEY_COMPLETE,True,7,True,108938696,1,1,109939000,True,6,1,False,True,7,201
+n3-posttx08000-seed000201,3,0.8,201,True,REKEY_COMPLETE,True,7,True,108938696,1,0.8,109939000,True,6,1,False,True,7,201
+n3-posttx05000-seed000201,3,0.5,201,True,REKEY_COMPLETE,True,7,True,108938696,1,0.5,109939000,True,6,1,False,True,4,201
+n3-posttx03000-seed000201,3,0.3,201,True,REKEY_INCOMPLETE,True,7,True,108938696,1,0.3,109939000,True,3,0.5,False,False,2,201
+n3-posttx01000-seed000201,3,0.1,201,True,REKEY_INCOMPLETE,True,7,True,108938696,1,0.1,109939000,True,1,0.16666666666666666,False,False,1,201
+n3-posttx00000-seed000201,3,0.0,201,True,REKEY_INCOMPLETE,True,7,True,108938696,1,0,109939000,True,0,0,False,False,0,201
+n5-posttx10000-seed000201,5,1.0,201,True,REKEY_COMPLETE,True,7,True,108938696,1,1,109939000,True,6,1,False,True,7,201
+n5-posttx08000-seed000201,5,0.8,201,True,REKEY_COMPLETE,True,7,True,108938696,1,0.8,109939000,True,6,1,False,True,7,201
+n5-posttx05000-seed000201,5,0.5,201,True,REKEY_COMPLETE,True,7,True,108938696,1,0.5,109939000,True,6,1,False,True,3,201
+n5-posttx03000-seed000201,5,0.3,201,True,REKEY_INCOMPLETE,True,7,True,108938696,1,0.3,109939000,True,5,0.8333333333333334,False,True,2,201
+n5-posttx01000-seed000201,5,0.1,201,True,REKEY_INCOMPLETE,True,7,True,108938696,1,0.1,109939000,True,1,0.16666666666666666,False,False,1,201
+n5-posttx00000-seed000201,5,0.0,201,True,REKEY_INCOMPLETE,True,7,True,108938696,1,0,109939000,True,0,0,False,False,0,201

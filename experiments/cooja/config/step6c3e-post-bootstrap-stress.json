@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "experiment": "RANGER-COOJA-POST-BOOTSTRAP-UDGM-STRESS",
+  "description": "Bootstrap at UDGM RX=1.0, then dynamically degrade RX immediately after RANGER_CODED_READY to isolate coded rekey resilience.",
+  "coding_k": 3,
+  "coding_n_values": [3, 5],
+  "initial_success_ratio_tx": 1.0,
+  "initial_success_ratio_rx": 1.0,
+  "target_success_ratio_rx_values": [0.60, 0.30, 0.10, 0.00],
+  "pilot_simulation_seeds": [201],
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "rekey_deadline_ms": 180000,
+  "post_send_settle_ms": 60000,
+  "script_timeout_ms": 650000,
+  "interpretation": "UDGM reception-success parameter; values are not fixed packet-loss probabilities.",
+  "primary_question": "Given a successfully established group, how resilient is static k-of-n rekeying to subsequent radio degradation?"
+}

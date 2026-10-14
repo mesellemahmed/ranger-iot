@@ -1,0 +1,60 @@
+{
+  "data_fragments": 3,
+  "experiment": "RANGER-COOJA-CONTROLLED-FRAGMENT-LOSS",
+  "full_seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+  ],
+  "loss_basis_points": [
+    0,
+    500,
+    1000,
+    2000,
+    3000
+  ],
+  "loss_scope": "RANGER coded-fragment application sends only",
+  "pilot_cases": [
+    {
+      "loss_bp": 0,
+      "n": 3,
+      "seed": 101
+    },
+    {
+      "loss_bp": 0,
+      "n": 4,
+      "seed": 101
+    },
+    {
+      "loss_bp": 0,
+      "n": 5,
+      "seed": 101
+    },
+    {
+      "loss_bp": 3000,
+      "n": 3,
+      "seed": 101
+    },
+    {
+      "loss_bp": 3000,
+      "n": 4,
+      "seed": 101
+    },
+    {
+      "loss_bp": 3000,
+      "n": 5,
+      "seed": 101
+    }
+  ],
+  "radio_success_ratio_rx": 1.0,
+  "radio_success_ratio_tx": 1.0,
+  "schema_version": 1,
+  "simulation_random_seed": 20260926,
+  "total_fragment_values": [
+    3,
+    4,
+    5
+  ]
+}

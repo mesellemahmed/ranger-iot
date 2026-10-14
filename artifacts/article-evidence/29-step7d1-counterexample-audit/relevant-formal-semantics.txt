@@ -1,0 +1,261 @@
+========================================================================
+RULE Setup
+========================================================================
+rule Setup:
+  [ Fr(~ksurvivor), Fr(~krevoked) ]
+  --[
+      Setup($GM,$A,$H,$R),
+      InitiallyAuthorized($A),
+      InitiallyAuthorized($H),
+      RevokedIdentity($R)
+    ]->
+  [
+      !SurvivorKey(~ksurvivor),
+      !MemberKey($A,~ksurvivor),
+      !MemberKey($H,~ksurvivor),
+      !RevokedOldKey($R,~krevoked)
+  ]
+
+
+/*
+ * One rekey instance.
+ *
+ * The capsule ciphertext is deliberately put on the untrusted
+ * network. The adversary may capture, delay, reorder and replay it.
+ *
+ * The revoked member receives no MemberKey fact for ~ksurvivor.
+ */
+
+========================================================================
+RULE Start_Rekey
+========================================================================
+rule Start_Rekey:
+  [
+      !SurvivorKey(ksurvivor),
+      Fr(~epoch),
+      Fr(~groupkey)
+  ]
+  --[
+      RekeyStarted(~epoch,~groupkey),
+      AuthorizedAt($A,~epoch),
+      AuthorizedAt($H,~epoch),
+      RevokedAt($R,~epoch),
+      SecretEpoch(~epoch,~groupkey)
+    ]->
+  [
+      !EpochCipher(
+          ~epoch,
+          ~groupkey,
+          senc(<'ranger-capsule',~epoch,~groupkey>,ksurvivor)
+      ),
+
+      Stale($A,~epoch,~groupkey),
+      Stale($H,~epoch,~groupkey),
+
+      Out(
+          senc(
+              <'ranger-capsule',~epoch,~groupkey>,
+              ksurvivor
+          )
+      )
+  ]
+
+
+/*
+ * Initial RANGER acceptance.
+ *
+ * A member can accept only if:
+ *   1. it is a target of this rekey instance (Stale),
+ *   2. it owns the survivor authorization material,
+ *   3. it obtains a capsule bound to the same epoch/key.
+ */
+
+========================================================================
+RULE Accept_Initial
+========================================================================
+rule Accept_Initial:
+  [
+      Stale(a,e,gk),
+      !MemberKey(a,k),
+      In(senc(<'ranger-capsule',e,gk>,k))
+  ]
+  --[
+      Accept(a,e,gk),
+      AcceptInitial(a,e,gk)
+    ]->
+  [
+      Current(a,e,gk)
+  ]
+
+
+/*
+ * Same-epoch recovery request.
+ *
+ * Only Stale facts created for surviving authorized targets can
+ * initiate this rule.
+ */
+
+========================================================================
+RULE Start_Recovery
+========================================================================
+rule Start_Recovery:
+  [
+      Stale(a,e,gk)
+  ]
+  --[
+      RecoveryRequest(a,e)
+    ]->
+  [
+      Recovering(a,e,gk),
+      Out(<'ranger-recovery-request',a,e>)
+  ]
+
+
+/*
+ * An already-current authorized helper may re-release the same
+ * protected epoch material.
+ *
+ * This abstracts the implementation's forwarding of available
+ * same-epoch coded fragments without pretending to model RS algebra.
+ */
+
+========================================================================
+RULE Recovery_Response
+========================================================================
+rule Recovery_Response:
+  [
+      Current(h,e,gk),
+      !EpochCipher(e,gk,ciphertext),
+      In(<'ranger-recovery-request',a,e>)
+  ]
+  --[
+      RecoveryResponse(h,a,e)
+    ]->
+  [
+      Current(h,e,gk),
+      Out(ciphertext)
+  ]
+
+
+/*
+ * Recovery acceptance is bound to the same e/gk pair carried by the
+ * Recovering state.
+ */
+
+========================================================================
+RULE Accept_Recovery
+========================================================================
+rule Accept_Recovery:
+  [
+      Recovering(a,e,gk),
+      !MemberKey(a,k),
+      In(senc(<'ranger-capsule',e,gk>,k))
+  ]
+  --[
+      Accept(a,e,gk),
+      RecoveryAccept(a,e,gk)
+    ]->
+  [
+      Current(a,e,gk)
+  ]
+
+
+/*
+ * Explicit compromise rules.
+ */
+
+========================================================================
+RULE Compromise_Authorized_Member
+========================================================================
+rule Compromise_Authorized_Member:
+  [
+      !MemberKey(a,k)
+  ]
+  --[
+      Compromise(a)
+    ]->
+  [
+      Out(k)
+  ]
+
+========================================================================
+RULE Compromise_Group_Manager
+========================================================================
+rule Compromise_Group_Manager:
+  [
+      !SurvivorKey(k)
+  ]
+  --[
+      CompromiseGM($GM)
+    ]->
+  [
+      Out(k)
+  ]
+
+
+/********************************************************************
+ * NON-VACUITY
+ ********************************************************************/
+
+========================================================================
+LEMMA accept_requires_authorization
+========================================================================
+lemma accept_requires_authorization:
+  "
+    All a e gk #i.
+      Accept(a,e,gk) @ i
+      ==>
+      (Ex #j.
+         AuthorizedAt(a,e) @ j
+       & j < i)
+  "
+
+========================================================================
+LEMMA revoked_never_accepts
+========================================================================
+lemma revoked_never_accepts:
+  "
+    All e gk #r #a.
+      RevokedAt($R,e) @ r
+    & Accept($R,e,gk) @ a
+      ==> F
+  "
+
+
+/********************************************************************
+ * RECOVERY
+ ********************************************************************/
+
+========================================================================
+LEMMA epoch_key_secrecy_unless_compromised
+========================================================================
+lemma epoch_key_secrecy_unless_compromised:
+  "
+    All e gk #i #j.
+      SecretEpoch(e,gk) @ i
+    & K(gk) @ j
+      ==>
+      (
+        (Ex a #r.
+           Compromise(a) @ r
+         & r < j)
+        |
+        (Ex #r.
+           CompromiseGM($GM) @ r
+         & r < j)
+      )
+  "
+
+========================================================================
+LEMMA recovery_helper_authorized
+========================================================================
+lemma recovery_helper_authorized:
+  "
+    All h a e #i.
+      RecoveryResponse(h,a,e) @ i
+      ==>
+      (Ex #j.
+         AuthorizedAt(h,e) @ j
+       & j < i)
+  "
+

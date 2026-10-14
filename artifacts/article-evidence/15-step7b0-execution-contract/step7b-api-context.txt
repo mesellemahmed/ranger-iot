@@ -1,0 +1,1149 @@
+
+================================================================
+FILE: tests/ranger/test_static_protocol.py
+================================================================
+from dataclasses import dataclass
+
+from ranger_iot.group import GroupState
+from ranger_iot.protocols.lkh import LkhKeyTree
+from ranger_iot.ranger.coding import CodingParameters
+from ranger_iot.ranger.static_protocol import RangerStaticParameters, RangerStaticProtocol
+from ranger_iot.sim.core import SimulationEngine
+from ranger_iot.sim.delay import ConstantDelay
+from ranger_iot.sim.flooding import FloodTransport
+from ranger_iot.sim.loss import LossModel, NoLoss
+from ranger_iot.sim.metrics import NetworkMetrics
+from ranger_iot.sim.network import Network
+from ranger_iot.sim.node import NodeRegistry
+from ranger_iot.sim.packet import Packet, PacketFactory
+from ranger_iot.sim.randomness import RandomStream
+from ranger_iot.sim.topology import StaticTopology
+
+
+@dataclass(frozen=True, slots=True)
+class _DropPacketIds:
+    packet_ids: frozenset[int]
+    sender: int = 0
+    receiver: int = 1
+
+    def should_drop(
+        self,
+        *,
+        sender: int,
+        receiver: int,
+        packet: Packet,
+        rng: RandomStream,
+    ) -> bool:
+        del rng
+        return (
+            sender == self.sender
+            and receiver == self.receiver
+            and packet.packet_id in self.packet_ids
+        )
+
+
+def _build_protocol(
+    *,
+    loss_model: LossModel | None = None,
+    revoked_member: int = 4,
+    coding: CodingParameters | None = None,
+) -> tuple[SimulationEngine, GroupState, NetworkMetrics, RangerStaticProtocol]:
+    engine = SimulationEngine()
+    node_ids = (0, 1, 2, 3, 4)
+    nodes = NodeRegistry(node_ids)
+    topology = StaticTopology.from_edges(
+        nodes=node_ids,
+        edges=((0, 1), (1, 2), (2, 3), (3, 4)),
+    )
+    metrics = NetworkMetrics()
+    network = Network(
+        engine=engine,
+        topology=topology,
+        nodes=nodes,
+        loss_model=loss_model or NoLoss(),
+        delay_model=ConstantDelay(10),
+        rng=RandomStream(42, "ranger-static-test"),
+        observers=(metrics,),
+    )
+    transport = FloodTransport(
+        network=network,
+        topology=topology,
+        packet_factory=PacketFactory(),
+    )
+    group = GroupState(group_id=7, manager_id=0, member_ids={1, 2, 3, 4})
+    tree = LkhKeyTree({1, 2, 3, 4})
+    protocol = RangerStaticProtocol(
+        group=group,
+        tree=tree,
+        transport=transport,
+        parameters=RangerStaticParameters(
+            coding=coding or CodingParameters(data_fragments=3, total_fragments=5),
+            ciphertext_payload_bytes=64,
+        ),
+    )
+    assert revoked_member in group.member_ids
+    return engine, group, metrics, protocol
+
+
+def test_static_ranger_completes_without_loss() -> None:
+    engine, group, metrics, protocol = _build_protocol()
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    processed = engine.run()
+    stats = protocol.transport_stats(session.epoch)
+    snapshot = metrics.snapshot()
+
+    assert processed == 20
+    assert session.completed
+    assert session.accepted_at_us == {1: 10, 2: 20, 3: 30}
+    assert group.member_epoch(1) == 1
+    assert group.member_epoch(2) == 1
+    assert group.member_epoch(3) == 1
+    assert group.member_epoch(4) == 0
+    assert not group.is_authorized(4)
+
+    assert stats.logical_ciphertexts == 3
+    assert stats.capsule_payload_bytes == 192
+    assert stats.data_fragments == 3
+    assert stats.total_fragments == 5
+    assert stats.fragment_payload_bytes == 64
+    assert stats.flood_injections == 5
+    assert snapshot.transmissions == 20
+    assert snapshot.bytes_sent == 1280
+    assert snapshot.drops == 0
+
+
+def test_static_ranger_tolerates_two_lost_origin_fragments_for_three_of_five() -> None:
+    engine, group, metrics, protocol = _build_protocol(loss_model=_DropPacketIds(frozenset({0, 1})))
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+    snapshot = metrics.snapshot()
+
+    assert session.completed
+    assert session.accepted_count == 3
+    assert group.convergence_fraction() == 1.0
+    assert snapshot.drops == 2
+    assert snapshot.transmissions == 14
+
+
+def test_static_ranger_fails_when_fewer_than_k_fragments_survive() -> None:
+    engine, group, metrics, protocol = _build_protocol(
+        loss_model=_DropPacketIds(frozenset({0, 1, 2}))
+    )
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+    snapshot = metrics.snapshot()
+
+    assert not session.completed
+    assert session.accepted_count == 0
+    assert session.convergence_fraction == 0.0
+    assert group.member_epoch(1) == 0
+    assert group.member_epoch(2) == 0
+    assert group.member_epoch(3) == 0
+    assert snapshot.drops == 3
+
+
+def test_revoked_member_can_relay_but_cannot_accept_epoch() -> None:
+    engine, group, _, protocol = _build_protocol(
+        revoked_member=2,
+        coding=CodingParameters(data_fragments=2, total_fragments=3),
+    )
+
+    session = protocol.start_rekey(revoked_nodes={2})
+    engine.run()
+
+    assert session.completed
+    assert session.targets == (1, 3, 4)
+    assert group.member_epoch(1) == 1
+    assert group.member_epoch(2) == 0
+    assert group.member_epoch(3) == 1
+    assert group.member_epoch(4) == 1
+    assert not group.is_authorized(2)
+
+
+def test_static_ranger_exposes_deterministic_capsule_and_fragments() -> None:
+    _, _, _, protocol = _build_protocol()
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    capsule = protocol.capsule(session.epoch)
+    fragments = protocol.fragments(session.epoch)
+
+    assert capsule.capsule_id == "group-7-epoch-1"
+    assert capsule.group_id == 7
+    assert capsule.epoch == 1
+    assert capsule.logical_ciphertexts == 3
+    assert capsule.payload_bytes == 192
+    assert tuple(fragment.fragment_index for fragment in fragments) == (0, 1, 2, 3, 4)
+    assert all(fragment.capsule_id == capsule.capsule_id for fragment in fragments)
+
+
+def test_static_ranger_rejects_group_tree_mismatch() -> None:
+    engine = SimulationEngine()
+    nodes = NodeRegistry((0, 1, 2, 3, 4))
+    topology = StaticTopology.from_edges(
+        nodes=(0, 1, 2, 3, 4),
+        edges=((0, 1), (1, 2), (2, 3), (3, 4)),
+    )
+    network = Network(
+        engine=engine,
+        topology=topology,
+        nodes=nodes,
+        loss_model=NoLoss(),
+        delay_model=ConstantDelay(10),
+        rng=RandomStream(42, "mismatch"),
+    )
+    transport = FloodTransport(
+        network=network,
+        topology=topology,
+        packet_factory=PacketFactory(),
+    )
+    group = GroupState(group_id=7, manager_id=0, member_ids={1, 2, 3, 4})
+    tree = LkhKeyTree({1, 2, 3})
+
+    try:
+        RangerStaticProtocol(group=group, tree=tree, transport=transport)
+    except ValueError as exc:
+        assert str(exc) == "group and LKH tree must contain the same members"
+    else:
+        raise AssertionError("expected group/tree mismatch to be rejected")
+
+================================================================
+FILE: tests/ranger/test_recovery_protocol.py
+================================================================
+from dataclasses import dataclass, field
+
+import pytest
+
+from ranger_iot.group import GroupState
+from ranger_iot.protocols.lkh import LkhKeyTree
+from ranger_iot.ranger.coding import CodingParameters
+from ranger_iot.ranger.recovery_protocol import (
+    RangerRecoveryParameters,
+    RangerRecoveryProtocol,
+    RecoveryRequest,
+)
+from ranger_iot.sim.core import SimulationEngine
+from ranger_iot.sim.delay import ConstantDelay
+from ranger_iot.sim.flooding import FloodTransport
+from ranger_iot.sim.loss import LossModel, NoLoss
+from ranger_iot.sim.metrics import NetworkMetrics
+from ranger_iot.sim.network import Network
+from ranger_iot.sim.node import NodeRegistry
+from ranger_iot.sim.packet import Packet, PacketFactory
+from ranger_iot.sim.randomness import RandomStream
+from ranger_iot.sim.topology import StaticTopology
+
+
+@dataclass(slots=True)
+class _DropFirstLinkAttempt:
+    sender: int
+    receiver: int
+    dropped: bool = field(default=False, init=False)
+
+    def should_drop(
+        self,
+        *,
+        sender: int,
+        receiver: int,
+        packet: Packet,
+        rng: RandomStream,
+    ) -> bool:
+        del packet, rng
+        if self.dropped or sender != self.sender or receiver != self.receiver:
+            return False
+        self.dropped = True
+        return True
+
+
+def _build_protocol(
+    *,
+    loss_model: LossModel | None = None,
+) -> tuple[SimulationEngine, GroupState, NetworkMetrics, RangerRecoveryProtocol]:
+    engine = SimulationEngine()
+    node_ids = (0, 1, 2, 3, 4)
+    nodes = NodeRegistry(node_ids)
+    topology = StaticTopology.from_edges(
+        nodes=node_ids,
+        edges=((0, 1), (1, 2), (2, 3), (3, 4)),
+    )
+    metrics = NetworkMetrics()
+    network = Network(
+        engine=engine,
+        topology=topology,
+        nodes=nodes,
+        loss_model=loss_model or NoLoss(),
+        delay_model=ConstantDelay(10),
+        rng=RandomStream(42, "ranger-recovery-test"),
+        observers=(metrics,),
+    )
+    transport = FloodTransport(
+        network=network,
+        topology=topology,
+        packet_factory=PacketFactory(),
+    )
+    group = GroupState(group_id=7, manager_id=0, member_ids={1, 2, 3, 4})
+    protocol = RangerRecoveryProtocol(
+        group=group,
+        tree=LkhKeyTree({1, 2, 3, 4}),
+        transport=transport,
+        parameters=RangerRecoveryParameters(
+            coding=CodingParameters(data_fragments=3, total_fragments=3),
+            ciphertext_payload_bytes=64,
+            recovery_request_bytes=24,
+        ),
+    )
+    return engine, group, metrics, protocol
+
+
+def test_recovery_is_idle_when_initial_dissemination_completes() -> None:
+    engine, _, _, protocol = _build_protocol()
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+
+    assert session.completed
+    assert protocol.start_recovery_round(session.epoch) == 0
+    stats = protocol.transport_stats(session.epoch)
+    assert stats.recovery_rounds == 0
+    assert stats.recovery_requests == 0
+    assert stats.recovered_members == 0
+
+
+def test_two_recovery_rounds_cascade_missing_fragment_along_line() -> None:
+    engine, group, metrics, protocol = _build_protocol(
+        loss_model=_DropFirstLinkAttempt(sender=1, receiver=2)
+    )
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+
+    assert session.accepted_count == 1
+    assert group.member_epoch(1) == 1
+    assert group.member_epoch(2) == 0
+    assert group.member_epoch(3) == 0
+
+    assert protocol.start_recovery_round(session.epoch) == 3
+    engine.run()
+    assert session.accepted_count == 2
+    assert group.member_epoch(2) == 1
+    assert group.member_epoch(3) == 0
+
+    assert protocol.start_recovery_round(session.epoch) == 1
+    engine.run()
+
+    assert session.completed
+    assert group.member_epoch(3) == 1
+    assert group.member_epoch(4) == 0
+    stats = protocol.transport_stats(session.epoch)
+    assert stats.recovery_rounds == 2
+    assert stats.recovery_requests == 4
+    assert stats.recovery_fragment_attempts == 2
+    assert stats.peer_recovery_fragment_attempts == 2
+    assert stats.manager_recovery_fragment_attempts == 0
+    assert stats.recovered_members == 2
+    assert metrics.snapshot().drops == 1
+
+
+def test_direct_manager_neighbor_can_supply_missing_fragment() -> None:
+    engine, group, _, protocol = _build_protocol(
+        loss_model=_DropFirstLinkAttempt(sender=0, receiver=1)
+    )
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+    assert session.accepted_count == 0
+
+    assert protocol.start_recovery_round(session.epoch) == 5
+    engine.run()
+
+    assert group.member_epoch(1) == 1
+    stats = protocol.transport_stats(session.epoch)
+    assert stats.manager_recovery_fragment_attempts == 1
+    assert stats.recovered_members >= 1
+
+
+def test_recovery_request_and_parameters_validation() -> None:
+    with pytest.raises(ValueError, match="capsule_id"):
+        RecoveryRequest("", 1, 1, 1, (), 1)
+    with pytest.raises(ValueError, match="group_id"):
+        RecoveryRequest("c", -1, 1, 1, (), 1)
+    with pytest.raises(ValueError, match="epoch"):
+        RecoveryRequest("c", 1, 0, 1, (), 1)
+    with pytest.raises(ValueError, match="requester_id"):
+        RecoveryRequest("c", 1, 1, -1, (), 1)
+    with pytest.raises(ValueError, match="unique"):
+        RecoveryRequest("c", 1, 1, 1, (0, 0), 1)
+    with pytest.raises(ValueError, match="sorted"):
+        RecoveryRequest("c", 1, 1, 1, (2, 1), 1)
+    with pytest.raises(ValueError, match="needed_fragments"):
+        RecoveryRequest("c", 1, 1, 1, (), 0)
+    with pytest.raises(ValueError, match="recovery_request_bytes"):
+        RangerRecoveryParameters(recovery_request_bytes=0)
+
+================================================================
+FILE: tests/ranger/test_adaptive_v2_protocol.py
+================================================================
+import pytest
+
+from ranger_iot.group import GroupState
+from ranger_iot.protocols.lkh import LkhKeyTree
+from ranger_iot.ranger.adaptive_protocol import (
+    AdaptiveRedundancyRequest,
+    RangerAdaptiveParameters,
+)
+from ranger_iot.ranger.adaptive_v2_protocol import RangerAdaptiveV2Protocol
+from ranger_iot.ranger.coding import CodingParameters
+from ranger_iot.sim.core import SimulationEngine
+from ranger_iot.sim.delay import ConstantDelay
+from ranger_iot.sim.flooding import FloodMessage, FloodTransport
+from ranger_iot.sim.loss import LossModel, NoLoss
+from ranger_iot.sim.metrics import NetworkMetrics
+from ranger_iot.sim.network import Network
+from ranger_iot.sim.node import NodeRegistry
+from ranger_iot.sim.packet import Packet, PacketFactory
+from ranger_iot.sim.randomness import RandomStream
+from ranger_iot.sim.topology import StaticTopology
+
+
+class _DropFirstLinkAttempt:
+    sender: int
+    receiver: int
+    dropped: bool
+
+    def __init__(self, *, sender: int, receiver: int) -> None:
+        self.sender = sender
+        self.receiver = receiver
+        self.dropped = False
+
+    def should_drop(
+        self,
+        *,
+        sender: int,
+        receiver: int,
+        packet: Packet,
+        rng: RandomStream,
+    ) -> bool:
+        del packet, rng
+        if self.dropped or sender != self.sender or receiver != self.receiver:
+            return False
+        self.dropped = True
+        return True
+
+
+def _build_protocol(
+    *,
+    loss_model: LossModel | None = None,
+    adaptive_recovery_rounds: int = 0,
+) -> tuple[
+    SimulationEngine,
+    GroupState,
+    NetworkMetrics,
+    RangerAdaptiveV2Protocol,
+]:
+    engine = SimulationEngine()
+    node_ids = (0, 1, 2, 3, 4)
+    nodes = NodeRegistry(node_ids)
+    topology = StaticTopology.from_edges(
+        nodes=node_ids,
+        edges=((0, 1), (1, 2), (2, 3), (3, 4)),
+    )
+    metrics = NetworkMetrics()
+    network = Network(
+        engine=engine,
+        topology=topology,
+        nodes=nodes,
+        loss_model=loss_model or NoLoss(),
+        delay_model=ConstantDelay(10),
+        rng=RandomStream(91, "ranger-adaptive-v2-test"),
+        observers=(metrics,),
+    )
+    transport = FloodTransport(
+        network=network,
+        topology=topology,
+        packet_factory=PacketFactory(),
+    )
+    group = GroupState(
+        group_id=9,
+        manager_id=0,
+        member_ids={1, 2, 3, 4},
+    )
+    protocol = RangerAdaptiveV2Protocol(
+        group=group,
+        tree=LkhKeyTree({1, 2, 3, 4}),
+        transport=transport,
+        parameters=RangerAdaptiveParameters(
+            coding=CodingParameters(
+                data_fragments=3,
+                total_fragments=5,
+            ),
+            ciphertext_payload_bytes=64,
+            recovery_request_bytes=24,
+            adaptive_nack_bytes=16,
+            adaptive_recovery_rounds=adaptive_recovery_rounds,
+        ),
+    )
+    return engine, group, metrics, protocol
+
+
+def test_no_loss_matches_incremental_redundancy_without_feedback() -> None:
+    engine, group, metrics, protocol = _build_protocol()
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+
+    assert session.completed
+    assert protocol.advance(session.epoch) == 0
+    assert group.member_epoch(3) == 1
+    assert group.member_epoch(4) == 0
+
+    stats = protocol.transport_stats(session.epoch)
+    assert stats.initial_flood_injections == 3
+    assert stats.adaptive_parity_injections == 0
+    assert stats.adaptive_nacks == 0
+    assert stats.adaptive_nack_forwarded == 0
+    assert stats.adaptive_nack_suppressed == 0
+    assert stats.unused_redundancy_fragments == 2
+    assert metrics.snapshot().radio_transmissions == 12
+
+
+def test_branch_local_suppression_reduces_line_nack_hops() -> None:
+    engine, _, _, protocol = _build_protocol(
+        loss_model=_DropFirstLinkAttempt(sender=1, receiver=2),
+    )
+
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+    assert session.accepted_count == 1
+
+    source_reports = protocol.advance(session.epoch)
+    assert source_reports == 2
+    engine.run()
+
+    assert session.completed
+    stats = protocol.transport_stats(session.epoch)
+    assert stats.adaptive_nacks == 2
+    assert stats.adaptive_nack_hop_attempts == 4
+    assert stats.adaptive_nack_forwarded == 2
+    assert stats.adaptive_nack_suppressed == 1
+    assert stats.adaptive_parity_injections == 1
+    assert stats.flood_injections == 4
+
+
+def test_v2_rejects_invalid_forwarded_feedback_and_unknown_epoch() -> None:
+    engine, _, _, protocol = _build_protocol()
+    session = protocol.start_rekey(revoked_nodes={4})
+    engine.run()
+
+    invalid = FloodMessage(
+        message_id=999,
+        origin=1,
+        kind=protocol.ADAPTIVE_NACK_KIND,
+        payload_bytes=16,
+        created_at_us=engine.now_us,
+        epoch=session.epoch,
+        payload=object(),
+    )
+    with pytest.raises(TypeError, match="invalid RANGER adaptive-NACK"):
+        protocol._handle_adaptive_nack(node_id=1, message=invalid)
+
+    request = AdaptiveRedundancyRequest(
+        capsule_id="capsule",
+        group_id=9,
+        epoch=session.epoch,
+        requester_id=1,
+        round_id=1,
+        unique_received=2,
+    )
+    mismatch = FloodMessage(
+        message_id=1000,
+        origin=1,
+        kind=protocol.ADAPTIVE_NACK_KIND,
+        payload_bytes=16,
+        created_at_us=engine.now_us,
+        epoch=session.epoch + 1,
+        payload=request,
+    )
+    with pytest.raises(ValueError, match="epoch mismatch"):
+        protocol._handle_adaptive_nack(node_id=1, message=mismatch)
+
+    with pytest.raises(KeyError, match="unknown adaptive-v2 epoch"):
+        protocol._require_suppression(999)
+
+================================================================
+FILE: tests/experiments/test_campaign.py
+================================================================
+from pathlib import Path
+
+import pytest
+from pydantic import ValidationError
+
+from ranger_iot.experiments.campaign import (
+    CampaignConfig,
+    campaign_sha256,
+    iter_experiment_configs,
+    run_campaign,
+)
+
+
+def _config() -> CampaignConfig:
+    return CampaignConfig(
+        campaign_id="campaign-test",
+        protocols=("skdc", "lkh-unicast", "lkh-flood"),
+        topologies=("line",),
+        member_counts=(4, 8),
+        packet_losses=(0.0, 0.1),
+        seeds=(7, 11),
+        revoked_count=1,
+        link_delay_us=10,
+        payload_bytes=64,
+    )
+
+
+def test_campaign_matrix_has_expected_size_and_order() -> None:
+    config = _config()
+    runs = iter_experiment_configs(config)
+
+    assert config.run_count == 24
+    assert len(runs) == 24
+    assert runs[0][0] == "skdc__line__n0004__loss0000__seed000007"
+    assert runs[-1][0] == "lkh_flood__line__n0008__loss0100__seed000011"
+
+
+def test_campaign_revokes_last_member() -> None:
+    config = _config()
+    runs = iter_experiment_configs(config)
+
+    by_size = {experiment.member_count: experiment for _, experiment in runs}
+    assert by_size[4].revoked_members == (4,)
+    assert by_size[8].revoked_members == (8,)
+
+
+def test_campaign_rejects_invalid_matrix() -> None:
+    with pytest.raises(ValidationError):
+        CampaignConfig(
+            campaign_id="bad",
+            protocols=("skdc",),
+            member_counts=(1,),
+            packet_losses=(0.0,),
+            seeds=(1,),
+            revoked_count=1,
+        )
+
+
+def test_campaign_hash_is_deterministic() -> None:
+    first = campaign_sha256(_config())
+    second = campaign_sha256(_config())
+
+    assert first == second
+    assert len(first) == 64
+
+
+def test_run_campaign_writes_expected_artifacts(tmp_path: Path) -> None:
+    config = CampaignConfig(
+        campaign_id="tiny-campaign",
+        protocols=("skdc", "lkh-unicast", "lkh-flood"),
+        topologies=("line",),
+        member_counts=(4,),
+        packet_losses=(0.0,),
+        seeds=(3,),
+        revoked_count=1,
+    )
+
+    output = tmp_path / "campaign"
+    summary = run_campaign(config, output)
+
+    assert summary["run_count"] == 3
+    assert summary["completed_count"] == 3
+    assert summary["incomplete_count"] == 0
+    assert (output / "campaign.json").is_file()
+    assert (output / "campaign_summary.json").is_file()
+    assert (output / "aggregate.csv").is_file()
+
+    run_dirs = sorted((output / "runs").iterdir())
+    assert len(run_dirs) == 3
+    for run_dir in run_dirs:
+        assert (run_dir / "config.json").is_file()
+        assert (run_dir / "summary.json").is_file()
+        assert (run_dir / "events.csv").is_file()
+        assert (run_dir / "nodes.csv").is_file()
+
+
+def test_campaign_is_byte_reproducible(tmp_path: Path) -> None:
+    config = CampaignConfig(
+        campaign_id="repro-campaign",
+        protocols=("skdc", "lkh-unicast", "lkh-flood"),
+        member_counts=(4,),
+        packet_losses=(0.0,),
+        seeds=(17,),
+    )
+    first = tmp_path / "first"
+    second = tmp_path / "second"
+
+    run_campaign(config, first)
+    run_campaign(config, second)
+
+    first_files = sorted(path.relative_to(first) for path in first.rglob("*") if path.is_file())
+    second_files = sorted(path.relative_to(second) for path in second.rglob("*") if path.is_file())
+    assert first_files == second_files
+
+    for relative_path in first_files:
+        assert (first / relative_path).read_bytes() == (second / relative_path).read_bytes()
+
+
+def test_campaign_refuses_non_empty_output(tmp_path: Path) -> None:
+    output = tmp_path / "campaign"
+    output.mkdir()
+    (output / "existing.txt").write_text("do not overwrite", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="output directory must be empty"):
+        run_campaign(_config(), output)
+
+
+def test_campaign_expands_supported_topologies_deterministically() -> None:
+    config = CampaignConfig(
+        campaign_id="topology-matrix",
+        protocols=("skdc",),
+        topologies=("line", "star", "balanced-tree", "grid"),
+        member_counts=(4,),
+        packet_losses=(0.0,),
+        seeds=(7,),
+    )
+
+    runs = iter_experiment_configs(config)
+
+    assert config.run_count == 4
+    assert [experiment.topology for _, experiment in runs] == [
+        "line",
+        "star",
+        "balanced-tree",
+        "grid",
+    ]
+    assert [run_id for run_id, _ in runs] == [
+        "skdc__line__n0004__loss0000__seed000007",
+        "skdc__star__n0004__loss0000__seed000007",
+        "skdc__balanced-tree__n0004__loss0000__seed000007",
+        "skdc__grid__n0004__loss0000__seed000007",
+    ]
+
+
+def test_campaign_propagates_recovery_parameters() -> None:
+    config = CampaignConfig(
+        campaign_id="recovery-matrix",
+        protocols=("ranger-recovery",),
+        topologies=("line",),
+        member_counts=(4,),
+        packet_losses=(0.1,),
+        seeds=(5,),
+        ranger_recovery_rounds=3,
+        ranger_recovery_request_bytes=28,
+    )
+
+    runs = iter_experiment_configs(config)
+
+    assert config.run_count == 1
+    _, experiment = runs[0]
+    assert experiment.protocol == "ranger-recovery"
+    assert experiment.ranger_recovery_rounds == 3
+    assert experiment.ranger_recovery_request_bytes == 28
+
+================================================================
+FILE: tests/experiments/test_runner.py
+================================================================
+import json
+from pathlib import Path
+
+import pytest
+
+from ranger_iot.experiments.config import ExperimentConfig
+from ranger_iot.experiments.runner import run_experiment
+
+
+def make_config(protocol: str, *, packet_loss: float = 0.0) -> ExperimentConfig:
+    return ExperimentConfig.model_validate(
+        {
+            "experiment_id": f"step4c-{protocol}",
+            "protocol": protocol,
+            "seed": 42,
+            "member_count": 4,
+            "revoked_members": [4],
+            "packet_loss": packet_loss,
+            "link_delay_us": 10,
+            "payload_bytes": 64,
+        }
+    )
+
+
+def test_skdc_run_writes_expected_artifacts(tmp_path: Path) -> None:
+    result = run_experiment(make_config("skdc"), tmp_path / "skdc")
+
+    assert result.summary["completed"] is True
+    assert result.summary["logical_ciphertexts"] == 3
+    assert result.summary["routed_copies"] == 3
+    assert result.summary["physical_transmissions"] == 6
+    assert result.summary["bytes_sent"] == 384
+    assert result.summary["manager_transmissions"] == 3
+    assert result.summary["t50_us"] == 20
+    assert result.summary["t95_us"] == 30
+    assert result.summary["t100_us"] == 30
+    assert sorted(path.name for path in result.output_dir.iterdir()) == [
+        "config.json",
+        "events.csv",
+        "nodes.csv",
+        "summary.json",
+    ]
+
+
+def test_lkh_run_preserves_logical_and_physical_costs(tmp_path: Path) -> None:
+    result = run_experiment(make_config("lkh-unicast"), tmp_path / "lkh")
+
+    assert result.summary["completed"] is True
+    assert result.summary["logical_ciphertexts"] == 3
+    assert result.summary["routed_copies"] == 4
+    assert result.summary["physical_transmissions"] == 9
+    assert result.summary["bytes_sent"] == 576
+    assert result.summary["manager_transmissions"] == 4
+    assert result.summary["t50_us"] == 20
+    assert result.summary["t95_us"] == 30
+    assert result.summary["t100_us"] == 30
+
+
+def test_lkh_flood_run_uses_one_source_injection_per_logical_ciphertext(
+    tmp_path: Path,
+) -> None:
+    result = run_experiment(make_config("lkh-flood"), tmp_path / "lkh-flood")
+
+    assert result.summary["completed"] is True
+    assert result.summary["logical_ciphertexts"] == 3
+    assert result.summary["routed_copies"] == 3
+    assert result.summary["flood_injections"] == 3
+    assert result.summary["physical_transmissions"] == 12
+    assert result.summary["bytes_sent"] == 768
+    assert result.summary["manager_transmissions"] == 3
+    assert result.summary["t50_us"] == 20
+    assert result.summary["t95_us"] == 30
+    assert result.summary["t100_us"] == 30
+
+
+def test_loss_can_leave_run_incomplete_without_hidden_retries(tmp_path: Path) -> None:
+    result = run_experiment(make_config("skdc", packet_loss=1.0), tmp_path / "loss")
+
+    assert result.summary["completed"] is False
+    assert result.summary["accepted_count"] == 0
+    assert result.summary["t100_us"] is None
+    assert result.summary["drops"] == 3
+
+
+def test_identical_runs_produce_identical_artifacts(tmp_path: Path) -> None:
+    config = make_config("lkh-unicast", packet_loss=0.2)
+    first = tmp_path / "first"
+    second = tmp_path / "second"
+
+    run_experiment(config, first)
+    run_experiment(config, second)
+
+    for name in ("config.json", "events.csv", "nodes.csv", "summary.json"):
+        assert (first / name).read_bytes() == (second / name).read_bytes()
+
+
+def test_output_directory_must_be_empty(tmp_path: Path) -> None:
+    output = tmp_path / "existing"
+    output.mkdir()
+    (output / "sentinel.txt").write_text("keep", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="must be empty"):
+        run_experiment(make_config("skdc"), output)
+
+
+def test_summary_json_matches_returned_summary(tmp_path: Path) -> None:
+    result = run_experiment(make_config("skdc"), tmp_path / "run")
+    persisted = json.loads((result.output_dir / "summary.json").read_text(encoding="utf-8"))
+
+    assert persisted == result.summary
+
+
+def test_skdc_star_topology_uses_one_hop_per_authorized_member(tmp_path: Path) -> None:
+    config = ExperimentConfig.model_validate(
+        {
+            "experiment_id": "step4e2-skdc-star",
+            "protocol": "skdc",
+            "seed": 42,
+            "member_count": 4,
+            "revoked_members": [4],
+            "topology": "star",
+            "packet_loss": 0.0,
+            "link_delay_us": 10,
+            "payload_bytes": 64,
+        }
+    )
+
+    result = run_experiment(config, tmp_path / "skdc-star")
+
+    assert result.summary["completed"] is True
+    assert result.summary["physical_transmissions"] == 3
+    assert result.summary["manager_transmissions"] == 3
+    assert result.summary["t50_us"] == 10
+    assert result.summary["t95_us"] == 10
+    assert result.summary["t100_us"] == 10
+
+================================================================
+FILE: tests/sim/test_topology_factory.py
+================================================================
+import pytest
+
+from ranger_iot.sim.routing import shortest_path
+from ranger_iot.sim.topology_factory import build_topology
+
+
+def test_line_topology_places_root_at_one_end() -> None:
+    topology = build_topology("line", nodes=(7, 1, 2, 3), root_id=7)
+
+    assert topology.nodes == (1, 2, 3, 7)
+    assert shortest_path(topology, 7, 3) == (7, 1, 2, 3)
+
+
+def test_star_topology_connects_every_node_directly_to_root() -> None:
+    topology = build_topology("star", nodes=(0, 1, 2, 3, 4), root_id=0)
+
+    assert topology.neighbors(0) == (1, 2, 3, 4)
+    assert shortest_path(topology, 0, 4) == (0, 4)
+    assert shortest_path(topology, 1, 4) == (1, 0, 4)
+
+
+def test_balanced_tree_is_breadth_first_and_deterministic() -> None:
+    topology = build_topology("balanced-tree", nodes=range(7), root_id=0)
+
+    assert topology.neighbors(0) == (1, 2)
+    assert topology.neighbors(1) == (0, 3, 4)
+    assert topology.neighbors(2) == (0, 5, 6)
+    assert shortest_path(topology, 0, 6) == (0, 2, 6)
+
+
+def test_grid_uses_near_square_row_major_layout() -> None:
+    topology = build_topology("grid", nodes=range(9), root_id=0)
+
+    assert topology.neighbors(0) == (1, 3)
+    assert topology.neighbors(4) == (1, 3, 5, 7)
+    assert topology.neighbors(8) == (5, 7)
+    assert shortest_path(topology, 0, 8) == (0, 1, 2, 5, 8)
+
+
+def test_partial_grid_remains_connected() -> None:
+    topology = build_topology("grid", nodes=range(5), root_id=0)
+
+    assert shortest_path(topology, 0, 4) == (0, 1, 4)
+
+
+def test_topology_factory_validates_root_and_node_identifiers() -> None:
+    with pytest.raises(ValueError, match="at least one"):
+        build_topology("line", nodes=(), root_id=0)
+    with pytest.raises(ValueError, match="must be unique"):
+        build_topology("line", nodes=(0, 1, 1), root_id=0)
+    with pytest.raises(ValueError, match="outside the topology"):
+        build_topology("line", nodes=(0, 1), root_id=9)
+
+================================================================
+FILE: tests/sim/test_network.py
+================================================================
+import pytest
+
+from ranger_iot.sim.core import ScheduledEvent, SimulationEngine
+from ranger_iot.sim.delay import ConstantDelay
+from ranger_iot.sim.loss import BernoulliLoss, NoLoss
+from ranger_iot.sim.metrics import DropReason, NetworkMetrics
+from ranger_iot.sim.network import Network
+from ranger_iot.sim.node import NodeRegistry
+from ranger_iot.sim.packet import PacketFactory
+from ranger_iot.sim.randomness import RandomStream
+from ranger_iot.sim.topology import StaticTopology
+
+
+def build_network(
+    *, loss_probability: float = 0.0
+) -> tuple[
+    SimulationEngine,
+    NodeRegistry,
+    NetworkMetrics,
+    Network,
+    PacketFactory,
+]:
+    engine = SimulationEngine()
+    nodes = NodeRegistry([0, 1, 2])
+    topology = StaticTopology.from_edges(nodes=[0, 1, 2], edges=[(0, 1), (0, 2)])
+    metrics = NetworkMetrics()
+    network = Network(
+        engine=engine,
+        topology=topology,
+        nodes=nodes,
+        loss_model=BernoulliLoss(loss_probability),
+        delay_model=ConstantDelay(10),
+        rng=RandomStream(123, "network"),
+        observers=[metrics],
+    )
+    return engine, nodes, metrics, network, PacketFactory()
+
+
+def test_unicast_delivery_and_metrics() -> None:
+    engine, _, metrics, network, factory = build_network()
+    received: list[tuple[int, int, int]] = []
+    network.register_receiver(
+        1,
+        lambda packet, sender, at_us: received.append((packet.packet_id, sender, at_us)),
+    )
+    packet = factory.create(source=0, kind="hello", payload_bytes=40, created_at_us=0)
+
+    assert network.send(sender=0, receiver=1, packet=packet)
+    assert engine.pending_events == 1
+    assert engine.run() == 1
+    assert received == [(0, 0, 10)]
+
+    snapshot = metrics.snapshot()
+    assert snapshot.transmissions == 1
+    assert snapshot.deliveries == 1
+    assert snapshot.drops == 0
+    assert snapshot.bytes_sent == 40
+    assert snapshot.bytes_delivered == 40
+
+
+def test_broadcast_uses_deterministic_neighbor_order() -> None:
+    engine, _, metrics, network, factory = build_network()
+    observed: list[int] = []
+    network.register_receiver(1, lambda packet, sender, at_us: observed.append(1))
+    network.register_receiver(2, lambda packet, sender, at_us: observed.append(2))
+    packet = factory.create(source=0, kind="broadcast", payload_bytes=8, created_at_us=0)
+
+    assert network.broadcast(sender=0, packet=packet) == 2
+    assert engine.run() == 2
+    assert observed == [1, 2]
+    assert metrics.snapshot().transmissions_by_node == {0: 2}
+
+
+def test_loss_and_inactive_receiver_are_recorded() -> None:
+    engine, nodes, metrics, network, factory = build_network(loss_probability=1.0)
+    packet = factory.create(source=0, kind="x", payload_bytes=5, created_at_us=0)
+
+    assert not network.send(sender=0, receiver=1, packet=packet)
+    nodes.set_active(2, False)
+    assert not network.send(sender=0, receiver=2, packet=packet)
+    assert engine.pending_events == 0
+
+    snapshot = metrics.snapshot()
+    assert snapshot.transmissions == 2
+    assert snapshot.drops == 2
+    assert snapshot.drops_by_reason == {
+        DropReason.LOSS_MODEL: 1,
+        DropReason.RECEIVER_INACTIVE: 1,
+    }
+
+
+def test_receiver_can_go_offline_after_transmission() -> None:
+    engine, nodes, metrics, network, factory = build_network()
+    packet = factory.create(source=0, kind="x", payload_bytes=5, created_at_us=0)
+
+    assert network.send(sender=0, receiver=1, packet=packet)
+    nodes.set_active(1, False)
+    assert engine.run() == 1
+    assert metrics.snapshot().drops_by_reason == {DropReason.RECEIVER_INACTIVE: 1}
+
+
+def test_network_send_validation() -> None:
+    _, nodes, _, network, factory = build_network()
+    packet = factory.create(source=0, kind="x", payload_bytes=1, created_at_us=0)
+
+    with pytest.raises(KeyError, match="unknown sender"):
+        network.send(sender=9, receiver=1, packet=packet)
+    with pytest.raises(KeyError, match="unknown receiver"):
+        network.send(sender=0, receiver=9, packet=packet)
+
+    nodes.set_active(0, False)
+    with pytest.raises(RuntimeError, match="inactive"):
+        network.send(sender=0, receiver=1, packet=packet)
+    nodes.set_active(0, True)
+
+    with pytest.raises(ValueError, match="must differ"):
+        network.send(sender=0, receiver=0, packet=packet)
+
+    wrong_source = factory.create(source=1, kind="x", payload_bytes=1, created_at_us=0)
+    with pytest.raises(ValueError, match="source does not match"):
+        network.send(sender=0, receiver=1, packet=wrong_source)
+
+    with pytest.raises(ValueError, match="not directly connected"):
+        network.send(sender=1, receiver=2, packet=wrong_source)
+
+
+def test_receiver_registration_and_topology_validation() -> None:
+    engine, _, _, network, _ = build_network()
+    network.register_receiver(1, lambda packet, sender, at_us: None)
+
+    with pytest.raises(ValueError, match="already registered"):
+        network.register_receiver(1, lambda packet, sender, at_us: None)
+    with pytest.raises(KeyError, match="unknown node"):
+        network.register_receiver(9, lambda packet, sender, at_us: None)
+
+    nodes = NodeRegistry([0, 1])
+    topology = StaticTopology.from_edges(nodes=[0], edges=[])
+    with pytest.raises(ValueError, match="same node identifiers"):
+        Network(
+            engine=SimulationEngine(),
+            topology=topology,
+            nodes=nodes,
+            loss_model=NoLoss(),
+            delay_model=ConstantDelay(0),
+            rng=RandomStream(1),
+        )
+
+    assert engine.pending_events == 0
+
+
+def test_invalid_delivery_payload_is_rejected() -> None:
+    _, _, _, network, _ = build_network()
+    bad_event = ScheduledEvent(at_us=0, sequence=0, kind=Network.DELIVERY_EVENT, payload="bad")
+
+    with pytest.raises(TypeError, match="invalid network delivery payload"):
+        network._handle_delivery(bad_event)
+
+================================================================
+FILE: tests/sim/test_randomness.py
+================================================================
+import pytest
+
+from ranger_iot.sim.randomness import RandomStream
+
+
+def test_random_stream_replays_exact_sequence() -> None:
+    left = RandomStream(42, "loss")
+    right = RandomStream(42, "loss")
+
+    assert left.derived_seed == right.derived_seed
+    assert [left.random() for _ in range(5)] == [right.random() for _ in range(5)]
+
+
+def test_forked_streams_are_namespace_isolated() -> None:
+    root = RandomStream(7)
+    loss = root.fork("loss")
+    delay = root.fork("delay")
+    loss_replay = RandomStream(7).fork("loss")
+
+    assert loss.namespace == "root/loss"
+    assert loss.derived_seed != delay.derived_seed
+    assert [loss.random() for _ in range(3)] == [loss_replay.random() for _ in range(3)]
+
+
+def test_random_stream_helpers_and_validation() -> None:
+    rng = RandomStream(3)
+
+    assert 1.0 <= rng.uniform(1.0, 2.0) <= 2.0
+    assert 2 <= rng.integer(2, 5) < 5
+    assert rng.master_seed == 3
+
+    with pytest.raises(ValueError, match="master_seed"):
+        RandomStream(-1)
+    with pytest.raises(ValueError, match="namespace"):
+        RandomStream(1, "")
+    with pytest.raises(ValueError, match="namespace"):
+        rng.fork("")
+    with pytest.raises(ValueError, match="greater"):
+        rng.uniform(2.0, 1.0)
+    with pytest.raises(ValueError, match="greater"):
+        rng.integer(3, 3)

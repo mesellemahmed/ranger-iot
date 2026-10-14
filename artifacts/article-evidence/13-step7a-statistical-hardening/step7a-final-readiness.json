@@ -1,0 +1,73 @@
+{
+  "article_state": "NOT_STARTED",
+  "checks": {
+    "adaptive_campaign_execution": true,
+    "campaign_evidence_hashed": true,
+    "combined_n30_statistics": true,
+    "configs_restored": true,
+    "core_ci": true,
+    "fresh_campaign_detection": true,
+    "new_120_run_matrix_valid": true,
+    "recovery_campaign_execution": true,
+    "static_campaign_execution": true
+  },
+  "design": {
+    "new_runs": 120,
+    "new_seeds": [
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230
+    ],
+    "old_seeds": [
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210
+    ],
+    "protocols": [
+      "static",
+      "recovery",
+      "adaptive-v2"
+    ],
+    "target_tx": [
+      0.3,
+      0.2
+    ],
+    "total_paired_seeds_per_tx": 30,
+    "tx_050_new_runs": 0
+  },
+  "fresh_campaigns": {
+    "adaptive-v2": "experiments/cooja/results/step6e2-adaptive-radio/campaign-20261003T034016Z-calibration",
+    "recovery": "experiments/cooja/results/step6d2-recovery-radio/campaign-20261003T024536Z-calibration",
+    "static": "experiments/cooja/results/step6c3f-post-bootstrap-tx-stress/campaign-20261003T014842Z-calibration"
+  },
+  "important_rule": "Do not add more same-scenario seeds merely to obtain significance. Report n=30 effects and uncertainty.",
+  "next_step": "STEP7B_EXTERNAL_VALIDITY",
+  "schema_version": 1,
+  "scientific_state": "STATISTICAL_HARDENING_COMPLETE",
+  "step": "STEP7A_TARGETED_STATISTICAL_HARDENING",
+  "step7a_pass": true
+}

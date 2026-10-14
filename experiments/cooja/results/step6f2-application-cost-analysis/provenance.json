@@ -1,0 +1,67 @@
+{
+  "analysis": "RANGER-COOJA-THREE-PROTOCOL-APPLICATION-COST",
+  "analysis_commit": "252e78ca7d90f10e5d9ff9ebccaf162b56d9a11e",
+  "inputs": {
+    "adaptive_v2": {
+      "hashes": {
+        "aggregate.csv": "62dfebc44217a499580345be8221d9b96a729e71f4e81626a2320c5cd91353c0",
+        "summary.json": "1f9073bd7d157e07b9baeb9b1c270449992f9cd4879a265b77c50310add5e4d2"
+      },
+      "path": "experiments/cooja/results/step6e2-adaptive-radio/campaign-20261001T215912Z-calibration"
+    },
+    "recovery": {
+      "hashes": {
+        "CHECKSUMS.sha256": "d015633eaba38ef760a9b8e62790fdd1fcc2185993a05ddb2fdd0d386a3c2297",
+        "aggregate.csv": "10587543dc4af5803dcbea20fc5713ec19194c3af8a5ebc51a028c6a0663cf84",
+        "summary.json": "0e02c52ff6a0fcb2b65982d320ab561789b82a9fa576074870fd74c0491ba9aa"
+      },
+      "path": "experiments/cooja/results/step6d2-recovery-radio/campaign-20260930T150343Z-calibration"
+    },
+    "static": {
+      "hashes": {
+        "aggregate.csv": "2cbf1c5e21802f14993e0c3896283898053e4093b131506d8a916d4243bd2298",
+        "summary.json": "e3fb921add75753dca060ce6f40dd524bb5f50ef0cb19e4c8d63e5536e5c061b"
+      },
+      "path": "experiments/cooja/results/step6c3f-post-bootstrap-tx-stress/campaign-20260928T151522Z-calibration"
+    }
+  },
+  "output_hashes": {
+    "case-costs.csv": "0df896cc47338cf80a0dc54baf4ef4553ed81819f0a6f6e80b7d78a7e23b47bc",
+    "cost-analysis-summary.json": "f3058bd101bd5a8ba15879b470b70789a1645b4084dbc66b55693c7422231efd",
+    "cost-regime-summary.csv": "387dd04068ffbe457203d65a56ceb462e2033388a64929deab983805ee66067b",
+    "paired-cost-deltas.csv": "3220d3f4d4b0e43a40aca9a50c4cf4c93a832f97942195a7a0735da1904d1f5f"
+  },
+  "population": {
+    "coding": {
+      "k": 3,
+      "n": 5
+    },
+    "protocols": [
+      "STATIC",
+      "RECOVERY",
+      "ADAPTIVE_V2"
+    ],
+    "seeds": [
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210
+    ],
+    "tx_values": [
+      0.5,
+      0.3,
+      0.2
+    ]
+  },
+  "schema_version": 1,
+  "script": {
+    "path": "experiments\\cooja\\scripts\\analyze_step6f2_application_costs.py",
+    "sha256": "47e543dfe7f3a24da0f3f63168567d57ccc250b87affba4d60077d9a6e124c14"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "bridge_run_count": 420,
+  "bridge_scope": "canonical byte-level RS decode over exact received-index sets from deterministic comparative network reruns",
+  "grouped_completion_and_convergence_exact": true,
+  "historical_deterministic_replay_exact": true,
+  "historical_step7b_modified": false,
+  "important_boundary": "The bridge proves decision/byte reconstruction equivalence and shard-data-size parity. It does not claim that all STEP7B comparative runs physically transmitted serialized RS bytes; actual RS bytes on Cooja/RPL wire are established separately by STEP7C3.",
+  "member_decision_count": 16380,
+  "member_decision_parity": true,
+  "protocol_implementation_modified": false,
+  "protocols": [
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive-v2"
+  ],
+  "real_rs_byte_reconstruction_or_threshold_valid": true,
+  "real_rs_shard_size_matches_ideal_fragment_payload": true,
+  "schema_version": 1,
+  "scientific_state": "REAL_RS_COMPARATIVE_DECISION_BRIDGE_PASS",
+  "seeds_per_cell": 20,
+  "selected_scenario_cells": 7,
+  "step": "STEP7D2CB_REAL_RS_COMPARATIVE_DECISION_BRIDGE",
+  "step7c3_real_wire_anchor": true
+}

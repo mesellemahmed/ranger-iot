@@ -1,0 +1,17 @@
+{
+  "classification": "INFRASTRUCTURE_RETRY_ELIGIBLE",
+  "failed_keys": [
+    {
+      "seed": 1108,
+      "tx": 0.3
+    },
+    {
+      "seed": 5659,
+      "tx": 0.3
+    }
+  ],
+  "failed_rows": 2,
+  "original_rows": 40,
+  "retry_policy": "Exactly one controlled retry of each failed infrastructure case using identical protocol, layout, TX value and simulation seed. No replacement seeds and no repeat-until-pass.",
+  "schema_version": 1
+}

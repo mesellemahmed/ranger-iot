@@ -1,0 +1,19 @@
+schema_version: 1
+campaign_id: step4e-baseline-line-smoke
+
+protocols:
+  - skdc
+  - lkh-unicast
+  - lkh-flood
+
+topologies:
+  - line
+
+member_counts: [4, 8, 16]
+packet_losses: [0.0, 0.10]
+seeds: [11, 29]
+
+revoked_count: 1
+link_delay_us: 10
+payload_bytes: 64
+max_events: 1000000

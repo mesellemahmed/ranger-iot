@@ -1,0 +1,13 @@
+schema_version: 1
+experiment_id: step4d-lkh-flood-smoke
+protocol: lkh-flood
+seed: 42
+group_id: 1
+manager_id: 0
+member_count: 4
+revoked_members: [4]
+topology: line
+packet_loss: 0.0
+link_delay_us: 10
+payload_bytes: 64
+max_events: 1000000

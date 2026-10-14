@@ -1,0 +1,45 @@
+{
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 20260923,
+  "group_summary_rows": 144,
+  "input": "experiments/results/step5e/publication-scalability/aggregate.csv",
+  "input_rows": 1440,
+  "input_sha256": "24ebf67049c80f6ad51835167ffabdaeac15020cee0e56834a41a13c3b46ca7f",
+  "member_counts": [
+    128,
+    256
+  ],
+  "packet_losses": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "paired_effect_rows": 534,
+  "protocols": [
+    "lkh-flood",
+    "lkh-unicast",
+    "ranger-adaptive",
+    "ranger-recovery",
+    "ranger-static",
+    "skdc"
+  ],
+  "schema_version": 1,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "topologies": [
+    "balanced-tree",
+    "grid",
+    "line",
+    "star"
+  ]
+}

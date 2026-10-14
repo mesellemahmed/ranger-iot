@@ -1,0 +1,51 @@
+{
+  "accounting_scope": "Application-layer rekey TX payload bytes attempted by the protocol. Bootstrap registration, report messages, MAC headers, routing control traffic, retransmissions, and radio-energy costs are excluded.",
+  "adaptive_cost_components": [
+    "initial-k coded fragments",
+    "epoch prime",
+    "adaptive control",
+    "adaptive parity",
+    "recovery requests",
+    "recovery fragments"
+  ],
+  "adaptive_initial_policy": "initial-k dissemination followed by adaptive parity",
+  "analysis": "RANGER-STEP6F2-APPLICATION-COST",
+  "bootstrap_resamples": 20000,
+  "bootstrap_seed": 20261002,
+  "coding": {
+    "coded_fragment_bytes": 9,
+    "k": 3,
+    "n": 5
+  },
+  "guardrails": [
+    "These are application-level payload-byte costs, not radio energy measurements.",
+    "A lower byte count is not interpreted independently of reconstruction and completion.",
+    "Static uses the same 3-of-5 baseline as the 6F.1 three-protocol comparison.",
+    "Paired results use identical simulation-seed identifiers but do not imply identical packet-level loss realizations across protocols."
+  ],
+  "recovery_cost_components": [
+    "epoch prime",
+    "recovery requests",
+    "recovery fragments"
+  ],
+  "rows": 90,
+  "schema_version": 1,
+  "seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "static_baseline": "3-of-5 only",
+  "tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}

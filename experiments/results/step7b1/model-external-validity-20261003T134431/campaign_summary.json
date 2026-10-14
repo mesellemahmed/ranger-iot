@@ -1,0 +1,66 @@
+{
+  "campaign_id": "step7b1-model-external-validity",
+  "campaign_sha256": "96f34618e224d65a961f0ce04c18390173152bc6038e7bedbed7bd07823cafb5",
+  "completed_count": 2078,
+  "incomplete_count": 802,
+  "member_counts": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "packet_losses": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "protocols": [
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive-v2"
+  ],
+  "ranger_adaptive": {
+    "max_fragments": 5,
+    "nack_bytes": 16,
+    "recovery_rounds": 2
+  },
+  "ranger_recovery": {
+    "request_bytes": 24,
+    "rounds": 2
+  },
+  "ranger_static": {
+    "capsule_overhead_bytes": 0,
+    "data_fragments": 3,
+    "total_fragments": 5
+  },
+  "run_count": 2880,
+  "schema_version": 1,
+  "seeds": [
+    1901,
+    2117,
+    6212,
+    8530,
+    5326,
+    4518,
+    6021,
+    1381,
+    2579,
+    6704,
+    5024,
+    3694,
+    8703,
+    2176,
+    6594,
+    8303,
+    8470,
+    2146,
+    1108,
+    5659
+  ],
+  "topologies": [
+    "line",
+    "star",
+    "balanced-tree",
+    "grid"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "coding": {
+    "k": 3,
+    "n": 5
+  },
+  "experiment": "RANGER-COOJA-RECOVERY-CASCADE-SMOKE",
+  "hashes": {
+    "assertion_sha256": "a805c57824ee30831632b80f513fec391a53f445507eded545a2308a6a6442fb",
+    "raw_log_sha256": "c70b299349f71589c655e33a56c777f8a854c06ab613ae87a47abd7dd657ceec",
+    "result_sha256": "1de093c76eaf3172b76959d50d502fe43d742f16a4dccd2122c6349948388d32",
+    "scenario_sha256": "d811ea8e016bbed4124e0b08a1519fa3c28e64c93f0b58dca2df9aa72ec1ffda",
+    "source_sha256": "4513a8404e601b9114eeae9b67edc682c4c4605e423320958fdaf43340961c01"
+  },
+  "interpretation": "Controlled functional oracle for two-round same-epoch Recovery cascade; not a performance experiment.",
+  "radio": {
+    "success_ratio_rx": 1.0,
+    "success_ratio_tx": 1.0
+  },
+  "recovery": {
+    "controlled_initial_drop_indexes": [
+      2,
+      3,
+      4
+    ],
+    "controlled_initial_state": {
+      "6": [
+        0,
+        1
+      ],
+      "7": [
+        0,
+        1
+      ]
+    },
+    "expected_cascade": [
+      "7 requests 6 while 6 is stale",
+      "5 repairs 6 in round 1",
+      "6 reconstructs in round 1",
+      "7 requests 6 in round 2",
+      "6 repairs 7 in round 2",
+      "7 reconstructs in round 2"
+    ],
+    "max_rounds": 2,
+    "request_bytes": 24
+  },
+  "safety": {
+    "revoked_node": 8,
+    "revoked_reconstruction_allowed": false,
+    "revoked_recovery_activity_allowed": false
+  },
+  "schema_version": 1,
+  "simulation_seed": 20260928,
+  "source_commit": "52ff2e4d86f27d1c38a09a42e5d49c93210df294"
+}

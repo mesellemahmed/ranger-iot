@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "project": "RANGER-IoT",
+  "policy": "DOCKER_ONLY_REPRODUCIBLE_EXECUTION",
+  "host_allowed": [
+    "docker",
+    "docker compose",
+    "git for repository operations",
+    "thin shell orchestration",
+    "file creation and redirection"
+  ],
+  "host_forbidden_for_scientific_execution": [
+    "python",
+    "pytest",
+    "ruff",
+    "mypy",
+    "gcc",
+    "cc",
+    "clang",
+    "make",
+    "java",
+    "gradle",
+    "tamarin-prover",
+    "maude",
+    "statistical analysis",
+    "scientific oracle execution"
+  ],
+  "requirements": {
+    "all_scientific_tools_execute_in_containers": true,
+    "all_tool_versions_recorded": true,
+    "docker_base_images_pinned_by_digest_when_available": true,
+    "formal_proof_network_disabled": true,
+    "scientific_source_hashes_recorded": true,
+    "container_image_identity_recorded": true,
+    "evidence_packages_hashed": true,
+    "host_python_forbidden": true,
+    "host_compiler_forbidden": true,
+    "host_formal_tools_forbidden": true
+  },
+  "publication_rule": "A result is not reproducible evidence if any scientific computation was executed by an uncontrolled host tool."
+}

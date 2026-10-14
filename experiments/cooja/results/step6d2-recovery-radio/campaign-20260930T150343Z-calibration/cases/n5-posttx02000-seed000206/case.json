@@ -1,0 +1,12 @@
+{
+  "application_loss_bp": 0,
+  "case_id": "n5-posttx02000-seed000206",
+  "defines": "RANGER_CODING_K=3,RANGER_CODING_N=5,RANGER_LOSS_BP=0,RANGER_LOSS_SEED=1,RANGER_CAMPAIGN_MODE=0,RANGER_RECOVERY_SMOKE=0,RANGER_RECOVERY_CASCADE_SMOKE=0",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "k": 3,
+  "n": 5,
+  "schema_version": 1,
+  "simulation_seed": 206,
+  "target_success_ratio_tx": 0.2
+}

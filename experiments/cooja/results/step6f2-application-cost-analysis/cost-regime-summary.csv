@@ -1,0 +1,10 @@
+protocol,tx,runs,complete,completion_rate,mean_reconstructed,median_reconstructed,mean_total_rekey_tx_payload_bytes,median_total_rekey_tx_payload_bytes,min_total_rekey_tx_payload_bytes,max_total_rekey_tx_payload_bytes,mean_bytes_per_reconstructed_member
+STATIC,0.2,10,0,0.0,3.6,3.5,315,315.0,315,315,93.975
+RECOVERY,0.2,10,4,0.4,5.1,5.0,547.8,517.5,450,681,113.255
+ADAPTIVE_V2,0.2,10,3,0.3,4.9,5.0,1052.4,1121.5,754,1319,224.04333333333332
+STATIC,0.3,10,2,0.2,5.2,5.0,315,315.0,315,315,60.9
+RECOVERY,0.3,10,8,0.8,5.8,6.0,400.5,408.0,351,483,69.75
+ADAPTIVE_V2,0.3,10,10,1.0,6,6.0,595.1,577.0,354,1140,99.18333333333334
+STATIC,0.5,10,10,1.0,6,6.0,315,315.0,315,315,52.5
+RECOVERY,0.5,10,10,1.0,6,6.0,354.3,351.0,351,384,59.05
+ADAPTIVE_V2,0.5,10,10,1.0,6,6.0,317.9,225.0,225,1043,52.983333333333334

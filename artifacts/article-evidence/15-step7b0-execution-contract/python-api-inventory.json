@@ -1,0 +1,1152 @@
+{
+  "src/ranger_iot/experiments/campaign.py": {
+    "classes": [
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "validate_matrix"
+          },
+          {
+            "args": [
+              "cls",
+              "path"
+            ],
+            "name": "from_yaml"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "run_count"
+          }
+        ],
+        "name": "CampaignConfig"
+      }
+    ],
+    "functions": [
+      {
+        "args": [
+          "config"
+        ],
+        "name": "canonical_campaign_json"
+      },
+      {
+        "args": [
+          "config"
+        ],
+        "name": "campaign_sha256"
+      },
+      {
+        "args": [
+          "packet_loss"
+        ],
+        "name": "_loss_tag"
+      },
+      {
+        "args": [
+          "protocol",
+          "topology",
+          "member_count",
+          "packet_loss",
+          "seed"
+        ],
+        "name": "_run_id"
+      },
+      {
+        "args": [
+          "member_count",
+          "revoked_count"
+        ],
+        "name": "_revoked_members"
+      },
+      {
+        "args": [
+          "config"
+        ],
+        "name": "iter_experiment_configs"
+      },
+      {
+        "args": [
+          "run_id",
+          "config",
+          "summary"
+        ],
+        "name": "_aggregate_row"
+      },
+      {
+        "args": [
+          "path",
+          "rows"
+        ],
+        "name": "_write_csv"
+      },
+      {
+        "args": [
+          "path",
+          "payload"
+        ],
+        "name": "_write_json"
+      },
+      {
+        "args": [
+          "config",
+          "output_dir"
+        ],
+        "name": "run_campaign"
+      },
+      {
+        "args": [],
+        "name": "_parse_args"
+      },
+      {
+        "args": [],
+        "name": "main"
+      }
+    ]
+  },
+  "src/ranger_iot/experiments/config.py": {
+    "classes": [
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "member_ids"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "all_node_ids"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "validate_membership"
+          },
+          {
+            "args": [
+              "cls",
+              "path"
+            ],
+            "name": "from_yaml"
+          }
+        ],
+        "name": "ExperimentConfig"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/experiments/runner.py": {
+    "classes": [
+      {
+        "methods": [],
+        "name": "ExperimentResult"
+      }
+    ],
+    "functions": [
+      {
+        "args": [
+          "config",
+          "output_dir"
+        ],
+        "name": "run_experiment"
+      },
+      {
+        "args": [
+          "config",
+          "group",
+          "network",
+          "topology",
+          "packet_factory"
+        ],
+        "name": "_start_protocol"
+      },
+      {
+        "args": [
+          "engine",
+          "processed_events",
+          "max_events"
+        ],
+        "name": "_drain_engine"
+      },
+      {
+        "args": [
+          "config"
+        ],
+        "name": "_build_topology"
+      },
+      {
+        "args": [
+          "config",
+          "group",
+          "session",
+          "network",
+          "protocol_fields",
+          "processed_events"
+        ],
+        "name": "_build_summary"
+      },
+      {
+        "args": [
+          "output_dir",
+          "config",
+          "group",
+          "nodes",
+          "network",
+          "trace",
+          "summary"
+        ],
+        "name": "_write_artifacts"
+      }
+    ]
+  },
+  "src/ranger_iot/group.py": {
+    "classes": [
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__post_init__"
+          }
+        ],
+        "name": "MemberState"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "group_id",
+              "manager_id",
+              "member_ids",
+              "initial_epoch"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "member_ids"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "authorized_member_ids"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "revoked_member_ids"
+          },
+          {
+            "args": [
+              "self",
+              "node_id"
+            ],
+            "name": "is_authorized"
+          },
+          {
+            "args": [
+              "self",
+              "node_id"
+            ],
+            "name": "member_epoch"
+          },
+          {
+            "args": [
+              "self",
+              "node_id"
+            ],
+            "name": "revoke"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "advance_epoch"
+          },
+          {
+            "args": [
+              "self",
+              "node_id",
+              "epoch"
+            ],
+            "name": "accept_epoch"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "convergence_fraction"
+          },
+          {
+            "args": [
+              "self",
+              "node_id"
+            ],
+            "name": "_require_member"
+          }
+        ],
+        "name": "GroupState"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/ranger/adaptive_v2_protocol.py": {
+    "classes": [
+      {
+        "methods": [],
+        "name": "RangerAdaptiveV2Stats"
+      },
+      {
+        "methods": [],
+        "name": "_SuppressionCounters"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "group",
+              "tree",
+              "transport",
+              "parameters"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self",
+              "revoked_nodes"
+            ],
+            "name": "start_rekey"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "transport_stats"
+          },
+          {
+            "args": [
+              "self",
+              "node_id",
+              "message"
+            ],
+            "name": "_handle_adaptive_nack"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "_require_suppression"
+          }
+        ],
+        "name": "RangerAdaptiveV2Protocol"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/ranger/recovery_protocol.py": {
+    "classes": [
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__post_init__"
+          }
+        ],
+        "name": "RecoveryRequest"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__post_init__"
+          }
+        ],
+        "name": "RangerRecoveryParameters"
+      },
+      {
+        "methods": [],
+        "name": "RangerRecoveryStats"
+      },
+      {
+        "methods": [],
+        "name": "_RecoveryCounters"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "group",
+              "tree",
+              "transport",
+              "parameters"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self",
+              "revoked_nodes"
+            ],
+            "name": "start_rekey"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "transport_stats"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "start_recovery_round"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "_make_manager_receiver"
+          },
+          {
+            "args": [
+              "self",
+              "member_id",
+              "flooded",
+              "at_us"
+            ],
+            "name": "_handle_fragment"
+          },
+          {
+            "args": [
+              "self",
+              "node_id",
+              "message",
+              "at_us"
+            ],
+            "name": "_handle_transport_message"
+          },
+          {
+            "args": [
+              "self",
+              "node_id",
+              "message"
+            ],
+            "name": "_handle_recovery_request"
+          },
+          {
+            "args": [
+              "self",
+              "member_id",
+              "message",
+              "at_us"
+            ],
+            "name": "_handle_recovery_fragment"
+          },
+          {
+            "args": [
+              "self",
+              "member_id"
+            ],
+            "name": "_eligible_recovery_neighbors"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "_manager_available_indexes"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "_require_recovery"
+          }
+        ],
+        "name": "RangerRecoveryProtocol"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/ranger/static_protocol.py": {
+    "classes": [
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__post_init__"
+          }
+        ],
+        "name": "RangerStaticParameters"
+      },
+      {
+        "methods": [],
+        "name": "RangerStaticStats"
+      },
+      {
+        "methods": [],
+        "name": "_RangerStaticEpochState"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "group",
+              "tree",
+              "transport",
+              "parameters"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "sessions"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "session"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "plan"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "capsule"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "fragments"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "transport_stats"
+          },
+          {
+            "args": [
+              "self",
+              "revoked_nodes"
+            ],
+            "name": "start_rekey"
+          },
+          {
+            "args": [
+              "self",
+              "fragments"
+            ],
+            "name": "_initial_fragments"
+          },
+          {
+            "args": [
+              "self",
+              "state",
+              "fragment"
+            ],
+            "name": "_flood_fragment"
+          },
+          {
+            "args": [
+              "self",
+              "member_id"
+            ],
+            "name": "_make_member_receiver"
+          },
+          {
+            "args": [
+              "self",
+              "member_id",
+              "flooded",
+              "at_us"
+            ],
+            "name": "_handle_fragment"
+          },
+          {
+            "args": [
+              "self",
+              "member_id",
+              "fragment",
+              "at_us"
+            ],
+            "name": "_accept_fragment"
+          },
+          {
+            "args": [
+              "self",
+              "revoked_nodes"
+            ],
+            "name": "_validate_group_revocations"
+          },
+          {
+            "args": [
+              "self",
+              "epoch"
+            ],
+            "name": "_require_epoch"
+          }
+        ],
+        "name": "RangerStaticProtocol"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/rekey.py": {
+    "classes": [
+      {
+        "methods": [],
+        "name": "RekeySummary"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__post_init__"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "accepted_count"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "completed"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "convergence_fraction"
+          },
+          {
+            "args": [
+              "self",
+              "node_id",
+              "at_us"
+            ],
+            "name": "record_acceptance"
+          },
+          {
+            "args": [
+              "self",
+              "fraction"
+            ],
+            "name": "time_to_fraction_us"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "summary"
+          }
+        ],
+        "name": "RekeySession"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/sim/core.py": {
+    "classes": [
+      {
+        "methods": [],
+        "name": "ScheduledEvent"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__len__"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "kind",
+              "payload"
+            ],
+            "name": "push"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "peek"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "pop"
+          }
+        ],
+        "name": "EventQueue"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "now_us"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "processed_events"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "pending_events"
+          },
+          {
+            "args": [
+              "self",
+              "kind",
+              "handler"
+            ],
+            "name": "register_handler"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "kind",
+              "payload"
+            ],
+            "name": "schedule_at"
+          },
+          {
+            "args": [
+              "self",
+              "delay_us",
+              "kind",
+              "payload"
+            ],
+            "name": "schedule_after"
+          },
+          {
+            "args": [
+              "self",
+              "until_us",
+              "max_events"
+            ],
+            "name": "run"
+          }
+        ],
+        "name": "SimulationEngine"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/sim/loss.py": {
+    "classes": [
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet",
+              "rng"
+            ],
+            "name": "should_drop"
+          }
+        ],
+        "name": "LossModel"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet",
+              "rng"
+            ],
+            "name": "should_drop"
+          }
+        ],
+        "name": "NoLoss"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__post_init__"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet",
+              "rng"
+            ],
+            "name": "should_drop"
+          }
+        ],
+        "name": "BernoulliLoss"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/sim/metrics.py": {
+    "classes": [
+      {
+        "methods": [],
+        "name": "DropReason"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "at_us",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "on_transmit"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "on_deliver"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "sender",
+              "receiver",
+              "packet",
+              "reason"
+            ],
+            "name": "on_drop"
+          }
+        ],
+        "name": "NetworkObserver"
+      },
+      {
+        "methods": [],
+        "name": "NetworkMetricsSnapshot"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "on_transmit"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "sender",
+              "packet"
+            ],
+            "name": "on_radio_transmit"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "on_deliver"
+          },
+          {
+            "args": [
+              "self",
+              "at_us",
+              "sender",
+              "receiver",
+              "packet",
+              "reason"
+            ],
+            "name": "on_drop"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "snapshot"
+          }
+        ],
+        "name": "NetworkMetrics"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/sim/network.py": {
+    "classes": [
+      {
+        "methods": [],
+        "name": "PendingDelivery"
+      },
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "engine",
+              "topology",
+              "nodes",
+              "loss_model",
+              "delay_model",
+              "rng",
+              "observers"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "now_us"
+          },
+          {
+            "args": [
+              "self",
+              "node_id",
+              "receiver"
+            ],
+            "name": "register_receiver"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "send"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "packet",
+              "exclude"
+            ],
+            "name": "broadcast"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "_attempt_delivery"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "_validate_send"
+          },
+          {
+            "args": [
+              "self",
+              "event"
+            ],
+            "name": "_handle_delivery"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "packet"
+            ],
+            "name": "_notify_radio_transmit"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet"
+            ],
+            "name": "_notify_transmit"
+          },
+          {
+            "args": [
+              "self",
+              "sender",
+              "receiver",
+              "packet",
+              "reason"
+            ],
+            "name": "_notify_drop"
+          }
+        ],
+        "name": "Network"
+      }
+    ],
+    "functions": []
+  },
+  "src/ranger_iot/sim/randomness.py": {
+    "classes": [
+      {
+        "methods": [
+          {
+            "args": [
+              "self",
+              "master_seed",
+              "namespace"
+            ],
+            "name": "__init__"
+          },
+          {
+            "args": [
+              "master_seed",
+              "namespace"
+            ],
+            "name": "_derive_seed"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "master_seed"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "namespace"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "derived_seed"
+          },
+          {
+            "args": [
+              "self",
+              "namespace"
+            ],
+            "name": "fork"
+          },
+          {
+            "args": [
+              "self"
+            ],
+            "name": "random"
+          },
+          {
+            "args": [
+              "self",
+              "low",
+              "high"
+            ],
+            "name": "uniform"
+          },
+          {
+            "args": [
+              "self",
+              "low",
+              "high"
+            ],
+            "name": "integer"
+          }
+        ],
+        "name": "RandomStream"
+      }
+    ],
+    "functions": []
+  }
+}

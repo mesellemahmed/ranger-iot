@@ -1,0 +1,49 @@
+{
+  "expected_adjacency": {
+    "1": [
+      2
+    ],
+    "2": [
+      1,
+      3
+    ],
+    "3": [
+      2,
+      4
+    ],
+    "4": [
+      3,
+      5
+    ],
+    "5": [
+      4,
+      6
+    ],
+    "6": [
+      5,
+      7
+    ],
+    "7": [
+      6,
+      8
+    ],
+    "8": [
+      7
+    ]
+  },
+  "experiment": "RANGER-COOJA-RPL-NEIGHBOR-CENSUS",
+  "hashes": {
+    "assertion_sha256": "93c18b4e490389915d2b4a2efa05d263cdb0c7384327f11ba900210c89c0511b",
+    "raw_log_sha256": "7ff5a16e76bddb1b1b0aa270352a60bcd362b44d5dcd81dd30f624f536924e97",
+    "result_sha256": "b199947d424b72874619904be258f6f0dada31931a5ee4b4d730a1665ace572c",
+    "scenario_sha256": "6555c1bfd696cbcc1df8c85f7b5de9cec6b255041e0d53c0531e21181b0cc9b1",
+    "source_sha256": "2e961e81e6711a8acf2644aa82770c7f8669645358707c90e36d6432fce7a766"
+  },
+  "radio": {
+    "success_ratio_rx": 1.0,
+    "success_ratio_tx": 1.0
+  },
+  "schema_version": 1,
+  "simulation_seed": 20260928,
+  "source_commit": "c155dc1038c3f6170c1cf0a8e376dcc9f76dfd05"
+}

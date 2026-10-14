@@ -1,0 +1,12 @@
+{
+  "bootstrap_fail": 0,
+  "campaign_id": "campaign-20260928T005420Z-pilot",
+  "case_count": 8,
+  "infra_fail": 0,
+  "mode": "pilot",
+  "rekey_complete": 7,
+  "rekey_incomplete": 1,
+  "safety_fail": 0,
+  "schema_version": 1,
+  "validated": 8
+}

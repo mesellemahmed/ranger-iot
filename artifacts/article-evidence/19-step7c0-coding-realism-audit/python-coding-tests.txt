@@ -1,0 +1,147 @@
+     1	from dataclasses import replace
+     2	
+     3	import pytest
+     4	
+     5	from ranger_iot.ranger.capsule import RekeyCapsule
+     6	from ranger_iot.ranger.coding import (
+     7	    CodedFragment,
+     8	    CodingParameters,
+     9	    FragmentAccumulator,
+    10	    StaticErasureCoder,
+    11	)
+    12	
+    13	
+    14	def _capsule() -> RekeyCapsule:
+    15	    return RekeyCapsule(
+    16	        capsule_id="g1-e8",
+    17	        group_id=1,
+    18	        epoch=8,
+    19	        logical_ciphertexts=3,
+    20	        payload_bytes=301,
+    21	    )
+    22	
+    23	
+    24	def _fragments() -> tuple[CodedFragment, ...]:
+    25	    return StaticErasureCoder.encode(_capsule(), CodingParameters(3, 5))
+    26	
+    27	
+    28	def test_coding_parameters_report_redundancy_and_fragment_size() -> None:
+    29	    parameters = CodingParameters(data_fragments=3, total_fragments=5)
+    30	
+    31	    assert parameters.redundancy_fragments == 2
+    32	    assert parameters.fragment_payload_bytes(301) == 101
+    33	    assert parameters.fragment_payload_bytes(300) == 100
+    34	
+    35	
+    36	@pytest.mark.parametrize(
+    37	    ("data_fragments", "total_fragments"),
+    38	    [(0, 1), (3, 2)],
+    39	)
+    40	def test_coding_parameters_reject_invalid_values(
+    41	    data_fragments: int,
+    42	    total_fragments: int,
+    43	) -> None:
+    44	    with pytest.raises(ValueError):
+    45	        CodingParameters(data_fragments, total_fragments)
+    46	
+    47	
+    48	def test_coding_parameters_reject_zero_payload() -> None:
+    49	    with pytest.raises(ValueError, match="payload_bytes"):
+    50	        CodingParameters(3, 5).fragment_payload_bytes(0)
+    51	
+    52	
+    53	def test_static_coder_emits_deterministic_k_of_n_metadata() -> None:
+    54	    fragments = _fragments()
+    55	
+    56	    assert len(fragments) == 5
+    57	    assert tuple(fragment.fragment_index for fragment in fragments) == (0, 1, 2, 3, 4)
+    58	    assert {fragment.payload_bytes for fragment in fragments} == {101}
+    59	    assert {fragment.data_fragments for fragment in fragments} == {3}
+    60	    assert {fragment.total_fragments for fragment in fragments} == {5}
+    61	    assert {fragment.epoch for fragment in fragments} == {8}
+    62	
+    63	
+    64	def test_accumulator_decodes_any_three_distinct_fragments() -> None:
+    65	    fragments = _fragments()
+    66	    accumulator = FragmentAccumulator("g1-e8", 1, 8, CodingParameters(3, 5))
+    67	
+    68	    assert accumulator.accept(fragments[0])
+    69	    assert accumulator.accept(fragments[3])
+    70	    assert not accumulator.decodable
+    71	    assert accumulator.remaining_needed == 1
+    72	
+    73	    assert accumulator.accept(fragments[4])
+    74	    assert accumulator.decodable
+    75	    assert accumulator.unique_received == 3
+    76	    assert accumulator.remaining_needed == 0
+    77	
+    78	
+    79	def test_accumulator_does_not_count_duplicate_fragment_twice() -> None:
+    80	    fragments = _fragments()
+    81	    accumulator = FragmentAccumulator("g1-e8", 1, 8, CodingParameters(3, 5))
+    82	
+    83	    assert accumulator.accept(fragments[0])
+    84	    assert not accumulator.accept(fragments[0])
+    85	    assert accumulator.accept(fragments[1])
+    86	
+    87	    assert accumulator.unique_received == 2
+    88	    assert not accumulator.decodable
+    89	
+    90	
+    91	@pytest.mark.parametrize(
+    92	    "fragment",
+    93	    [
+    94	        replace(_fragments()[0], capsule_id="other"),
+    95	        replace(_fragments()[0], group_id=2),
+    96	        replace(_fragments()[0], epoch=9),
+    97	        replace(_fragments()[0], data_fragments=2),
+    98	        replace(_fragments()[0], total_fragments=6),
+    99	    ],
+   100	)
+   101	def test_accumulator_rejects_mismatched_fragment(fragment: CodedFragment) -> None:
+   102	    accumulator = FragmentAccumulator("g1-e8", 1, 8, CodingParameters(3, 5))
+   103	
+   104	    with pytest.raises(ValueError):
+   105	        accumulator.accept(fragment)
+   106	
+   107	
+   108	@pytest.mark.parametrize(
+   109	    "changes",
+   110	    [
+   111	        {"capsule_id": ""},
+   112	        {"group_id": -1},
+   113	        {"epoch": 0},
+   114	        {"fragment_index": -1},
+   115	        {"fragment_index": 5},
+   116	        {"data_fragments": 0},
+   117	        {"data_fragments": 4, "total_fragments": 3},
+   118	        {"payload_bytes": 0},
+   119	    ],
+   120	)
+   121	def test_coded_fragment_rejects_invalid_metadata(changes: dict[str, object]) -> None:
+   122	    values: dict[str, object] = {
+   123	        "capsule_id": "g1-e8",
+   124	        "group_id": 1,
+   125	        "epoch": 8,
+   126	        "fragment_index": 0,
+   127	        "data_fragments": 3,
+   128	        "total_fragments": 5,
+   129	        "payload_bytes": 101,
+   130	    }
+   131	    values.update(changes)
+   132	
+   133	    with pytest.raises(ValueError):
+   134	        CodedFragment(**values)  # type: ignore[arg-type]
+   135	
+   136	
+   137	@pytest.mark.parametrize(
+   138	    ("capsule_id", "group_id", "epoch"),
+   139	    [("", 1, 8), ("g1-e8", -1, 8), ("g1-e8", 1, 0)],
+   140	)
+   141	def test_accumulator_rejects_invalid_identity(
+   142	    capsule_id: str,
+   143	    group_id: int,
+   144	    epoch: int,
+   145	) -> None:
+   146	    with pytest.raises(ValueError):
+   147	        FragmentAccumulator(capsule_id, group_id, epoch, CodingParameters(3, 5))

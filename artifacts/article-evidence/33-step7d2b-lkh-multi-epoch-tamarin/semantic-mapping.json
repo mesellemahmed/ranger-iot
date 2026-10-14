@@ -1,0 +1,86 @@
+{
+  "claim_boundary": "Exact reference-instance model of implemented symbolic LKH plan semantics; not an arbitrary-N theorem.",
+  "epoch1": {
+    "active": [
+      1,
+      2,
+      3
+    ],
+    "revoked": [
+      4
+    ],
+    "root_version": 1,
+    "updates": [
+      {
+        "recipients": [
+          3
+        ],
+        "target_node": 3,
+        "target_version": 1,
+        "wrapper_node": 6,
+        "wrapper_version": 0
+      },
+      {
+        "recipients": [
+          1,
+          2
+        ],
+        "target_node": 1,
+        "target_version": 1,
+        "wrapper_node": 2,
+        "wrapper_version": 0
+      },
+      {
+        "recipients": [
+          3
+        ],
+        "target_node": 1,
+        "target_version": 1,
+        "wrapper_node": 3,
+        "wrapper_version": 1
+      }
+    ]
+  },
+  "epoch2": {
+    "active": [
+      1,
+      2
+    ],
+    "revoked": [
+      3
+    ],
+    "root_version": 2,
+    "updates": [
+      {
+        "recipients": [
+          1,
+          2
+        ],
+        "target_node": 1,
+        "target_version": 2,
+        "wrapper_node": 2,
+        "wrapper_version": 0
+      }
+    ]
+  },
+  "formal_instance": "FOUR_MEMBER_REVOKE_4_THEN_3",
+  "schema_version": 1,
+  "source": "STEP7D2A implemented LkhKeyTree semantic probe",
+  "tree": {
+    "member_leaves": {
+      "1": 4,
+      "2": 5,
+      "3": 6,
+      "4": 7
+    },
+    "parents": {
+      "2": 1,
+      "3": 1,
+      "4": 2,
+      "5": 2,
+      "6": 3,
+      "7": 3
+    },
+    "root": 1
+  }
+}

@@ -1,0 +1,176 @@
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed001901/scenario.csc
+n5-posttx03000-seed001901 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 1901
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed002117/scenario.csc
+n5-posttx03000-seed002117 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 2117
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed006212/scenario.csc
+n5-posttx03000-seed006212 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 6212
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed008530/scenario.csc
+n5-posttx03000-seed008530 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 8530
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed005326/scenario.csc
+n5-posttx03000-seed005326 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 5326
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed004518/scenario.csc
+n5-posttx03000-seed004518 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 4518
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed006021/scenario.csc
+n5-posttx03000-seed006021 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 6021
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed001381/scenario.csc
+n5-posttx03000-seed001381 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 1381
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed002579/scenario.csc
+n5-posttx03000-seed002579 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 2579
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed006704/scenario.csc
+n5-posttx03000-seed006704 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 6704
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed005024/scenario.csc
+n5-posttx03000-seed005024 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 5024
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed003694/scenario.csc
+n5-posttx03000-seed003694 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 3694
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed008703/scenario.csc
+n5-posttx03000-seed008703 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 8703
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed002176/scenario.csc
+n5-posttx03000-seed002176 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 2176
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed006594/scenario.csc
+n5-posttx03000-seed006594 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 6594
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed008303/scenario.csc
+n5-posttx03000-seed008303 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 8303
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed008470/scenario.csc
+n5-posttx03000-seed008470 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 8470
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed002146/scenario.csc
+n5-posttx03000-seed002146 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 2146
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed001108/scenario.csc
+n5-posttx03000-seed001108 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 1108
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx03000-seed005659/scenario.csc
+n5-posttx03000-seed005659 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 5659
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed001901/scenario.csc
+n5-posttx02000-seed001901 outcome= REKEY_INCOMPLETE validated= True bootstrap= True switch= True reconstructed= 5 seed= 1901
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed002117/scenario.csc
+n5-posttx02000-seed002117 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 2117
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed006212/scenario.csc
+n5-posttx02000-seed006212 outcome= REKEY_INCOMPLETE validated= True bootstrap= True switch= True reconstructed= 5 seed= 6212
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed008530/scenario.csc
+n5-posttx02000-seed008530 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 8530
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed005326/scenario.csc
+n5-posttx02000-seed005326 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 5326
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed004518/scenario.csc
+n5-posttx02000-seed004518 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 4518
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed006021/scenario.csc
+n5-posttx02000-seed006021 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 6021
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed001381/scenario.csc
+n5-posttx02000-seed001381 outcome= REKEY_INCOMPLETE validated= True bootstrap= True switch= True reconstructed= 5 seed= 1381
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed002579/scenario.csc
+n5-posttx02000-seed002579 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 2579
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed006704/scenario.csc
+n5-posttx02000-seed006704 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 6704
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed005024/scenario.csc
+n5-posttx02000-seed005024 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 5024
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed003694/scenario.csc
+n5-posttx02000-seed003694 outcome= REKEY_INCOMPLETE validated= True bootstrap= True switch= True reconstructed= 3 seed= 3694
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed008703/scenario.csc
+n5-posttx02000-seed008703 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 8703
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed002176/scenario.csc
+n5-posttx02000-seed002176 outcome= REKEY_INCOMPLETE validated= True bootstrap= True switch= True reconstructed= 5 seed= 2176
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed006594/scenario.csc
+n5-posttx02000-seed006594 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 6594
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed008303/scenario.csc
+n5-posttx02000-seed008303 outcome= REKEY_INCOMPLETE validated= True bootstrap= True switch= True reconstructed= 5 seed= 8303
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed008470/scenario.csc
+n5-posttx02000-seed008470 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 8470
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed002146/scenario.csc
+n5-posttx02000-seed002146 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 2146
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed001108/scenario.csc
+n5-posttx02000-seed001108 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 1108
+
+$ docker compose -f C:\Repository\Recherche Scientifique\ranger-iot\experiments\cooja\compose.yaml run --rm -T cooja run --args=--no-gui /workspace/experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration/cases/n5-posttx02000-seed005659/scenario.csc
+n5-posttx02000-seed005659 outcome= REKEY_COMPLETE validated= True bootstrap= True switch= True reconstructed= 6 seed= 5659
+
+Campaign : experiments/cooja/results/step7b3-cooja-topology/20261003T144752/balanced-tree/adaptive-v2/campaign-20261004T004839Z-calibration
+{
+  "bootstrap_fail": 0,
+  "campaign_id": "campaign-20261004T004839Z-calibration",
+  "case_count": 40,
+  "infra_fail": 0,
+  "mode": "calibration",
+  "rekey_complete": 34,
+  "rekey_incomplete": 6,
+  "safety_fail": 0,
+  "schema_version": 1,
+  "validated": 40
+}
+
+case_id,n,target_success_ratio_tx,simulation_seed,script_runner_pass,outcome,bootstrap_complete,registered_count,radio_switch_applied,radio_switch_time,radio_success_ratio_tx_before,radio_success_ratio_tx_after,first_coded_send_time,switch_before_first_coded_send,authorized_reconstructed_count,authorized_reconstruction_ratio,revoked_reconstructed,revoked_reject_observed,report_count,observed_simulation_seed
+n5-posttx03000-seed001901,5,0.3,1901,True,REKEY_COMPLETE,True,7,True,53211000,1,0.3,54212000,True,6,1,False,True,1,1901
+n5-posttx03000-seed002117,5,0.3,2117,True,REKEY_COMPLETE,True,7,True,74023000,1,0.3,75024000,True,6,1,False,False,2,2117
+n5-posttx03000-seed006212,5,0.3,6212,True,REKEY_COMPLETE,True,7,True,53528000,1,0.3,54529000,True,6,1,False,False,2,6212
+n5-posttx03000-seed008530,5,0.3,8530,True,REKEY_COMPLETE,True,7,True,53824000,1,0.3,54825000,True,6,1,False,False,0,8530
+n5-posttx03000-seed005326,5,0.3,5326,True,REKEY_COMPLETE,True,7,True,53869000,1,0.3,54870000,True,6,1,False,False,1,5326
+n5-posttx03000-seed004518,5,0.3,4518,True,REKEY_COMPLETE,True,7,True,54080000,1,0.3,55081000,True,6,1,False,False,3,4518
+n5-posttx03000-seed006021,5,0.3,6021,True,REKEY_COMPLETE,True,7,True,43461000,1,0.3,44462000,True,6,1,False,False,2,6021
+n5-posttx03000-seed001381,5,0.3,1381,True,REKEY_COMPLETE,True,7,True,53456000,1,0.3,54457000,True,6,1,False,False,1,1381
+n5-posttx03000-seed002579,5,0.3,2579,True,REKEY_COMPLETE,True,7,True,53556000,1,0.3,54557000,True,6,1,False,False,2,2579
+n5-posttx03000-seed006704,5,0.3,6704,True,REKEY_COMPLETE,True,7,True,53561000,1,0.3,54562000,True,6,1,False,False,3,6704
+n5-posttx03000-seed005024,5,0.3,5024,True,REKEY_COMPLETE,True,7,True,53330000,1,0.3,54331000,True,6,1,False,True,2,5024
+n5-posttx03000-seed003694,5,0.3,3694,True,REKEY_COMPLETE,True,7,True,63174000,1,0.3,64175000,True,6,1,False,False,3,3694
+n5-posttx03000-seed008703,5,0.3,8703,True,REKEY_COMPLETE,True,7,True,63757000,1,0.3,64758000,True,6,1,False,False,1,8703
+n5-posttx03000-seed002176,5,0.3,2176,True,REKEY_COMPLETE,True,7,True,53797000,1,0.3,54798000,True,6,1,False,False,1,2176
+n5-posttx03000-seed006594,5,0.3,6594,True,REKEY_COMPLETE,True,7,True,53215000,1,0.3,54216000,True,6,1,False,False,3,6594
+n5-posttx03000-seed008303,5,0.3,8303,True,REKEY_COMPLETE,True,7,True,63590000,1,0.3,64591000,True,6,1,False,False,3,8303
+n5-posttx03000-seed008470,5,0.3,8470,True,REKEY_COMPLETE,True,7,True,53651000,1,0.3,54652000,True,6,1,False,False,3,8470
+n5-posttx03000-seed002146,5,0.3,2146,True,REKEY_COMPLETE,True,7,True,53147000,1,0.3,54148000,True,6,1,False,False,4,2146
+n5-posttx03000-seed001108,5,0.3,1108,True,REKEY_COMPLETE,True,7,True,53666000,1,0.3,54667000,True,6,1,False,False,3,1108
+n5-posttx03000-seed005659,5,0.3,5659,True,REKEY_COMPLETE,True,7,True,53544000,1,0.3,54545000,True,6,1,False,False,2,5659
+n5-posttx02000-seed001901,5,0.2,1901,True,REKEY_INCOMPLETE,True,7,True,53211000,1,0.2,54212000,True,5,0.8333333333333334,False,False,0,1901
+n5-posttx02000-seed002117,5,0.2,2117,True,REKEY_COMPLETE,True,7,True,74023000,1,0.2,75024000,True,6,1,False,False,0,2117
+n5-posttx02000-seed006212,5,0.2,6212,True,REKEY_INCOMPLETE,True,7,True,53528000,1,0.2,54529000,True,5,0.8333333333333334,False,False,1,6212
+n5-posttx02000-seed008530,5,0.2,8530,True,REKEY_COMPLETE,True,7,True,53824000,1,0.2,54825000,True,6,1,False,True,0,8530
+n5-posttx02000-seed005326,5,0.2,5326,True,REKEY_COMPLETE,True,7,True,53869000,1,0.2,54870000,True,6,1,False,False,1,5326
+n5-posttx02000-seed004518,5,0.2,4518,True,REKEY_COMPLETE,True,7,True,54080000,1,0.2,55081000,True,6,1,False,False,1,4518
+n5-posttx02000-seed006021,5,0.2,6021,True,REKEY_COMPLETE,True,7,True,43461000,1,0.2,44462000,True,6,1,False,False,1,6021
+n5-posttx02000-seed001381,5,0.2,1381,True,REKEY_INCOMPLETE,True,7,True,53456000,1,0.2,54457000,True,5,0.8333333333333334,False,True,1,1381
+n5-posttx02000-seed002579,5,0.2,2579,True,REKEY_COMPLETE,True,7,True,53556000,1,0.2,54557000,True,6,1,False,False,1,2579
+n5-posttx02000-seed006704,5,0.2,6704,True,REKEY_COMPLETE,True,7,True,53561000,1,0.2,54562000,True,6,1,False,False,0,6704
+n5-posttx02000-seed005024,5,0.2,5024,True,REKEY_COMPLETE,True,7,True,53330000,1,0.2,54331000,True,6,1,False,False,1,5024
+n5-posttx02000-seed003694,5,0.2,3694,True,REKEY_INCOMPLETE,True,7,True,63174000,1,0.2,64175000,True,3,0.5,False,False,1,3694
+n5-posttx02000-seed008703,5,0.2,8703,True,REKEY_COMPLETE,True,7,True,63757000,1,0.2,64758000,True,6,1,False,True,0,8703
+n5-posttx02000-seed002176,5,0.2,2176,True,REKEY_INCOMPLETE,True,7,True,53797000,1,0.2,54798000,True,5,0.8333333333333334,False,True,0,2176
+n5-posttx02000-seed006594,5,0.2,6594,True,REKEY_COMPLETE,True,7,True,53215000,1,0.2,54216000,True,6,1,False,False,1,6594
+n5-posttx02000-seed008303,5,0.2,8303,True,REKEY_INCOMPLETE,True,7,True,63590000,1,0.2,64591000,True,5,0.8333333333333334,False,False,1,8303
+n5-posttx02000-seed008470,5,0.2,8470,True,REKEY_COMPLETE,True,7,True,53651000,1,0.2,54652000,True,6,1,False,True,0,8470
+n5-posttx02000-seed002146,5,0.2,2146,True,REKEY_COMPLETE,True,7,True,53147000,1,0.2,54148000,True,6,1,False,False,0,2146
+n5-posttx02000-seed001108,5,0.2,1108,True,REKEY_COMPLETE,True,7,True,53666000,1,0.2,54667000,True,6,1,False,False,0,1108
+n5-posttx02000-seed005659,5,0.2,5659,True,REKEY_COMPLETE,True,7,True,53544000,1,0.2,54545000,True,6,1,False,False,0,5659

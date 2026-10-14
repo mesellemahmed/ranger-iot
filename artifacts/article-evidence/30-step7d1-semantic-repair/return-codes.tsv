@@ -1,0 +1,11 @@
+executable_initial_accept	exists-trace	120	bfs	0
+executable_same_epoch_recovery	exists-trace	180	bfs	124
+revocation_reachable	exists-trace	120	bfs	0
+accept_has_rekey_origin	all-traces	180	default	0
+accept_requires_authorization	all-traces	180	default	0
+revoked_never_accepts	all-traces	180	default	0
+recovery_requester_authorized	all-traces	180	default	0
+recovery_helper_authorized	all-traces	300	default	0
+recovery_same_epoch	all-traces	180	default	0
+recovery_accept_has_rekey_origin	all-traces	240	default	0
+epoch_key_secrecy_unless_compromised	all-traces	300	default	0

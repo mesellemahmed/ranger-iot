@@ -1,0 +1,31 @@
+[run] Running CI checks in Docker
+[ci] Python
+Python 3.12.14
+[ci] Ruff lint
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/ranger/test_rs_codec.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | from dataclasses import replace
+ 4 | | from itertools import combinations
+ 5 | |
+ 6 | | import pytest
+ 7 | |
+ 8 | | from ranger_iot.ranger.rs_codec import (
+ 9 | |     ReedSolomonCodec,
+10 | |     ReedSolomonFragment,
+11 | |     ReedSolomonParameters,
+12 | | )
+   | |_^
+help: Organize imports
+   |
+13 |
+   -
+14 | PARAMETERS = ReedSolomonParameters(
+   |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.
+[ci] FAILED at line 12: ruff check src tests
+

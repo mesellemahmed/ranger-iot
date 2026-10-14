@@ -1,0 +1,17 @@
+{
+  "article_state": "NOT_STARTED",
+  "checks": {
+    "checksum_integrity": true,
+    "core_ci": true,
+    "hardening_plan_generated": true,
+    "independent_recomputation": false,
+    "input_preflight": true,
+    "manifest_audit_context": true,
+    "scientific_worktree_clean": true,
+    "tag_matches_head": true
+  },
+  "hard_reproducibility_gate_pass": false,
+  "next_step": "FIX_ONLY_FAILED_PASS2_CHECKS",
+  "schema_version": 3,
+  "scientific_state": "BLOCKED_BY_PASS2_GATE"
+}

@@ -1,0 +1,13 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Theory loaded
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Theory translated
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Derivation checks started
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Derivation checks ended
+[Theory RangerIoT_LKH_MultiEpoch_4Member_TemporalSecurity] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+Multiset rewriting rules: 27
+Raw sources: 25 cases, deconstructions complete
+Refined sources: 25 cases, deconstructions complete

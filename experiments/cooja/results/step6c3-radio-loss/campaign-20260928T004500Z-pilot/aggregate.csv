@@ -1,0 +1,7 @@
+case_id,n,success_ratio_rx,simulation_seed,script_runner_pass,outcome,bootstrap_complete,registered_count,authorized_reconstructed_count,authorized_reconstruction_ratio,revoked_reconstructed,revoked_reject_observed,report_count,observed_simulation_seed,bootstrap_time,coded_all_sent_time,finish_time
+n3-rx10000-seed000201,3,1.0,201,True,REKEY_COMPLETE,True,7,6,1,False,True,7,201,108938696,129939000,189939000
+n3-rx08500-seed000201,3,0.85,201,True,REKEY_COMPLETE,True,7,6,1,False,True,7,201,149051696,170052000,230052000
+n3-rx07000-seed000201,3,0.7,201,True,REKEY_COMPLETE,True,7,6,1,False,True,7,201,139052696,160053000,220053000
+n5-rx10000-seed000201,5,1.0,201,True,REKEY_COMPLETE,True,7,6,1,False,True,7,201,108938696,143939000,203939000
+n5-rx08500-seed000201,5,0.85,201,True,REKEY_COMPLETE,True,7,6,1,False,True,7,201,149051696,184052000,244052000
+n5-rx07000-seed000201,5,0.7,201,True,REKEY_COMPLETE,True,7,6,1,False,True,7,201,139052696,174053000,234053000

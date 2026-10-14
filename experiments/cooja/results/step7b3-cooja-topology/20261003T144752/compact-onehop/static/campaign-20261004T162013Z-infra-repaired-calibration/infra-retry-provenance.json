@@ -1,0 +1,27 @@
+{
+  "derived_aggregate_sha256": "2fbbee956f9677610240034757c89483838ef2af33d377ae050c42855e805c07",
+  "derived_campaign": "experiments/cooja/results/step7b3-cooja-topology/20261003T144752/compact-onehop/static/campaign-20261004T162013Z-infra-repaired-calibration",
+  "no_repeat_until_pass": true,
+  "no_seed_replacement": true,
+  "original_aggregate_sha256": "60566ec294c4383199c0f843de701f59e29fc1790fb4900368da0261de45a5c0",
+  "original_campaign": "experiments/cooja/results/step7b3-cooja-topology/20261003T144752/compact-onehop/static/campaign-20261004T045143Z-calibration",
+  "original_rows_reused": 38,
+  "policy": "Exactly one retry was permitted for each case classified as an infrastructure failure. Parameters and seeds were unchanged.",
+  "replaced_keys": [
+    {
+      "n": 5,
+      "seed": 1108,
+      "tx": 0.3
+    },
+    {
+      "n": 5,
+      "seed": 5659,
+      "tx": 0.3
+    }
+  ],
+  "retry_aggregate_sha256": "a21d2812ab6e11a78275ab629d5d23a68dfd27c535e0f3f5a60656582ff80cc4",
+  "retry_campaign": "experiments/cooja/results/step7b3-cooja-topology/20261003T144752/compact-onehop/static-infra-retry/campaign-20261004T161725Z-calibration",
+  "retry_rows_used": 2,
+  "schema_version": 1,
+  "total_rows": 40
+}

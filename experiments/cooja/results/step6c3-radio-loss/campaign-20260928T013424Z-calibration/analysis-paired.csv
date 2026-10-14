@@ -1,0 +1,5 @@
+success_ratio_rx,paired_seeds,both_bootstrap,both_complete,n5_only_complete,n3_only_complete,neither_complete
+0.6,10,10,10,0,0,0
+0.55,10,8,7,1,0,2
+0.5,10,8,8,0,0,2
+0.45,10,8,8,0,0,2

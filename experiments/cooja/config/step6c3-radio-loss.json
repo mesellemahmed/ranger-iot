@@ -1,0 +1,44 @@
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "calibration_simulation_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "coding_k": 3,
+  "coding_n_values": [
+    3,
+    5
+  ],
+  "confirmatory_simulation_seeds": [
+    201,
+    202,
+    203
+  ],
+  "description": "Multi-seed UDGM calibration of the static coded-rekey transition regime.",
+  "experiment": "RANGER-COOJA-UDGM-RADIO-LOSS",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "radio_interpretation": "UDGM reception-success parameter; not a fixed application packet-loss probability.",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "scope": "RPL, MAC, registration, coded fragments and reports are all exposed to UDGM reception uncertainty.",
+  "script_timeout_ms": 650000,
+  "success_ratio_rx_values": [
+    0.6,
+    0.55,
+    0.5,
+    0.45
+  ],
+  "success_ratio_tx": 1.0
+}

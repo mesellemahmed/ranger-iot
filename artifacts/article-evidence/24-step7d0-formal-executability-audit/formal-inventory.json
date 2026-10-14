@@ -1,0 +1,10 @@
+{
+  "formal_directory": "formal/tamarin",
+  "important_note": "Claim-name indicators are inventory hints only. They are not evidence that the corresponding security property is semantically modeled or proved.",
+  "model_count": 0,
+  "models": [],
+  "schema_version": 1,
+  "step": "STEP7D0_STATIC_FORMAL_INVENTORY",
+  "total_lemma_count": 0,
+  "total_rule_count": 0
+}

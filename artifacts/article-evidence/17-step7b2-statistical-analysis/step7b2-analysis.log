@@ -1,0 +1,121 @@
+
+====================================================================
+2. LOAD + VALIDATE STEP7B.1 MATRIX
+====================================================================
+rows_2880                      PASS
+protocols                      PASS
+topologies                     PASS
+member_counts                  PASS
+packet_losses                  PASS
+seed_count                     PASS
+SCENARIO-SEED CELLS = 960
+PAIRING = PASS
+
+====================================================================
+3. CELL-LEVEL COMPLETION ANALYSIS
+====================================================================
+COMPLETION CELLS = 144
+
+====================================================================
+4. CELL-LEVEL PAIRED EFFECTS
+====================================================================
+PAIRED EFFECT CELLS = 576
+
+====================================================================
+5. CONDITIONAL t100 ANALYSIS
+====================================================================
+CONDITIONAL LATENCY CELLS = 118
+
+====================================================================
+6. CONTEXT / INTERACTION SUMMARY
+====================================================================
+CONTEXT SUMMARY ROWS = 15
+ranger-recovery vs ranger-static completion: +=18 0=30 -=0 Holm+=0 Holm-=0 reversal=False
+ranger-recovery vs ranger-static convergence_fraction: +=25 0=23 -=0 Holm+=13 Holm-=0 reversal=False
+ranger-adaptive-v2 vs ranger-static completion: +=17 0=30 -=1 Holm+=0 Holm-=0 reversal=True
+ranger-adaptive-v2 vs ranger-static convergence_fraction: +=21 0=24 -=3 Holm+=1 Holm-=0 reversal=True
+ranger-adaptive-v2 vs ranger-recovery completion: +=6 0=35 -=7 Holm+=0 Holm-=0 reversal=True
+ranger-adaptive-v2 vs ranger-recovery convergence_fraction: +=4 0=30 -=14 Holm+=0 Holm-=0 reversal=True
+
+====================================================================
+7. DIMENSION-LEVEL EFFECTS
+====================================================================
+DIMENSION EFFECT ROWS = 165
+
+====================================================================
+8. ANALYSIS MANIFEST
+====================================================================
+{
+  "analysis": "RANGER-STEP7B2-EXTERNAL-VALIDITY-CONFIRMATORY-STATISTICS",
+  "bootstrap": {
+    "cost_resamples": 5000,
+    "deterministic_seed_namespace": "RANGER-IOT:STEP7B2:PAIRED-BOOTSTRAP:20261003",
+    "interval": "paired percentile bootstrap 95%",
+    "primary_resamples": 10000
+  },
+  "completion_effect_rows": 144,
+  "context_summary_rows": 15,
+  "cost_metrics": [
+    "physical_transmissions",
+    "bytes_sent",
+    "manager_transmissions"
+  ],
+  "dimension_effect_rows": 165,
+  "guardrails": [
+    "No universal protocol dominance is assumed.",
+    "Topology, member_count, and packet_loss interactions are reported explicitly.",
+    "Positive benefit delta always means the left protocol is better for that metric.",
+    "Latency comparisons are conditional on both protocols completing and are not interpreted as unconditional performance.",
+    "Python packet_loss is not identified with Cooja SUCCESS_RATIO_TX.",
+    "No additional simulations were added after observing STEP7B1."
+  ],
+  "input": "experiments/results/step7b1/model-external-validity-20261003T134431/aggregate.csv",
+  "input_rows": 2880,
+  "input_sha256": "5572364b83b228fcc245bcf5392b8867c4df4a2654bff1ac2e233f34c2f5c1fe",
+  "member_counts": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "multiple_testing": {
+    "completion": "Holm across all 144 cell-level pairwise completion comparisons.",
+    "continuous_metrics": "Holm separately within each metric family across all 144 cell-level pairwise comparisons."
+  },
+  "next_step": "STEP7B3_COOJA_TOPOLOGY_EXTERNAL_VALIDITY",
+  "packet_losses": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "paired_effect_rows": 694,
+  "primary_metrics": [
+    "completion",
+    "convergence_fraction"
+  ],
+  "protocols": [
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive-v2"
+  ],
+  "scenario_seed_cells": 960,
+  "schema_version": 1,
+  "scientific_state": "STEP7B2_STATISTICAL_ANALYSIS_COMPLETE",
+  "secondary_metric": "t100_us conditional on both protocols completing",
+  "seed_count": 20,
+  "tests": {
+    "completion": "exact paired McNemar/binomial test on discordant completion outcomes",
+    "continuous_metrics": "exact two-sided sign test on paired benefit deltas"
+  },
+  "topologies": [
+    "balanced-tree",
+    "grid",
+    "line",
+    "star"
+  ]
+}
+
+====================================================================
+STEP 7B.2 ANALYSIS: PASS
+NEXT: STEP 7B.3 — COOJA TOPOLOGY EXTERNAL VALIDITY
+====================================================================

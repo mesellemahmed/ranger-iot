@@ -1,0 +1,90 @@
+{
+  "experiment": "RANGER-COOJA-RECOVERY-STATIC-SEED-PAIRED-COMPARISON",
+  "grouped": {
+    "0.20": {
+      "completion_exact_p": 0.125,
+      "completion_gain_pairs": 4,
+      "completion_loss_pairs": 0,
+      "max_recovery_round_observed": 2,
+      "mean_delta_reconstructed": 1.5,
+      "mean_extra_recovery_bytes": 232.8,
+      "mean_members_repaired": 1.5,
+      "mean_recovery_fragment_sends": 5.6,
+      "mean_recovery_reconstructed": 5.1,
+      "mean_recovery_requests": 6.1,
+      "mean_static_reconstructed": 3.6,
+      "paired_better": 6,
+      "paired_equal": 4,
+      "paired_reconstruction_sign_p": 0.03125,
+      "paired_worse": 0,
+      "recovery_complete": 4,
+      "runs": 10,
+      "static_complete": 0
+    },
+    "0.30": {
+      "completion_exact_p": 0.0703125,
+      "completion_gain_pairs": 7,
+      "completion_loss_pairs": 1,
+      "max_recovery_round_observed": 2,
+      "mean_delta_reconstructed": 0.6,
+      "mean_extra_recovery_bytes": 85.5,
+      "mean_members_repaired": 0.6,
+      "mean_recovery_fragment_sends": 1.5,
+      "mean_recovery_reconstructed": 5.8,
+      "mean_recovery_requests": 1.5,
+      "mean_static_reconstructed": 5.2,
+      "paired_better": 7,
+      "paired_equal": 2,
+      "paired_reconstruction_sign_p": 0.0703125,
+      "paired_worse": 1,
+      "recovery_complete": 8,
+      "runs": 10,
+      "static_complete": 2
+    },
+    "0.50": {
+      "completion_exact_p": 1.0,
+      "completion_gain_pairs": 0,
+      "completion_loss_pairs": 0,
+      "max_recovery_round_observed": 1,
+      "mean_delta_reconstructed": 0,
+      "mean_extra_recovery_bytes": 39.3,
+      "mean_members_repaired": 0.1,
+      "mean_recovery_fragment_sends": 0.1,
+      "mean_recovery_reconstructed": 6,
+      "mean_recovery_requests": 0.1,
+      "mean_static_reconstructed": 6,
+      "paired_better": 0,
+      "paired_equal": 10,
+      "paired_reconstruction_sign_p": 1.0,
+      "paired_worse": 0,
+      "recovery_complete": 10,
+      "runs": 10,
+      "static_complete": 10
+    }
+  },
+  "note": "Seeds are paired at experiment level; different protocol traffic means this does not imply identical packet-level radio-loss realizations.",
+  "pairing": {
+    "n": 5,
+    "pair_count": 30,
+    "seeds": [
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210
+    ],
+    "tx": [
+      0.5,
+      0.3,
+      0.2
+    ]
+  },
+  "recovery_campaign": "campaign-20260930T150343Z-calibration",
+  "schema_version": 1,
+  "static_campaign": "campaign-20260928T151522Z-calibration"
+}

@@ -1,0 +1,21 @@
+{
+  "classification": "OVERSTRONG_OR_NONCAUSAL_SECRECY_PROPERTIES_CONFIRMED",
+  "cryptographic_model_changed": false,
+  "implementation_changed": false,
+  "negative_evidence_preserved": true,
+  "protocol_changed": false,
+  "reason": {
+    "new_epoch_key_secret_without_relevant_compromise": "The lemma requires historical epoch-e1 confidentiality even after a member that legitimately possessed root1 in e1 is later revoked in e2 and explicitly exposes its historical e1 state.",
+    "revoked_old_key_does_not_reveal_new_root_key": "The lemma conjoins OldKeyLeak(m4,e1) with K(root1) but does not establish that the m4 leak caused root1 knowledge. The captured trace derives root1 from the later OldKeyLeak(m3,e2)."
+  },
+  "replacement_contract": [
+    "epoch1 root confidentiality against the state of member m4 revoked in e1, unless an authorized e1 holder is subsequently exposed or compromised",
+    "epoch2 root confidentiality against the historical state of member m3 revoked in e2, unless an authorized e2 survivor or the manager is compromised",
+    "explicit reachability of historical e1 root exposure after later leakage of m3, an authorized e1 holder"
+  ],
+  "retired_diagnostic_lemmas": [
+    "new_epoch_key_secret_without_relevant_compromise",
+    "revoked_old_key_does_not_reveal_new_root_key"
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,12 @@
+{
+  "core_ci_pass": true,
+  "grouped_cells": 144,
+  "model_campaign_pass": true,
+  "next_step": "STEP7B2_FULL_STATISTICAL_ANALYSIS",
+  "paired_scenario_seed_cells": 960,
+  "run_count": 2880,
+  "schema_version": 5,
+  "scientific_state": "MODEL_EXTERNAL_VALIDITY_DATASET_COMPLETE",
+  "step": "STEP7B1_MODEL_EXTERNAL_VALIDITY",
+  "step7b1_pass": true
+}

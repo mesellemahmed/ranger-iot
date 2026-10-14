@@ -1,0 +1,7 @@
+case_id,n,loss_bp,loss_rate,loss_seed,expected_reconstructed_count,reconstruction_ratio,planned_fragment_sends,planned_fragment_drops,redundancy_fragments,nominal_coding_overhead,script_runner_pass,outcome
+n3-loss0000-seed000101,3,0,0.0,101,6,1.0,21,0,0,1.0,True,COMPLETE
+n4-loss0000-seed000101,4,0,0.0,101,6,1.0,28,0,1,1.3333333333333333,True,COMPLETE
+n5-loss0000-seed000101,5,0,0.0,101,6,1.0,35,0,2,1.6666666666666667,True,COMPLETE
+n3-loss3000-seed000101,3,3000,0.3,101,4,0.6666666666666666,19,2,0,1.0,True,INCOMPLETE
+n4-loss3000-seed000101,4,3000,0.3,101,6,1.0,25,3,1,1.3333333333333333,True,COMPLETE
+n5-loss3000-seed000101,5,3000,0.3,101,6,1.0,32,3,2,1.6666666666666667,True,COMPLETE

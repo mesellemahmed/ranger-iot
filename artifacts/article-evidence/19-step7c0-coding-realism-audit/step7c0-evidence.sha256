@@ -1,0 +1,14 @@
+363a55d1bc68b10450067be80a9ad41ced4874a09617da5cb7a11f6ac66be200 *artifacts/article-evidence/19-step7c0-coding-realism-audit/core-ci.log
+d5538128e345d491f9da62dec9a6787368129d2c668c8bd86db44b25dac43d8a *artifacts/article-evidence/19-step7c0-coding-realism-audit/embedded-coded-fragment-files.txt
+445b05a0cd3a57d9927072f822fac3c5a3c03f85cf83c50f1983d1a8ac9ab2f0 *artifacts/article-evidence/19-step7c0-coding-realism-audit/embedded-coding-context.txt
+5a3c4f78509fa1d08bc09d0295a9cb5e1335a817b752408ab47efe0318e65cf3 *artifacts/article-evidence/19-step7c0-coding-realism-audit/git-status-before.txt
+0b12d72b2b0e9c41d1181b1e91594ca0db39d0822205446f6e074d74027ede3c *artifacts/article-evidence/19-step7c0-coding-realism-audit/python-coding-source.txt
+a6d3c1e350b4da9c8c5feac4c2d808e68f73641fa667378d12c2c9114db4a671 *artifacts/article-evidence/19-step7c0-coding-realism-audit/python-coding-tests.txt
+88544516cf70d0c7d156c8c0c76b5af5ae84378fe4023d7c1f66f292f35a10cc *artifacts/article-evidence/19-step7c0-coding-realism-audit/python-protocol-coding-context.txt
+5a50c0575f610b8ada452cca7fa363bc4e4c649a8c0fc1b55e7d537b7e28f2d4 *artifacts/article-evidence/19-step7c0-coding-realism-audit/source-after.sha256
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *artifacts/article-evidence/19-step7c0-coding-realism-audit/source-before.diff
+5a50c0575f610b8ada452cca7fa363bc4e4c649a8c0fc1b55e7d537b7e28f2d4 *artifacts/article-evidence/19-step7c0-coding-realism-audit/source-before.sha256
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *artifacts/article-evidence/19-step7c0-coding-realism-audit/source-hash-diff.txt
+63557c7f0886a1d5a18bb32a95a8c77c7f1ccf45010cffb4616556e59bf3e35f *artifacts/article-evidence/19-step7c0-coding-realism-audit/step7c0-coding-realism-audit.json
+ad870693cec3917e01e639fa1ab03eecc077808fdf86f9d43633870c79253a36 *artifacts/article-evidence/19-step7c0-coding-realism-audit/step7c0-coding-realism-report.md
+068c10464e653737609612e23933bfa869b745e17c6d071cc74a19666eaf2f44 *artifacts/article-evidence/19-step7c0-coding-realism-audit/step7c0-final-readiness.json

@@ -1,0 +1,28 @@
+FROM homebrew/brew:4.6.20
+
+ENV HOMEBREW_NO_ANALYTICS=1
+ENV HOMEBREW_NO_AUTO_UPDATE=1
+ENV HOMEBREW_NO_INSTALL_CLEANUP=1
+
+USER linuxbrew
+
+RUN set -eux; \
+    brew tap tamarin-prover/tap; \
+    formula="$(brew --repository tamarin-prover/tap)/Formula/tamarin-prover.rb"; \
+    test -f "${formula}"; \
+    grep -q \
+      'refs/tags/1.12.0.tar.gz' \
+      "${formula}"; \
+    grep -q \
+      '936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99' \
+      "${formula}"; \
+    grep -q \
+      '10d04e5689207108c9e7bd9cc42a4d431fa69886395762d2c14eb614d8da13e6' \
+      "${formula}"; \
+    brew install tamarin-prover/tap/tamarin-prover; \
+    tamarin-prover --version; \
+    tamarin-prover test
+
+WORKDIR /workspace
+
+ENTRYPOINT ["tamarin-prover"]

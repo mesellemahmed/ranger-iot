@@ -1,0 +1,573 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 666B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.71kB done
+#2 WARN: FromPlatformFlagConstDisallowed: FROM --platform flag should not use constant value "linux/amd64" (line 1)
+#2 DONE 0.0s
+
+#3 [internal] load metadata for ghcr.io/homebrew/brew@sha256:b03f29bb755e1b28c5082bd376e1539762e9dc4e9cff9485655002437595a5d0
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 34B done
+#4 DONE 0.0s
+
+#5 [1/8] FROM ghcr.io/homebrew/brew@sha256:b03f29bb755e1b28c5082bd376e1539762e9dc4e9cff9485655002437595a5d0
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 2.67kB 0.0s done
+#6 DONE 0.0s
+
+#7 [2/8] RUN set -eux;     test "$(uname -m)" = "x86_64";     brew --version;     test -d "$(brew --repository homebrew/core)"
+#7 0.292 + uname -m
+#7 0.294 + test x86_64 = x86_64
+#7 0.294 + brew --version
+#7 0.322 Homebrew 7.0.6
+#7 0.341 Homebrew/homebrew-core (git revision 2677aafea88; last commit 2026-09-21)
+#7 0.341 + brew --repository homebrew/core
+#7 0.473 + test -d /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core
+#7 DONE 0.5s
+
+#8 [3/8] RUN set -eux;     git config --global user.email "ranger-iot-reproducibility@invalid.example";     git config --global user.name "RANGER-IoT Reproducibility";     brew tap-new ranger/tamarin-pinned
+#8 0.499 + git config --global user.email ranger-iot-reproducibility@invalid.example
+#8 0.501 + git config --global user.name RANGER-IoT Reproducibility
+#8 0.503 + brew tap-new ranger/tamarin-pinned
+#8 0.575 Warning: tap-new is a developer command, so Homebrew's
+#8 0.576 developer mode has been automatically turned on.
+#8 0.576 To turn developer mode off, run:
+#8 0.576   brew developer off
+#8 0.576 
+#8 1.633 Initialized empty Git repository in /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/.git/
+#8 1.707 [main (root-commit) 41c840e] Create ranger/tamarin-pinned tap
+#8 1.707  5 files changed, 194 insertions(+)
+#8 1.707  create mode 100644 .github/dependabot.yml
+#8 1.707  create mode 100644 .github/workflows/autobump.yml
+#8 1.707  create mode 100644 .github/workflows/publish.yml
+#8 1.707  create mode 100644 .github/workflows/tests.yml
+#8 1.707  create mode 100644 README.md
+#8 1.745 ==> Created ranger/tamarin-pinned
+#8 1.745 /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned
+#8 1.745 
+#8 1.745 When a pull request making changes to a formula (or formulae) becomes green
+#8 1.745 (all checks passed), then you can publish the built bottles.
+#8 1.745 To do so, run `brew pr-pull` locally or run the `brew pr-pull`
+#8 1.745 workflow with the pull request number and, optionally, the pull
+#8 1.745 request's expected head commit SHA.
+#8 DONE 1.8s
+
+#9 [4/8] COPY --chown=linuxbrew:linuxbrew     docker/tamarin/tap/Formula/     /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/Formula/
+#9 DONE 0.0s
+
+#10 [5/8] RUN set -eux;     brew tap;     test -f       /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/Formula/tamarin-prover.rb;     test -f       /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/Formula/maude.rb;     test -f       /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/Formula/libbuddy.rb
+#10 0.476 + brew tap
+#10 0.509 homebrew/core
+#10 0.509 ranger/tamarin-pinned
+#10 0.510 + test -f /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/Formula/tamarin-prover.rb
+#10 0.510 + test -f /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/Formula/maude.rb
+#10 0.510 + test -f /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/ranger/homebrew-tamarin-pinned/Formula/libbuddy.rb
+#10 DONE 0.6s
+
+#11 [6/8] RUN set -eux;     brew install       --force-bottle       ranger/tamarin-pinned/libbuddy;     brew install       --force-bottle       ranger/tamarin-pinned/maude;     brew install       --force-bottle       graphviz;     brew install       --force-bottle       ranger/tamarin-pinned/tamarin-prover
+#11 0.609 + brew install --force-bottle ranger/tamarin-pinned/libbuddy
+#11 1.669 ==> Trusted formula ranger/tamarin-pinned/libbuddy
+#11 2.094 ==> Would install 1 formula:
+#11 2.094 ranger/tamarin-pinned/libbuddy 2.4
+#11 2.554 ==> Fetching downloads for: libbuddy
+#11 2.782 ✔︎ Bottle libbuddy (2.4)
+#11 2.789 ==> Installing libbuddy from ranger/tamarin-pinned
+#11 3.142 ==> Pouring libbuddy-2.4.x86_64_linux.bottle.3.tar.gz
+#11 3.142 🍺  /home/linuxbrew/.linuxbrew/Cellar/libbuddy/2.4: 14 files, 1.2MB
+#11 3.153 + brew install --force-bottle ranger/tamarin-pinned/maude
+#11 3.859 ==> Trusted formula ranger/tamarin-pinned/maude
+#11 4.290 ==> Would install 1 formula:
+#11 4.290 ranger/tamarin-pinned/maude 3.5.1_1
+#11 4.375 ==> Would install 6 dependencies for maude:
+#11 4.375 gmp
+#11 4.375 libsigsegv
+#11 4.375 ncurses
+#11 4.375 libtecla
+#11 4.375 m4
+#11 4.375 flex
+#11 5.059 ==> Fetching downloads for: maude
+#11 5.203 ✔︎ Bottle Manifest libsigsegv (2.15)
+#11 5.203 ✔︎ Bottle Manifest gmp (6.3.0)
+#11 5.203 ✔︎ Bottle Manifest gmp (6.3.0)
+#11 5.264 ✔︎ Bottle Manifest ncurses (6.6)
+#11 5.271 ✔︎ Bottle Manifest m4 (1.4.21)
+#11 5.306 ✔︎ Bottle Manifest libtecla (1.6.3)
+#11 5.306 ✔︎ Bottle Manifest flex (2.6.4_2)
+#11 5.322 ✔︎ Bottle maude (3.5.1_1)
+#11 5.398 ✔︎ Bottle libsigsegv (2.15)
+#11 5.485 ✔︎ Bottle m4 (1.4.21)
+#11 5.556 ✔︎ Bottle libtecla (1.6.3)
+#11 5.559 ✔︎ Bottle flex (2.6.4_2)
+#11 5.587 ✔︎ Bottle gmp (6.3.0)
+#11 6.028 ✔︎ Bottle ncurses (6.6)
+#11 8.209 ==> Installing maude from ranger/tamarin-pinned
+#11 8.209 ==> Installing dependencies for ranger/tamarin-pinned/maude: gmp, libsigsegv, ncurses, libtecla, m4 and flex
+#11 8.209 ==> Installing ranger/tamarin-pinned/maude dependency: gmp
+#11 8.209 ==> Pouring gmp--6.3.0.x86_64_linux.bottle.1.tar.gz
+#11 8.209 🍺  /home/linuxbrew/.linuxbrew/Cellar/gmp/6.3.0: 24 files, 4.1MB
+#11 8.209 ==> Installing ranger/tamarin-pinned/maude dependency: libsigsegv
+#11 8.209 ==> Pouring libsigsegv--2.15.x86_64_linux.bottle.tar.gz
+#11 8.209 🍺  /home/linuxbrew/.linuxbrew/Cellar/libsigsegv/2.15: 13 files, 181.9KB
+#11 8.209 ==> Installing ranger/tamarin-pinned/maude dependency: ncurses
+#11 8.209 ==> Pouring ncurses--6.6.x86_64_linux.bottle.tar.gz
+#11 8.209 🍺  /home/linuxbrew/.linuxbrew/Cellar/ncurses/6.6: 4,071 files, 11.7MB
+#11 8.209 ==> Installing ranger/tamarin-pinned/maude dependency: libtecla
+#11 8.209 ==> Pouring libtecla--1.6.3.x86_64_linux.bottle.tar.gz
+#11 8.209 🍺  /home/linuxbrew/.linuxbrew/Cellar/libtecla/1.6.3: 95 files, 1.5MB
+#11 8.209 ==> Installing ranger/tamarin-pinned/maude dependency: m4
+#11 8.209 ==> Pouring m4--1.4.21.x86_64_linux.bottle.tar.gz
+#11 8.209 🍺  /home/linuxbrew/.linuxbrew/Cellar/m4/1.4.21: 41 files, 1.5MB
+#11 8.209 ==> Installing ranger/tamarin-pinned/maude dependency: flex
+#11 8.209 ==> Pouring flex--2.6.4_2.x86_64_linux.bottle.tar.gz
+#11 8.209 🍺  /home/linuxbrew/.linuxbrew/Cellar/flex/2.6.4_2: 47 files, 1.8MB
+#11 8.209 ==> Installing ranger/tamarin-pinned/maude
+#11 8.377 ==> Pouring maude-3.5.1_1.x86_64_linux.bottle.tar.gz
+#11 8.377 🍺  /home/linuxbrew/.linuxbrew/Cellar/maude/3.5.1_1: 21 files, 4.7MB
+#11 8.387 + brew install --force-bottle graphviz
+#11 9.370 ==> Downloading bottle manifests
+#11 9.606 ✔︎ Bottle Manifest graphviz (16.1.0)
+#11 10.25 ==> Would install 1 formula:
+#11 10.25 graphviz 16.1.0
+#11 10.53 ==> Would install 56 dependencies for graphviz:
+#11 10.53 zlib-ng-compat
+#11 10.53 libpng
+#11 10.53 bzip2
+#11 10.53 freetype
+#11 10.53 expat
+#11 10.53 fontconfig
+#11 10.53 pcre2
+#11 10.53 libffi
+#11 10.53 mpdecimal
+#11 10.53 ca-certificates
+#11 10.53 openssl@3
+#11 10.53 readline
+#11 10.53 sqlite
+#11 10.53 xz
+#11 10.53 lz4
+#11 10.53 zstd
+#11 10.53 libedit
+#11 10.53 python@3.14
+#11 10.53 dbus
+#11 10.53 libxcrypt
+#11 10.53 util-linux
+#11 10.53 glib
+#11 10.53 xorgproto
+#11 10.53 libxau
+#11 10.53 libxdmcp
+#11 10.53 libxcb
+#11 10.53 libx11
+#11 10.53 libxext
+#11 10.53 libxrender
+#11 10.53 lzo
+#11 10.53 pixman
+#11 10.53 cairo
+#11 10.53 jpeg-turbo
+#11 10.53 libvmaf
+#11 10.53 aom
+#11 10.53 dav1d
+#11 10.53 libavif
+#11 10.53 giflib
+#11 10.53 webp
+#11 10.53 libtiff
+#11 10.53 gd
+#11 10.53 jasper
+#11 10.53 libxml2
+#11 10.53 netpbm
+#11 10.53 gts
+#11 10.53 shared-mime-info
+#11 10.53 gdk-pixbuf
+#11 10.53 graphite2
+#11 10.53 icu4c@78
+#11 10.53 harfbuzz
+#11 10.53 fribidi
+#11 10.53 libdatrie
+#11 10.53 libthai
+#11 10.53 pango
+#11 10.53 librsvg
+#11 10.53 libtool
+#11 18.79 ==> Fetching downloads for: graphviz
+#11 18.79 ✔︎ Bottle graphviz (16.1.0)
+#11 18.79 ✔︎ Bottle Manifest zlib-ng-compat (2.3.3_1)
+#11 18.79 ✔︎ Bottle zlib-ng-compat (2.3.3_1)
+#11 18.79 ✔︎ Bottle Manifest libpng (1.6.58)
+#11 18.79 ✔︎ Bottle libpng (1.6.58)
+#11 18.79 ✔︎ Bottle Manifest bzip2 (1.0.8)
+#11 18.79 ✔︎ Bottle bzip2 (1.0.8)
+#11 18.79 ✔︎ Bottle Manifest freetype (2.14.3)
+#11 18.79 ✔︎ Bottle freetype (2.14.3)
+#11 18.79 ✔︎ Bottle Manifest expat (2.8.4)
+#11 18.80 ✔︎ Bottle expat (2.8.4)
+#11 18.80 ✔︎ Bottle Manifest fontconfig (2.18.3)
+#11 18.80 ✔︎ Bottle fontconfig (2.18.3)
+#11 18.80 ✔︎ Bottle Manifest pcre2 (10.48)
+#11 18.80 ✔︎ Bottle pcre2 (10.48)
+#11 18.80 ✔︎ Bottle Manifest libffi (3.8.0)
+#11 18.80 ✔︎ Bottle libffi (3.8.0)
+#11 18.80 ✔︎ Bottle Manifest mpdecimal (4.0.1)
+#11 18.80 ✔︎ Bottle mpdecimal (4.0.1)
+#11 18.80 ✔︎ Bottle Manifest ca-certificates (2026-08-13)
+#11 18.80 ✔︎ Bottle ca-certificates (2026-08-13)
+#11 18.80 ✔︎ Bottle Manifest openssl@3 (3.6.4)
+#11 18.80 ✔︎ Bottle Manifest readline (8.3.6)
+#11 18.80 ✔︎ Bottle readline (8.3.6)
+#11 18.80 ✔︎ Bottle Manifest sqlite (3.53.4)
+#11 18.80 ✔︎ Bottle sqlite (3.53.4)
+#11 18.80 ✔︎ Bottle Manifest xz (5.8.4)
+#11 18.80 ✔︎ Bottle xz (5.8.4)
+#11 18.80 ✔︎ Bottle Manifest lz4 (1.10.0)
+#11 18.80 ✔︎ Bottle lz4 (1.10.0)
+#11 18.80 ✔︎ Bottle Manifest zstd (1.5.7_1)
+#11 18.80 ✔︎ Bottle zstd (1.5.7_1)
+#11 18.80 ✔︎ Bottle Manifest libedit (20260512-3.1)
+#11 18.80 ✔︎ Bottle libedit (20260512-3.1)
+#11 18.80 ✔︎ Bottle Manifest python@3.14 (3.14.7)
+#11 18.80 ✔︎ Bottle Manifest dbus (1.16.2_1)
+#11 18.80 ✔︎ Bottle dbus (1.16.2_1)
+#11 18.80 ✔︎ Bottle Manifest libxcrypt (4.5.2)
+#11 18.80 ✔︎ Bottle libxcrypt (4.5.2)
+#11 18.80 ✔︎ Bottle Manifest util-linux (2.42.4)
+#11 18.80 ✔︎ Bottle util-linux (2.42.4)
+#11 18.80 ✔︎ Bottle Manifest glib (2.90.0)
+#11 18.80 ✔︎ Bottle glib (2.90.0)
+#11 18.80 ✔︎ Bottle Manifest xorgproto (2025.1)
+#11 18.80 ✔︎ Bottle xorgproto (2025.1)
+#11 18.80 ✔︎ Bottle Manifest libxau (1.0.12)
+#11 18.80 ✔︎ Bottle libxau (1.0.12)
+#11 18.80 ✔︎ Bottle Manifest libxdmcp (1.1.5)
+#11 18.80 ✔︎ Bottle libxdmcp (1.1.5)
+#11 18.80 ✔︎ Bottle Manifest libxcb (1.17.0)
+#11 18.80 ✔︎ Bottle libxcb (1.17.0)
+#11 18.80 ✔︎ Bottle Manifest libx11 (1.8.13)
+#11 18.80 ✔︎ Bottle libx11 (1.8.13)
+#11 18.80 ✔︎ Bottle Manifest libxext (1.3.7)
+#11 18.80 ✔︎ Bottle libxext (1.3.7)
+#11 18.80 ✔︎ Bottle Manifest libxrender (0.9.12)
+#11 18.80 ✔︎ Bottle libxrender (0.9.12)
+#11 18.80 ✔︎ Bottle Manifest lzo (2.10)
+#11 18.80 ✔︎ Bottle lzo (2.10)
+#11 18.80 ✔︎ Bottle Manifest pixman (0.46.4)
+#11 18.80 ✔︎ Bottle pixman (0.46.4)
+#11 18.80 ✔︎ Bottle Manifest cairo (1.18.4)
+#11 18.80 ✔︎ Bottle cairo (1.18.4)
+#11 18.80 ✔︎ Bottle Manifest jpeg-turbo (3.2.0)
+#11 18.80 ✔︎ Bottle jpeg-turbo (3.2.0)
+#11 18.80 ✔︎ Bottle Manifest libvmaf (3.2.1)
+#11 18.80 ✔︎ Bottle libvmaf (3.2.1)
+#11 18.81 ✔︎ Bottle Manifest aom (3.15.0)
+#11 18.81 ✔︎ Bottle aom (3.15.0)
+#11 18.81 ✔︎ Bottle Manifest dav1d (1.5.4)
+#11 18.81 ✔︎ Bottle dav1d (1.5.4)
+#11 18.81 ✔︎ Bottle Manifest libavif (1.4.2)
+#11 18.81 ✔︎ Bottle libavif (1.4.2)
+#11 18.81 ✔︎ Bottle Manifest giflib (6.1.3)
+#11 18.81 ✔︎ Bottle giflib (6.1.3)
+#11 18.81 ✔︎ Bottle Manifest webp (1.6.0)
+#11 18.81 ✔︎ Bottle webp (1.6.0)
+#11 18.81 ✔︎ Bottle Manifest libtiff (4.7.2)
+#11 18.81 ✔︎ Bottle libtiff (4.7.2)
+#11 18.81 ✔︎ Bottle Manifest gd (2.3.3_6)
+#11 18.81 ✔︎ Bottle gd (2.3.3_6)
+#11 18.81 ✔︎ Bottle Manifest jasper (4.2.9)
+#11 18.81 ✔︎ Bottle jasper (4.2.9)
+#11 18.81 ✔︎ Bottle Manifest libxml2 (2.15.4)
+#11 18.81 ✔︎ Bottle libxml2 (2.15.4)
+#11 18.81 ✔︎ Bottle Manifest netpbm (11.02.30)
+#11 18.81 ✔︎ Bottle netpbm (11.02.30)
+#11 18.81 ✔︎ Bottle Manifest gts (0.7.6_3)
+#11 18.81 ✔︎ Bottle gts (0.7.6_3)
+#11 18.81 ✔︎ Bottle Manifest shared-mime-info (2.5.1)
+#11 18.81 ✔︎ Bottle shared-mime-info (2.5.1)
+#11 18.81 ✔︎ Bottle Manifest gdk-pixbuf (2.44.8)
+#11 18.81 ✔︎ Bottle gdk-pixbuf (2.44.8)
+#11 18.81 ✔︎ Bottle Manifest graphite2 (1.3.15)
+#11 18.81 ✔︎ Bottle graphite2 (1.3.15)
+#11 18.81 ✔︎ Bottle Manifest icu4c@78 (78.3)
+#11 18.81 ✔︎ Bottle Manifest harfbuzz (14.5.0)
+#11 18.81 ✔︎ Bottle harfbuzz (14.5.0)
+#11 18.81 ✔︎ Bottle Manifest fribidi (1.0.17)
+#11 18.81 ✔︎ Bottle fribidi (1.0.17)
+#11 18.81 ✔︎ Bottle Manifest libdatrie (0.2.14)
+#11 18.81 ✔︎ Bottle libdatrie (0.2.14)
+#11 18.81 ✔︎ Bottle Manifest libthai (0.1.30)
+#11 18.81 ✔︎ Bottle libthai (0.1.30)
+#11 18.81 ✔︎ Bottle Manifest pango (1.58.2)
+#11 18.81 ✔︎ Bottle pango (1.58.2)
+#11 18.81 ✔︎ Bottle Manifest librsvg (2.63.2)
+#11 18.95 ✔︎ Bottle openssl@3 (3.6.4)
+#11 18.96 ✔︎ Bottle python@3.14 (3.14.7)
+#11 19.04 ✔︎ Bottle Manifest libtool (2.6.2)
+#11 19.32 ✔︎ Bottle libtool (2.6.2)
+#11 19.42 ✔︎ Bottle librsvg (2.63.2)
+#11 21.10 ✔︎ Bottle icu4c@78 (78.3)
+#11 22.79 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 22.79 ==> Installing dependencies for graphviz: zlib-ng-compat, libpng, bzip2, freetype, expat, fontconfig, pcre2, libffi, mpdecimal, ca-certificates, openssl@3, readline, sqlite, xz, lz4, zstd, libedit, python@3.14, dbus, libxcrypt, util-linux, glib, xorgproto, libxau, libxdmcp, libxcb, libx11, libxext, libxrender, lzo, pixman, cairo, jpeg-turbo, libvmaf, aom, dav1d, libavif, giflib, webp, libtiff, gd, jasper, libxml2, netpbm, gts, shared-mime-info, gdk-pixbuf, graphite2, icu4c@78, harfbuzz, fribidi, libdatrie, libthai, pango, librsvg and libtool
+#11 22.79 ==> Installing graphviz dependency: zlib-ng-compat
+#11 22.79 ==> Pouring zlib-ng-compat--2.3.3_1.x86_64_linux.bottle.1.tar.gz
+#11 22.79 🍺  /home/linuxbrew/.linuxbrew/Cellar/zlib-ng-compat/2.3.3_1: 17 files, 628.8KB
+#11 22.79 ==> Installing graphviz dependency: libpng
+#11 22.79 ==> Pouring libpng--1.6.58.x86_64_linux.bottle.1.tar.gz
+#11 22.79 🍺  /home/linuxbrew/.linuxbrew/Cellar/libpng/1.6.58: 29 files, 1.5MB
+#11 22.79 ==> Installing graphviz dependency: bzip2
+#11 22.79 ==> Pouring bzip2--1.0.8.x86_64_linux.bottle.2.tar.gz
+#11 22.79 🍺  /home/linuxbrew/.linuxbrew/Cellar/bzip2/1.0.8: 31 files, 619.6KB
+#11 22.79 ==> Installing graphviz dependency: freetype
+#11 22.79 ==> Pouring freetype--2.14.3.x86_64_linux.bottle.tar.gz
+#11 22.79 🍺  /home/linuxbrew/.linuxbrew/Cellar/freetype/2.14.3: 69 files, 3.3MB
+#11 22.79 ==> Installing graphviz dependency: expat
+#11 22.79 ==> Pouring expat--2.8.4.x86_64_linux.bottle.1.tar.gz
+#11 22.79 🍺  /home/linuxbrew/.linuxbrew/Cellar/expat/2.8.4: 23 files, 952.0KB
+#11 22.79 ==> Installing graphviz dependency: fontconfig
+#11 22.79 ==> Pouring fontconfig--2.18.3.x86_64_linux.bottle.tar.gz
+#11 26.61 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 26.61 🍺  /home/linuxbrew/.linuxbrew/Cellar/fontconfig/2.18.3: 101 files, 2.1MB
+#11 26.61 ==> Installing graphviz dependency: pcre2
+#11 26.61 ==> Pouring pcre2--10.48.x86_64_linux.bottle.tar.gz
+#11 26.61 🍺  /home/linuxbrew/.linuxbrew/Cellar/pcre2/10.48: 249 files, 8.4MB
+#11 26.61 ==> Installing graphviz dependency: libffi
+#11 26.61 ==> Pouring libffi--3.8.0.x86_64_linux.bottle.tar.gz
+#11 26.61 🍺  /home/linuxbrew/.linuxbrew/Cellar/libffi/3.8.0: 19 files, 1MB
+#11 26.61 ==> Installing graphviz dependency: mpdecimal
+#11 26.61 ==> Pouring mpdecimal--4.0.1.x86_64_linux.bottle.1.tar.gz
+#11 26.61 🍺  /home/linuxbrew/.linuxbrew/Cellar/mpdecimal/4.0.1: 22 files, 828KB
+#11 26.61 ==> Installing graphviz dependency: ca-certificates
+#11 26.61 ==> Pouring ca-certificates--2026-08-13.all.bottle.1.tar.gz
+#11 38.01 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 38.01 🍺  /home/linuxbrew/.linuxbrew/Cellar/ca-certificates/2026-08-13: 5 files, 224.3KB
+#11 38.01 ==> Installing graphviz dependency: openssl@3
+#11 38.01 ==> Pouring openssl@3--3.6.4.x86_64_linux.bottle.tar.gz
+#11 44.82 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 44.82 🍺  /home/linuxbrew/.linuxbrew/Cellar/openssl@3/3.6.4: 7,649 files, 42.8MB
+#11 44.82 ==> Installing graphviz dependency: readline
+#11 44.82 ==> Pouring readline--8.3.6.x86_64_linux.bottle.tar.gz
+#11 44.82 🍺  /home/linuxbrew/.linuxbrew/Cellar/readline/8.3.6: 56 files, 3MB
+#11 44.82 ==> Installing graphviz dependency: sqlite
+#11 44.82 ==> Pouring sqlite--3.53.4.x86_64_linux.bottle.1.tar.gz
+#11 44.82 🍺  /home/linuxbrew/.linuxbrew/Cellar/sqlite/3.53.4: 13 files, 6.9MB
+#11 44.82 ==> Installing graphviz dependency: xz
+#11 44.82 ==> Pouring xz--5.8.4.x86_64_linux.bottle.tar.gz
+#11 44.82 🍺  /home/linuxbrew/.linuxbrew/Cellar/xz/5.8.4: 97 files, 2.9MB
+#11 44.82 ==> Installing graphviz dependency: lz4
+#11 44.82 ==> Pouring lz4--1.10.0.x86_64_linux.bottle.3.tar.gz
+#11 44.82 🍺  /home/linuxbrew/.linuxbrew/Cellar/lz4/1.10.0: 28 files, 876.8KB
+#11 44.82 ==> Installing graphviz dependency: zstd
+#11 44.82 ==> Pouring zstd--1.5.7_1.x86_64_linux.bottle.tar.gz
+#11 44.82 🍺  /home/linuxbrew/.linuxbrew/Cellar/zstd/1.5.7_1: 32 files, 3.2MB
+#11 44.82 ==> Installing graphviz dependency: libedit
+#11 44.82 ==> Pouring libedit--20260512-3.1.x86_64_linux.bottle.tar.gz
+#11 44.82 🍺  /home/linuxbrew/.linuxbrew/Cellar/libedit/20260512-3.1: 61 files, 1.8MB
+#11 44.82 ==> Installing graphviz dependency: python@3.14
+#11 44.82 ==> Pouring python@3.14--3.14.7.x86_64_linux.bottle.tar.gz
+#11 47.36 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 47.36 🍺  /home/linuxbrew/.linuxbrew/Cellar/python@3.14/3.14.7: 3,329 files, 82.1MB
+#11 47.36 ==> Installing graphviz dependency: dbus
+#11 47.36 ==> Pouring dbus--1.16.2_1.x86_64_linux.bottle.tar.gz
+#11 56.58 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 56.58 🍺  /home/linuxbrew/.linuxbrew/Cellar/dbus/1.16.2_1: 78 files, 2.3MB
+#11 56.58 ==> Installing graphviz dependency: libxcrypt
+#11 56.58 ==> Pouring libxcrypt--4.5.2.x86_64_linux.bottle.tar.gz
+#11 56.58 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxcrypt/4.5.2: 25 files, 405KB
+#11 56.58 ==> Installing graphviz dependency: util-linux
+#11 56.58 ==> Pouring util-linux--2.42.4.x86_64_linux.bottle.tar.gz
+#11 56.58 🍺  /home/linuxbrew/.linuxbrew/Cellar/util-linux/2.42.4: 461 files, 31.0MB
+#11 56.58 ==> Installing graphviz dependency: glib
+#11 56.58 ==> Pouring glib--2.90.0.x86_64_linux.bottle.tar.gz
+#11 87.86 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/glib/2.90.0: 509 files, 43.7MB
+#11 87.86 ==> Installing graphviz dependency: xorgproto
+#11 87.86 ==> Pouring xorgproto--2025.1.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/xorgproto/2025.1: 268 files, 4.2MB
+#11 87.86 ==> Installing graphviz dependency: libxau
+#11 87.86 ==> Pouring libxau--1.0.12.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxau/1.0.12: 22 files, 151.5KB
+#11 87.86 ==> Installing graphviz dependency: libxdmcp
+#11 87.86 ==> Pouring libxdmcp--1.1.5.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxdmcp/1.1.5: 12 files, 153KB
+#11 87.86 ==> Installing graphviz dependency: libxcb
+#11 87.86 ==> Pouring libxcb--1.17.0.x86_64_linux.bottle.1.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxcb/1.17.0: 2,498 files, 7.3MB
+#11 87.86 ==> Installing graphviz dependency: libx11
+#11 87.86 ==> Pouring libx11--1.8.13.x86_64_linux.bottle.1.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libx11/1.8.13: 1,050 files, 8.5MB
+#11 87.86 ==> Installing graphviz dependency: libxext
+#11 87.86 ==> Pouring libxext--1.3.7.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxext/1.3.7: 89 files, 529.9KB
+#11 87.86 ==> Installing graphviz dependency: libxrender
+#11 87.86 ==> Pouring libxrender--0.9.12.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxrender/0.9.12: 14 files, 258.2KB
+#11 87.86 ==> Installing graphviz dependency: lzo
+#11 87.86 ==> Pouring lzo--2.10.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/lzo/2.10: 32 files, 705.1KB
+#11 87.86 ==> Installing graphviz dependency: pixman
+#11 87.86 ==> Pouring pixman--0.46.4.x86_64_linux.bottle.1.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/pixman/0.46.4: 12 files, 1.8MB
+#11 87.86 ==> Installing graphviz dependency: cairo
+#11 87.86 ==> Pouring cairo--1.18.4.x86_64_linux.bottle.2.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/cairo/1.18.4: 56 files, 5.7MB
+#11 87.86 ==> Installing graphviz dependency: jpeg-turbo
+#11 87.86 ==> Pouring jpeg-turbo--3.2.0.x86_64_linux.bottle.1.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/jpeg-turbo/3.2.0: 47 files, 6.0MB
+#11 87.86 ==> Installing graphviz dependency: libvmaf
+#11 87.86 ==> Pouring libvmaf--3.2.1.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libvmaf/3.2.1: 244 files, 9.4MB
+#11 87.86 ==> Installing graphviz dependency: aom
+#11 87.86 ==> Pouring aom--3.15.0.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/aom/3.15.0: 30 files, 15.9MB
+#11 87.86 ==> Installing graphviz dependency: dav1d
+#11 87.86 ==> Pouring dav1d--1.5.4.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/dav1d/1.5.4: 17 files, 2.7MB
+#11 87.86 ==> Installing graphviz dependency: libavif
+#11 87.86 ==> Pouring libavif--1.4.2.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libavif/1.4.2: 22 files, 1.3MB
+#11 87.86 ==> Installing graphviz dependency: giflib
+#11 87.86 ==> Pouring giflib--6.1.3.x86_64_linux.bottle.1.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/giflib/6.1.3: 44 files, 655.8KB
+#11 87.86 ==> Installing graphviz dependency: webp
+#11 87.86 ==> Pouring webp--1.6.0.x86_64_linux.bottle.1.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/webp/1.6.0: 63 files, 3.3MB
+#11 87.86 ==> Installing graphviz dependency: libtiff
+#11 87.86 ==> Pouring libtiff--4.7.2.x86_64_linux.bottle.2.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libtiff/4.7.2: 495 files, 9MB
+#11 87.86 ==> Installing graphviz dependency: gd
+#11 87.86 ==> Pouring gd--2.3.3_6.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/gd/2.3.3_6: 34 files, 1.5MB
+#11 87.86 ==> Installing graphviz dependency: jasper
+#11 87.86 ==> Pouring jasper--4.2.9.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/jasper/4.2.9: 43 files, 2MB
+#11 87.86 ==> Installing graphviz dependency: libxml2
+#11 87.86 ==> Pouring libxml2--2.15.4.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/libxml2/2.15.4: 60 files, 2.3MB
+#11 87.86 ==> Installing graphviz dependency: netpbm
+#11 87.86 ==> Pouring netpbm--11.02.30.x86_64_linux.bottle.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/netpbm/11.02.30: 828 files, 11.2MB
+#11 87.86 ==> Installing graphviz dependency: gts
+#11 87.86 ==> Pouring gts--0.7.6_3.x86_64_linux.bottle.1.tar.gz
+#11 87.86 🍺  /home/linuxbrew/.linuxbrew/Cellar/gts/0.7.6_3: 28 files, 1.8MB
+#11 87.86 ==> Installing graphviz dependency: shared-mime-info
+#11 87.86 ==> Pouring shared-mime-info--2.5.1.x86_64_linux.bottle.tar.gz
+#11 92.74 
+#11 92.74 Note that '/home/linuxbrew/.linuxbrew/share' is not in the search path
+#11 92.74 set by the XDG_DATA_HOME and XDG_DATA_DIRS
+#11 92.74 environment variables, so applications may not
+#11 92.74 be able to find it until you set them. The
+#11 92.74 directories currently searched are:
+#11 92.74 
+#11 92.74 - /var/tmp/shared-mime-info-postinstall-20261008-5162-3mqttw/.local/share
+#11 92.74 - /usr/local/share/
+#11 92.74 - /usr/share/
+#11 92.74 
+#11 93.88 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 93.88 🍺  /home/linuxbrew/.linuxbrew/Cellar/shared-mime-info/2.5.1: 90 files, 6.9MB
+#11 93.88 ==> Installing graphviz dependency: gdk-pixbuf
+#11 93.88 ==> Pouring gdk-pixbuf--2.44.8.x86_64_linux.bottle.tar.gz
+#11 100.5 Warning: Sandbox unavailable: running post-install without sandboxing!
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/gdk-pixbuf/2.44.8: 153 files, 4.7MB
+#11 100.5 ==> Installing graphviz dependency: graphite2
+#11 100.5 ==> Pouring graphite2--1.3.15.x86_64_linux.bottle.tar.gz
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/graphite2/1.3.15: 19 files, 333.8KB
+#11 100.5 ==> Installing graphviz dependency: icu4c@78
+#11 100.5 ==> Pouring icu4c@78--78.3.x86_64_linux.bottle.tar.gz
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/icu4c@78/78.3: 279 files, 94.4MB
+#11 100.5 ==> Installing graphviz dependency: harfbuzz
+#11 100.5 ==> Pouring harfbuzz--14.5.0.x86_64_linux.bottle.tar.gz
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/harfbuzz/14.5.0: 103 files, 17.2MB
+#11 100.5 ==> Installing graphviz dependency: fribidi
+#11 100.5 ==> Pouring fribidi--1.0.17.x86_64_linux.bottle.tar.gz
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/fribidi/1.0.17: 70 files, 793.5KB
+#11 100.5 ==> Installing graphviz dependency: libdatrie
+#11 100.5 ==> Pouring libdatrie--0.2.14.x86_64_linux.bottle.tar.gz
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/libdatrie/0.2.14: 21 files, 317.6KB
+#11 100.5 ==> Installing graphviz dependency: libthai
+#11 100.5 ==> Pouring libthai--0.1.30.x86_64_linux.bottle.tar.gz
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/libthai/0.1.30: 31 files, 991.2KB
+#11 100.5 ==> Installing graphviz dependency: pango
+#11 100.5 ==> Pouring pango--1.58.2.x86_64_linux.bottle.1.tar.gz
+#11 100.5 🍺  /home/linuxbrew/.linuxbrew/Cellar/pango/1.58.2: 72 files, 4MB
+#11 100.5 ==> Installing graphviz dependency: librsvg
+#11 100.5 ==> Pouring librsvg--2.63.2.x86_64_linux.bottle.tar.gz
+#11 104.2 🍺  /home/linuxbrew/.linuxbrew/Cellar/librsvg/2.63.2: 21 files, 16MB
+#11 104.2 ==> Installing graphviz dependency: libtool
+#11 104.2 ==> Pouring libtool--2.6.2.x86_64_linux.bottle.tar.gz
+#11 104.2 🍺  /home/linuxbrew/.linuxbrew/Cellar/libtool/2.6.2: 77 files, 4.3MB
+#11 104.2 ==> Installing graphviz
+#11 104.2 ==> Pouring graphviz--16.1.0.x86_64_linux.bottle.1.tar.gz
+#11 104.2 🍺  /home/linuxbrew/.linuxbrew/Cellar/graphviz/16.1.0: 294 files, 8.9MB
+#11 104.2 + brew install --force-bottle ranger/tamarin-pinned/tamarin-prover
+#11 104.9 ==> Trusted formula ranger/tamarin-pinned/tamarin-prover
+#11 106.1 ==> Would install 1 formula:
+#11 106.1 ranger/tamarin-pinned/tamarin-prover 1.12.0
+#11 107.1 ==> Fetching downloads for: tamarin-prover
+#11 108.5 ✔︎ Bottle tamarin-prover (1.12.0)
+#11 108.9 ==> Installing tamarin-prover from ranger/tamarin-pinned
+#11 109.4 ==> Pouring tamarin-prover-1.12.0.x86_64_linux.bottle.tar.gz
+#11 109.4 🍺  /home/linuxbrew/.linuxbrew/Cellar/tamarin-prover/1.12.0: 8 files, 52.2MB
+#11 DONE 109.6s
+
+#12 [7/8] RUN set -eux;     command -v tamarin-prover;     command -v maude;     command -v dot;     tamarin-prover --version;     maude --version 2>&1 | head -n 5 || true;     dot -V 2>&1;     tamarin-prover test
+#12 0.536 + command -v tamarin-prover
+#12 0.537 /home/linuxbrew/.linuxbrew/bin/tamarin-prover
+#12 0.537 + command -v maude
+#12 0.537 /home/linuxbrew/.linuxbrew/bin/maude
+#12 0.537 + command -v dot
+#12 0.537 /home/linuxbrew/.linuxbrew/bin/dot
+#12 0.538 + tamarin-prover --version
+#12 0.623 tamarin-prover 1.12.0, (C) David Basin, Cas Cremers, Jannik Dreier, Simon Meier, Ralf Sasse, Benedikt Schmidt, 2010-2023
+#12 0.623 
+#12 0.623 This program comes with ABSOLUTELY NO WARRANTY. It is free software, and you
+#12 0.623 are welcome to redistribute it according to its LICENSE, see
+#12 0.623 'https://github.com/tamarin-prover/tamarin-prover/blob/master/LICENSE'.
+#12 0.623 
+#12 0.623 maude tool: 'maude'
+#12 0.623  checking version: 3.5.1. OK.
+#12 0.632  checking installation: OK.
+#12 0.705 Generated from:
+#12 0.705 Tamarin version 1.12.0
+#12 0.705 Maude version 3.5.1
+#12 0.705 Git revision: UNKNOWN, branch: UNKNOWN
+#12 0.705 Compiled at: 2026-03-08 10:05:47.616272992 UTC
+#12 0.712 + maude --version
+#12 0.712 + head -n 5
+#12 0.716 3.5.1
+#12 0.716 + dot -V
+#12 0.726 dot - graphviz version 16.1.0 (20260904.0139)
+#12 0.727 + tamarin-prover test
+#12 0.792 Self-testing the tamarin-prover installation.
+#12 0.792 
+#12 0.792 *** Testing the availability of the required tools ***
+#12 0.792 maude tool: 'maude'
+#12 0.792  checking version: 3.5.1. OK.
+#12 0.801  checking installation: OK.
+#12 0.867 GraphViz tool: 'dot'
+#12 0.867  checking version: 
+#12 0.877 dot - graphviz version 16.1.0 (20260904.0139). OK.
+#12 0.877  checking PNG support: OK.
+#12 0.945 Cases: 55  Tried: 0  Errors: 0  Failures: 0Cases: 55  Tried: 1  Errors: 0  Failures: 0Cases: 55  Tried: 2  Errors: 0  Failures: 0Cases: 55  Tried: 3  Errors: 0  Failures: 0Cases: 55  Tried: 4  Errors: 0  Failures: 0Cases: 55  Tried: 5  Errors: 0  Failures: 0Cases: 55  Tried: 6  Errors: 0  Failures: 0Cases: 55  Tried: 7  Errors: 0  Failures: 0Cases: 55  Tried: 8  Errors: 0  Failures: 0Cases: 55  Tried: 9  Errors: 0  Failures: 0Cases: 55  Tried: 10  Errors: 0  Failures: 0Cases: 55  Tried: 11  Errors: 0  Failures: 0Cases: 55  Tried: 12  Errors: 0  Failures: 0Cases: 55  Tried: 13  Errors: 0  Failures: 0Cases: 55  Tried: 14  Errors: 0  Failures: 0Cases: 55  Tried: 15  Errors: 0  Failures: 0Cases: 55  Tried: 16  Errors: 0  Failures: 0Cases: 55  Tried: 17  Errors: 0  Failures: 0Cases: 55  Tried: 18  Errors: 0  Failures: 0Cases: 55  Tried: 19  Errors: 0  Failures: 0Cases: 55  Tried: 20  Errors: 0  Failures: 0Cases: 55  Tried: 21  Errors: 0  Failures: 0Cases: 55  Tried: 22  Errors: 0  Failures: 0Cases: 55  Tried: 23  Errors: 0  Failures: 0Cases: 55  Tried: 24  Errors: 0  Failures: 0Cases: 55  Tried: 25  Errors: 0  Failures: 0Cases: 55  Tried: 26  Errors: 0  Failures: 0Cases: 55  Tried: 27  Errors: 0  Failures: 0Cases: 55  Tried: 28  Errors: 0  Failures: 0Cases: 55  Tried: 29  Errors: 0  Failures: 0Cases: 55  Tried: 30  Errors: 0  Failures: 0Cases: 55  Tried: 31  Errors: 0  Failures: 0Cases: 55  Tried: 32  Errors: 0  Failures: 0Cases: 55  Tried: 33  Errors: 0  Failures: 0Cases: 55  Tried: 34  Errors: 0  Failures: 0Cases: 55  Tried: 35  Errors: 0  Failures: 0Cases: 55  Tried: 36  Errors: 0  Failures: 0Cases: 55  Tried: 37  Errors: 0  Failures: 0Cases: 55  Tried: 38  Errors: 0  Failures: 0Cases: 55  Tried: 39  Errors: 0  Failures: 0Cases: 55  Tried: 40  Errors: 0  Failures: 0Cases: 55  Tried: 41  Errors: 0  Failures: 0Cases: 55  Tried: 42  Errors: 0  Failures: 0Cases: 55  Tried: 43  Errors: 0  Failures: 0Cases: 55  Tried: 44  Errors: 0  Failures: 0Cases: 55  Tried: 45  Errors: 0  Failures: 0Cases: 55  Tried: 46  Errors: 0  Failures: 0Cases: 55  Tried: 47  Errors: 0  Failures: 0Cases: 55  Tried: 48  Errors: 0  Failures: 0Cases: 55  Tried: 49  Errors: 0  Failures: 0Cases: 55  Tried: 50  Errors: 0  Failures: 0Cases: 55  Tried: 51  Errors: 0  Failures: 0Cases: 55  Tried: 52  Errors: 0  Failures: 0Cases: 55  Tried: 53  Errors: 0  Failures: 0Cases: 55  Tried: 54  Errors: 0  Failures: 0                                            Cases: 55  Tried: 55  Errors: 0  Failures: 0
+#12 1.025 
+#12 1.025 *** Testing the unification infrastructure ***
+#12 1.025 
+#12 1.025 *** TEST SUMMARY ***
+#12 1.025 All tests successful.
+#12 1.025 The tamarin-prover should work as intended.
+#12 1.025 
+#12 1.025            :-) happy proving (-:
+#12 1.025 
+#12 DONE 1.1s
+
+#13 [8/8] WORKDIR /workspace
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 5.7s done
+#14 writing image sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0 done
+#14 naming to docker.io/library/ranger-tamarin:1.12.0-repro done
+#14 DONE 5.7s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ ranger-tamarin:1.12.0-repro  Built

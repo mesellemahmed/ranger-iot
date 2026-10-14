@@ -1,0 +1,12 @@
+lemma,declared_kind,reported_kind,budget_seconds,search,return_code,tamarin_status,details,classification,max_partial_deconstructions,log
+executable_initial_accept,exists-trace,exists-trace,120,bfs,0,verified,20 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/executable_initial_accept.log
+executable_same_epoch_recovery,exists-trace,exists-trace,180,bfs,0,verified,970 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/executable_same_epoch_recovery.log
+revocation_reachable,exists-trace,exists-trace,120,bfs,0,verified,3 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/revocation_reachable.log
+accept_has_rekey_origin,all-traces,all-traces,180,default,0,verified,8 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/accept_has_rekey_origin.log
+accept_requires_authorization,all-traces,all-traces,180,default,0,verified,8 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/accept_requires_authorization.log
+revoked_never_accepts,all-traces,all-traces,180,default,0,falsified,,falsified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/revoked_never_accepts.log
+recovery_requester_authorized,all-traces,all-traces,180,default,0,verified,4 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/recovery_requester_authorized.log
+recovery_helper_authorized,all-traces,,180,default,124,,,timeout,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/recovery_helper_authorized.log
+recovery_same_epoch,all-traces,all-traces,180,default,0,verified,4 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/recovery_same_epoch.log
+recovery_accept_has_rekey_origin,all-traces,all-traces,240,default,0,verified,4 steps,verified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/recovery_accept_has_rekey_origin.log
+epoch_key_secrecy_unless_compromised,all-traces,all-traces,300,default,0,falsified,,falsified,0,artifacts/article-evidence/28-step7d1-utf8-isolated-proof-matrix/logs/epoch_key_secrecy_unless_compromised.log

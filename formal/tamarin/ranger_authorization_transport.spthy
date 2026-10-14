@@ -1,0 +1,350 @@
+theory RangerIoT_AuthorizationTransport
+begin
+
+/*
+ * RANGER-IoT STEP 7D.1
+ *
+ * Scope:
+ *   - symbolic authorization boundary supplied by LKH;
+ *   - RANGER transport of a protected rekey capsule;
+ *   - revoked-member exclusion;
+ *   - same-epoch recovery;
+ *   - explicit authorized-member / manager compromise;
+ *   - Dolev-Yao network.
+ *
+ * This is NOT an exact formalization of the binary LKH tree.
+ * The LKH survivor authorization material is represented by one
+ * shared symbolic wrapping secret for the surviving authorized set.
+ *
+ * Threshold coding, RS byte algebra, radio loss and topology are not
+ * cryptographic primitives here. Those properties are covered by the
+ * executable validation layers of the repository.
+ */
+
+builtins: symmetric-encryption
+
+
+/*
+ * Fixed roles for the first semantic model:
+ *
+ *   $GM : Group Manager
+ *   $A  : authorized target member
+ *   $H  : authorized helper member
+ *   $R  : revoked member
+ *
+ * ~ksurvivor abstracts authorization material unavailable to $R
+ * after the modeled LKH revocation.
+ *
+ * ~krevoked represents material retained by the revoked member but
+ * insufficient to recover the new epoch key.
+ */
+
+rule Setup:
+  [ Fr(~ksurvivor), Fr(~krevoked) ]
+  --[
+      Setup($GM,$A,$H,$R),
+      InitiallyAuthorized($A),
+      InitiallyAuthorized($H),
+      RevokedIdentity($R)
+    ]->
+  [
+      !SurvivorKey(~ksurvivor),
+      !MemberKey($A,~ksurvivor),
+      !MemberKey($H,~ksurvivor),
+      !RevokedOldKey($R,~krevoked)
+  ]
+
+
+/*
+ * One rekey instance.
+ *
+ * The capsule ciphertext is deliberately put on the untrusted
+ * network. The adversary may capture, delay, reorder and replay it.
+ *
+ * The revoked member receives no MemberKey fact for ~ksurvivor.
+ */
+
+rule Start_Rekey:
+  [
+      !SurvivorKey(ksurvivor),
+      Fr(~epoch),
+      Fr(~groupkey)
+  ]
+  --[
+      RekeyStarted(~epoch,~groupkey),
+      AuthorizedAt($A,~epoch),
+      AuthorizedAt($H,~epoch),
+      RevokedAt($R,~epoch),
+      SecretEpoch(~epoch,~groupkey)
+    ]->
+  [
+      !EpochCipher(
+          ~epoch,
+          ~groupkey,
+          senc(<'ranger-capsule',~epoch,~groupkey>,ksurvivor)
+      ),
+
+      Stale($A,~epoch,~groupkey),
+      Stale($H,~epoch,~groupkey),
+
+      Out(
+          senc(
+              <'ranger-capsule',~epoch,~groupkey>,
+              ksurvivor
+          )
+      )
+  ]
+
+
+/*
+ * Initial RANGER acceptance.
+ *
+ * A member can accept only if:
+ *   1. it is a target of this rekey instance (Stale),
+ *   2. it owns the survivor authorization material,
+ *   3. it obtains a capsule bound to the same epoch/key.
+ */
+
+rule Accept_Initial:
+  [
+      Stale(a,e,gk),
+      !MemberKey(a,k),
+      In(senc(<'ranger-capsule',e,gk>,k))
+  ]
+  --[
+      Accept(a,e,gk),
+      AcceptInitial(a,e,gk)
+    ]->
+  [
+      Current(a,e,gk)
+  ]
+
+
+/*
+ * Same-epoch recovery request.
+ *
+ * Only Stale facts created for surviving authorized targets can
+ * initiate this rule.
+ */
+
+rule Start_Recovery:
+  [
+      Stale(a,e,gk)
+  ]
+  --[
+      RecoveryRequest(a,e)
+    ]->
+  [
+      Recovering(a,e,gk),
+      Out(<'ranger-recovery-request',a,e>)
+  ]
+
+
+/*
+ * An already-current authorized helper may re-release the same
+ * protected epoch material.
+ *
+ * This abstracts the implementation's forwarding of available
+ * same-epoch coded fragments without pretending to model RS algebra.
+ */
+
+rule Recovery_Response:
+  [
+      Current(h,e,gk),
+      !EpochCipher(e,gk,ciphertext),
+      In(<'ranger-recovery-request',a,e>)
+  ]
+  --[
+      RecoveryResponse(h,a,e)
+    ]->
+  [
+      Current(h,e,gk),
+      Out(ciphertext)
+  ]
+
+
+/*
+ * Recovery acceptance is bound to the same e/gk pair carried by the
+ * Recovering state.
+ */
+
+rule Accept_Recovery:
+  [
+      Recovering(a,e,gk),
+      !MemberKey(a,k),
+      In(senc(<'ranger-capsule',e,gk>,k))
+  ]
+  --[
+      Accept(a,e,gk),
+      RecoveryAccept(a,e,gk)
+    ]->
+  [
+      Current(a,e,gk)
+  ]
+
+
+/*
+ * Explicit compromise rules.
+ */
+
+rule Compromise_Authorized_Member:
+  [
+      !MemberKey(a,k)
+  ]
+  --[
+      Compromise(a)
+    ]->
+  [
+      Out(k)
+  ]
+
+
+rule Compromise_Group_Manager:
+  [
+      !SurvivorKey(k)
+  ]
+  --[
+      CompromiseGM($GM)
+    ]->
+  [
+      Out(k)
+  ]
+
+
+/********************************************************************
+ * NON-VACUITY
+ ********************************************************************/
+
+lemma executable_initial_accept:
+  exists-trace
+  "
+    Ex e gk #i.
+      AcceptInitial($A,e,gk) @ i
+  "
+
+
+lemma executable_same_epoch_recovery:
+  exists-trace
+  "
+    Ex e gk #i #j #k.
+      RecoveryRequest($A,e) @ i
+    & RecoveryResponse($H,$A,e) @ j
+    & RecoveryAccept($A,e,gk) @ k
+    & i < j
+    & j < k
+  "
+
+
+lemma revocation_reachable:
+  exists-trace
+  "
+    Ex e #i.
+      RevokedAt($R,e) @ i
+  "
+
+
+/********************************************************************
+ * AUTHORIZATION / AUTHENTICITY
+ ********************************************************************/
+
+lemma accept_has_rekey_origin:
+  "
+    All a e gk #i.
+      Accept(a,e,gk) @ i
+      ==>
+      (Ex #j.
+         RekeyStarted(e,gk) @ j
+       & j < i)
+  "
+
+
+lemma accept_requires_authorization:
+  "
+    All a e gk #i.
+      Accept(a,e,gk) @ i
+      ==>
+      (Ex #j.
+         AuthorizedAt(a,e) @ j
+       & j < i)
+  "
+
+
+lemma revoked_never_accepts:
+  "
+    All e gk #r #a.
+      RevokedAt($R,e) @ r
+    & Accept($R,e,gk) @ a
+      ==> F
+  "
+
+
+/********************************************************************
+ * RECOVERY
+ ********************************************************************/
+
+lemma recovery_requester_authorized:
+  "
+    All a e #i.
+      RecoveryRequest(a,e) @ i
+      ==>
+      (Ex #j.
+         AuthorizedAt(a,e) @ j
+       & j < i)
+  "
+
+
+lemma recovery_helper_authorized:
+  "
+    All h a e #i.
+      RecoveryResponse(h,a,e) @ i
+      ==>
+      (Ex #j.
+         AuthorizedAt(h,e) @ j
+       & j < i)
+  "
+
+
+lemma recovery_same_epoch:
+  "
+    All a e gk #i.
+      RecoveryAccept(a,e,gk) @ i
+      ==>
+      (Ex #j.
+         RecoveryRequest(a,e) @ j
+       & j < i)
+  "
+
+
+lemma recovery_accept_has_rekey_origin:
+  "
+    All a e gk #i.
+      RecoveryAccept(a,e,gk) @ i
+      ==>
+      (Ex #j.
+         RekeyStarted(e,gk) @ j
+       & j < i)
+  "
+
+
+/********************************************************************
+ * SECRECY UNDER EXPLICIT COMPROMISE ASSUMPTIONS
+ ********************************************************************/
+
+lemma epoch_key_secrecy_unless_compromised:
+  "
+    All e gk #i #j.
+      SecretEpoch(e,gk) @ i
+    & K(gk) @ j
+      ==>
+      (
+        (Ex a #r.
+           Compromise(a) @ r
+         & r < j)
+        |
+        (Ex #r.
+           CompromiseGM($GM) @ r
+         & r < j)
+      )
+  "
+
+end

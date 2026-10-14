@@ -1,0 +1,212 @@
+{
+  "all_connected": true,
+  "case_count": 16,
+  "pass": true,
+  "rows": [
+    {
+      "connected": true,
+      "diameter": 7,
+      "edges": 7,
+      "max_degree": 2,
+      "mean_degree": 1.75,
+      "min_degree": 1,
+      "nodes": 8,
+      "pass": true,
+      "root_eccentricity": 7,
+      "topology": "line"
+    },
+    {
+      "connected": true,
+      "diameter": 15,
+      "edges": 15,
+      "max_degree": 2,
+      "mean_degree": 1.875,
+      "min_degree": 1,
+      "nodes": 16,
+      "pass": true,
+      "root_eccentricity": 15,
+      "topology": "line"
+    },
+    {
+      "connected": true,
+      "diameter": 31,
+      "edges": 31,
+      "max_degree": 2,
+      "mean_degree": 1.9375,
+      "min_degree": 1,
+      "nodes": 32,
+      "pass": true,
+      "root_eccentricity": 31,
+      "topology": "line"
+    },
+    {
+      "connected": true,
+      "diameter": 63,
+      "edges": 63,
+      "max_degree": 2,
+      "mean_degree": 1.96875,
+      "min_degree": 1,
+      "nodes": 64,
+      "pass": true,
+      "root_eccentricity": 63,
+      "topology": "line"
+    },
+    {
+      "connected": true,
+      "diameter": 2,
+      "edges": 7,
+      "max_degree": 7,
+      "mean_degree": 1.75,
+      "min_degree": 1,
+      "nodes": 8,
+      "pass": true,
+      "root_eccentricity": 1,
+      "topology": "star"
+    },
+    {
+      "connected": true,
+      "diameter": 2,
+      "edges": 15,
+      "max_degree": 15,
+      "mean_degree": 1.875,
+      "min_degree": 1,
+      "nodes": 16,
+      "pass": true,
+      "root_eccentricity": 1,
+      "topology": "star"
+    },
+    {
+      "connected": true,
+      "diameter": 2,
+      "edges": 31,
+      "max_degree": 31,
+      "mean_degree": 1.9375,
+      "min_degree": 1,
+      "nodes": 32,
+      "pass": true,
+      "root_eccentricity": 1,
+      "topology": "star"
+    },
+    {
+      "connected": true,
+      "diameter": 2,
+      "edges": 63,
+      "max_degree": 63,
+      "mean_degree": 1.96875,
+      "min_degree": 1,
+      "nodes": 64,
+      "pass": true,
+      "root_eccentricity": 1,
+      "topology": "star"
+    },
+    {
+      "connected": true,
+      "diameter": 5,
+      "edges": 7,
+      "max_degree": 3,
+      "mean_degree": 1.75,
+      "min_degree": 1,
+      "nodes": 8,
+      "pass": true,
+      "root_eccentricity": 3,
+      "topology": "balanced-tree"
+    },
+    {
+      "connected": true,
+      "diameter": 7,
+      "edges": 15,
+      "max_degree": 3,
+      "mean_degree": 1.875,
+      "min_degree": 1,
+      "nodes": 16,
+      "pass": true,
+      "root_eccentricity": 4,
+      "topology": "balanced-tree"
+    },
+    {
+      "connected": true,
+      "diameter": 9,
+      "edges": 31,
+      "max_degree": 3,
+      "mean_degree": 1.9375,
+      "min_degree": 1,
+      "nodes": 32,
+      "pass": true,
+      "root_eccentricity": 5,
+      "topology": "balanced-tree"
+    },
+    {
+      "connected": true,
+      "diameter": 11,
+      "edges": 63,
+      "max_degree": 3,
+      "mean_degree": 1.96875,
+      "min_degree": 1,
+      "nodes": 64,
+      "pass": true,
+      "root_eccentricity": 6,
+      "topology": "balanced-tree"
+    },
+    {
+      "connected": true,
+      "diameter": 4,
+      "edges": 10,
+      "max_degree": 4,
+      "mean_degree": 2.5,
+      "min_degree": 2,
+      "nodes": 8,
+      "pass": true,
+      "root_eccentricity": 3,
+      "topology": "grid"
+    },
+    {
+      "connected": true,
+      "diameter": 6,
+      "edges": 24,
+      "max_degree": 4,
+      "mean_degree": 3.0,
+      "min_degree": 2,
+      "nodes": 16,
+      "pass": true,
+      "root_eccentricity": 6,
+      "topology": "grid"
+    },
+    {
+      "connected": true,
+      "diameter": 10,
+      "edges": 52,
+      "max_degree": 4,
+      "mean_degree": 3.25,
+      "min_degree": 2,
+      "nodes": 32,
+      "pass": true,
+      "root_eccentricity": 9,
+      "topology": "grid"
+    },
+    {
+      "connected": true,
+      "diameter": 14,
+      "edges": 112,
+      "max_degree": 4,
+      "mean_degree": 3.5,
+      "min_degree": 2,
+      "nodes": 64,
+      "pass": true,
+      "root_eccentricity": 14,
+      "topology": "grid"
+    }
+  ],
+  "schema_version": 1,
+  "sizes": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "topologies": [
+    "line",
+    "star",
+    "balanced-tree",
+    "grid"
+  ]
+}

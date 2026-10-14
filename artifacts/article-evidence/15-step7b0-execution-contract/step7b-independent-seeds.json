@@ -1,0 +1,33 @@
+{
+  "excluded_previous_seed_range": [
+    201,
+    230
+  ],
+  "namespace": "RANGER-IOT:STEP7B:EXTERNAL-VALIDITY:PREREGISTERED-SEEDS:V1",
+  "ordered_seeds": [
+    1901,
+    2117,
+    6212,
+    8530,
+    5326,
+    4518,
+    6021,
+    1381,
+    2579,
+    6704,
+    5024,
+    3694,
+    8703,
+    2176,
+    6594,
+    8303,
+    8470,
+    2146,
+    1108,
+    5659
+  ],
+  "schema_version": 1,
+  "seed_count": 20,
+  "selection_is_non_consecutive": true,
+  "selection_method": "SHA256 deterministic preregistration"
+}

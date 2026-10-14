@@ -1,0 +1,321 @@
+{
+  "schema_version": 2,
+  "experiment": "RANGER-COOJA-REAL-RS-WIRE",
+  "mode": 1,
+  "simulation_seed": 20260926,
+  "finish_time": 159305824,
+  "registered_count": 7,
+  "sends": [
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 119969000
+    },
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 120969000
+    },
+    {
+      "emitter": 1,
+      "target": 2,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 1,
+      "time": 121969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 124969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 125969000
+    },
+    {
+      "emitter": 1,
+      "target": 3,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 1,
+      "time": 127969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 129969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 130969000
+    },
+    {
+      "emitter": 1,
+      "target": 4,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 1,
+      "time": 133969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 134969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 1,
+      "time": 136969000
+    },
+    {
+      "emitter": 1,
+      "target": 5,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 1,
+      "time": 137969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 140969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 1,
+      "time": 142969000
+    },
+    {
+      "emitter": 1,
+      "target": 6,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 1,
+      "time": 143969000
+    },
+    {
+      "emitter": 1,
+      "target": 7,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 144969000
+    },
+    {
+      "emitter": 1,
+      "target": 7,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 145969000
+    },
+    {
+      "emitter": 1,
+      "target": 8,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 149969000
+    }
+  ],
+  "receives": [
+    {
+      "emitter": 2,
+      "node": 2,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 119999920
+    },
+    {
+      "emitter": 2,
+      "node": 2,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 120986920
+    },
+    {
+      "emitter": 2,
+      "node": 2,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 1,
+      "time": 121981920
+    },
+    {
+      "emitter": 3,
+      "node": 3,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 124991464
+    },
+    {
+      "emitter": 3,
+      "node": 3,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 126006464
+    },
+    {
+      "emitter": 3,
+      "node": 3,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 1,
+      "time": 127989464
+    },
+    {
+      "emitter": 4,
+      "node": 4,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 130042720
+    },
+    {
+      "emitter": 4,
+      "node": 4,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 131030720
+    },
+    {
+      "emitter": 4,
+      "node": 4,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 1,
+      "time": 134004720
+    },
+    {
+      "emitter": 5,
+      "node": 5,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 135063976
+    },
+    {
+      "emitter": 5,
+      "node": 5,
+      "shard": 2,
+      "data": "4f4348310000",
+      "mode": 1,
+      "time": 137075976
+    },
+    {
+      "emitter": 5,
+      "node": 5,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 1,
+      "time": 138077976
+    },
+    {
+      "emitter": 6,
+      "node": 6,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 141057232
+    },
+    {
+      "emitter": 6,
+      "node": 6,
+      "shard": 3,
+      "data": "49d499929149",
+      "mode": 1,
+      "time": 143152232
+    },
+    {
+      "emitter": 6,
+      "node": 6,
+      "shard": 4,
+      "data": "2bc5828ed419",
+      "mode": 1,
+      "time": 144084232
+    },
+    {
+      "emitter": 7,
+      "node": 7,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 145191488
+    },
+    {
+      "emitter": 7,
+      "node": 7,
+      "shard": 1,
+      "data": "2d52532d4550",
+      "mode": 1,
+      "time": 146102488
+    },
+    {
+      "emitter": 8,
+      "node": 8,
+      "shard": 0,
+      "data": "52414e474552",
+      "mode": 1,
+      "time": 150139744
+    }
+  ],
+  "reconstructed": {
+    "2": true,
+    "3": true,
+    "4": true,
+    "5": true,
+    "6": true
+  },
+  "reconstruct_mask": {
+    "2": 7,
+    "3": 11,
+    "4": 19,
+    "5": 13,
+    "6": 26
+  },
+  "rejected": true,
+  "below_k": true,
+  "below_mask": 3,
+  "mask_pass": true,
+  "core_pass": true,
+  "all_shards_sent": true,
+  "success": true
+}

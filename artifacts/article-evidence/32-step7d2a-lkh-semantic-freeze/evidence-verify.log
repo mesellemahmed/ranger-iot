@@ -1,0 +1,9 @@
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/implemented-semantics.sha256: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/lkh-ast-inventory.json: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/lkh-derived-semantics.json: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/lkh-rekey-exact-source.py.txt: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/lkh-semantic-probe.json: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/lkh-tests.log: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/project-ci.log: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/step7d2-formalization-blueprint.json: OK
+artifacts/article-evidence/32-step7d2a-lkh-semantic-freeze/step7d2a-readiness.json: OK

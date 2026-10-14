@@ -1,0 +1,15 @@
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/causality-audit.json: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/causality-highlights.txt: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/dot-crypto-highlights.txt: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/model-after.sha256: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/model-before.sha256: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/new_epoch_key_secret_without_relevant_compromise.dot: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/new_epoch_key_secret_without_relevant_compromise.dot.svg: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/new_epoch_key_secret_without_relevant_compromise.json: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/new_epoch_key_secret_without_relevant_compromise.log: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/new_epoch_key_secret_without_relevant_compromise.rc: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/revoked_old_key_does_not_reveal_new_root_key.dot: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/revoked_old_key_does_not_reveal_new_root_key.dot.svg: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/revoked_old_key_does_not_reveal_new_root_key.json: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/revoked_old_key_does_not_reveal_new_root_key.log: OK
+artifacts/article-evidence/36-step7d2b-session-bound-secrecy-audit/raw/revoked_old_key_does_not_reveal_new_root_key.rc: OK

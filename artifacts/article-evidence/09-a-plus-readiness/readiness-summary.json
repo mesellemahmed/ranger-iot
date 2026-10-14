@@ -1,0 +1,45 @@
+{
+  "a_plus_hardening_state": "BLOCKED_BY_REPRODUCIBILITY_GATE",
+  "article_data_package_state": "NOT_READY",
+  "checks": {
+    "core_ci": true,
+    "freeze_checksums": true,
+    "global_scientific_hashes": true,
+    "independent_recomputation": false,
+    "manifest_audit": true,
+    "required_files": true,
+    "scientific_worktree_clean": true,
+    "step6f1_checksums": false,
+    "step6f2_checksums": true,
+    "step6f_table_inventory": true,
+    "tag_matches_head": true
+  },
+  "hard_reproducibility_gate_pass": false,
+  "paired_comparisons_with_nonzero_but_nonsignificant_signal": [
+    {
+      "completion_p": 0.0703125,
+      "left": "recovery",
+      "mean_reconstructed_delta": "0.6",
+      "reconstruction_p": 0.0703125,
+      "right": "static",
+      "tx": "0.3"
+    },
+    {
+      "completion_p": 0.5,
+      "left": "adaptive-v2",
+      "mean_reconstructed_delta": "0.2",
+      "reconstruction_p": 0.5,
+      "right": "recovery",
+      "tx": "0.3"
+    },
+    {
+      "completion_p": 1.0,
+      "left": "adaptive-v2",
+      "mean_reconstructed_delta": "-0.2",
+      "reconstruction_p": 1.0,
+      "right": "recovery",
+      "tx": "0.2"
+    }
+  ],
+  "schema_version": 1
+}

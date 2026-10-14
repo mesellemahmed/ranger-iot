@@ -1,0 +1,96 @@
+{
+  "claims_not_allowed": [
+    "Do not claim Cooja scalability beyond implemented node scale without a separate embedded-code generalization.",
+    "Do not claim Adaptive-V2 globally superior to Recovery."
+  ],
+  "layer_1_python_model": {
+    "failure_conditions": "Resolve from existing simulator loss API before execution; do not silently equate Cooja SUCCESS_RATIO_TX with a Python loss parameter.",
+    "independent_seeds": [
+      1901,
+      2117,
+      6212,
+      8530,
+      5326,
+      4518,
+      6021,
+      1381,
+      2579,
+      6704,
+      5024,
+      3694,
+      8703,
+      2176,
+      6594,
+      8303,
+      8470,
+      2146,
+      1108,
+      5659
+    ],
+    "node_counts": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "primary_metrics": [
+      "completion",
+      "authorized reconstruction",
+      "message cost",
+      "byte cost",
+      "latency"
+    ],
+    "protocols": [
+      "static",
+      "recovery",
+      "adaptive-v2"
+    ],
+    "topologies": [
+      "line",
+      "star",
+      "balanced-tree",
+      "grid"
+    ]
+  },
+  "layer_2_cooja": {
+    "goal": "Topology/layout robustness at fixed implementation scale.",
+    "independent_seeds": [
+      1901,
+      2117,
+      6212,
+      8530,
+      5326,
+      4518,
+      6021,
+      1381,
+      2579,
+      6704,
+      5024,
+      3694,
+      8703,
+      2176,
+      6594,
+      8303,
+      8470,
+      2146,
+      1108,
+      5659
+    ],
+    "node_count": 8,
+    "protocols": [
+      "static",
+      "recovery",
+      "adaptive-v2"
+    ],
+    "reason": "Current embedded implementations and scenarios are specialized for the existing 8-node role map."
+  },
+  "objective": "Test whether RANGER conclusions generalize across topology and network scale without changing the protocol claims established in STEP7A.",
+  "schema_version": 1,
+  "statistical_rules": {
+    "confidence_intervals": "paired bootstrap 95%",
+    "multiple_comparison_control": "Holm",
+    "no_significance_chasing": true,
+    "optional_stopping": false,
+    "paired_by_seed": true
+  }
+}

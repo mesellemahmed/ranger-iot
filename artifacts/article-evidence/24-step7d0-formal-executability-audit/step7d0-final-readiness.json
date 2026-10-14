@@ -1,0 +1,37 @@
+{
+  "checks": {
+    "core_ci": true,
+    "formal_directory_present": true,
+    "formal_file_count_zero": true,
+    "formal_models_modified": false,
+    "lemma_count_zero": true,
+    "rule_count_zero": true,
+    "spthy_model_count_zero": true,
+    "step7c3_prerequisite": true,
+    "tamarin_model_execution_reached": false
+  },
+  "falsified_lemma_count": 0,
+  "formal_directory": "formal/tamarin",
+  "formal_file_count": 0,
+  "formal_security_claim_ready": false,
+  "formal_security_claim_status": "FORBIDDEN",
+  "incomplete_lemma_count": 0,
+  "lemma_count": 0,
+  "next_step": "STEP7D1_BUILD_SECURITY_MODEL_FROM_IMPLEMENTED_PROTOCOL_SEMANTICS",
+  "publication_guardrail": "Do not describe RANGER-IoT as formally verified, formally proven, or Tamarin-verified until subsequent steps create a semantically adequate model and all required non-vacuous lemmas execute.",
+  "rule_count": 0,
+  "schema_version": 2,
+  "scientific_state": "FORMAL_MODEL_ABSENT",
+  "spthy_model_count": 0,
+  "step": "STEP7D0_FORMAL_SECURITY_ARTIFACT_AUDIT",
+  "step7d0_pass": true,
+  "step7d0_pass_meaning": "The audit successfully established that no executable RANGER-IoT formal-security model currently exists.",
+  "tamarin_model_execution_reached": false,
+  "toolchain_attempts": {
+    "manual_official_bottle": "BINARY_RUNTIME_ENVIRONMENT_FAILURE",
+    "source_build": "TOOLCHAIN_DEPENDENCY_METADATA_FAILURE"
+  },
+  "toolchain_failures_are_security_results": false,
+  "verified_lemma_count": 0,
+  "why_claim_not_ready": "The repository contains no Tamarin model, no protocol rules and no security lemmas. Therefore no RANGER-IoT security property has been machine-proved."
+}

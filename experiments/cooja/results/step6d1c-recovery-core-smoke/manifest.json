@@ -1,0 +1,37 @@
+{
+  "coding": {
+    "k": 3,
+    "n": 5
+  },
+  "experiment": "RANGER-COOJA-RECOVERY-CORE-SMOKE",
+  "hashes": {
+    "assertion_sha256": "1fae8a66225dd00d3be4fc30d67bbb0feb9ab7aa2dc70a50a45500ed3039e559",
+    "raw_log_sha256": "4e51c4f14f63c5d2eceed58a3359c98e6920e8d2852e78d019bc9d2a790d1ab9",
+    "result_sha256": "1e4c7d41f99ddbd02891c7930bac3ffeb579d09bedfd76e9d253cde2b41ec200",
+    "scenario_sha256": "0e0b6c74f7c0edc21749fc2fd3da39f36dd8ec27007769009f4ff8e42559ecc0",
+    "source_sha256": "956fc88586b74e18c011cd0b5d5596985ba185d83c8df81be5df2dbf2306fde4"
+  },
+  "radio": {
+    "success_ratio_rx": 1.0,
+    "success_ratio_tx": 1.0
+  },
+  "recovery": {
+    "controlled_target": 4,
+    "expected_initial_unique": 2,
+    "expected_neighbors": [
+      3,
+      5
+    ],
+    "expected_repair_fragment": 2,
+    "max_rounds": 2,
+    "request_bytes": 24
+  },
+  "safety": {
+    "revoked_node": 8,
+    "revoked_reconstruction_allowed": false,
+    "revoked_recovery_activity_allowed": false
+  },
+  "schema_version": 1,
+  "simulation_seed": 20260928,
+  "source_commit": "40e5f71b5abcb6e73107f1b43bea822f0376b29f"
+}

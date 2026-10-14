@@ -1,0 +1,81 @@
+[
+    {
+        "Id": "sha256:426f7c362b415554a6a9f546b78f16c5f93b0f443dac068f2dc034a5c46493d0",
+        "RepoTags": [
+            "ranger-tamarin:1.12.0-repro"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-08T00:00:47.490047396Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 3217454177,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/89p0m24c1gjqpye377mxg3p5x/diff:/var/lib/docker/overlay2/q54iu7gsi2vcajntqzcbeq122/diff:/var/lib/docker/overlay2/67fdarfrhn9hicqlhcshui6sn/diff:/var/lib/docker/overlay2/nloikwik3k03sebko7vo6erso/diff:/var/lib/docker/overlay2/6o7lced00ygmncgfmnewred7o/diff:/var/lib/docker/overlay2/bjvcv5z6ysg2bhuvm5ahsjghs/diff:/var/lib/docker/overlay2/8742fec63f7cb9c24c5b0bd8d6a564231f46147e989560b984204770ab528ba8/diff:/var/lib/docker/overlay2/3ea50bc6fe6bfc3359a84d146240392ef4c3b442ff85e96afd72b90dc7a114c1/diff:/var/lib/docker/overlay2/b42d71a3d215b438fa01045abaccb39a361e3e6839dc26817b061bbfa71fb056/diff:/var/lib/docker/overlay2/7de7c66c6ae0efa716b640903c3233a06485d582fd9ee16a330b8efe6ed00aac/diff:/var/lib/docker/overlay2/a690f3136e94c04e2987017a573974fc6ee75fdb4dcf05a7d739ebae37de943d/diff:/var/lib/docker/overlay2/8d4659d8e39b6cd5a1f622e97623040acb9525c377b88d7c5331ef97c3b085ee/diff:/var/lib/docker/overlay2/9b02c9453c502bcd4ca5036c7e215973f3624b743e0fe493a2b19b75795aefa5/diff",
+                "MergedDir": "/var/lib/docker/overlay2/ts6jtq3ba072gonaa065g2bw4/merged",
+                "UpperDir": "/var/lib/docker/overlay2/ts6jtq3ba072gonaa065g2bw4/diff",
+                "WorkDir": "/var/lib/docker/overlay2/ts6jtq3ba072gonaa065g2bw4/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:65e5d715ea720349e6475f91651a0956279fc295a45fd73aa04f1cec046281a1",
+                "sha256:7f73bc5b148fd94c816be7124539c81c3108469e3aeaa65403644e23064e485d",
+                "sha256:660e8c2e53041e1187d4fc4baa76051fb9bc31acf8e54ce2676420f8720bd055",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:e22563fb59edb502b9fb1c33dc3de3735b3446cb4d3fd6e70cc7bf621fd9efeb",
+                "sha256:a5515f5aecd8c4ef0d37526508fc96c974552899ec312039f7605a67f3bde3cd",
+                "sha256:057ed3a10182c8cd8a67daac5a405bcbb9c98302e429a6d19dfdd1d71f812ddb",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:2d3bcb4c195cd75a1b8a3f482ab12cd1b311ff1ab7a21db055201305789f4122",
+                "sha256:960378366d7e81bdaeed2cb47f0e4fefed33a511d3365a5c2ea21beb7f63537b",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:07b35f2f2ca851a446c21b8689cb25862980c5d18a1d4e6b96dee89b06209384",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:746ef2dfe4dd42cdfe9ff19037add97f66b4b494c0f5327ffc7c47e17fc526e3"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-08T00:00:53.164028955Z"
+        },
+        "Config": {
+            "Cmd": null,
+            "Entrypoint": null,
+            "Env": [
+                "PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "USER_ID=1000",
+                "HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew",
+                "HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar",
+                "HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew",
+                "XDG_CACHE_HOME=/home/linuxbrew/.cache",
+                "HOMEBREW_NO_ANALYTICS=1",
+                "HOMEBREW_NO_AUTO_UPDATE=1",
+                "HOMEBREW_NO_INSTALL_CLEANUP=1",
+                "HOMEBREW_NO_INSTALL_FROM_API=1"
+            ],
+            "Labels": {
+                "com.docker.compose.project": "ranger-iot",
+                "com.docker.compose.service": "tamarin",
+                "com.docker.compose.version": "2.39.2",
+                "org.opencontainers.image.created": "2026-09-21 16:33:49+00:00",
+                "org.opencontainers.image.documentation": "https://docs.brew.sh",
+                "org.opencontainers.image.licenses": "BSD-2-Clause",
+                "org.opencontainers.image.revision": "570982948a8a194f0f42f43f4a5bce2d1c9f64cb",
+                "org.opencontainers.image.source": "https://github.com/Homebrew/brew",
+                "org.opencontainers.image.url": "https://brew.sh",
+                "org.opencontainers.image.vendor": "Homebrew",
+                "org.opencontainers.image.version": "7.0.6"
+            },
+            "OnBuild": null,
+            "User": "linuxbrew",
+            "Volumes": null,
+            "WorkingDir": "/workspace"
+        }
+    }
+]

@@ -1,0 +1,30 @@
+{
+  "application_fragment_loss_basis_points": 0,
+  "bootstrap_deadline_ms": 300000,
+  "coding_k": 3,
+  "coding_n_values": [
+    3,
+    5
+  ],
+  "description": "Bootstrap under healthy UDGM TX/RX conditions, then dynamically degrade SUCCESS_RATIO_TX immediately after RANGER_CODED_READY to isolate rekey resilience.",
+  "experiment": "RANGER-COOJA-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "initial_success_ratio_rx": 1.0,
+  "initial_success_ratio_tx": 1.0,
+  "interpretation": "UDGM SUCCESS_RATIO_TX is dynamically changed only after successful bootstrap; SUCCESS_RATIO_RX remains 1.0.",
+  "pilot_simulation_seeds": [
+    201
+  ],
+  "post_send_settle_ms": 60000,
+  "primary_question": "Given a successfully established group, how resilient is static k-of-n rekeying to subsequent transmission-side radio degradation?",
+  "rekey_deadline_ms": 180000,
+  "schema_version": 1,
+  "script_timeout_ms": 650000,
+  "target_success_ratio_tx_values": [
+    1.0,
+    0.8,
+    0.5,
+    0.3,
+    0.1,
+    0.0
+  ]
+}

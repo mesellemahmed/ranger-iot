@@ -1,0 +1,44 @@
+{
+  "checks": {
+    "aggregate_row_count": true,
+    "exact_three_protocol_pairing": true,
+    "member_counts": true,
+    "packet_losses": true,
+    "protocols": true,
+    "seeds": true,
+    "topologies": true,
+    "unique_run_keys": true
+  },
+  "grouped_cells": 144,
+  "member_counts": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "next_step": "STEP7B2_FULL_STATISTICAL_ANALYSIS",
+  "packet_losses": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "paired_scenario_seed_cells": 960,
+  "protocols": [
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive-v2"
+  ],
+  "run_count": 2880,
+  "scale_semantics": "N=member_count; manager excluded",
+  "schema_version": 5,
+  "scientific_state": "MODEL_EXTERNAL_VALIDITY_DATASET_COMPLETE",
+  "seed_count": 20,
+  "step": "STEP7B1_MODEL_EXTERNAL_VALIDITY",
+  "step7b1_model_pass": true,
+  "topologies": [
+    "line",
+    "star",
+    "balanced-tree",
+    "grid"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "expected_digest_sha256": "269a7dcaf8d65c89594ceaba2a0a8fde7f34b5f8e18b0b910ec55819a1d8ded5",
+  "primary_exact_reconstructions": 2560,
+  "schema_version": 1,
+  "systematic": true,
+  "validation_digest_sha256": "269a7dcaf8d65c89594ceaba2a0a8fde7f34b5f8e18b0b910ec55819a1d8ded5",
+  "verdict": "PASS"
+}

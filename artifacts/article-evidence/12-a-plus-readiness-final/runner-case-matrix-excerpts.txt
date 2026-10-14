@@ -1,0 +1,225 @@
+
+################################################################
+FILE: experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py
+################################################################
+    return metrics
+
+
+def main() -> None:
+    parser = (
+        argparse.ArgumentParser()
+    )
+
+    parser.add_argument(
+        "--mode",
+        choices=(
+            "smoke",
+            "pilot",
+            "calibration",
+        ),
+        default="pilot",
+    )
+
+    args = parser.parse_args()
+
+    cfg = json.loads(
+        CONFIG.read_text(
+            encoding="utf-8"
+        )
+    )
+
+    if args.mode == "smoke":
+        cases = [
+            (
+                3,
+                0.00,
+                int(
+                    cfg[
+                        "pilot_simulation_seeds"
+                    ][0]
+                ),
+            )
+        ]
+
+    else:
+        if args.mode == "calibration":
+            seeds = cfg[
+                "calibration_simulation_seeds"
+            ]
+        else:
+            seeds = cfg[
+                "pilot_simulation_seeds"
+            ]
+
+        cases = list(
+            itertools.product(
+                cfg[
+                    "coding_n_values"
+                ],
+                cfg[
+                    "target_success_ratio_tx_values"
+                ],
+                seeds,
+            )
+        )
+
+    campaign_id = (
+        "campaign-"
+        + datetime.now(
+            timezone.utc
+        ).strftime(
+            "%Y%m%dT%H%M%SZ"
+        )
+        + "-"
+        + args.mode
+    )
+
+################################################################
+FILE: experiments/cooja/scripts/run_step6d2_recovery_radio.py
+################################################################
+            "observed_simulation_seed"
+        ),
+    )
+
+    return metrics
+
+
+def main() -> None:
+    parser = (
+        argparse.ArgumentParser()
+    )
+
+    parser.add_argument(
+        "--mode",
+        choices=(
+            "smoke",
+            "pilot",
+            "calibration",
+        ),
+        default="pilot",
+    )
+
+    args = parser.parse_args()
+
+    cfg = json.loads(
+        CONFIG.read_text(
+            encoding="utf-8"
+        )
+    )
+
+    if args.mode == "smoke":
+        cases = [
+            (
+                3,
+                0.00,
+                int(
+                    cfg[
+                        "pilot_simulation_seeds"
+                    ][0]
+                ),
+            )
+        ]
+
+    else:
+        if args.mode == "calibration":
+            seeds = cfg[
+                "calibration_simulation_seeds"
+            ]
+        else:
+            seeds = cfg[
+                "pilot_simulation_seeds"
+            ]
+
+        cases = list(
+            itertools.product(
+                cfg[
+                    "coding_n_values"
+                ],
+                cfg[
+                    "target_success_ratio_tx_values"
+                ],
+                seeds,
+            )
+        )
+
+    campaign_id = (
+        "campaign-"
+        + datetime.now(
+            timezone.utc
+        ).strftime(
+            "%Y%m%dT%H%M%SZ"
+
+################################################################
+FILE: experiments/cooja/scripts/run_step6e2_adaptive_radio.py
+################################################################
+        metrics.get(
+            "observed_simulation_seed"
+        ),
+    )
+
+    return metrics
+
+
+def main() -> None:
+    parser = (
+        argparse.ArgumentParser()
+    )
+
+    parser.add_argument(
+        "--mode",
+        choices=(
+            "smoke",
+            "pilot",
+            "calibration",
+        ),
+        default="pilot",
+    )
+
+    args = parser.parse_args()
+
+    cfg = json.loads(
+        CONFIG.read_text(
+            encoding="utf-8"
+        )
+    )
+
+    if args.mode == "smoke":
+        cases = [
+            (
+                3,
+                0.00,
+                int(
+                    cfg[
+                        "pilot_simulation_seeds"
+                    ][0]
+                ),
+            )
+        ]
+
+    else:
+        if args.mode == "calibration":
+            seeds = cfg[
+                "calibration_simulation_seeds"
+            ]
+        else:
+            seeds = cfg[
+                "pilot_simulation_seeds"
+            ]
+
+        cases = list(
+            itertools.product(
+                cfg[
+                    "coding_n_values"
+                ],
+                cfg[
+                    "target_success_ratio_tx_values"
+                ],
+                seeds,
+            )
+        )
+
+    campaign_id = (
+        "campaign-"
+        + datetime.now(
+            timezone.utc
+        ).strftime(

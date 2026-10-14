@@ -1,0 +1,38 @@
+{
+  "assertion_script": "experiments/cooja/tests/ranger-rs-wire-rpl-line-assert.js",
+  "base_direct_root_to_farthest": false,
+  "base_scenario": "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.csc",
+  "base_scenario_sha256": "552bec33669397b0add2ea26898f0a0b94c6004c72ca12c51250246234ebf14e",
+  "modes": {
+    "0": "no-loss",
+    "1": "deterministic-application-level-fragment-omission"
+  },
+  "mote_count": 8,
+  "scenarios": [
+    {
+      "checks": {
+        "app_binary": true,
+        "app_source": true,
+        "assertion": true,
+        "mode": true
+      },
+      "mode": 0,
+      "scenario": "experiments/cooja/scenarios/generated/ranger-rs-wire-rpl-line-8nodes-noloss.csc",
+      "sha256": "d8290f6878affa24ed2be72b9253837b6c8623c4398e5122003177e700f10e03"
+    },
+    {
+      "checks": {
+        "app_binary": true,
+        "app_source": true,
+        "assertion": true,
+        "mode": true
+      },
+      "mode": 1,
+      "scenario": "experiments/cooja/scenarios/generated/ranger-rs-wire-rpl-line-8nodes-controlled-loss.csc",
+      "sha256": "eac74a39284d365b343ae67ac1d2f1b001c4121835a724d0e1599fb71d8b85ef"
+    }
+  ],
+  "schema_version": 1,
+  "step": "STEP7C3_COOJA_REAL_RS_WIRE",
+  "topology": "validated-line-multihop"
+}

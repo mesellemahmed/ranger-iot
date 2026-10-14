@@ -1,0 +1,182 @@
+{
+  "canonical_rx_failures": [],
+  "canonical_send_failures": [],
+  "claimed_reconstruction_shards_missing_from_rx": {},
+  "classification": "STRUCTURED_OBSERVABILITY_ASSUMPTION_FAILURE",
+  "duplicate_rx_pairs": {},
+  "duplicate_send_pairs": {},
+  "failed_new_observer_gates": [
+    "raw_send_count_35",
+    "unique_send_matrix_35"
+  ],
+  "failed_old_semantic_gates": [],
+  "missing_send_pairs": [
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      4
+    ]
+  ],
+  "new_structured_observer_gates": {
+    "all_claimed_reconstruct_shards_observed": true,
+    "canonical_rx_bytes": true,
+    "canonical_send_bytes": true,
+    "python_reconstructs_all_claimed_rx": true,
+    "raw_rx_count_19": true,
+    "raw_send_count_35": false,
+    "unique_send_matrix_35": false
+  },
+  "observer_reported_success": false,
+  "old_functional_oracle_semantics": {
+    "core_pass": true,
+    "each_reconstruct_mask_rank_3": true,
+    "mask_pass": true,
+    "no_below_k": true,
+    "reconstructed_nodes_2_to_7": true,
+    "registered_7": true,
+    "revoked_rejected": true
+  },
+  "python_reconstruction_from_exported_rx": {
+    "2": {
+      "payload_hex": "52414e4745522d52532d45504f434831",
+      "status": "PASS"
+    },
+    "3": {
+      "payload_hex": "52414e4745522d52532d45504f434831",
+      "status": "PASS"
+    },
+    "4": {
+      "payload_hex": "52414e4745522d52532d45504f434831",
+      "status": "PASS"
+    },
+    "5": {
+      "payload_hex": "52414e4745522d52532d45504f434831",
+      "status": "PASS"
+    },
+    "6": {
+      "payload_hex": "52414e4745522d52532d45504f434831",
+      "status": "PASS"
+    },
+    "7": {
+      "payload_hex": "52414e4745522d52532d45504f434831",
+      "status": "PASS"
+    }
+  },
+  "raw_rx_count": 19,
+  "raw_send_count": 31,
+  "reconstructed_nodes": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "reconstruction_masks": {
+    "2": 7,
+    "3": 7,
+    "4": 7,
+    "5": 7,
+    "6": 7,
+    "7": 7
+  },
+  "registered_count": 7,
+  "rx_by_node": {
+    "2": [
+      0,
+      1,
+      2
+    ],
+    "3": [
+      0,
+      1,
+      2
+    ],
+    "4": [
+      0,
+      1,
+      2
+    ],
+    "5": [
+      0,
+      1,
+      2
+    ],
+    "6": [
+      0,
+      1,
+      2
+    ],
+    "7": [
+      0,
+      1,
+      2
+    ],
+    "8": [
+      0
+    ]
+  },
+  "schema_version": 1,
+  "send_by_target": {
+    "2": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "3": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "4": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "5": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "6": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "7": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "8": [
+      0
+    ]
+  },
+  "step": "STEP7C3_MODE0_STRUCTURED_DIAGNOSIS",
+  "unexpected_send_pairs": [],
+  "unique_rx_count": 19,
+  "unique_send_count": 31
+}

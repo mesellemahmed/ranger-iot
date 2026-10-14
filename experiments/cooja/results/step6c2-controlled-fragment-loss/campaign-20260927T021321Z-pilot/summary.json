@@ -1,0 +1,10 @@
+{
+  "campaign_id": "campaign-20260927T021321Z-pilot",
+  "case_count": 6,
+  "complete": 5,
+  "incomplete": 1,
+  "infra_fail": 0,
+  "mode": "pilot",
+  "schema_version": 1,
+  "validated": 6
+}

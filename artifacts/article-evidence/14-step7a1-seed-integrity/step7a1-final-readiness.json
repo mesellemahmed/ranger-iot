@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "config_restored": true,
+    "replay_evidence_hashed": true,
+    "seed_block_analysis_generated": true,
+    "static_frozen_seed_replay_exact": true,
+    "static_replay_executed": true,
+    "step7b_capability_inventory": true
+  },
+  "exact_frozen_static_replay": true,
+  "methodological_rule": "STEP 7B must use an independent, non-consecutive seed set so that topology/scale validation also tests seed-range robustness.",
+  "next_step": "STEP7B_EXTERNAL_VALIDITY_WITH_INDEPENDENT_SEED_DESIGN",
+  "schema_version": 1,
+  "scientific_state": "SEED_BLOCK_SENSITIVITY_CONFIRMED_BUT_REPRODUCIBLE",
+  "seed_block_shift_detected": true,
+  "technical_pass": true
+}

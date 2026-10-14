@@ -1,0 +1,55 @@
+2e782b72915fd0e9ace915ed582d5a4ba043d302|2026-10-02 12:46:08 -0400|pc|test: freeze comparative Cooja evidence
+692ed308d9613b6a6438c11e8d7fbc0fcb049608|2026-10-02 10:28:22 -0400|pc|test: record three-protocol application cost analysis
+252e78ca7d90f10e5d9ff9ebccaf162b56d9a11e|2026-10-02 08:41:59 -0400|pc|test: add three-protocol application cost analysis
+f305ee8cc4bc0077ab3035a16d6254bb757b4a85|2026-10-01 21:29:17 -0400|pc|test: record paired three-protocol statistical analysis
+980ce6727baa3a40faeceae0b3988db29af22f37|2026-10-01 21:03:27 -0400|pc|test: add paired three-protocol statistical analysis
+c138ab488703546e7a026a2a65107e92c7389a1b|2026-10-01 18:42:51 -0400|pc|test: record 30-case Adaptive V2 real-radio calibration
+366d1f995f68414639a4d5934ce733f81c89ded9|2026-10-01 17:59:06 -0400|pc|test: add Adaptive V2 real-radio campaign harness
+cec3bf3e1dda923e48098969b95849b5beb79cd9|2026-10-01 14:26:04 -0400|pc|test: record Adaptive V2 controlled NACK parity path
+54b1ff7b48c6d497b1755b3abef40f26b8258d76|2026-10-01 14:11:53 -0400|pc|feat: add Adaptive V2 NACK parity recovery path
+bf9d6fdf62383540089ac437aa45e190b1d454bd|2026-09-30 15:34:33 -0400|pc|test: record Adaptive V2 initial-k no-loss oracle
+7ea10e864108bd72c3ca352431c618788e70b722|2026-09-30 15:14:37 -0400|pc|feat: add Adaptive V2 initial-k Cooja foundation
+31fb59b233732175428c0aefe357d1e061e954a8|2026-09-30 12:07:29 -0400|pc|test: record 30-case real-radio Recovery calibration
+bfe73efc5322bcd98f555618574b86a37a72d539|2026-09-30 08:46:11 -0400|pc|feat: prime Recovery epoch before stressed rekey
+73aec3060acf0c9c1f160d579553d61cc5541038|2026-09-29 13:20:41 -0400|pc|test: record real-radio Recovery peer-cache pilot
+605bd3b921904989507dadcd694270e9536e8dbe|2026-09-29 13:14:52 -0400|pc|feat: stabilize Recovery peers under radio degradation
+5537207cf0a81202cccf95b3cc6f71748a8e58b5|2026-09-28 21:15:35 -0400|pc|test: record two-round cascading recovery
+52ff2e4d86f27d1c38a09a42e5d49c93210df294|2026-09-28 21:13:10 -0400|pc|test: add two-round cascading recovery oracle
+c9611fe2f9ba8719fd9aa0dab0512c55ee04d9e0|2026-09-28 19:43:43 -0400|pc|test: record controlled one-hop recovery core
+40e5f71b5abcb6e73107f1b43bea822f0376b29f|2026-09-28 19:41:00 -0400|pc|feat: add one-hop recovery core for Cooja
+d790f4d6b15040d40f1ce7571915a8e0bb818c98|2026-09-28 15:45:14 -0400|pc|test: record RPL-Lite one-hop neighbor census
+c155dc1038c3f6170c1cf0a8e376dcc9f76dfd05|2026-09-28 15:43:11 -0400|pc|test: add RPL-Lite one-hop neighbor census
+9d1141df08ab7323a3f33b2cfa05f0ebd4348e58|2026-09-28 13:25:24 -0400|pc|test: record 80-case post-bootstrap TX calibration
+64a0890d6659bab31001c2b1fae284993197cb3a|2026-09-28 11:15:18 -0400|pc|test: define multi-seed post-bootstrap TX calibration
+1bb3f3673532f0a6ed39b50961ec711a10322867|2026-09-28 11:09:02 -0400|pc|test: record post-bootstrap UDGM TX stress pilot
+ab5033bf014702e43544ace62909ff09fe817025|2026-09-28 10:36:29 -0400|pc|test: add post-bootstrap UDGM TX stress validation
+da76bb44a15c68f0fe6448c58f177e7207388dc3|2026-09-28 10:21:33 -0400|pc|test: record post-bootstrap UDGM RX stress pilot
+ca940b3db4cbe4e166d603b4246b5cdde565891b|2026-09-28 09:41:45 -0400|pc|test: add post-bootstrap UDGM stress validation
+bd31f84e75f1df2661b57044187b51a33d52659f|2026-09-28 09:08:29 -0400|pc|test: record 80-case UDGM radio calibration
+9324bb37f84ace6cf2dfbc5d00599110ae46e571|2026-09-27 21:34:22 -0400|pc|test: define multi-seed UDGM calibration
+10dc0de866edc9cb5666e2ea577133853118fa1d|2026-09-27 21:34:12 -0400|pc|test: record focused UDGM transition scan
+af6f5043bd14618c5b2c8c5d2fb59dab693ed634|2026-09-27 20:54:18 -0400|pc|test: define focused UDGM transition scan
+2d9a6c50bf7a35eb6559e34bd1865cb1d5c2f632|2026-09-27 20:54:12 -0400|pc|test: record reproducible Cooja UDGM radio-loss pilot
+e1956ecab01a1500d03fb3d527a822c208ef7ff3|2026-09-27 20:44:56 -0400|pc|feat: add reproducible Cooja UDGM radio-loss validation
+7e0e7800c10ad42753338e7c26a0462db220698a|2026-09-27 11:00:59 -0400|pc|test: record 75-case controlled-loss Cooja campaign
+eb19c47d890e3343766628cf220817ec41cbd7f7|2026-09-27 08:25:52 -0400|pc|feat: validate controlled coded-fragment loss in Cooja
+59bd0ac2dda307212a035ba95e5625a8ebc4b274|2026-09-26 21:04:05 -0400|pc|feat: validate static coded reconstruction over Cooja RPL
+bb6fddc842a46641ac634fc3c39137de732bf762|2026-09-26 15:10:11 -0400|pc|feat: integrate reproducible Cooja validation and evidence workflow
+71b9bf88860aa834889db4ad0c3d01093d879827|2026-09-25 17:32:10 -0400|pc|artifacts: preserve complete RANGER reviewer results
+b605b09f06f9d67f23ea344aa2fddef4593dfd68|2026-09-25 10:58:42 -0400|pc|infra(cooja): add reproducible Docker Compose validation
+d793f959409c91b996fa0b07faa8e3238e3b6946|2026-09-24 19:34:01 -0400|pc|analysis: generate confirmatory publication figures and tables
+cf9258e2b45ff357ee9a757c1dde7b75a822307d|2026-09-24 15:13:08 -0400|pc|feat(ranger): freeze adaptive v2 with branch-local nack suppression
+958b86890339b46d2d31e6c4eb69b789a2b10f20|2026-09-24 14:01:35 -0400|pc|feat(ranger): add branch-local NACK suppression adaptive v2
+0bd281ac8f9a50a0026e6863c8f53ace167c3871|2026-09-23 19:41:21 -0400|pc|feat(experiments): add publication-grade analysis pipeline
+5f9389b8e0612db14e0c6afb0b760ec843a9fa47|2026-09-23 15:49:25 -0400|pc|feat(sim): add wireless broadcast radio accounting
+8fc5cf964c588bc43f7b5f8615333700aa51fedd|2026-09-23 10:28:58 -0400|pc|feat(ranger): add coded dissemination and local recovery
+6fe943c2e717767afd2c820cf7829dad874ecdda|2026-09-21 21:49:17 -0400|pc|feat(sim): add deterministic topology suite
+fe0af38f067a0b8361c4e14fde9e6093a3595b40|2026-09-21 21:32:33 -0400|pc|feat(experiments): add reproducible baseline campaign runner
+f23d9d88ae58395dc8e44423c817ae75f20eb150|2026-09-21 20:34:19 -0400|pc|feat(protocols): add LKH flooding baseline
+2b1c3897fd043bd96bcf5c2eef9766d23f5da5e2|2026-09-21 20:07:26 -0400|pc|feat(experiments): add reproducible baseline runner
+d21831af0a97c1f6acb7b834211fd8edf5f61535|2026-09-21 18:56:15 -0400|pc|feat(protocols): add LKH unicast transport baseline
+734a67c9227352e4d472b823972cb036cf4bd772|2026-09-20 21:47:16 -0400|pc|feat(protocols): add SKDC rekeying baseline
+a154768c0f7d22f845e45477d7b1d37b78425197|2026-09-20 21:16:11 -0400|pc|feat(sim): Second add deterministic discrete-event simulation core
+50480e8459a57c5e47fea973e46ba219629b64ce|2026-09-20 21:15:15 -0400|pc|Additioanal files
+e3ccb076404b8ad5d102ccf8ff27c0fcfceaaff8|2026-09-20 21:14:24 -0400|pc|feat(sim): add deterministic discrete-event simulation core
+fb64e6d4a40d1ffa168b08d7602f08c34332dadc|2026-09-19 21:48:03 -0400|mesellemahmed|Initial commit

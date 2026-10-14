@@ -1,0 +1,15 @@
+{
+  "classification": "TOOLCHAIN_DEPENDENCY_METADATA_FAILURE",
+  "failed_component": "Stack/Hackage package-index security metadata",
+  "formal_models_modified": false,
+  "formal_security_result": "NONE",
+  "frontend_build": "PASS",
+  "hackage_security_disabled": false,
+  "lemma_evaluation_reached": false,
+  "remediation": "Use the official Tamarin 1.12.0 Linux bottle with its official SHA-256 instead of compiling through Hackage.",
+  "schema_version": 1,
+  "security_counterexample": false,
+  "step": "STEP7D0_TOOLCHAIN_FAILURE_CLASSIFICATION",
+  "tamarin_model_execution_reached": false,
+  "tamarin_source_checksum": "PASS"
+}

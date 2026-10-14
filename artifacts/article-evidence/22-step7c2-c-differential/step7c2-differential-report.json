@@ -1,0 +1,43 @@
+{
+  "actual_c_shard_digest_sha256": "6a1881a14da64c07795551936ebe94701fe3aa95dbb939e08b98ffae0b3870b1",
+  "byte_exact_shard_vectors": 259,
+  "c_bounds": {
+    "max_k": 8,
+    "max_n": 16
+  },
+  "c_decoder_on_c_shards": 2588,
+  "c_decoder_on_python_shards": 2588,
+  "checks": {
+    "aggregate_shard_digest": true,
+    "byte_exact_shard_matches": true,
+    "c_decoder_on_c_shards": true,
+    "c_decoder_on_python_shards": true,
+    "matrix_matches": true,
+    "python_decoder_on_c_shards": true,
+    "vectors": true
+  },
+  "cooja_real_rs_validated": false,
+  "expected_shard_digest_sha256": "6a1881a14da64c07795551936ebe94701fe3aa95dbb939e08b98ffae0b3870b1",
+  "expected_subset_count_each_direction": 2588,
+  "field": "GF(256)",
+  "generator_matrix_matches": 259,
+  "generic_profiles": [
+    "2-of-3",
+    "3-of-5",
+    "4-of-6"
+  ],
+  "network_integration": false,
+  "next_step": "STEP7C3_COOJA_REAL_RS_WIRE_INTEGRATION",
+  "primary_profile": {
+    "k": 3,
+    "n": 5,
+    "payload_lengths": "1..256"
+  },
+  "primitive_polynomial": "0x11D",
+  "python_decoder_on_c_shards": 2588,
+  "schema_version": 1,
+  "scientific_state": "C_PYTHON_BYTE_LEVEL_CODEC_EQUIVALENCE_VALIDATED",
+  "step": "STEP7C2_C_PYTHON_DIFFERENTIAL",
+  "step7c2_differential_pass": true,
+  "vector_count": 259
+}

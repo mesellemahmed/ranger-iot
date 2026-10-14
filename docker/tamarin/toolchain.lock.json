@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "architecture": "linux/amd64",
+  "homebrew_base": "ghcr.io/homebrew/brew@sha256:b03f29bb755e1b28c5082bd376e1539762e9dc4e9cff9485655002437595a5d0",
+  "homebrew_install_from_api": false,
+  "tamarin": {
+    "version": "1.12.0",
+    "source_sha256": "35f0262e770db3632fcb297deb6ecc2d7c724c693fecfe97892e8224fa161956",
+    "linux_x86_64_bottle_sha256": "936631c692ce9fd4c797400eff32e47d6d09e371ca251250cceac15b93f71d99"
+  },
+  "maude": {
+    "version": "3.5.1",
+    "revision": 1,
+    "source_sha256": "3dce4f7b42fae2430a08ab2663303d1be244792bb3cc365c58cdb2f3f7bff170",
+    "linux_x86_64_bottle_sha256": "3a941ae6e9eaa567827959dcac44129166c87b020d238c742c32467980e99936"
+  },
+  "libbuddy": {
+    "version": "2.4",
+    "bottle_rebuild": 3,
+    "source_sha256": "d3df80a6a669d9ae408cb46012ff17bd33d855529d20f3a7e563d0d913358836",
+    "linux_x86_64_bottle_sha256": "0807d5706dc37213dbc466b06819fc1b93d710c3543b92eec3c07e7c4fc317d5"
+  },
+  "proof_execution_network": "none",
+  "source_build_fallback": false
+}

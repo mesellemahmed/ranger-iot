@@ -1,0 +1,4 @@
+branch=UNKNOWN
+head=UNKNOWN
+
+[status]

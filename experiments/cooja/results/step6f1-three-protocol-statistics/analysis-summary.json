@@ -1,0 +1,35 @@
+{
+  "analysis": "RANGER-THREE-PROTOCOL-PAIRED-STATISTICS",
+  "bootstrap_resamples": 20000,
+  "bootstrap_seed": 20261001,
+  "interpretation_guardrails": [
+    "The analysis is paired by simulation seed.",
+    "n=10 per TX level gives limited inferential precision.",
+    "No universal dominance is assumed across reliability regimes.",
+    "Bootstrap intervals describe the observed paired-delta distribution and do not replace independent replication."
+  ],
+  "pairs_per_tx": 10,
+  "schema_version": 1,
+  "seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "source_roots": {
+    "adaptive_v2": "experiments\\cooja\\results\\step6e2-adaptive-radio\\campaign-20261001T215912Z-calibration",
+    "recovery": "experiments\\cooja\\results\\step6d2-recovery-radio\\campaign-20260930T150343Z-calibration",
+    "static": "experiments\\cooja\\results\\step6c3f-post-bootstrap-tx-stress\\campaign-20260928T151522Z-calibration"
+  },
+  "tx_values": [
+    0.5,
+    0.3,
+    0.2
+  ]
+}

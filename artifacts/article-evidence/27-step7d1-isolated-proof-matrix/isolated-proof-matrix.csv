@@ -1,0 +1,12 @@
+lemma,declared_kind,reported_kind,budget_seconds,search,return_code,tamarin_status,details,classification,max_partial_deconstructions,log
+executable_initial_accept,exists-trace,,120,bfs,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/executable_initial_accept.log
+executable_same_epoch_recovery,exists-trace,,180,bfs,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/executable_same_epoch_recovery.log
+revocation_reachable,exists-trace,,120,bfs,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/revocation_reachable.log
+accept_has_rekey_origin,all-traces,,180,default,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/accept_has_rekey_origin.log
+accept_requires_authorization,all-traces,,180,default,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/accept_requires_authorization.log
+revoked_never_accepts,all-traces,,180,default,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/revoked_never_accepts.log
+recovery_requester_authorized,all-traces,,180,default,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/recovery_requester_authorized.log
+recovery_helper_authorized,all-traces,,180,default,124,,,timeout,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/recovery_helper_authorized.log
+recovery_same_epoch,all-traces,,180,default,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/recovery_same_epoch.log
+recovery_accept_has_rekey_origin,all-traces,,240,default,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/recovery_accept_has_rekey_origin.log
+epoch_key_secrecy_unless_compromised,all-traces,,300,default,1,,,execution_error,0,artifacts/article-evidence/27-step7d1-isolated-proof-matrix/logs/epoch_key_secrecy_unless_compromised.log

@@ -1,0 +1,12 @@
+{
+  "bootstrap_fail": 12,
+  "campaign_id": "campaign-20260928T013424Z-calibration",
+  "case_count": 80,
+  "infra_fail": 0,
+  "mode": "calibration",
+  "rekey_complete": 67,
+  "rekey_incomplete": 1,
+  "safety_fail": 0,
+  "schema_version": 1,
+  "validated": 80
+}

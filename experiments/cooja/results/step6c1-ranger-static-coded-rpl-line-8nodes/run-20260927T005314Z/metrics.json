@@ -1,0 +1,53 @@
+{
+  "assertion_contract": {
+    "reconstructed_nodes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "registered_nodes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "rejected_nodes": [
+      8
+    ]
+  },
+  "coding": {
+    "data_fragments": 3,
+    "group_id": 1,
+    "model": "ideal-k-of-n",
+    "real_codec_bytes": false,
+    "redundancy_fragments": 2,
+    "total_fragments": 5
+  },
+  "direct_root_to_farthest": false,
+  "exit_code": 0,
+  "experiment": "RANGER-COOJA-STATIC-CODED-RPL-LINE-8",
+  "host_stdout_contains_mote_logs": false,
+  "marker_counts": {
+    "all_sent": 0,
+    "assert_pass": 0,
+    "core_pass": 0,
+    "ready": 0,
+    "root_start": 0,
+    "test_ok": 1
+  },
+  "result": "PASS",
+  "root_to_farthest_distance": 245.0,
+  "run_id": "run-20260927T005314Z",
+  "schema_version": 1,
+  "script_runner_pass": true,
+  "stdout_observed_reconstructed_nodes": [],
+  "stdout_observed_registered_nodes": [],
+  "stdout_observed_rejected_nodes": [],
+  "transmitting_range": 45.0
+}

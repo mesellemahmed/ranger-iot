@@ -1,0 +1,23 @@
+{
+  "bootstrap_resamples": 5000,
+  "bootstrap_seed": 20260924,
+  "figures": [
+    "fig_completion_rate.png",
+    "fig_completion_rate.pdf",
+    "fig_mean_convergence.png",
+    "fig_mean_convergence.pdf",
+    "fig_v2_v1_radio_savings.png",
+    "fig_v2_v1_radio_savings.pdf",
+    "fig_nack_hop_reduction.png",
+    "fig_nack_hop_reduction.pdf",
+    "fig_v2_recovery_convergence_effect.png",
+    "fig_v2_recovery_convergence_effect.pdf"
+  ],
+  "input": "experiments/results/step5f3/adaptive-v2-confirmatory/aggregate.csv",
+  "input_rows": 20160,
+  "input_sha256": "0ade59177b7d9475123d56a3b71ffd3dbba1b07aaf80b4d708b21de17fb3c1ab",
+  "nack_suppression_rows": 20,
+  "paired_effect_rows": 72,
+  "protocol_loss_rows": 24,
+  "schema_version": 1
+}

@@ -1,0 +1,31 @@
+{
+  "all_required_lemmas_verified": false,
+  "docker_only": true,
+  "expected_lemma_count": 11,
+  "falsified_count": 0,
+  "falsified_lemmas": [],
+  "incomplete_count": 0,
+  "incomplete_lemmas": [],
+  "missing_lemmas": [
+    "executable_initial_accept",
+    "executable_same_epoch_recovery",
+    "revocation_reachable",
+    "accept_has_rekey_origin",
+    "accept_requires_authorization",
+    "revoked_never_accepts",
+    "recovery_requester_authorized",
+    "recovery_helper_authorized",
+    "recovery_same_epoch",
+    "recovery_accept_has_rekey_origin",
+    "epoch_key_secrecy_unless_compromised"
+  ],
+  "proof_network": "none",
+  "reported_lemma_count": 0,
+  "results": {},
+  "return_code": 124,
+  "schema_version": 2,
+  "scientific_state": "TAMARIN_PROOF_TIMEOUT",
+  "step": "STEP7D1_DOCKER_REPRODUCIBLE_PROOF",
+  "verified_count": 0,
+  "verified_lemmas": []
+}

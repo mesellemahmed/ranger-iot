@@ -1,0 +1,11 @@
+{
+  "manifest_count": 365,
+  "missing_checksum_files": [
+    "experiments\\cooja\\results\\step6a1-infra-smoke\\manifest.json",
+    "experiments\\cooja\\results\\step6a2-compose-smoke\\manifest.json",
+    "experiments\\results\\step5g\\confirmatory-publication\\manifest.json"
+  ],
+  "with_checksum_file": 362,
+  "with_embedded_hash_map": 5,
+  "with_source_commit": 262
+}

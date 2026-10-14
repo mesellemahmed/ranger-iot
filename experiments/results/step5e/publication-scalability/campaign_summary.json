@@ -1,0 +1,57 @@
+{
+  "campaign_id": "step5e-publication-scalability",
+  "campaign_sha256": "e9a7cc235b0fb8ec132666b3c6d3ee947045c8f56580372cc49c309f17240dc9",
+  "completed_count": 659,
+  "incomplete_count": 781,
+  "member_counts": [
+    128,
+    256
+  ],
+  "packet_losses": [
+    0.0,
+    0.1,
+    0.2
+  ],
+  "protocols": [
+    "skdc",
+    "lkh-unicast",
+    "lkh-flood",
+    "ranger-static",
+    "ranger-recovery",
+    "ranger-adaptive"
+  ],
+  "ranger_adaptive": {
+    "max_fragments": 5,
+    "nack_bytes": 16,
+    "recovery_rounds": 2
+  },
+  "ranger_recovery": {
+    "request_bytes": 24,
+    "rounds": 2
+  },
+  "ranger_static": {
+    "capsule_overhead_bytes": 0,
+    "data_fragments": 3,
+    "total_fragments": 5
+  },
+  "run_count": 1440,
+  "schema_version": 1,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "topologies": [
+    "line",
+    "star",
+    "balanced-tree",
+    "grid"
+  ]
+}

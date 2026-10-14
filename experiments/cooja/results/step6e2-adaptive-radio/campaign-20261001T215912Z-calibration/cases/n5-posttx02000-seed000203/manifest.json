@@ -1,0 +1,18 @@
+{
+  "application_loss": false,
+  "assertion_sha256": "bb3b8f9a04913ef2bd3827b10e4b14b6e0bbdf1dd63384cd755b28d5ef566709",
+  "bootstrap_radio_rx": 1.0,
+  "case_id": "n5-posttx02000-seed000203",
+  "config_sha256": "ea3ea2a431f158b2407119d3b2b698abb70dc130869355e1b8b5c5de51491dad",
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-POST-BOOTSTRAP-UDGM-TX-STRESS",
+  "result": "REKEY_INCOMPLETE",
+  "runner_sha256": "568c564d2742c84ee222b448b781652202ccc5e3ae7e33f79a5c4b543516fe73",
+  "scenario_sha256": "100f0d20f8c62bc4599553bacea073334a43c5d6b8880638d505fd00e785f82d",
+  "schema_version": 1,
+  "simulation_seed": 203,
+  "source_commit": "366d1f995f68414639a4d5934ce733f81c89ded9",
+  "source_sha256": "dc92a95a07d1b6e66a64f8811a5bd738f44e00e2ce95ac4201ea41f32908e716",
+  "target_rekey_radio_tx": 0.2,
+  "template_sha256": "e46cd16246b367d6b4bfc339c4c226b64f51435d8ba62d93c1b8913556f380d4",
+  "validation_source": "cooja-script-runner-dynamic-radio-json"
+}

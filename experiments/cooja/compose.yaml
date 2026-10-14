@@ -1,0 +1,79 @@
+name: ranger-cooja
+
+services:
+
+  cooja:
+    image: contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609
+
+    entrypoint:
+      - /bin/bash
+      - /workspace/third_party/contiki-ng/tools/cooja/gradlew
+
+    working_dir:
+      /workspace/third_party/contiki-ng/tools/cooja
+
+    volumes:
+      - type: bind
+        source: ../..
+        target: /workspace
+
+      - type: volume
+        source: cooja-gradle-cache
+        target: /home/user/.gradle
+
+
+  cooja-gui:
+
+    container_name: ranger-cooja-gui
+
+    build:
+      context: ../..
+      dockerfile: experiments/cooja/gui/Dockerfile
+      args:
+        COOJA_BASE_IMAGE: contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609
+
+    image:
+      ranger-iot/cooja-gui:local
+
+    restart: unless-stopped
+
+    working_dir:
+      /workspace/third_party/contiki-ng/tools/cooja
+
+    environment:
+      DISPLAY: ":99"
+      HOME: /root
+      RANGER_COOJA_SCENARIO: "${RANGER_COOJA_SCENARIO:-/workspace/experiments/cooja/scenarios/generated/ranger-core-5nodes-onehop.csc}"
+
+    ports:
+      - "127.0.0.1:6080:6080"
+
+    volumes:
+      - type: bind
+        source: ../..
+        target: /workspace
+
+      - type: volume
+        source: cooja-gui-gradle-cache
+        target: /root/.gradle
+
+    shm_size: "1gb"
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -fsS http://127.0.0.1:6080/vnc.html >/dev/null || exit 1
+
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+
+volumes:
+
+  cooja-gradle-cache:
+    name: ranger-cooja_gradle-cache
+
+  cooja-gui-gradle-cache:
+    name: ranger-cooja_gui_gradle-cache

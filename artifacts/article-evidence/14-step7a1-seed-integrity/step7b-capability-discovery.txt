@@ -1,0 +1,1166 @@
+============================================================
+A. CONFIGURATION KEYS
+============================================================
+experiments/cooja/config/step6c3-radio-loss.json:3:  "bootstrap_deadline_ms": 300000,
+experiments/cooja/config/step6c3-radio-loss.json:33:  "rekey_deadline_ms": 180000,
+experiments/cooja/config/step6c3e-post-bootstrap-stress.json:12:  "bootstrap_deadline_ms": 300000,
+experiments/cooja/config/step6c3e-post-bootstrap-stress.json:13:  "rekey_deadline_ms": 180000,
+experiments/cooja/config/step6c3f-post-bootstrap-tx-stress.json:3:  "bootstrap_deadline_ms": 300000,
+experiments/cooja/config/step6c3f-post-bootstrap-tx-stress.json:31:  "rekey_deadline_ms": 180000,
+experiments/cooja/config/step6d2-recovery-radio.json:32:  "bootstrap_deadline_ms": 300000,
+experiments/cooja/config/step6d2-recovery-radio.json:33:  "rekey_deadline_ms": 180000,
+experiments/cooja/config/step6d2-recovery-radio.json:40:  "primary_question": "Does one-hop two-round RANGER-Recovery improve 3-of-5 rekey completion and reconstructed membership under post-bootstrap transmission loss, and at what request/repair cost?"
+experiments/cooja/config/step6e2-adaptive-radio.json:6:  "bootstrap_deadline_ms": 300000,
+experiments/cooja/config/step6e2-adaptive-radio.json:36:  "rekey_deadline_ms": 180000,
+
+============================================================
+B. RUNNER / GENERATOR SCALE SIGNALS
+============================================================
+experiments/cooja/scripts/analyze_step6f1_three_protocols.py:13:SEEDS = tuple(range(201, 211))
+experiments/cooja/scripts/analyze_step6f1_three_protocols.py:40:        newline="",
+experiments/cooja/scripts/analyze_step6f1_three_protocols.py:122:            for i in range(k + 1)
+experiments/cooja/scripts/analyze_step6f1_three_protocols.py:150:    for _ in range(
+experiments/cooja/scripts/analyze_step6f1_three_protocols.py:155:                rng.randrange(n)
+experiments/cooja/scripts/analyze_step6f1_three_protocols.py:157:            for _ in range(n)
+experiments/cooja/scripts/analyze_step6f1_three_protocols.py:244:        newline="",
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:25:    range(201, 211)
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:35:        newline="",
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:54:        newline="",
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:118:    position = (
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:123:    lower = int(position)
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:130:        position - lower
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:155:    for _ in range(
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:160:                rng.randrange(
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:816:        "static_baseline":
+experiments/cooja/scripts/analyze_step6f2_application_costs.py:875:                "baseline as the 6F.1 "
+experiments/cooja/scripts/generate_ranger_core_scenario.py:6:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/generate_ranger_core_scenario.py:57:        "org.contikios.cooja.interfaces.Position",
+experiments/cooja/scripts/generate_ranger_core_scenario.py:77:    for mote_cfg in cfg["motes"]:
+experiments/cooja/scripts/generate_ranger_core_scenario.py:80:        pos.text = "\norg.contikios.cooja.interfaces.Position\n"
+experiments/cooja/scripts/generate_ranger_core_scenario.py:83:        mote_id = ET.SubElement(mote, "interface_config")
+experiments/cooja/scripts/generate_ranger_core_scenario.py:84:        mote_id.text = "\norg.contikios.cooja.contikimote.interfaces.ContikiMoteID\n"
+experiments/cooja/scripts/generate_ranger_core_scenario.py:85:        add_text(mote_id, "id", str(mote_cfg["id"]))
+experiments/cooja/scripts/generate_ranger_core_scenario.py:93:        "org.contikios.cooja.plugins.skins.GridVisualizerSkin",
+experiments/cooja/scripts/generate_ranger_core_scenario.py:106:    ET.SubElement(lcfg, "coloring")
+experiments/cooja/scripts/generate_ranger_core_scenario.py:109:    timeline = ET.SubElement(simconf, "plugin")
+experiments/cooja/scripts/generate_ranger_core_scenario.py:110:    timeline.text = "\norg.contikios.cooja.plugins.TimeLine\n"
+experiments/cooja/scripts/generate_ranger_core_scenario.py:111:    tcfg = ET.SubElement(timeline, "plugin_config")
+experiments/cooja/scripts/generate_ranger_core_scenario.py:112:    for index in range(len(cfg["motes"])):
+experiments/cooja/scripts/generate_ranger_core_scenario.py:118:    ET.SubElement(timeline, "bounds", {"x": "0", "y": "650", "height": "300", "width": "1570", "z": "3"})
+experiments/cooja/scripts/generate_ranger_core_scenario.py:130:    ET.ElementTree(simconf).write(OUTPUT, encoding="utf-8", xml_declaration=True)
+experiments/cooja/scripts/generate_ranger_core_scenario.py:134:    expected_ids = [m["id"] for m in cfg["motes"]]
+experiments/cooja/scripts/generate_ranger_core_scenario.py:147:        "mote_count": len(cfg["motes"]),
+experiments/cooja/scripts/generate_ranger_core_scenario.py:148:        "mote_ids": expected_ids,
+experiments/cooja/scripts/generate_ranger_core_scenario.py:152:    MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:6:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:10:CONFIG = ROOT / "experiments/cooja/scenarios/config/ranger-rpl-line-8nodes.json"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:11:OUTPUT = ROOT / "experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.csc"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:12:MANIFEST = ROOT / "experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.manifest.json"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:57:        "org.contikios.cooja.interfaces.Position",
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:78:    for mote_cfg in cfg["motes"]:
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:82:        pos.text = "\norg.contikios.cooja.interfaces.Position\n"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:89:        mote_id = ET.SubElement(mote, "interface_config")
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:90:        mote_id.text = "\norg.contikios.cooja.contikimote.interfaces.ContikiMoteID\n"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:91:        add_text(mote_id, "id", str(mote_cfg["id"]))
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:100:        "org.contikios.cooja.plugins.skins.GridVisualizerSkin",
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:117:    ET.SubElement(lcfg, "coloring")
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:124:    timeline = ET.SubElement(simconf, "plugin")
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:125:    timeline.text = "\norg.contikios.cooja.plugins.TimeLine\n"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:126:    tcfg = ET.SubElement(timeline, "plugin_config")
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:127:    for index in range(len(cfg["motes"])):
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:134:        timeline,
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:155:    scriptfile.text = "[CONFIG_DIR]/../../tests/ranger-rpl-line-assert.js"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:167:    ET.ElementTree(simconf).write(OUTPUT, encoding="utf-8", xml_declaration=True)
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:171:    expected_ids = [m["id"] for m in cfg["motes"]]
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:176:    positions = [(float(m["x"]), float(m["y"])) for m in cfg["motes"]]
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:180:    root_x, root_y = positions[0]
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:181:    far_x, far_y = positions[-1]
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:191:        "generator": "experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py",
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:192:        "source_config": "experiments/cooja/scenarios/config/ranger-rpl-line-8nodes.json",
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:193:        "generated_scenario": "experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.csc",
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:194:        "assertion_script": "experiments/cooja/tests/ranger-rpl-line-assert.js",
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:198:            ROOT / "experiments/cooja/tests/ranger-rpl-line-assert.js"
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:201:        "mote_count": len(cfg["motes"]),
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:202:        "mote_ids": expected_ids,
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py:213:        newline="\n",
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:6:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:10:CONFIG = ROOT / "experiments/cooja/scenarios/config/ranger-static-coded-rpl-line-8nodes.json"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:11:OUTPUT = ROOT / "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.csc"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:12:MANIFEST = ROOT / "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.manifest.json"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:57:        "org.contikios.cooja.interfaces.Position",
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:78:    for mote_cfg in cfg["motes"]:
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:82:        pos.text = "\norg.contikios.cooja.interfaces.Position\n"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:89:        mote_id = ET.SubElement(mote, "interface_config")
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:90:        mote_id.text = "\norg.contikios.cooja.contikimote.interfaces.ContikiMoteID\n"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:91:        add_text(mote_id, "id", str(mote_cfg["id"]))
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:100:        "org.contikios.cooja.plugins.skins.GridVisualizerSkin",
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:117:    ET.SubElement(lcfg, "coloring")
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:124:    timeline = ET.SubElement(simconf, "plugin")
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:125:    timeline.text = "\norg.contikios.cooja.plugins.TimeLine\n"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:126:    tcfg = ET.SubElement(timeline, "plugin_config")
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:127:    for index in range(len(cfg["motes"])):
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:134:        timeline,
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:155:    scriptfile.text = "[CONFIG_DIR]/../../tests/ranger-static-coded-rpl-line-assert.js"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:167:    ET.ElementTree(simconf).write(OUTPUT, encoding="utf-8", xml_declaration=True)
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:171:    expected_ids = [m["id"] for m in cfg["motes"]]
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:176:    positions = [(float(m["x"]), float(m["y"])) for m in cfg["motes"]]
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:180:    root_x, root_y = positions[0]
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:181:    far_x, far_y = positions[-1]
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:191:        "generator": "experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py",
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:192:        "source_config": "experiments/cooja/scenarios/config/ranger-static-coded-rpl-line-8nodes.json",
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:193:        "generated_scenario": "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.csc",
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:194:        "assertion_script": "experiments/cooja/tests/ranger-static-coded-rpl-line-assert.js",
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:198:            ROOT / "experiments/cooja/tests/ranger-static-coded-rpl-line-assert.js"
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:201:        "mote_count": len(cfg["motes"]),
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:202:        "mote_ids": expected_ids,
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py:214:        newline="\n",
+experiments/cooja/scripts/gui_control.py:71:    worktree_blob = git_value(["git", "-C", str(COOJA), "hash-object", "gradlew"])
+experiments/cooja/scripts/gui_control.py:74:    if head_blob != worktree_blob or b"\r\n" in data:
+experiments/cooja/scripts/gui_control.py:80:        worktree_blob = git_value(
+experiments/cooja/scripts/gui_control.py:84:    ok = head_blob == worktree_blob and b"\r\n" not in data
+experiments/cooja/scripts/gui_control.py:116:    deadline = time.time() + seconds
+experiments/cooja/scripts/gui_control.py:118:    while time.time() < deadline:
+experiments/cooja/scripts/prepare_ranger_core_scenario.py:7:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/prepare_ranger_core_scenario.py:42:    tree = ET.parse(SCENARIO)
+experiments/cooja/scripts/prepare_ranger_core_scenario.py:43:    root = tree.getroot()
+experiments/cooja/scripts/prepare_ranger_core_scenario.py:66:    tree.write(SCENARIO, encoding="utf-8", xml_declaration=True)
+experiments/cooja/scripts/prepare_ranger_core_scenario.py:80:        newline="\n",
+experiments/cooja/scripts/run_compose_smoke.py:13:SCENARIO = ROOT / "third_party" / "contiki-ng" / "tests" / "07-simulation-base" / "02-ringbufindex.csc"
+experiments/cooja/scripts/run_compose_smoke.py:74:    worktree_blob = git_value(["git", "-C", str(COOJA), "hash-object", "gradlew"])
+experiments/cooja/scripts/run_compose_smoke.py:77:    if head_blob != worktree_blob or b"\r\n" in data:
+experiments/cooja/scripts/run_compose_smoke.py:83:        worktree_blob = git_value(["git", "-C", str(COOJA), "hash-object", "gradlew"])
+experiments/cooja/scripts/run_compose_smoke.py:85:    if head_blob != worktree_blob or b"\r\n" in data:
+experiments/cooja/scripts/run_compose_smoke.py:127:        shutil.rmtree(RESULTS)
+experiments/cooja/scripts/run_compose_smoke.py:139:            "--args=--no-gui ../../tests/07-simulation-base/02-ringbufindex.csc",
+experiments/cooja/scripts/run_compose_smoke.py:143:        log.write_text(p.stdout, encoding="utf-8", newline="\n")
+experiments/cooja/scripts/run_infra_smoke.py:26:    / "02-ringbufindex.csc"
+experiments/cooja/scripts/run_infra_smoke.py:115:        # No -c and therefore no command-string parsing.
+experiments/cooja/scripts/run_infra_smoke.py:123:            "02-ringbufindex.csc"
+experiments/cooja/scripts/run_infra_smoke.py:148:        newline="\n",
+experiments/cooja/scripts/run_infra_smoke.py:151:    output_lines = process.stdout.splitlines()
+experiments/cooja/scripts/run_infra_smoke.py:154:    print("--- last Cooja lines ---")
+experiments/cooja/scripts/run_infra_smoke.py:156:    for line in output_lines[-30:]:
+experiments/cooja/scripts/run_infra_smoke.py:157:        print(line)
+experiments/cooja/scripts/run_infra_smoke.py:226:            base.rglob("*ringbuf*.csc")
+experiments/cooja/scripts/run_infra_smoke.py:256:        shutil.rmtree(RESULTS)
+experiments/cooja/scripts/run_ranger_core_headless.py:71:    raw_log.write_text(result.stdout, encoding="utf-8", newline="\n")
+experiments/cooja/scripts/run_ranger_core_headless.py:74:    print("\n".join(result.stdout.splitlines()[-100:]))
+experiments/cooja/scripts/run_ranger_core_headless.py:77:        {int(x) for x in re.findall(r"RANGER_ACCEPT node=(\d+) epoch=1 revoked=5", result.stdout)}
+experiments/cooja/scripts/run_ranger_core_headless.py:80:        {int(x) for x in re.findall(r"RANGER_REJECT node=(\d+) epoch=1 revoked=5", result.stdout)}
+experiments/cooja/scripts/run_ranger_core_headless.py:112:        newline="\n",
+experiments/cooja/scripts/run_ranger_core_headless.py:140:        newline="\n",
+experiments/cooja/scripts/run_ranger_core_headless.py:147:        newline="\n",
+experiments/cooja/scripts/run_ranger_rpl_line_gui.py:11:GENERATOR = ROOT / "experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py"
+experiments/cooja/scripts/run_ranger_rpl_line_gui.py:15:    "ranger-rpl-line-8nodes.csc"
+experiments/cooja/scripts/run_ranger_rpl_line_gui.py:89:    print("Scenario: ranger-rpl-line-8nodes.csc")
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:13:GENERATOR = ROOT / "experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py"
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:14:SCENARIO = ROOT / "experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.csc"
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:15:SCENARIO_MANIFEST = ROOT / "experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.manifest.json"
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:17:RESULT_ROOT = ROOT / "experiments/cooja/results/step6b3-ranger-rpl-line-8nodes"
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:46:    print("STEP 6B.3 — RANGER MULTI-HOP RPL LINE VALIDATION")
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:53:        print("RANGER-RPL-LINE: FAIL — scenario generation")
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:62:        "ranger-rpl-line-8nodes.csc"
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:87:    raw_log.write_text(output, encoding="utf-8", newline="\n")
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:90:    print("\n".join(output.splitlines()[-120:]))
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:154:        "experiment": "RANGER-COOJA-RPL-LINE-8",
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:175:        newline="\n",
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:182:        "experiment": "RANGER-COOJA-RPL-LINE-8",
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:194:        "topology": "line",
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:195:        "mote_count": 8,
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:210:        newline="\n",
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:220:        newline="\n",
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:232:    print("RANGER-RPL-LINE:", "PASS" if passed else "FAIL")
+experiments/cooja/scripts/run_ranger_rpl_line_headless.py:240:        print(f"RANGER-RPL-LINE: ERROR: {type(exc).__name__}: {exc}")
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:13:GENERATOR = ROOT / "experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py"
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:14:SCENARIO = ROOT / "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.csc"
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:15:SCENARIO_MANIFEST = ROOT / "experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.manifest.json"
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:17:RESULT_ROOT = ROOT / "experiments/cooja/results/step6c1-ranger-static-coded-rpl-line-8nodes"
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:53:        print("RANGER-STATIC-CODED-RPL-LINE: FAIL — scenario generation")
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:62:        "ranger-static-coded-rpl-line-8nodes.csc"
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:87:    raw_log.write_text(output, encoding="utf-8", newline="\n")
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:90:    print("\n".join(output.splitlines()[-120:]))
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:140:    # mote log lines are not necessarily forwarded to Gradle stdout.
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:162:        "experiment": "RANGER-COOJA-STATIC-CODED-RPL-LINE-8",
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:193:        newline="\n",
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:200:        "experiment": "RANGER-COOJA-STATIC-CODED-RPL-LINE-8",
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:212:        "topology": "line",
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:213:        "mote_count": 8,
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:236:        newline="\n",
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:246:        newline="\n",
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:258:    print("RANGER-STATIC-CODED-RPL-LINE:", "PASS" if passed else "FAIL")
+experiments/cooja/scripts/run_ranger_static_coded_rpl_line_headless.py:266:        print(f"RANGER-STATIC-CODED-RPL-LINE: ERROR: {type(exc).__name__}: {exc}")
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:10:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:22:    "ranger-static-coded-rpl-line-8nodes.csc"
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:45:AUTHORIZED = tuple(range(2, 8))
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:46:ALL_TARGETS = tuple(range(2, 9))
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:76:    for node in AUTHORIZED:
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:79:            for fragment in range(n)
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:91:    for node in nodes:
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:103:        for fragment in range(n)
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:133:    tree = ET.parse(BASE_SCENARIO)
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:134:    root = tree.getroot()
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:182:    ET.indent(tree, space="  ")
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:183:    tree.write(scenario, encoding="utf-8", xml_declaration=True)
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:231:        newline="\n",
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:235:    # Force recompilation here on the host-backed worktree instead of using
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:275:    raw_log.write_text(output, encoding="utf-8", newline="\n")
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:307:        newline="\n",
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:337:        newline="\n",
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:354:        newline="\n",
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:394:        newline="\n",
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:441:    with aggregate.open("w", encoding="utf-8", newline="") as handle:
+experiments/cooja/scripts/run_step6c2_controlled_loss.py:463:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:11:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:133:        for node in range(2, 8)
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:197:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:212:    tree = ET.parse(
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:216:    root = tree.getroot()
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:332:        tree,
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:336:    tree.write(
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:689:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:769:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:901:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:953:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:988:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1100:        newline="\n",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1150:        newline="",
+experiments/cooja/scripts/run_step6c3e_post_bootstrap_stress.py:1238:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:11:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:133:        for node in range(2, 8)
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:197:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:212:    tree = ET.parse(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:216:    root = tree.getroot()
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:332:        tree,
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:336:    tree.write(
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:689:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:769:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:901:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:953:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:988:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1108:        newline="\n",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1158:        newline="",
+experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py:1246:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:11:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/run_step6c3_radio_loss.py:135:        for node in range(2, 8)
+experiments/cooja/scripts/run_step6c3_radio_loss.py:181:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:198:    tree = ET.parse(base_scenario)
+experiments/cooja/scripts/run_step6c3_radio_loss.py:199:    root = tree.getroot()
+experiments/cooja/scripts/run_step6c3_radio_loss.py:287:    ET.indent(tree, space="  ")
+experiments/cooja/scripts/run_step6c3_radio_loss.py:289:    tree.write(
+experiments/cooja/scripts/run_step6c3_radio_loss.py:486:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:547:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:684:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:723:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:761:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:865:        newline="\n",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:914:        newline="",
+experiments/cooja/scripts/run_step6c3_radio_loss.py:1000:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:11:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:133:        for node in range(2, 8)
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:197:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:212:    tree = ET.parse(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:216:    root = tree.getroot()
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:336:        tree,
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:340:    tree.write(
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:693:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:773:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:905:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:957:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:992:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1112:        newline="\n",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1162:        newline="",
+experiments/cooja/scripts/run_step6d2_recovery_radio.py:1250:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:11:import xml.etree.ElementTree as ET
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:133:        for node in range(2, 8)
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:197:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:212:    tree = ET.parse(
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:216:    root = tree.getroot()
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:337:        tree,
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:341:    tree.write(
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:694:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:774:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:906:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:958:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:993:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:1113:        newline="\n",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:1163:        newline="",
+experiments/cooja/scripts/run_step6e2_adaptive_radio.py:1251:        newline="\n",
+
+============================================================
+C. COOJA APP COMPILE-TIME ASSUMPTIONS
+============================================================
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:6: * Nodes 2..7: authorized members.
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:7: * Node 8: revoked member.
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:34:#define RANGER_FIRST_MEMBER_ID 2
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:35:#define RANGER_LAST_MEMBER_ID 8
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:36:#define RANGER_REVOKED_ID 8
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:37:#define RANGER_MEMBER_COUNT 7
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:149:static uip_ipaddr_t member_addr[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:150:static uint8_t member_registered[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:151:static uint8_t report_seen[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:192:static uint8_t planned_delivery_count[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:209:    RANGER_LAST_MEMBER_ID + 1
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:223:      node_id
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:225:  LOG_INFO_LLADDR(&linkaddr_node_addr);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:238:        node_id
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:250:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:312:   * Node 8 remains revoked.
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:351:  if(node_id == 6) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:355:  if(node_id == 7) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:403:ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:408:           id >= RANGER_FIRST_MEMBER_ID &&
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:409:           id < RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:437:        neighbor_id == node_id ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:438:        !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:476:          node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:495:          RANGER_LAST_MEMBER_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:496:      !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:535:  if(node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:536:     node_id == RANGER_REVOKED_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:555:      !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:558:      parent_id == node_id
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:580:        node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:598:      node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:599:      node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:616:  packet[0] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:622:  packet[1] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:623:      (uint8_t)node_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:625:  packet[2] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:628:  packet[3] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:631:  packet[4] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:634:  packet[5] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:637:  packet[6] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:644:  packet[7] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:645:      (uint8_t)node_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:659:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:683:  uint8_t packet[9] = {0};
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:686:      node_id != RANGER_GM_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:746:  packet[0] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:749:  packet[1] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:752:  packet[2] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:755:  packet[3] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:758:  packet[4] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:761:  packet[5] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:762:      RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:764:  packet[6] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:767:  packet[7] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:770:  packet[8] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:780:      target = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:781:      target <= RANGER_LAST_MEMBER_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:788:        &member_addr[target]
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:837:      data[1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:840:      data[2];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:843:      ((uint16_t)data[3] << 8) |
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:844:      (uint16_t)data[4];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:847:      data[5];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:850:      data[6];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:853:      data[7];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:862:          RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:864:          RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:885:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:912:      node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:931:  packet[7] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:932:      (uint8_t)node_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:945:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:960:  uint8_t member_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:962:  for(member_id = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:963:      member_id < RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:964:      member_id++) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:965:    if(planned_delivery_count[member_id] >= RANGER_CODING_K) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:966:      mask |= (uint16_t)(1u << member_id);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1011:  packet[0] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1014:  packet[1] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1017:  packet[2] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1020:  packet[3] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1023:  packet[4] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1026:  packet[5] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1027:      RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1030:      target = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1031:      target < RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1038:        &member_addr[target]
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1055:          RANGER_REVOKED_ID -
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1056:          RANGER_FIRST_MEMBER_ID
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1060:            RANGER_REVOKED_ID -
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1061:            RANGER_FIRST_MEMBER_ID
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1074:  uint8_t packet[2];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1077:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=not-reachable\n", node_id);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1082:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=no-root-address\n", node_id);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1090:  packet[0] = MSG_REGISTER;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1091:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1095:  LOG_INFO("RANGER_RPL_REGISTER_SENT node=%u\n", node_id);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1102:  uint8_t packet[5];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1104:  packet[0] = MSG_REPORT;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1105:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1106:  packet[2] = (uint8_t)(epoch >> 8);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1107:  packet[3] = (uint8_t)(epoch & 0xff);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1108:  packet[4] = status;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1114:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1134:        node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1161:  if(node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1162:     node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1178:  packet[0] = MSG_RECOVERY_REQUEST;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1179:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1180:  packet[2] = RANGER_GROUP_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1181:  packet[3] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1183:  packet[4] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1185:  packet[5] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1187:  packet[6] = needed;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1191:      neighbor_id < RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1224:        node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1238:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1248:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1267:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1270:      node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1271:      node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1278:  sender_id = data[1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1279:  group_id = data[2];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1282:      ((uint16_t)data[3] << 8) |
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1283:      (uint16_t)data[4];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1285:  revoked_id = data[5];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1290:      revoked_id != RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1312:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1348:  uint8_t packet[9];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1355:  requester_id = data[1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1356:  group_id = data[2];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1359:      ((uint16_t)data[3] << 8) |
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1360:      (uint16_t)data[4];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1362:  requester_mask = data[5];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1363:  needed = data[6];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1369:     !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1373:     node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1374:     !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1375:         (uint8_t)node_id
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1395:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1434:    packet[0] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1437:    packet[1] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1438:        (uint8_t)node_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1440:    packet[2] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1443:    packet[3] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1446:    packet[4] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1449:    packet[5] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1450:        RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1452:    packet[6] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1455:    packet[7] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1458:    packet[8] =
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1475:        node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1494:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1500:  if(node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1501:     node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1506:  responder_id = data[1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1507:  group_id = data[2];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1510:      ((uint16_t)data[3] << 8) |
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1511:      (uint16_t)data[4];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1513:  revoked_id = data[5];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1514:  fragment_index = data[6];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1515:  data_fragments = data[7];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1516:  total_fragments = data[8];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1519:      !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1523:          RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1525:      revoked_id !=
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1526:          RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1577:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1599:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1619:  uint8_t member_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1621:  if(node_id != RANGER_GM_ID || datalen != 2) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1625:  member_id = data[1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1627:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1628:     member_id > RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1632:  if(!member_registered[member_id]) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1633:    member_registered[member_id] = 1;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1634:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1639:        member_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1641:        RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1644:    if(registered_count == RANGER_MEMBER_COUNT) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1649:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1661:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1668:  if(node_id == RANGER_GM_ID || datalen != 9) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1672:  group_id = data[2];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1673:  epoch = ((uint16_t)data[3] << 8) | (uint16_t)data[4];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1674:  revoked_id = data[5];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1675:  fragment_index = data[6];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1676:  data_fragments = data[7];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1677:  total_fragments = data[8];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1686:  if(node_id == revoked_id) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1695:        "RANGER_CODED_REJECT node=%u group=%u epoch=%u fragment=%u revoked=%u\n",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1696:        node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1700:        revoked_id
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1704:        "RANGER_RPL_REJECT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1705:        node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1707:        revoked_id
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1737:        node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1751:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1760:   * A member that already reconstructed continues
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1779:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1788:      "RANGER_RPL_ACCEPT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1789:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1791:      revoked_id
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1801:  uint8_t member_id;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1805:  if(node_id != RANGER_GM_ID || datalen != 5) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1809:  member_id = data[1];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1810:  epoch = ((uint16_t)data[2] << 8) | (uint16_t)data[3];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1811:  status = data[4];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1813:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1814:     member_id > RANGER_LAST_MEMBER_ID ||
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1815:     report_seen[member_id]) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1819:  report_seen[member_id] = 1;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1824:    accepted_mask |= (uint16_t)(1u << member_id);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1831:      member_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1835:      RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1838:  if(report_count == RANGER_MEMBER_COUNT && !final_result_printed) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1841:    if(registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1892:  switch(data[0]) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1957:  static uint8_t update[9];
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1976:      node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1977:      node_id == RANGER_GM_ID ? "GM" : "MEMBER",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1981:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1984:    LOG_INFO("RANGER_RPL_ROOT_START node=%u\n", node_id);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:1999:    if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2001:         registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2006:            RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2015:            "RANGER_CODED_READY registered=%u/%u group=%u epoch=%u revoked=%u k=%u n=%u\n",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2017:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2020:            RANGER_REVOKED_ID,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2026:            "RANGER_RPL_READY registered=%u/%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2028:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2030:            RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2063:            "RANGER_CODED_READY registered=%u/%u group=%u epoch=%u revoked=%u k=%u n=%u\n",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2065:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2068:            RANGER_REVOKED_ID,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2074:            "RANGER_RPL_READY registered=%u/%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2076:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2078:            RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2092:         next_rekey_target < RANGER_REVOKED_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2095:        update[0] = MSG_CODED_FRAGMENT;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2096:        update[1] = RANGER_GM_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2097:        update[2] = RANGER_GROUP_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2098:        update[3] = (uint8_t)(current_epoch >> 8);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2099:        update[4] = (uint8_t)(current_epoch & 0xff);
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2100:        update[5] = RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2101:        update[6] = next_fragment_index;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2102:        update[7] = RANGER_CODING_K;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2103:        update[8] = RANGER_CODING_N;
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2137:              &member_addr[target]
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2161:        if(next_rekey_target < RANGER_REVOKED_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2168:              RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2176:              RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2214:         node_id !=
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2215:             RANGER_REVOKED_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2227:            node_id,
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2238:         node_id !=
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2239:             RANGER_REVOKED_ID) {
+experiments/cooja/apps/ranger-adaptive-v2-rpl/ranger-adaptive-v2-rpl.c:2251:            node_id,
+experiments/cooja/apps/ranger-core/ranger-core.c:11: *   nodes 2-4 : authorized members
+experiments/cooja/apps/ranger-core/ranger-core.c:12: *   node 5 : revoked member
+experiments/cooja/apps/ranger-core/ranger-core.c:40:#define RANGER_REVOKED_ID 5
+experiments/cooja/apps/ranger-core/ranger-core.c:42:#define RANGER_FIRST_MEMBER_ID 2
+experiments/cooja/apps/ranger-core/ranger-core.c:43:#define RANGER_LAST_MEMBER_ID 5
+experiments/cooja/apps/ranger-core/ranger-core.c:44:#define RANGER_MEMBER_COUNT 4
+experiments/cooja/apps/ranger-core/ranger-core.c:57:static uint8_t report_seen[6];
+experiments/cooja/apps/ranger-core/ranger-core.c:81:  uint8_t packet[5];
+experiments/cooja/apps/ranger-core/ranger-core.c:83:  packet[0] = RANGER_MSG_REPORT;
+experiments/cooja/apps/ranger-core/ranger-core.c:84:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-core/ranger-core.c:85:  packet[2] = (uint8_t)(epoch >> 8);
+experiments/cooja/apps/ranger-core/ranger-core.c:86:  packet[3] = (uint8_t)(epoch & 0xff);
+experiments/cooja/apps/ranger-core/ranger-core.c:87:  packet[4] = status;
+experiments/cooja/apps/ranger-core/ranger-core.c:106:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-core/ranger-core.c:112:        node_id,
+experiments/cooja/apps/ranger-core/ranger-core.c:119:      ((uint16_t)data[2] << 8)
+experiments/cooja/apps/ranger-core/ranger-core.c:120:      | (uint16_t)data[3];
+experiments/cooja/apps/ranger-core/ranger-core.c:122:  revoked_id = data[4];
+experiments/cooja/apps/ranger-core/ranger-core.c:124:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-core/ranger-core.c:131:        node_id,
+experiments/cooja/apps/ranger-core/ranger-core.c:137:  if(node_id == revoked_id) {
+experiments/cooja/apps/ranger-core/ranger-core.c:143:        "node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-core/ranger-core.c:144:        node_id,
+experiments/cooja/apps/ranger-core/ranger-core.c:146:        revoked_id
+experiments/cooja/apps/ranger-core/ranger-core.c:156:        "node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-core/ranger-core.c:157:        node_id,
+experiments/cooja/apps/ranger-core/ranger-core.c:159:        revoked_id
+experiments/cooja/apps/ranger-core/ranger-core.c:177:  uint8_t member_id;
+experiments/cooja/apps/ranger-core/ranger-core.c:181:  if(node_id != RANGER_GM_ID) {
+experiments/cooja/apps/ranger-core/ranger-core.c:189:  member_id = data[1];
+experiments/cooja/apps/ranger-core/ranger-core.c:192:      ((uint16_t)data[2] << 8)
+experiments/cooja/apps/ranger-core/ranger-core.c:193:      | (uint16_t)data[3];
+experiments/cooja/apps/ranger-core/ranger-core.c:195:  status = data[4];
+experiments/cooja/apps/ranger-core/ranger-core.c:198:      member_id < RANGER_FIRST_MEMBER_ID
+experiments/cooja/apps/ranger-core/ranger-core.c:199:      || member_id > RANGER_LAST_MEMBER_ID
+experiments/cooja/apps/ranger-core/ranger-core.c:204:  if(report_seen[member_id]) {
+experiments/cooja/apps/ranger-core/ranger-core.c:208:  report_seen[member_id] = 1;
+experiments/cooja/apps/ranger-core/ranger-core.c:223:      member_id,
+experiments/cooja/apps/ranger-core/ranger-core.c:227:      RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-core/ranger-core.c:231:      report_count == RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-core/ranger-core.c:286:  message_type = data[0];
+experiments/cooja/apps/ranger-core/ranger-core.c:316:  static uint8_t update[5];
+experiments/cooja/apps/ranger-core/ranger-core.c:330:      node_id,
+experiments/cooja/apps/ranger-core/ranger-core.c:331:      node_id == RANGER_GM_ID
+experiments/cooja/apps/ranger-core/ranger-core.c:333:          : "MEMBER",
+experiments/cooja/apps/ranger-core/ranger-core.c:337:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-core/ranger-core.c:373:    update[0] = RANGER_MSG_EPOCH_UPDATE;
+experiments/cooja/apps/ranger-core/ranger-core.c:374:    update[1] = RANGER_GM_ID;
+experiments/cooja/apps/ranger-core/ranger-core.c:375:    update[2] = 0;
+experiments/cooja/apps/ranger-core/ranger-core.c:376:    update[3] = 1;
+experiments/cooja/apps/ranger-core/ranger-core.c:377:    update[4] = RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-core/ranger-core.c:381:        "epoch=1 revoked=%u\n",
+experiments/cooja/apps/ranger-core/ranger-core.c:382:        RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-core/ranger-core.c:394:        "epoch=1 revoked=%u\n",
+experiments/cooja/apps/ranger-core/ranger-core.c:395:        RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:6: * Nodes 2..7: authorized members.
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:7: * Node 8: revoked member.
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:34:#define RANGER_FIRST_MEMBER_ID 2
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:35:#define RANGER_LAST_MEMBER_ID 8
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:36:#define RANGER_REVOKED_ID 8
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:37:#define RANGER_MEMBER_COUNT 7
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:126:static uip_ipaddr_t member_addr[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:127:static uint8_t member_registered[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:128:static uint8_t report_seen[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:153:static uint8_t planned_delivery_count[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:170:    RANGER_LAST_MEMBER_ID + 1
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:184:      node_id
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:186:  LOG_INFO_LLADDR(&linkaddr_node_addr);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:199:        node_id
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:211:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:259:   * Node 8 remains revoked.
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:298:  if(node_id == 6) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:302:  if(node_id == 7) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:350:ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:355:           id >= RANGER_FIRST_MEMBER_ID &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:356:           id < RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:384:        neighbor_id == node_id ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:385:        !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:423:          node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:442:          RANGER_LAST_MEMBER_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:443:      !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:478:  uint8_t member_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:480:  for(member_id = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:481:      member_id < RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:482:      member_id++) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:483:    if(planned_delivery_count[member_id] >= RANGER_CODING_K) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:484:      mask |= (uint16_t)(1u << member_id);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:529:  packet[0] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:532:  packet[1] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:535:  packet[2] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:538:  packet[3] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:541:  packet[4] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:544:  packet[5] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:545:      RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:548:      target = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:549:      target < RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:556:        &member_addr[target]
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:573:          RANGER_REVOKED_ID -
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:574:          RANGER_FIRST_MEMBER_ID
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:578:            RANGER_REVOKED_ID -
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:579:            RANGER_FIRST_MEMBER_ID
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:592:  uint8_t packet[2];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:595:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=not-reachable\n", node_id);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:600:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=no-root-address\n", node_id);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:606:  packet[0] = MSG_REGISTER;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:607:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:611:  LOG_INFO("RANGER_RPL_REGISTER_SENT node=%u\n", node_id);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:618:  uint8_t packet[5];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:620:  packet[0] = MSG_REPORT;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:621:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:622:  packet[2] = (uint8_t)(epoch >> 8);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:623:  packet[3] = (uint8_t)(epoch & 0xff);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:624:  packet[4] = status;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:630:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:650:        node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:677:  if(node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:678:     node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:694:  packet[0] = MSG_RECOVERY_REQUEST;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:695:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:696:  packet[2] = RANGER_GROUP_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:697:  packet[3] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:699:  packet[4] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:701:  packet[5] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:703:  packet[6] = needed;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:707:      neighbor_id < RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:740:        node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:754:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:764:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:783:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:786:      node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:787:      node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:794:  sender_id = data[1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:795:  group_id = data[2];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:798:      ((uint16_t)data[3] << 8) |
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:799:      (uint16_t)data[4];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:801:  revoked_id = data[5];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:806:      revoked_id != RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:828:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:864:  uint8_t packet[9];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:871:  requester_id = data[1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:872:  group_id = data[2];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:875:      ((uint16_t)data[3] << 8) |
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:876:      (uint16_t)data[4];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:878:  requester_mask = data[5];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:879:  needed = data[6];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:885:     !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:889:     node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:890:     !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:891:         (uint8_t)node_id
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:911:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:950:    packet[0] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:953:    packet[1] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:954:        (uint8_t)node_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:956:    packet[2] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:959:    packet[3] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:962:    packet[4] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:965:    packet[5] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:966:        RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:968:    packet[6] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:971:    packet[7] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:974:    packet[8] =
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:991:        node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1010:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1016:  if(node_id == RANGER_GM_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1017:     node_id == RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1022:  responder_id = data[1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1023:  group_id = data[2];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1026:      ((uint16_t)data[3] << 8) |
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1027:      (uint16_t)data[4];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1029:  revoked_id = data[5];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1030:  fragment_index = data[6];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1031:  data_fragments = data[7];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1032:  total_fragments = data[8];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1035:      !ranger_is_authorized_recovery_node(
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1039:          RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1041:      revoked_id !=
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1042:          RANGER_REVOKED_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1093:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1115:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1135:  uint8_t member_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1137:  if(node_id != RANGER_GM_ID || datalen != 2) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1141:  member_id = data[1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1143:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1144:     member_id > RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1148:  if(!member_registered[member_id]) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1149:    member_registered[member_id] = 1;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1150:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1155:        member_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1157:        RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1160:    if(registered_count == RANGER_MEMBER_COUNT) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1165:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1177:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1184:  if(node_id == RANGER_GM_ID || datalen != 9) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1188:  group_id = data[2];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1189:  epoch = ((uint16_t)data[3] << 8) | (uint16_t)data[4];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1190:  revoked_id = data[5];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1191:  fragment_index = data[6];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1192:  data_fragments = data[7];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1193:  total_fragments = data[8];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1202:  if(node_id == revoked_id) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1211:        "RANGER_CODED_REJECT node=%u group=%u epoch=%u fragment=%u revoked=%u\n",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1212:        node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1216:        revoked_id
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1220:        "RANGER_RPL_REJECT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1221:        node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1223:        revoked_id
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1253:        node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1267:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1276:   * A member that already reconstructed continues
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1295:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1304:      "RANGER_RPL_ACCEPT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1305:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1307:      revoked_id
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1317:  uint8_t member_id;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1321:  if(node_id != RANGER_GM_ID || datalen != 5) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1325:  member_id = data[1];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1326:  epoch = ((uint16_t)data[2] << 8) | (uint16_t)data[3];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1327:  status = data[4];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1329:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1330:     member_id > RANGER_LAST_MEMBER_ID ||
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1331:     report_seen[member_id]) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1335:  report_seen[member_id] = 1;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1340:    accepted_mask |= (uint16_t)(1u << member_id);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1347:      member_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1351:      RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1354:  if(report_count == RANGER_MEMBER_COUNT && !final_result_printed) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1357:    if(registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1408:  switch(data[0]) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1464:  static uint8_t update[9];
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1483:      node_id,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1484:      node_id == RANGER_GM_ID ? "GM" : "MEMBER",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1488:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1491:    LOG_INFO("RANGER_RPL_ROOT_START node=%u\n", node_id);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1506:    if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1508:         registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1513:            RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1522:            "RANGER_CODED_READY registered=%u/%u group=%u epoch=%u revoked=%u k=%u n=%u\n",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1524:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1527:            RANGER_REVOKED_ID,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1533:            "RANGER_RPL_READY registered=%u/%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1535:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1537:            RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1570:            "RANGER_CODED_READY registered=%u/%u group=%u epoch=%u revoked=%u k=%u n=%u\n",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1572:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1575:            RANGER_REVOKED_ID,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1581:            "RANGER_RPL_READY registered=%u/%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1583:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1585:            RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1599:         next_rekey_target <= RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1602:        update[0] = MSG_CODED_FRAGMENT;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1603:        update[1] = RANGER_GM_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1604:        update[2] = RANGER_GROUP_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1605:        update[3] = (uint8_t)(current_epoch >> 8);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1606:        update[4] = (uint8_t)(current_epoch & 0xff);
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1607:        update[5] = RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1608:        update[6] = next_fragment_index;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1609:        update[7] = RANGER_CODING_K;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1610:        update[8] = RANGER_CODING_N;
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1644:              &member_addr[target]
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1668:        if(next_rekey_target <= RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1675:              RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1683:              RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1721:         node_id !=
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1722:             RANGER_REVOKED_ID) {
+experiments/cooja/apps/ranger-recovery-rpl/ranger-recovery-rpl.c:1734:            node_id,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:6: * Nodes 2..7: authorized members.
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:7: * Node 8: revoked member.
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:9: * Members first register with the root over RPL. Once all members are
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:10: * registered, the GM unicasts epoch-1 updates to each member. Members return
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:33:#define RANGER_FIRST_MEMBER_ID 2
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:34:#define RANGER_LAST_MEMBER_ID 8
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:35:#define RANGER_REVOKED_ID 8
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:36:#define RANGER_MEMBER_COUNT 7
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:51:static uip_ipaddr_t member_addr[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:52:static uint8_t member_registered[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:53:static uint8_t report_seen[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:74:  uint8_t packet[2];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:77:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=not-reachable\n", node_id);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:82:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=no-root-address\n", node_id);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:86:  packet[0] = MSG_REGISTER;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:87:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:91:  LOG_INFO("RANGER_RPL_REGISTER_SENT node=%u\n", node_id);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:98:  uint8_t packet[5];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:100:  packet[0] = MSG_REPORT;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:101:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:102:  packet[2] = (uint8_t)(epoch >> 8);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:103:  packet[3] = (uint8_t)(epoch & 0xff);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:104:  packet[4] = status;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:110:      node_id,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:122:  uint8_t member_id;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:124:  if(node_id != RANGER_GM_ID || datalen != 2) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:128:  member_id = data[1];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:130:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:131:     member_id > RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:135:  if(!member_registered[member_id]) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:136:    member_registered[member_id] = 1;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:137:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:142:        member_id,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:144:        RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:147:    if(registered_count == RANGER_MEMBER_COUNT) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:152:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:163:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:166:  if(node_id == RANGER_GM_ID || datalen != 5) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:170:  epoch = ((uint16_t)data[2] << 8) | (uint16_t)data[3];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:171:  revoked_id = data[4];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:179:  if(node_id == revoked_id) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:183:        "RANGER_RPL_REJECT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:184:        node_id,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:186:        revoked_id
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:193:        "RANGER_RPL_ACCEPT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:194:        node_id,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:196:        revoked_id
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:207:  uint8_t member_id;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:211:  if(node_id != RANGER_GM_ID || datalen != 5) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:215:  member_id = data[1];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:216:  epoch = ((uint16_t)data[2] << 8) | (uint16_t)data[3];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:217:  status = data[4];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:219:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:220:     member_id > RANGER_LAST_MEMBER_ID ||
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:221:     report_seen[member_id]) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:225:  report_seen[member_id] = 1;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:236:      member_id,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:240:      RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:243:  if(report_count == RANGER_MEMBER_COUNT && !final_result_printed) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:246:    if(registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:287:  switch(data[0]) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:310:  static uint8_t update[5];
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:324:      node_id,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:325:      node_id == RANGER_GM_ID ? "GM" : "MEMBER",
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:329:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:332:    LOG_INFO("RANGER_RPL_ROOT_START node=%u\n", node_id);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:340:    if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:342:         registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:346:        next_rekey_target = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:349:            "RANGER_RPL_READY registered=%u/%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:351:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:353:            RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:362:         next_rekey_target <= RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:365:        update[0] = MSG_EPOCH_UPDATE;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:366:        update[1] = RANGER_GM_ID;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:367:        update[2] = (uint8_t)(current_epoch >> 8);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:368:        update[3] = (uint8_t)(current_epoch & 0xff);
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:369:        update[4] = RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:375:            &member_addr[target]
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:379:            "RANGER_RPL_REKEY_SENT target=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:382:            RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:387:        if(next_rekey_target <= RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-rpl-core/ranger-rpl-core.c:393:              RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:6: * Nodes 2..7: authorized members.
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:7: * Node 8: revoked member.
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:32:#define RANGER_FIRST_MEMBER_ID 2
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:33:#define RANGER_LAST_MEMBER_ID 8
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:34:#define RANGER_REVOKED_ID 8
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:35:#define RANGER_MEMBER_COUNT 7
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:88:static uip_ipaddr_t member_addr[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:89:static uint8_t member_registered[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:90:static uint8_t report_seen[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:107:static uint8_t planned_delivery_count[RANGER_LAST_MEMBER_ID + 1];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:147:  uint8_t member_id;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:149:  for(member_id = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:150:      member_id < RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:151:      member_id++) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:152:    if(planned_delivery_count[member_id] >= RANGER_CODING_K) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:153:      mask |= (uint16_t)(1u << member_id);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:166:  uint8_t packet[2];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:169:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=not-reachable\n", node_id);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:174:    LOG_INFO("RANGER_RPL_WAIT node=%u reason=no-root-address\n", node_id);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:178:  packet[0] = MSG_REGISTER;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:179:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:183:  LOG_INFO("RANGER_RPL_REGISTER_SENT node=%u\n", node_id);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:190:  uint8_t packet[5];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:192:  packet[0] = MSG_REPORT;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:193:  packet[1] = (uint8_t)node_id;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:194:  packet[2] = (uint8_t)(epoch >> 8);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:195:  packet[3] = (uint8_t)(epoch & 0xff);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:196:  packet[4] = status;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:202:      node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:214:  uint8_t member_id;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:216:  if(node_id != RANGER_GM_ID || datalen != 2) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:220:  member_id = data[1];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:222:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:223:     member_id > RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:227:  if(!member_registered[member_id]) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:228:    member_registered[member_id] = 1;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:229:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:234:        member_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:236:        RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:239:    if(registered_count == RANGER_MEMBER_COUNT) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:244:    uip_ipaddr_copy(&member_addr[member_id], sender_addr);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:256:  uint8_t revoked_id;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:263:  if(node_id == RANGER_GM_ID || datalen != 9) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:267:  group_id = data[2];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:268:  epoch = ((uint16_t)data[3] << 8) | (uint16_t)data[4];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:269:  revoked_id = data[5];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:270:  fragment_index = data[6];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:271:  data_fragments = data[7];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:272:  total_fragments = data[8];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:281:  if(node_id == revoked_id) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:290:        "RANGER_CODED_REJECT node=%u group=%u epoch=%u fragment=%u revoked=%u\n",
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:291:        node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:295:        revoked_id
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:299:        "RANGER_RPL_REJECT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:300:        node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:302:        revoked_id
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:318:        node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:332:      node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:350:      node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:359:      "RANGER_RPL_ACCEPT node=%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:360:      node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:362:      revoked_id
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:372:  uint8_t member_id;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:376:  if(node_id != RANGER_GM_ID || datalen != 5) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:380:  member_id = data[1];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:381:  epoch = ((uint16_t)data[2] << 8) | (uint16_t)data[3];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:382:  status = data[4];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:384:  if(member_id < RANGER_FIRST_MEMBER_ID ||
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:385:     member_id > RANGER_LAST_MEMBER_ID ||
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:386:     report_seen[member_id]) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:390:  report_seen[member_id] = 1;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:395:    accepted_mask |= (uint16_t)(1u << member_id);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:402:      member_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:406:      RANGER_MEMBER_COUNT
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:409:  if(report_count == RANGER_MEMBER_COUNT && !final_result_printed) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:412:    if(registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:463:  switch(data[0]) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:489:  static uint8_t update[9];
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:503:      node_id,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:504:      node_id == RANGER_GM_ID ? "GM" : "MEMBER",
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:508:  if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:511:    LOG_INFO("RANGER_RPL_ROOT_START node=%u\n", node_id);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:519:    if(node_id == RANGER_GM_ID) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:521:         registered_count == RANGER_MEMBER_COUNT &&
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:525:        next_rekey_target = RANGER_FIRST_MEMBER_ID;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:529:            "RANGER_CODED_READY registered=%u/%u group=%u epoch=%u revoked=%u k=%u n=%u\n",
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:531:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:534:            RANGER_REVOKED_ID,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:540:            "RANGER_RPL_READY registered=%u/%u epoch=%u revoked=%u\n",
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:542:            RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:544:            RANGER_REVOKED_ID
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:553:         next_rekey_target <= RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:556:        update[0] = MSG_CODED_FRAGMENT;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:557:        update[1] = RANGER_GM_ID;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:558:        update[2] = RANGER_GROUP_ID;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:559:        update[3] = (uint8_t)(current_epoch >> 8);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:560:        update[4] = (uint8_t)(current_epoch & 0xff);
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:561:        update[5] = RANGER_REVOKED_ID;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:562:        update[6] = next_fragment_index;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:563:        update[7] = RANGER_CODING_K;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:564:        update[8] = RANGER_CODING_N;
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:586:              &member_addr[target]
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:610:        if(next_rekey_target <= RANGER_LAST_MEMBER_ID) {
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:617:              RANGER_MEMBER_COUNT,
+experiments/cooja/apps/ranger-static-coded-rpl/ranger-static-coded-rpl.c:625:              RANGER_MEMBER_COUNT
+
+============================================================
+D. AVAILABLE SCENARIOS
+============================================================
+experiments/cooja/scenarios/config/ranger-core-5nodes-onehop.json
+experiments/cooja/scenarios/config/ranger-rpl-line-8nodes.json
+experiments/cooja/scenarios/config/ranger-static-coded-rpl-line-8nodes.json
+experiments/cooja/scenarios/generated/ranger-core-5nodes-onehop.csc
+experiments/cooja/scenarios/generated/ranger-core-5nodes-onehop.manifest.json
+experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.csc
+experiments/cooja/scenarios/generated/ranger-rpl-line-8nodes.manifest.json
+experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.csc
+experiments/cooja/scenarios/generated/ranger-static-coded-rpl-line-8nodes.manifest.json
+experiments/cooja/scenarios/ranger-adaptive-v2-nack-parity-smoke.csc
+experiments/cooja/scenarios/ranger-adaptive-v2-no-loss.csc
+experiments/cooja/scenarios/ranger-recovery-cascade-smoke.csc
+experiments/cooja/scenarios/ranger-recovery-core-smoke.csc
+experiments/cooja/scenarios/ranger-recovery-neighbor-census.csc
+
+============================================================
+E. PYTHON TOPOLOGY FACTORY
+============================================================
+from __future__ import annotations
+
+from collections.abc import Iterable
+from itertools import pairwise
+from math import isqrt
+from typing import Literal
+
+from ranger_iot.sim.topology import StaticTopology
+
+TopologyName = Literal["line", "star", "balanced-tree", "grid"]
+
+
+def build_topology(
+    name: TopologyName,
+    *,
+    nodes: Iterable[int],
+    root_id: int,
+) -> StaticTopology:
+    """Build a deterministic connected topology rooted at ``root_id``."""
+
+    ordered = _root_first_nodes(nodes, root_id=root_id)
+
+    if name == "line":
+        edges = tuple(pairwise(ordered))
+    elif name == "star":
+        edges = tuple((root_id, node_id) for node_id in ordered[1:])
+    elif name == "balanced-tree":
+        edges = _balanced_tree_edges(ordered)
+    elif name == "grid":
+        edges = _grid_edges(ordered)
+    else:
+        raise ValueError(f"unsupported topology: {name}")
+
+    return StaticTopology.from_edges(nodes=ordered, edges=edges)
+
+
+def _root_first_nodes(nodes: Iterable[int], *, root_id: int) -> tuple[int, ...]:
+    supplied = tuple(nodes)
+    if not supplied:
+        raise ValueError("topology must contain at least one node")
+    if len(set(supplied)) != len(supplied):
+        raise ValueError("topology node identifiers must be unique")
+    if root_id not in supplied:
+        raise ValueError(f"root node is outside the topology: {root_id}")
+
+    return (root_id, *sorted(node_id for node_id in supplied if node_id != root_id))
+
+
+def _balanced_tree_edges(nodes: tuple[int, ...]) -> tuple[tuple[int, int], ...]:
+    return tuple(
+        (nodes[(child_index - 1) // 2], nodes[child_index]) for child_index in range(1, len(nodes))
+    )
+
+
+def _grid_edges(nodes: tuple[int, ...]) -> tuple[tuple[int, int], ...]:
+    width = isqrt(len(nodes) - 1) + 1
+    edges: list[tuple[int, int]] = []
+
+    for index, node_id in enumerate(nodes):
+        column = index % width
+        right_index = index + 1
+        down_index = index + width
+
+        if column + 1 < width and right_index < len(nodes):
+            edges.append((node_id, nodes[right_index]))
+        if down_index < len(nodes):
+            edges.append((node_id, nodes[down_index]))
+
+    return tuple(edges)
+
+============================================================
+F. PYTHON TOPOLOGY CORE
+============================================================
+from __future__ import annotations
+
+from collections.abc import Iterable
+from typing import Protocol
+
+
+class Topology(Protocol):
+    @property
+    def nodes(self) -> tuple[int, ...]: ...
+
+    def neighbors(self, node_id: int) -> tuple[int, ...]: ...
+
+    def has_link(self, left: int, right: int) -> bool: ...
+
+
+class StaticTopology:
+    """Immutable undirected topology with deterministic neighbor ordering."""
+
+    def __init__(self, adjacency: dict[int, tuple[int, ...]]) -> None:
+        self._adjacency = adjacency
+        self._nodes = tuple(sorted(adjacency))
+
+    @classmethod
+    def from_edges(
+        cls,
+        nodes: Iterable[int],
+        edges: Iterable[tuple[int, int]],
+    ) -> StaticTopology:
+        node_set = set(nodes)
+        if not node_set:
+            raise ValueError("topology must contain at least one node")
+        if any(node_id < 0 for node_id in node_set):
+            raise ValueError("node identifiers must be non-negative")
+
+        adjacency: dict[int, set[int]] = {node_id: set() for node_id in node_set}
+        for left, right in edges:
+            if left == right:
+                raise ValueError("self-links are not allowed")
+            if left not in adjacency or right not in adjacency:
+                raise ValueError("edge references an unknown node")
+            adjacency[left].add(right)
+            adjacency[right].add(left)
+
+        frozen = {node_id: tuple(sorted(neighbors)) for node_id, neighbors in adjacency.items()}
+        return cls(frozen)
+
+    @property
+    def nodes(self) -> tuple[int, ...]:
+        return self._nodes
+
+    def neighbors(self, node_id: int) -> tuple[int, ...]:
+        try:
+            return self._adjacency[node_id]
+        except KeyError as exc:
+            raise KeyError(f"unknown node: {node_id}") from exc
+
+    def has_link(self, left: int, right: int) -> bool:
+        if left not in self._adjacency or right not in self._adjacency:
+            return False
+        return right in self._adjacency[left]
+
+============================================================
+G. GENERATOR FILES
+============================================================
+experiments/cooja/scripts/generate_ranger_core_scenario.py
+experiments/cooja/scripts/generate_ranger_rpl_line_scenario.py
+experiments/cooja/scripts/generate_ranger_static_coded_rpl_line_scenario.py

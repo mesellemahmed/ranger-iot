@@ -1,0 +1,11 @@
+{
+  "application_loss_bp": 0,
+  "case_id": "n3-rx04500-seed000204",
+  "defines": "RANGER_CODING_K=3,RANGER_CODING_N=3,RANGER_LOSS_BP=0,RANGER_LOSS_SEED=1,RANGER_CAMPAIGN_MODE=0",
+  "k": 3,
+  "n": 3,
+  "schema_version": 1,
+  "simulation_seed": 204,
+  "success_ratio_rx": 0.45,
+  "success_ratio_tx": 1.0
+}

@@ -1,0 +1,10 @@
+tx,left_protocol,right_protocol,pairs,left_only_complete,right_only_complete,both_complete,neither_complete,completion_rate_delta,exact_mcnemar_p,exact_mcnemar_p_holm
+0.5,RECOVERY,STATIC,10,0,0,10,0,0.0,1.0,1.0
+0.5,ADAPTIVE_V2,STATIC,10,0,0,10,0,0.0,1.0,1.0
+0.5,ADAPTIVE_V2,RECOVERY,10,0,0,10,0,0.0,1.0,1.0
+0.3,RECOVERY,STATIC,10,7,1,1,1,0.6,0.0703125,0.5625
+0.3,ADAPTIVE_V2,STATIC,10,8,0,2,0,0.8,0.0078125,0.0703125
+0.3,ADAPTIVE_V2,RECOVERY,10,2,0,8,0,0.2,0.5,1.0
+0.2,RECOVERY,STATIC,10,4,0,0,6,0.4,0.125,0.875
+0.2,ADAPTIVE_V2,STATIC,10,3,0,0,7,0.3,0.25,1.0
+0.2,ADAPTIVE_V2,RECOVERY,10,2,3,1,4,-0.1,1.0,1.0

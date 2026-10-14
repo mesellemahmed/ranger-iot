@@ -1,0 +1,23 @@
+{
+  "build": {
+    "adaptive_nack_smoke": 1,
+    "campaign_mode": 0,
+    "clean_build_required": true,
+    "coding_k": 3,
+    "coding_n": 5,
+    "recovery_cascade_smoke": 0,
+    "recovery_smoke": 0
+  },
+  "experiment": "RANGER-COOJA-ADAPTIVE-V2-NACK-PARITY-SMOKE",
+  "hashes": {
+    "raw_log": "6f9d60654c2182f8105d111053e80bbaa1b884940346fa4a2bb68309b5ea40b6",
+    "result": "b863d994030c6e255270a2e687a47af6759ea19b699b9ddb8f51d517f3815a4c",
+    "scenario": "1aedc503c1b1707c73251e1a08558ecf7ec1282957fa8d79b703ffe5dfc9a361",
+    "source": "dc92a95a07d1b6e66a64f8811a5bd738f44e00e2ce95ac4201ea41f32908e716",
+    "test": "506efc224f7904e7dd16c37df5ded07c8294f546fdbe97fb75d2038bda4ae382"
+  },
+  "interpretation": "Controlled functional oracle for the Adaptive V2 branch-local NACK forwarding and GM parity-release path. This is not a radio-performance experiment.",
+  "schema_version": 1,
+  "source_commit": "54b1ff7b48c6d497b1755b3abef40f26b8258d76",
+  "source_sha256": "dc92a95a07d1b6e66a64f8811a5bd738f44e00e2ce95ac4201ea41f32908e716"
+}

@@ -1,0 +1,215 @@
+{
+  "adaptive-v2": {
+    "interesting_literals": [
+      "-seed",
+      "./simulation/randomseed",
+      "@@SIMULATION_SEED@@",
+      "RANGER_LOSS_SEED=1",
+      "calibration_simulation_seeds",
+      "campaign-config.json",
+      "case.json",
+      "cases/n5-loss0000-seed000101/scenario.csc",
+      "config_sha256",
+      "cooja-result.json",
+      "experiments/cooja/compose.yaml",
+      "experiments/cooja/config/step6e2-adaptive-radio.json",
+      "manifest.json",
+      "metrics.json",
+      "observed_simulation_seed",
+      "pilot_simulation_seeds",
+      "randomseed",
+      "seed=",
+      "simulation_seed",
+      "summary.json"
+    ],
+    "key_lines": [
+      {
+        "line": 21,
+        "text": "CONFIG = ("
+      },
+      {
+        "line": 23,
+        "text": "    / \"experiments/cooja/config/\""
+      },
+      {
+        "line": 933,
+        "text": "        \"config_sha256\":"
+      },
+      {
+        "line": 934,
+        "text": "            sha256(CONFIG),"
+      },
+      {
+        "line": 1040,
+        "text": "    cfg = json.loads("
+      },
+      {
+        "line": 1041,
+        "text": "        CONFIG.read_text("
+      },
+      {
+        "line": 1053,
+        "text": "                        \"pilot_simulation_seeds\""
+      },
+      {
+        "line": 1062,
+        "text": "                \"calibration_simulation_seeds\""
+      },
+      {
+        "line": 1066,
+        "text": "                \"pilot_simulation_seeds\""
+      },
+      {
+        "line": 1075,
+        "text": "                    \"target_success_ratio_tx_values\""
+      },
+      {
+        "line": 1104,
+        "text": "        / \"campaign-config.json\""
+      }
+    ],
+    "script": "experiments/cooja/scripts/run_step6e2_adaptive_radio.py"
+  },
+  "recovery": {
+    "interesting_literals": [
+      "-seed",
+      "./simulation/randomseed",
+      "@@SIMULATION_SEED@@",
+      "RANGER_LOSS_SEED=1",
+      "calibration_simulation_seeds",
+      "campaign-config.json",
+      "case.json",
+      "cases/n5-loss0000-seed000101/scenario.csc",
+      "config_sha256",
+      "cooja-result.json",
+      "experiments/cooja/compose.yaml",
+      "experiments/cooja/config/step6d2-recovery-radio.json",
+      "manifest.json",
+      "metrics.json",
+      "observed_simulation_seed",
+      "pilot_simulation_seeds",
+      "randomseed",
+      "seed=",
+      "simulation_seed",
+      "summary.json"
+    ],
+    "key_lines": [
+      {
+        "line": 21,
+        "text": "CONFIG = ("
+      },
+      {
+        "line": 23,
+        "text": "    / \"experiments/cooja/config/\""
+      },
+      {
+        "line": 932,
+        "text": "        \"config_sha256\":"
+      },
+      {
+        "line": 933,
+        "text": "            sha256(CONFIG),"
+      },
+      {
+        "line": 1039,
+        "text": "    cfg = json.loads("
+      },
+      {
+        "line": 1040,
+        "text": "        CONFIG.read_text("
+      },
+      {
+        "line": 1052,
+        "text": "                        \"pilot_simulation_seeds\""
+      },
+      {
+        "line": 1061,
+        "text": "                \"calibration_simulation_seeds\""
+      },
+      {
+        "line": 1065,
+        "text": "                \"pilot_simulation_seeds\""
+      },
+      {
+        "line": 1074,
+        "text": "                    \"target_success_ratio_tx_values\""
+      },
+      {
+        "line": 1103,
+        "text": "        / \"campaign-config.json\""
+      }
+    ],
+    "script": "experiments/cooja/scripts/run_step6d2_recovery_radio.py"
+  },
+  "static": {
+    "interesting_literals": [
+      "-seed",
+      "./simulation/randomseed",
+      "@@SIMULATION_SEED@@",
+      "RANGER_LOSS_SEED=1",
+      "calibration_simulation_seeds",
+      "campaign-config.json",
+      "case.json",
+      "cases/n5-loss0000-seed000101/scenario.csc",
+      "config_sha256",
+      "cooja-result.json",
+      "experiments/cooja/compose.yaml",
+      "experiments/cooja/config/step6c3f-post-bootstrap-tx-stress.json",
+      "manifest.json",
+      "metrics.json",
+      "observed_simulation_seed",
+      "pilot_simulation_seeds",
+      "randomseed",
+      "seed=",
+      "simulation_seed",
+      "summary.json"
+    ],
+    "key_lines": [
+      {
+        "line": 21,
+        "text": "CONFIG = ("
+      },
+      {
+        "line": 23,
+        "text": "    / \"experiments/cooja/config/\""
+      },
+      {
+        "line": 928,
+        "text": "        \"config_sha256\":"
+      },
+      {
+        "line": 929,
+        "text": "            sha256(CONFIG),"
+      },
+      {
+        "line": 1035,
+        "text": "    cfg = json.loads("
+      },
+      {
+        "line": 1036,
+        "text": "        CONFIG.read_text("
+      },
+      {
+        "line": 1048,
+        "text": "                        \"pilot_simulation_seeds\""
+      },
+      {
+        "line": 1057,
+        "text": "                \"calibration_simulation_seeds\""
+      },
+      {
+        "line": 1061,
+        "text": "                \"pilot_simulation_seeds\""
+      },
+      {
+        "line": 1070,
+        "text": "                    \"target_success_ratio_tx_values\""
+      },
+      {
+        "line": 1099,
+        "text": "        / \"campaign-config.json\""
+      }
+    ],
+    "script": "experiments/cooja/scripts/run_step6c3f_post_bootstrap_tx_stress.py"
+  }
+}

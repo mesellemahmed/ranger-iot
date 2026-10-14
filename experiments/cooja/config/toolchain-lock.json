@@ -1,0 +1,18 @@
+{
+  "contiki_ng": {
+    "commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+    "release": "release/v5.2"
+  },
+  "contiki_ng_commit": "4ccd1a3b9e767f168d12ec3df187fe6b7dc736b5",
+  "cooja": {
+    "commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4"
+  },
+  "cooja_commit": "fabff3ee41eeeb6f3de7bd11f7c9cdf0a7d7dfc4",
+  "docker": {
+    "digest": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+    "java_major": 25,
+    "resolved_from": "contiker/contiki-ng:latest"
+  },
+  "docker_image": "contiker/contiki-ng@sha256:b14d5afb0a2a852d9e72bbed607ead03f6ccc5f4d4dee44f0799110be2f4b609",
+  "schema_version": 2
+}
